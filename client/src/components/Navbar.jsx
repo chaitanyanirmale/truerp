@@ -36,7 +36,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div id="mobileMenu" className="sm:hidden xl:hidden bg-white shadow-md">
+          {/* <div id="mobileMenu" className="sm:hidden xl:hidden bg-white shadow-md">
             <nav className="flex flex-col space-y-4 px-6 py-6 text-gray-700 font-medium">
               <a href="#hero" className='hover:text-blue-600'>Home</a>
               <a href="#about" className='hover:text-blue-600'>About</a>
@@ -54,7 +54,7 @@ export default function Navbar() {
                 Try Demo
               </a>
             </nav>
-          </div>
+          </div> */}
       </header>
     </div>
   )
