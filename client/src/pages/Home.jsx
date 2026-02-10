@@ -4,15 +4,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 export const Home = () => {
   return (
     <div className='bg-white'>
-      <header id="header" className="fixed top-0 left-0 w-full bg-white z-50 shadow-md m-2 border border-gray-200 rounded-lg ">
-            <div className="max-w-7xl mx-auto px-2 py-2">
-              <div className="flex items-center justify-between h-16">
+      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 ">
+            <div className="max-w-7xl mx-auto px-5 mt-2 bg-white shadow rounded-lg">
+              <div className="flex items-center justify-between h-15">
                 <a href="/home" className="flex items-center">
-                  <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+                  <img src="/logo.png" alt="Logo" className="h-13 w-auto" />
                 </a>
 
-                <nav className="hidden xl:flex space-x-8 font-medium text-gray-700">
-                  <a href="#hero" className="text-blue-600 hover:text-blue-700">Home</a>
+                <nav className="hidden xl:flex space-x-8 font-medium text-gray-700 text-lg">
+                  <a href="#hero" className="text-blue-600 hover:text-blue-800">Home</a>
                   <a href="#about" className="hover:text-blue-600">About</a>
                   <a href="#features" className="hover:text-blue-600">Features</a>
                   <a href="#testimonials" className="hover:text-blue-600">Testimonials</a>
@@ -26,7 +26,7 @@ export const Home = () => {
                   <a
                     href="https://truerp.in/demo/erp/"
                     target="_blank"
-                    className="bg-blue-900 text-white mx-2 px-3 py-2 rounded-full font-sm hover:bg-blue-800 transition"
+                    className="bg-blue-900 text-white mx-2 px-4 py-2 rounded-full font-sm hover:bg-blue-800 transition"
                   >
                     Try Demo
                   </a>
@@ -37,15 +37,15 @@ export const Home = () => {
               </div>
             </div>
       </header>
-      <section id='hero' className='flex items-center justify-center bg-gray-100 md:grid-cols-2 md:py-20 xl:py-20 py-20 my-20'>
+      <section id='hero' className='flex items-center justify-center bg-gray-100 md:grid-cols-2 md:py-40 xl:py-40 py-40'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
-            <div className='md:text-center '>
+            <div className='md:text-center xl:text-start'>
               <div className="mb-6 bg-slate-300 text-blue-950 inline-block p-3 rounded-full font-medium">
                   <i className="bi bi-gear-fill me-2"></i>
                   Working for your success
               </div>
-              <h1 className="mb-8 text-3xl font-semibold   md:text-4xl xl:text-5xl text-gray-600 md:text-center">
+              <h1 className="mb-8 text-3xl font-bold   md:text-4xl xl:text-5xl text-gray-600 md:text-center xl:text-start">
                   Smart ERP for the Manufacturing &amp;<br />
                   Mechanical <br />
                   <span className="text-blue-800">Industry!</span>
@@ -53,7 +53,7 @@ export const Home = () => {
               <p className="mb-8 mb-md-8">
                 The TRUERP team - Powering India's Manufacturing Eco System.
               </p>
-              <div className="flex flex-wrap gap-2 mb-16 md:justify-center">
+              <div className="flex flex-wrap gap-2 mb-16 md:justify-center xl:justify-start">
                   <a href="https://truerp.in/pdf/truerp.pdf" target="_blank" className="bg-blue-950 text-white p-4 rounded-full">DOWNLOAD BROCHURE</a>
                   <a href="https://www.youtube.com/watch?v=9UMA-uGlg50" className="text-blue-950 font-semibold flex items-center gap-2 p-3 text-lg">
                     <i className="bi bi-play-circle me-1 text-2xl"></i>
@@ -301,6 +301,88 @@ export const Home = () => {
                   <p>Make informed decisions with TRUERP's smart dashboards. Get a 360° view of your business performance across sales, purchases, expenses, and GST.
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id='pricing'className='bg-gray-100 py-20'>
+        <div className="">
+          <h2 className="text-center text-3xl font-semibold mb-4 text-slate-700">Pricing</h2>
+          <p className="text-center text-gray-600 mb-10">Flexible pricing designed for every manufacturing business.</p>
+        </div>
+        <div className="">
+          <div className="grid xl:grid-cols-3 md:grid-cols gap-8 px-25 mt-20">
+            <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
+              <div className="pricing-card ">
+                <h3 className='text-slate-600 text-2xl mb-2 font-semibold'>Small-Scale Businesses & Startups</h3>
+                <h4 className='text-slate-600 mb-2 text-lg'>INCLUDE<br /> FOLLOWINGS:</h4>
+                <ul className="features-list">
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Dashboard & Core Reports</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Sales & Quotation Module</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Purchase Order Management</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Item / Product Master</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Basic Inventory Management</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Customer & Supplier Master</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>GST-enabled Invoicing</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Expense Tracking</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>User Management</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>(up to 10 users)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Backup & Basic Security</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>On-premise or Cloud Deployment</li> 
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>3 Months Free Support</li> 
+                </ul>
+                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition gap-2 flex items-center justify-center w-full">
+                  Buy Now
+                  <i className="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-blue-900 rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
+              <div className="pricing-card ">
+                <h3 className='text-white text-2xl mb-2 font-semibold'>Growing Medium-Scale Companies</h3>
+                <h4 className='text-white mb-2 text-lg'>INCLUDES EVERYTHING IN<br /> SILVER, PLUS :</h4>
+                <ul className="features-list text-white">
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Advanced Inventory	& Stock Alerts</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Bill of Material (BOM)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Manufacturing / MRP Module</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Payroll & HR Module</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Project & Job Costing Module</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Purchase Bills + GRR	(Goods Received Receipt)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Vendor Payment Tracking</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Multi-User Access (up to 20)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Role-Based Permissions</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Email/SMS Integration</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Custom Reports & Analytics</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Free Setup & Training</li> 
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>6 Months Free Support</li> 
+                </ul>
+                <a href="tel:+918087611678" className="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition gap-2 flex items-center justify-center w-full">
+                  Buy Now
+                  <i className="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
+              <div className="pricing-card ">
+                <h3 className='text-slate-600 text-2xl mb-2 font-semibold'>Large Manufacturing & Multi-Branch</h3>
+                <h4 className='text-slate-600 mb-2 text-lg'>INCLUDES EVERYTHING IN<br />GOLD, PLUS:</h4>
+                <ul className="features-list">
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Multi-Branch / Multi-Company Support</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Advanced Dashboard with KPIs & Analytics CRM & Sales Automation</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>eCommerce Integration (Optional API ready)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Service Management Module</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Advanced Payroll (Attendance + Leaves)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>GST, TDS & Compliance Reports</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Mobile Access / Responsive Web App</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Unlimited Users</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Priority Support (1 Year)</li>
+                  <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Free Updates & Customization Requests (Limited)</li>
+                </ul>
+                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition gap-2 flex items-center justify-center w-full">
+                  Buy Now
+                  <i className="bi bi-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
