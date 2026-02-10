@@ -4,8 +4,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 export const Home = () => {
   return (
     <div className='bg-white'>
-      <header id="header" className="fixed top-0 left-0 w-full bg-white shadow-md m-4 border border-gray-200 rounded-lg ">
-            <div className="max-w-7xl mx-auto px-4 width-full">
+      <header id="header" className="fixed top-0 left-0 w-full bg-white z-50 shadow-md m-2 border border-gray-200 rounded-lg ">
+            <div className="max-w-7xl mx-auto px-2 py-2">
               <div className="flex items-center justify-between h-16">
                 <a href="/home" className="flex items-center">
                   <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
@@ -37,7 +37,7 @@ export const Home = () => {
               </div>
             </div>
       </header>
-      <section id='hero' className='flex items-center justify-center bg-gray-100 md:grid-cols-2 md:py-30 xl:py-20 py-20 my-20'>
+      <section id='hero' className='flex items-center justify-center bg-gray-100 md:grid-cols-2 md:py-20 xl:py-20 py-20 my-20'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
             <div className='md:text-center '>
@@ -73,10 +73,10 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section id="about" className="flex items-center justify-center bg-white pt-25 pb-20 md:px-10 xl:px-16 ">
+      <section id="about" className="flex items-center justify-center bg-white pt-10 pb-10 md:p-10 xl:px-16 overflow-hidden">
         <div className="">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 py-20">
-            <div className="col-xl-5 w-full px-10" data-aos="fade-up" data-aos-delay="200">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 py-20 md:pt-20">
+            <div className="col-xl-5 w-full px-10">
               <h1 className='mb-2'>
                 <span className="text-blue-800 font-bold">MORE ABOUT US</span>
               </h1>
@@ -109,7 +109,7 @@ export const Home = () => {
               <div className="relative">
                 <div className="w-140 relative">
                   <img src="/main1.jpg" alt="Business Meeting" className="w-full rounded-2xl object-cover" />
-                  <img src="/main2.png" alt="Team Discussion" className="absolute -left-12 top-1/4 w-48 rounded-2xl border-4 border-white shadow-lg" />
+                  <img src="/main2.png" alt="Team Discussion" className="absolute -left-12 top-1/4 w-48 z-10 rounded-2xl border-4 border-white shadow-lg" />
                 </div>
                 <div className="absolute bottom-6 right-6 bg-blue-800 text-white px-6 py-4 rounded-2xl shadow-xl transition-transform duration-500 hover:-translate-y-2">
                   <h3 className='text-3xl'>15+ <span className='text-lg font-semibold'>Years</span></h3>
@@ -135,9 +135,9 @@ export const Home = () => {
           <p className='pb-10'>Trusted by leading mechanical manufacturers across India.
           </p>
         </div>
-        <div className="flex flex-row lg:flex-row items-center justify-center gap-10 p-4 mx-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="col-lg-6 m-2 bg-white  p-2 rounded-lg shadow-lg w-150">
+        <div className="flex flex-row lg:flex-row items-center justify-center gap-10 p-4 mx-10 ">
+          <div className="grid xl:grid-cols-2 md:grid-cols gap-8">
+            <div className="col-lg-6 m-2 bg-white p-5 pt-2 rounded-lg shadow-lg w-150 ">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -159,7 +159,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-5 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
               <div className="flex items-center gap-4 p-2">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -177,7 +177,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-2 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -195,7 +195,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-2 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -211,6 +211,97 @@ export const Home = () => {
                   <span>Excellent support and easy-to-use interface. TRUERP helped reduce errors, improve productivity, and boost overall efficiency.</span>
                   <i className="bi bi-quote quote-icon-right"></i>
                 </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="stats" className="stats section">
+        <div className="py-20">
+          <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-8 text-slate-700">
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item text-center w-auto h-30 ">
+                <span className="text-4xl font-bold ">50234</span>
+                <p className="p-4">Products</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item text-center w-auto h-30  ">
+                <span className="text-4xl font-bold">56</span>
+                <p className="p-4">ERP's</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item text-center w-auto h-30 ">
+                <span className="text-4xl font-bold">1453</span>
+                <p className="p-4">Hours Of Support</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item text-center w-auto h-30 ">
+                <span className="text-4xl font-bold">50</span>
+                <p className="p-4">Crore Transactions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id='services' className='py-10 bg-gray-100'>
+        <div className="py-10">
+          <h2 className="text-center text-3xl font-semibold mb-4 text-slate-700">Services</h2>
+          <p className="text-center text-gray-600 mb-10">Empowering your operations with smarter, faster workflows.</p>
+        </div>
+        <div className="">
+          <div className="grid xl:grid-cols-2 md:grid-cols gap-8 md:px-15 xl:px-20">
+            <div className="px-10 mb-5">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+                <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
+                  <i className="bi bi-activity "></i>
+                </div>
+                <div className='px-2'>
+                  <h3 className='mb-2 text-slate-700 text-2xl font-semibold'>Quotation & Sales Management</h3>
+                  <p>Create, customize, and track quotations with just a few clicks. Easily convert quotations into Sales Orders (SO) for faster customer response and improved deal closure.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="px-10 mb-5">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+                <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
+                  <i className="bi bi-diagram-3"></i>
+                </div>
+                <div className='px-2'>
+                  <h3 className='mb-2 text-slate-700 text-2xl font-semibold'>Purchase & Inventory</h3>
+                  <p>Manage your entire purchasing cycle from Purchase Orders (PO) to Goods Received Receipts (GRR) and Purchase Bills — all within one interface.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="px-10 mb-5">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+                <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
+                  <i className="bi bi-easel"></i>
+                </div>
+                <div className='px-2'>
+                  <h3 className='mb-2 text-slate-700 text-2xl  font-semibold'>Payroll & HR Management</h3>
+                  <p>Simplify workforce operations — from attendance to salary slips.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="px-10 mb-5">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+                <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
+                  <i className="bi bi-clipboard-data"></i>
+                </div>
+                <div className='px-2'>
+                  <h3 className='mb-2 text-slate-700 text-2xl font-semibold'>Dashboard & Analytics</h3>
+                  <p>Make informed decisions with TRUERP's smart dashboards. Get a 360° view of your business performance across sales, purchases, expenses, and GST.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
