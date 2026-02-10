@@ -1,6 +1,3 @@
-import React from 'react'
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
 export const Home = () => {
 
   const toggleFaq = (e) => {
@@ -33,7 +30,7 @@ export const Home = () => {
                 </nav>
                 <div className="xl:block flex items-center space-x-4">
                   <a
-                    href="https://truerp.in/demo/erp/"
+                    href="/login"
                     target="_blank"
                     className="bg-blue-900 text-white mx-2 px-4 py-2 rounded-full font-sm hover:bg-blue-800 transition"
                   >
@@ -95,20 +92,20 @@ export const Home = () => {
               <div className="row md:flex justify-between">
                 <div className=" col-md-6 p-2">
                   <ul className="text-gray-900 ">
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Centralized Data Management</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Accuracy & Error Reduction</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Real-Time Insights</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Improved Collaboration</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Scalability</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Centralized Data Management</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Accuracy & Error Reduction</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Real-Time Insights</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Improved Collaboration</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Scalability</li>
                   </ul>
                 </div>
                 <div className="col-md-6 p-2">
                   <ul className="feature-list">
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Automation of Processes</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Enhanced Security</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Audit & Traceability</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Integration with Other Systems</li>
-                    <li className='mb-2'><i className="bi bi-check-circle-fill text-blue-800"></i> Professional Reporting & Analytics</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Automation of Processes</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Enhanced Security</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Audit & Traceability</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Integration with Other Systems</li>
+                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Professional Reporting & Analytics</li>
                   </ul>
                 </div>
               </div>
