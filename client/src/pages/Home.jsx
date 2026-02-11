@@ -12,7 +12,7 @@ export const Home = () => {
 
   return (
     <div className='bg-white'>
-      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 ">
+      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 md:px-6">
             <div className="max-w-7xl mx-auto px-5 mt-2 bg-white shadow rounded-lg">
               <div className="flex items-center justify-between h-15">
                 <a href="/home" className="flex items-center">
@@ -96,7 +96,7 @@ export const Home = () => {
                     <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Accuracy & Error Reduction</li>
                     <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Real-Time Insights</li>
                     <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Improved Collaboration</li>
-                    <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Scalability</li>
+                    <li className=''><i className="bi bi-check-circle-fill text-blue-800"></i> Scalability</li>
                   </ul>
                 </div>
                 <div className="col-md-6 p-2">
@@ -223,7 +223,7 @@ export const Home = () => {
       </section>
       <section id="stats" className="stats section">
         <div className="py-20">
-          <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-8 text-slate-700">
+          <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-4 text-slate-700">
             <div className="col-lg-3 col-md-6">
               <div className="stats-item text-center w-auto h-30 ">
                 <span className="text-4xl font-bold ">50234</span>
