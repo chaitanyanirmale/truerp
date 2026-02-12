@@ -162,6 +162,84 @@ export const GeneralDashboard = () => {
                     </div>
                 </div>            
             </div>
+
+            <div className="p-2 flex gap-4 w-full">
+                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                        <i className="fa fa-road fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>E-WAY BIL</h4>
+                        <p><b>Transport Bills</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                        <i className="fa fa-undo fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>MRN</h4>
+                        <p><b>Material Return Note</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                        <i className="fa fa-share-square-o fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>ISSUE SLIP</h4>
+                        <p><b>Material Issue</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                        <i className="fa fa-truck fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>DELIVERY CHALLAN</h4>
+                        <p><b>Dispatch Note</b></p>
+                    </div>
+                </div>            
+            </div>
+
+            <div className="p-2 flex gap-4 w-full">
+                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                        <i className="fa fa-cogs fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>WPS / WPQ / PQR</h4>
+                        <p><b>Quality Docs</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                        <i className="fa fa-industry fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>MACHINERY</h4>
+                        <p><b>Machine Master</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                        <i className="fa fa-exclamation-triangle fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>NCR</h4>
+                        <p><b>Non Conformance</b></p>
+                    </div>
+                </div>            
+                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                        <i className="fa fa-calendar fa-3x text-white"></i>
+                    </div>
+                    <div className=" p-4 w-full">
+                        <h4>PLANS</h4>
+                        <p><b>Production Plans</b></p>
+                    </div>
+                </div>            
+            </div>
         </div>
     </div>
   )
