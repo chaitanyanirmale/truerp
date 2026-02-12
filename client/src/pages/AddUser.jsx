@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const AddUser = () => {
   return (
-    <div className='p-5 m-5 border border-slate-700 h-screen shadow rounded-md'>
+    <div className='p-5 border border-slate-300 md:h-screen shadow-md rounded-md'>
         <h1 className='text-3xl font-semibold text-slate-600'>Add New User</h1>
         <hr className='text-gray-600'/><br />
         <div className="text-md">
@@ -62,10 +62,7 @@ export const AddUser = () => {
                         <label className='text-md font-semibold'>Payment Terms (in days)</label>
                         <input type="text" name="paymentTermsInDays" id="paymentTermsInDays" placeholder='Pay'className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
                     </div>
-                    <div className="grid mx-2">
-                        <label className='text-md font-semibold' >Address</label>
-                        <textarea type="textarea"  name="address" id="address"  row="4" placeholder=''className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
-                    </div>
+                    
                     <div className="grid mx-2">
                         <label className='text-md font-semibold'>State</label>
                         <input type="text" name="state" id="state" placeholder='Maharashtra'className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
@@ -77,6 +74,10 @@ export const AddUser = () => {
                     <div className="grid mx-2">
                         <label className='text-md font-semibold'>Pin Code</label>
                         <input type="text" name="pinCode" id="pinCode" placeholder=''className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
+                    </div>
+                    <div className="grid mx-2">
+                        <label className='text-md font-semibold' >Address</label>
+                        <textarea type="textarea"  name="address" id="address"  row="4" placeholder=''className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
                     </div>
                 </div>
                 <div className="mt-4 p-2 justify-between">
