@@ -2,7 +2,7 @@ import React from 'react'
 
 export const AddExpense = () => {
   return (
-    <div className='m-2 xl:w-200 border border-slate-400 p-4 shadow-lg rounded-sm'>
+    <div className='m-2 xl:w-200 border border-slate-400 p-4 shadow-lg rounded-sm bg-white'>
         <h3 className='text-xl font-semibold mb-2'>Add Expense</h3><hr className='text-slate-400'/><br />
         <form className="grid grid-cols-1 md:grid-cols-12 gap-y-6 items-center ">
             <label className="col-span-3 font-medium mr-2">Employee</label>
