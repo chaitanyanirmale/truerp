@@ -5,6 +5,9 @@ import { Dashboard } from './pages/Dashboard.jsx'
 import { AddUser } from './pages/AddUser.jsx'
 import { FinanceDashboard } from './pages/FinanceDashboard.jsx'
 import { GeneralDashboard } from './pages/GeneralDashboard.jsx'
+import { UserList } from './pages/UserList.jsx'
+import { AddExpense } from './pages/AddExpense.jsx'
+import { ExpenseList } from './pages/ExpenseList.jsx'
 function App() {
 
   return (
@@ -16,6 +19,9 @@ function App() {
             <Route path='finance' element={<FinanceDashboard />} />
             <Route path='general' element={<GeneralDashboard />} />
             <Route path='user' element={<AddUser />} />
+            <Route path='user-list' element={<UserList />} />
+            <Route path='add-expense' element={<AddExpense />} />
+            <Route path='expense-list' element={<ExpenseList />} />
           </Route>
           <Route path='/login' element={<Login />} />
         </Routes>

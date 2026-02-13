@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const AddUser = () => {
   return (
-    <div className='p-5 border border-slate-300 md:h-screen shadow-md rounded-md'>
+    <div className='p-5 border border-slate-300 shadow-md rounded-md bg-white'>
         <h1 className='text-3xl font-semibold text-slate-600'>Add New User</h1>
         <hr className='text-gray-600'/><br />
         <div className="text-md">
