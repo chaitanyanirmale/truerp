@@ -1,14 +1,8 @@
+import { useState } from "react"
+
 export const Home = () => {
 
-  const toggleFaq = (e) => {
-  e.currentTarget
-    .querySelector(".faq-content")
-    .classList.toggle("hidden");
-
-  e.currentTarget
-    .querySelector(".faq-toggle")
-    .classList.toggle("rotate-90");
-};
+  const [openMenu, setOpenMenu] = useState(false)
 
   return (
     <div className='bg-white'>
@@ -36,7 +30,7 @@ export const Home = () => {
                   >
                     Try Demo
                   </a>
-                  <button onClick={() => setIsMenuOpen(true)} id="menuBtn" className="xl:hidden text-2xl text-gray-700">
+                  <button onClick={() => setOpenMenu(true)} id="menuBtn" className="xl:hidden text-2xl text-gray-700">
                   ☰
                 </button>
                 </div>
@@ -409,62 +403,62 @@ export const Home = () => {
             </div>
             <div className="col-lg-7 w-auto">
               <div className="faq-container grid xl:grid-cols md:grid-cols gap-4">
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
+                <div className="bg-white rounded-lg p-5" onClick={() => setOpenMenu(openMenu === "id1" ? null : "id1")}>
                   <div className="flex items-center justify-between">
                     <h3 className='text-slate-600 font-semibold '>What is TRUERP and who is it designed for?</h3>
-                    <i className="faq-toggle bi bi-chevron-right"></i>
+                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id1" ? "rotate-90" : ""}`}></i>
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id1" ? "max-h-50" : "max-h-0" }`}>
                     <p>TRUERP is a complete ERP solution designed specifically for mechanical, manufacturing, fabrication, and industrial businesses. It helps automate quotations, orders, purchases, BOM, inventory, payroll, and financial dashboards.</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5">
+                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id2" ? null : "id2")}>
                     <h3 className='text-slate-600 font-semibold '>Can TRUERP manage the end-to-end workflow of a manufacturing business?</h3>
-                    <i className="faq-toggle bi bi-chevron-right" ></i>
+                    <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id2" ? "rotate-90" : ""}`}></i>
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id2" ? "max-h-50" : "max-h-0" }`}>
                     <p>Yes. TRUERP covers the full cycle—from Quotation → Sales Order → Purchase Order → GRR → Inventory → BOM → Production → Payroll → Reports.</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5">
+                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id3" ? null : "id3")}>
                     <h3 className='text-slate-600 font-semibold '>Is TRUERP cloud-based or offline?</h3>
-                    <i className="faq-toggle bi bi-chevron-right" ></i>             
+                    <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id3" ? "rotate-90" : ""}`}></i>             
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id3" ? "max-h-50" : "max-h-0" }`}>
                     <p>TRUERP supports both cloud and on-premise deployment, depending on the client's preference, data sensitivity, and IT infrastructure.</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5">
+                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id4" ? null : "id4")}>
                     <h3 className='text-slate-600 font-semibold '>Can I customize modules based on my business requirements?</h3>
-                    <i className="faq-toggle bi bi-chevron-right" ></i>
+                    <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id4" ? "rotate-90" : ""}`} ></i>
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id4" ? "max-h-50" : "max-h-0" }`}>
                     <p>Absolutely. TRUERP allows module-level and workflow customization to match your company’s processes, approvals, and documentation format.</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5" >
+                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id5" ? null : "id5")}>
                     <h3 className='text-slate-600 font-semibold '>How secure is my data in TRUERP?</h3>
-                    <i className="faq-toggle bi bi-chevron-right" ></i>
+                    <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id5" ? "rotate-90" : ""}`} ></i>
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id5" ? "max-h-50" : "max-h-0" }`}>
                     <p>Your data is protected with role-based access, encrypted storage, regular backups, and high-level security protocols to ensure confidentiality and safety.</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" onClick={toggleFaq}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5">
+                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id6" ? null : "id6")}>
                     <h3 className='text-slate-600 font-semibold '>Do you provide training and support?</h3>
-                    <i className="faq-toggle bi bi-chevron-right" ></i>
+                    <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id6" ? "rotate-90" : ""}`} ></i>
                   </div>
-                  <div className="faq-content hidden w-150">
+                  <div className={`overflow-hidden transition-all duration-300 ${ openMenu === "id6" ? "max-h-50" : "max-h-0" }`}>
                     <p>Yes, we offer onboarding, staff training, and ongoing technical support to ensure smooth daily operations and quick issue resolution.</p>
                   </div>
                 </div>
