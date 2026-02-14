@@ -3,24 +3,32 @@ import { useState } from "react"
 export const Home = () => {
 
   const [openMenu, setOpenMenu] = useState(false)
+  const [active, setActive] = useState("")
 
   return (
-    <div className='bg-white'>
-      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 md:px-6">
-            <div className="max-w-7xl mx-auto px-5 mt-2 bg-white shadow rounded-lg">
+    <div className='bg-white mx-2'>
+      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 md:px-6 ">
+            <div className="max-w-7xl mx-auto px-5 mt-2 bg-white shadow rounded-lg ">
               <div className="flex items-center justify-between h-15">
                 <a href="/home" className="flex items-center">
                   <img src="/logo.png" alt="Logo" className="h-13 w-auto" />
                 </a>
 
                 <nav className="hidden xl:flex space-x-8 text-gray-700 text-lg font-medium">
-                  <a href="#hero" className="text-blue-700 hover:text-blue-800">Home</a>
-                  <a href="#about" className="hover:text-blue-700">About</a>
-                  <a href="#features" className="hover:text-blue-700">Features</a>
-                  <a href="#testimonials" className="hover:text-blue-700">Testimonials</a>
-                  <a href="#services" className="hover:text-blue-700">Services</a>
-                  <a href="#pricing" className="hover:text-blue-700">Pricing</a>
-                  <a href="#contact" className="hover:text-blue-700">Contact</a>
+                  <a href="#hero"  className={`transition duration-300 ${
+                      active === "hero" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("hero")}>Home</a>
+                  <a href="#about"  className={`transition duration-300 ${
+                      active === "about" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("about")}>About</a>
+                  <a href="#features"  className={`transition duration-300 ${
+                      active === "features" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("features")}>Features</a>
+                  <a href="#testimonials"  className={`transition duration-300 ${
+                      active === "testimonials" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("testimonials")}>Testimonials</a>
+                  <a href="#services"  className={`transition duration-300 ${
+                      active === "services" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("services")}>Services</a>
+                  <a href="#pricing"  className={`transition duration-300 ${
+                      active === "pricing" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("pricing")}>Pricing</a>
+                  <a href="#contact"  className={`transition duration-300 ${
+                      active === "contact" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("contact")}>Contact</a>
                 </nav>
                 <div className="xl:block flex items-center space-x-4">
                   <a
@@ -30,14 +38,14 @@ export const Home = () => {
                   >
                     Try Demo
                   </a>
-                  <button onClick={() => setOpenMenu(true)} id="menuBtn" className="xl:hidden text-2xl text-gray-700">
+                  <button id="menuBtn" className="xl:hidden text-2xl text-gray-700">
                   ☰
                 </button>
                 </div>
               </div>
             </div>
       </header>
-      <section id='hero' className='flex items-center justify-center bg-gray-100 md:grid-cols-2 md:py-40 xl:px-25 py-40'>
+      <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 md:py-40 xl:px-25 py-40'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
             <div className='md:text-center xl:text-start'>
@@ -45,7 +53,7 @@ export const Home = () => {
                   <i className="bi bi-gear-fill me-2"></i>
                   Working for your success
               </div>
-              <h1 className="mb-8 text-3xl font-bold   md:text-4xl xl:text-6xl text-gray-600 md:text-center xl:text-start">
+              <h1 className="mb-8 text-3xl font-bold md:text-4xl xl:text-6xl text-gray-600 md:text-center xl:text-start">
                   Smart ERP for the Manufacturing &amp;<br />
                   Mechanical <br />
                   <span className="text-blue-800">Industry!</span>
@@ -73,9 +81,9 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section id="about" className="flex items-center justify-center bg-white pt-10 pb-10 md:p-10 xl:px-16 overflow-hidden">
+      <section id="about" className="flex items-center justify-center bg-white pt-10 pb-10 xl:px-20 overflow-hidden">
         <div className="">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 py-20 md:pt-20">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 md:pt-20">
             <div className="col-xl-5 w-full px-10">
               <h1 className='mb-2'>
                 <span className="text-blue-800 font-bold">MORE ABOUT US</span>
@@ -311,7 +319,7 @@ export const Home = () => {
           <h2 className="text-center text-3xl font-semibold mb-4 text-slate-700">Pricing</h2>
           <p className="text-center text-gray-600 mb-10">Flexible pricing designed for every manufacturing business.</p>
         </div>
-        <div className="">
+        <div className="p-15 md:p-5">
           <div className="grid xl:grid-cols-3 md:grid-cols gap-8 px-25 mt-20 md:p-5">
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
@@ -340,7 +348,7 @@ export const Home = () => {
             </div>
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-blue-900 rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
-                {/* <div className="text-center font-semibold p-2 bg-white rounded-full w-40 mx-14">Most Popular</div> */}
+                <div className="text-center font-semibold p-2 bg-white rounded-full mx-30 mb-3">Most Popular</div>
                 <h3 className='text-white text-2xl mb-2 font-semibold'>Growing Medium-Scale Companies</h3>
                 <h4 className='text-white mb-2 text-lg'>INCLUDES EVERYTHING IN<br /> SILVER, PLUS :</h4>
                 <ul className="features-list text-white">
@@ -390,9 +398,9 @@ export const Home = () => {
         </div>
       </section>
       <section id='faq' className='p-10 bg-gray-100'>
-        <div className="">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
-            <div className="w-130">
+        <div className="p-20">
+          <div className="flex flex-col lg:flex-row justify-center gap-4">
+            <div className="w-full">
               <h2 className="text-slate-600 text-4xl font-semibold mb-5">Have a question? Check out the FAQ</h2>
               <p className="mb-5">We have covered the key questions to help you understand TRUERP better.</p>
               <div className="hidden lg:block faq-arrow">
@@ -484,8 +492,8 @@ export const Home = () => {
           <h2 className='text-slate-600 font-semibold text-3xl mb-5'>Contact</h2>
           <p>Take the next step toward smarter, faster business management.</p>
         </div>
-        <div className="grid xl:grid-cols-2 md:grid-cols gap-8 md:px-5 xl:px-20">
-          <div className="bg-blue-900 text-white p-10 rounded-lg shadow-lg xl:w-125 md:w-150 mx-5">
+        <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-8 md:px-5 xl:px-20">
+          <div className="bg-blue-900 text-white p-10 rounded-lg shadow-lg mx-5">
             <h3 className='text-3xl'>Contact Info</h3>
             <div className="flex items-start gap-4 mt-5">
               <div className="text-white bg-blue-500 hover:bg-blue-600 p-3 rounded-full h-12 w-12 flex items-center justify-center">
@@ -520,7 +528,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="">
-            <div className="bg-white p-10 rounded-lg shadow-lg xl:w-125 md:w-150 mx-5">
+            <div className="bg-white p-10 rounded-lg shadow-lg  mx-5">
               <h3 className='text-slate-600 mb-4 text-2xl'>Get In Touch</h3>
               <p className='text-slate-600 mb-4'>Don't wait. Automate your entire workflow effortlessly.</p>
               <form action="">
@@ -534,10 +542,10 @@ export const Home = () => {
                   </div>
 
                   <div className="p-2 border border-gray-200 rounded-lg w-auto m-2 placeholder:text-sm">
-                    <textarea name="message" rows="4" placeholder="Message" required=""></textarea>
+                    <textarea name="message" rows="4" placeholder="Message" className="w-full" required=""></textarea>
                   </div>
 
-                  <div className="w-full">
+                  <div className="w-full flex justify-center">
                     <div className="bg-blue-800 w-50 rounded-full p-2 text-white py-4 text-center">
                       <button type="submit" className="btn">Send Message</button>
                     </div>
