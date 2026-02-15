@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
 
-    aadhaarNumber: {
+    aadharNumber: {
       type: String,
       unique: true,
       sparse: true,

@@ -2,31 +2,31 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 
-export const adduser = async (req, res, next) => {
-   const { role, companyName, name, mobile, password, alternateMobile, aadhaarNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode} = req.body;
+export const adduser = async (req, res) => {
+   const { role, companyName, name, mobile, password, alternateMobile, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode} = req.body || {};
    const hashedPassword = await bcrypt.hash(password, 10);
    const newUser = new User({
-     role, companyName, name, mobile, password: hashedPassword, alternateMobile, aadhaarNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode
+     role, companyName, name, mobile, password: hashedPassword, alternateMobile, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode
    });
    try {
       await newUser.save()
-      res.status(201).json("User created successfully");
+      res.status(201).json({success: true, message: "user created successfully"});
    } catch (error) {
-     next (error);
+     console.log(error);
    }
    
 }
 
-export const signin = async (req, res, next) => {
+export const signin = async (req, res) => {
    const { email, password } = req.body;
    try {
       const validUser = await User.findOne({ email });
       if (!validUser) {
-         return next(errorHandler(404, "User not found"));
+         console.log(404, "User not found");
       }
       const validPassword = await bcrypt.compare(password, validUser.password);
       if (!validPassword) {
-         return next(errorHandler(400, "Invalid username or password"));
+         console.log(400, "Invalid username or password");
       }
       const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
       const {password: pass, ...user} = validUser._doc;
@@ -35,6 +35,6 @@ export const signin = async (req, res, next) => {
          .status(200)
          .json({token, user});
    }catch (error) {
-      next(error);
+      console.log(error);
    }
 }
