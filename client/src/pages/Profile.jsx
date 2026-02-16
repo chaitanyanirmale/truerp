@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export const Profile = () => {
     const [open, setOpen] = useState(false)
+    const [active, setActive] = useState('')
   return (
     <div className='w-full flex justify-between gap-4'>
         <div className="">
@@ -10,12 +11,12 @@ export const Profile = () => {
                 <img src="/profile.jpg" alt="" className='w-full'/>
             </div>
             <div className="bg-white grid">
-                    <div className='hover:bg-gray-200 p-2 w-full' onClick={() => setOpen(open === "view" ? null : "view")}>View Profile</div>
-                    <div className='hover:bg-gray-200 p-2 w-full' onClick={() => setOpen(open === "update" ? null : "update")}>Update Profile</div>
+                    <div className={`transition duration-300 p-2 ${active === 'view' ? 'bg-gray-400':''}`} onClick={() => {setOpen(open === "view" ? null : "view"), setActive('view')}}>View Profile</div>
+                    <div className={`transition duration-300 p-2 ${active === 'update' ? 'bg-gray-400':''}`} onClick={() => {setOpen(open === "update" ? null : "update"), setActive('update')}}>Update Profile</div>
             </div>
         </div>
 
-        <div className={`overflow-hidden ${ open === "view" ? "w-full h-full bg-white p-2 px-4" : "w-0" }`}>
+        <div className={`overflow-hidden ${ open === "view" ? "w-full h-full bg-white p-2 px-4 " : "w-0" }`}>
             <div className="">
                 <div className="p-2">
                     <h3 className='text-xl font-semibold'>TRUERP</h3>
@@ -138,7 +139,8 @@ export const Profile = () => {
                         <label htmlFor="" className='w-1/4 p-1'>Pin Code</label>
                         <input type="text" name='pincode' placeholder='Enter Pin COde' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2'/>
                     </div>
-                    <div className="flex justify-center mt-8">
+                    <hr className='text-slate-400 w-full my-4'/>
+                    <div className="flex justify-center mt-4">
                         <button type='submit' className='w-30 bg-blue-700 text-white p-2 rounded-lg'>
                             <i className='fa fa-wa fa-lg fa-check-circle pr-2'></i>Save
                         </button>
