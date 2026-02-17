@@ -52,6 +52,7 @@ export const AddEmployee = () => {
                 setLoading(false)
                 return
             }
+            setLoading(false)
             console.log('Employee Added')
         } catch (error) {
             console.log(error);
