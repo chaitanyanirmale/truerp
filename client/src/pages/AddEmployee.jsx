@@ -105,7 +105,7 @@ export const AddEmployee = () => {
                 </div>
                 <div className="w-full grid gap-2">
                     <label className="font-semibold">Gender</label>
-                    <select type="text" name='gender' value={formData.gender} defaultValue='' className='border border-slate-400 p-2 rounded-sm' onChange={handleChange}>
+                    <select type="text" name='gender' value={formData.gender} className='border border-slate-400 p-2 rounded-sm' onChange={handleChange}>
                         <option value="" disabled>--Select Gender --</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
