@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const UserList = () => {
+    const [users, setUsers] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    const fetchUsers = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/users/user-list');
+            const data =  await res.json();
+            if(data.success === true){
+                setUsers(data.data)
+            }
+            setLoading(false)
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
+    useState(()=>{
+        fetchUsers();
+    },[])
+
   return (
     <div className='bg-white h-screen border border-slate-300 shadow-md px-4'>
         <div className="w-full p-2 mb-8">
@@ -18,7 +40,9 @@ export const UserList = () => {
                 </select>
             
         </div>
-        <div className="text-center">
+        {loading ? (
+            <p>Loading..</p>
+        ) : <div className="text-center">
             <table className='w-full'>
                 <thead className=" text-gray-700 uppercase text-xs">
                     <tr>
@@ -34,31 +58,39 @@ export const UserList = () => {
                     </tr>
                 </thead>
                 <tbody className='bg-white text-sm'>
-                    <tr className="hover:bg-gray-50 transition">
-                        <td className="px-2 border text-gray-900">
-                        AUTO MECH(INDIA) PRIVATE LIMITED
-                        </td>
-                        <td className="px-2 border">8600298076</td>
-                        <td className="px-2 border">automech@gmail.com</td>
-                        <td className="px-2 border">Customer</td>
-                        <td className="px-2 border" >27AADCA0148D1Z8</td>
-                        <td className="px-2 border">148D1Z8</td>
-                        <td className="px-2 border">CHAKAN</td>
+                    {users.length === 0 ? (
+                        <tr>
+                            <td colSpan='7' className='text-center p-4'>No Users Found</td>
+                        </tr>
+                    ): users.map((user) => (
+                        <tr key={user._id} className="hover:bg-gray-50 transition">
+                            <td className="px-2 border text-gray-900">
+                            {user.name}
+                            </td>
+                            <td className="px-2 border">{user.mobile}</td>
+                            <td className="px-2 border">{user.email}</td>
+                            <td className="px-2 border">{user.role}</td>
+                            <td className="px-2 border">{user.gstNumber}</td>
+                            <td className="px-2 border">{user.panNumber}</td>
+                            <td className="px-2 border">{user.location}</td>
 
-                        <td className="px-6 py-4 border">
-                        <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded">
-                            Active
-                        </span>
-                        </td>
-                        <td className="px-6 py-4 border text-center">
-                        <button className="px-3 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700 transition">
-                            Actions
-                        </button>
-                        </td>
-                    </tr>
+                            <td className="px-6 py-4 border">
+                            <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded">
+                                Active
+                            </span>
+                            </td>
+                            <td className="px-6 py-4 border text-center">
+                            <button className="px-3 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700 transition">
+                                Actions
+                            </button>
+                            </td>
+                        </tr>
+                    ))}
+                    
                 </tbody>
             </table>
         </div>
+    }        
     </div>
     
   )
