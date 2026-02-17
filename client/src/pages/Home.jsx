@@ -316,11 +316,11 @@ export const Home = () => {
       </section>
       <section id='pricing'className='bg-gray-100 xl:pt-20 md:p-5'>
         <div className="">
-          <h2 className="text-center text-3xl font-semibold mb-4 text-slate-700">Pricing</h2>
-          <p className="text-center text-gray-600 mb-10">Flexible pricing designed for every manufacturing business.</p>
+          <h2 className="text-center text-3xl font-semibold mb-4 mt-2 text-slate-700">Pricing</h2>
+          <p className="text-center text-gray-600 mb-6">Flexible pricing designed for every manufacturing business.</p>
         </div>
-        <div className="p-15 md:p-5">
-          <div className="grid xl:grid-cols-3 md:grid-cols gap-8 px-25 mt-20 md:p-5">
+        <div className="p-10 md:p-5">
+          <div className="grid xl:grid-cols-3 md:grid-cols gap-8 px-25 mt-5 md:p-5">
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
                 <h3 className='text-slate-600 text-2xl mb-2 font-semibold'>Small-Scale Businesses & Startups</h3>
@@ -348,7 +348,7 @@ export const Home = () => {
             </div>
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-blue-900 rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
-                <div className="text-center font-semibold p-2 bg-white rounded-full mx-30 mb-3">Most Popular</div>
+                {/* <div className="text-center font-semibold p-2 bg-white rounded-full mx-30 xl:mx-20 mb-3">Most Popular</div> */}
                 <h3 className='text-white text-2xl mb-2 font-semibold'>Growing Medium-Scale Companies</h3>
                 <h4 className='text-white mb-2 text-lg'>INCLUDES EVERYTHING IN<br /> SILVER, PLUS :</h4>
                 <ul className="features-list text-white">

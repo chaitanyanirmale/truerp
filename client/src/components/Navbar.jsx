@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
   return (
@@ -9,8 +10,8 @@ export const Navbar = () => {
                 <h1 className="text-xl font-semibold">Admin</h1>
                 <button className="text-xl">☰</button>
             </div>
-            <div className="flex md:w-auto items-center gap-4 w-1/3 px-2">
-                <select className="bg-white text-black p-2 rounded">
+            <div className="flex md:w-auto items-center gap-4 w-1/2 px-2">
+                <select className="bg-white text-black p-2 px-4 rounded">
                 <option>FY: 2025-26</option>
                 <option>FY: 2024-25</option>
                 <option>FY: 2023-24</option>
@@ -48,10 +49,10 @@ export const Navbar = () => {
                     <i className='fa fa-file-pdf-o fa-md p-1'></i>
                     <p className='text-md p-2'>Purchase Bills</p>
                 </div>
-                <div className='flex justify-between hover:bg-blue-800 h-full items-center px-1'>
+                <NavLink to="profile" className='flex justify-between hover:bg-blue-800 h-full items-center px-1'>
                     <i className='fa fa-user fa-md p-1'></i>
                     <p className='text-md p-2'>TRUERP</p>
-                </div>
+                </NavLink>
             </div>
         </header>
     </div>

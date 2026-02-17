@@ -4,9 +4,9 @@ export const CreateInvoice = () => {
   return (
     <div className='p-4 border border-slate-400 shadow-md rounded-sm bg-white'>
         <form action="">
-            <h1 className='text-3xl mb-2 font-semibold'>Create New Invoice</h1><hr className='text-slate-400 mb-4'/>
+            <h1 className='text-2xl mb-2 font-semibold'>Create New Invoice</h1><hr className='text-slate-400 mb-4'/>
             <div className="">
-                <h3 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>Invoice Details</h3>
+                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Invoice Details</h3>
                 <div className="flex gap-4 px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1">Select Invoice Type</label>
@@ -35,8 +35,8 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="">
-                <div className="flex justify-between bg-gray-300 px-2 py-1 rounded-sm">
-                    <h3 className='text-2xl font-semibold '>Supplier / Buyer Details</h3>
+                <div className="flex justify-between bg-gray-300 px-3 py-3 rounded-sm">
+                    <h3 className='text-xl font-semibold '>Supplier / Buyer Details</h3>
                     <div className="bg-blue-700 px-2 py-1 text-white text-sm rounded-xs hover:bg-blue-800 shadow-md">
                         <i className='fa fa-plus px-1'></i>
                         <button>Add New Supplier / Buyer</button>
@@ -58,7 +58,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="">
-                <h3 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>Invoice Details</h3>
+                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Invoice Details</h3>
                 <div className="flex gap-4 px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1">Select Product</label>
@@ -107,7 +107,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="">
-                <h3 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>PO Details</h3>
+                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>PO Details</h3>
                 <div className="flex gap-2 px-2 mt-2 justify-between">
                     <div className="">
                         <label className="text-sm p-1">PO No.</label>
@@ -128,7 +128,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="">
-                <h3 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>Transportation Details</h3>
+                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Transportation Details</h3>
                 <div className="flex gap-4 justify-between px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1">Select Type</label>
@@ -177,7 +177,7 @@ export const CreateInvoice = () => {
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="flex gap-4">
                 <div className="">
-                    <h1 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>Bank Details</h1>
+                    <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Bank Details</h1>
                     <div className="flex justify-between p-2">
                         <div className="">
                             <div className="flex justify-between">
@@ -204,7 +204,7 @@ export const CreateInvoice = () => {
                     </div>
                 </div>
                 <div className="w-full">
-                        <h1 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm'>Invoice Status & Remark</h1>
+                        <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Invoice Status & Remark</h1>
                         <div className="p-2 flex gap-4">
                             <select name="" id="" className='border border-slate-400 rounded-sm px-2 py-1 text-sm mt-1 h-10'>
                                 <option value="">Paid</option>
@@ -216,14 +216,14 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="">
-                <h1 className='text-2xl bg-gray-300 px-2 py-1 font-semibold rounded-sm mb-2'>Bank Details</h1>
+                <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm mb-2'>Bank Details</h1>
                 <textarea name="" id="" rows="4" className='border border-slate-400 rounded-sm px-2 py-1 w-full text-sm mt-1 uppercase placeholder:text-gray-400' placeholder='100% within 30 days'></textarea>
             </div>
             <hr className='text-slate-400 mb-4 my-4 w-full'/>
             <div className="mt-4 p-2 justify-between text-sm">
                     <button className="bg-blue-600 p-2 mx-2 rounded-md text-white hover:bg-blue-800" type="submit" name="submit"><i className="fa fa-fw fa-lg fa-check-circle"></i>Submit</button>
                     <button className="bg-gray-600 p-2 rounded-md text-white hover:bg-gray-800" type="reset"><i className="fa fa-fw fa-lg fa-times-circle"></i>Clear</button>
-                </div>
+            </div>
         </form>
     </div>
   )
