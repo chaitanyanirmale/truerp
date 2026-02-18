@@ -69,17 +69,17 @@ const salarySchema = new mongoose.Schema(
       default: 0,
     },
 
-    deductionAmount: {
+    deduction: {
       type: Number,
       default: 0,
     },
 
-    advanceAmount: {
+    advance: {
       type: Number,
       default: 0,
     },
 
-    otherCharges: {
+    other: {
       type: Number,
       default: 0,
     },
