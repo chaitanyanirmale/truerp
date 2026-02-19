@@ -18,15 +18,21 @@ export const adduser = async (req, res) => {
 }
 
 export const signin = async (req, res) => {
-   const { email, password } = req.body;
    try {
+      const { email, password } = req.body;
+      if (!email || !password) {
+         return res.status(400).json({
+            success: false,
+            message: "Email and password are required",
+         });
+      }
       const validUser = await User.findOne({ email });
       if (!validUser) {
-         console.log(404, "User not found");
+         return res.status(404).json({message: "User not found"})
       }
       const validPassword = await bcrypt.compare(password, validUser.password);
       if (!validPassword) {
-         console.log(400, "Invalid username or password");
+         return res.status(400).json({message: "Invalid username or password"});
       }
       const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
       const {password: pass, ...user} = validUser._doc;

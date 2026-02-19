@@ -6,6 +6,8 @@ import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 import expenseRoutes from './routes/expense.route.js';
 import employeeRoutes from "./routes/employee.route.js";
+import salaryRoutes from "./routes/salary.route.js";
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -16,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 const app = express();
+app.use(cookieParser())
 app.use(cors())
 app.use(express.json())
 
@@ -23,6 +26,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use("/api/employee", employeeRoutes);
+app.use("/api/salary", salaryRoutes);
 
 app.listen(3000, () => {
   console.log("Api is running on port 3000")
