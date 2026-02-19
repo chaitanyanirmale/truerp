@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const AddUser = () => {
     const [formData, setFormData] = useState({
-        role:'', companyName: '', name: '', mobile: '', password: '', alternateMobile: '', aadhaarNumber: '', gstNumber: '', panNumber: '', email: '', salaryPerDay: '', paymentTermsInDays: '', address: '', state: '', location: '', pinCode: '',
+        role:'', companyName: '', name: '', mobile: '', password: '', alternateMobile: '', aadharNumber: '', gstNumber: '', panNumber: '', email: '', salaryPerDay: '', paymentTermsInDays: '', address: '', state: '', location: '', pinCode: '',
     });
 
     const handleChange = (e) => {
@@ -39,14 +39,14 @@ export const AddUser = () => {
                     <label className='text-md font-semibold'>Role</label>
                     <select name="role" onChange={handleChange} value={formData.role} className='border border-slate-400 rounded-md p-2 w-1/4 placeholder:text-slate-600' required>
                         <option value="">Select User Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="contractor">Contractor</option>
-                        <option value="customer">Customer</option>
-                        <option value="driver">Driver</option>
-                        <option value="staff">Staff</option>
-                        <option value="supplier">Supplier</option>
-                        <option value="transporter">Transporter</option>
-                        <option value="worker">Worker</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Contractor">Contractor</option>
+                        <option value="Customer">Customer</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Supplier">Supplier</option>
+                        <option value="Transporter">Transporter</option>
+                        <option value="Worker">Worker</option>
                     </select>
                 </div>
                 <div className="grid xl:grid-cols-4 md:grid-cols-3 mt-4 w-full gap-4">
@@ -69,6 +69,10 @@ export const AddUser = () => {
                     <div className="grid mx-2">
                         <label className='text-md font-semibold'>Alternate No.</label>
                         <input type="text" name="alternateMobile" id="alternateMobile" value={formData.alternateMobile} onChange={handleChange} placeholder='Alternate No.'className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
+                    </div>
+                    <div className="grid mx-2">
+                        <label className='text-md font-semibold'>Aadhar Number</label>
+                        <input type="text" name="aadharNumber" id="aadharNumber" value={formData.aadharNumber} onChange={handleChange} placeholder='Aadhar Number'className='border border-slate-600 rounded-sm py-1 px-2 mt-2' />
                     </div>
                     <div className="grid mx-2">
                         <label className='text-md font-semibold'>GST Number</label>
