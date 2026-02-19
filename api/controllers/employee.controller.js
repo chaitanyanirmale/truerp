@@ -35,6 +35,21 @@ export const addEmployee = async (req, res, next) => {
     }
 }
 
+export const getEmployee = async (req, res, next) => {
+  try {
+    const employee = await Employee.findById(req.user.id).select("-password");
+    if (!employee) {
+      return next(errorHandler(404, 'Employee not found'));
+    }
+    res.status(200).json({
+      success: true,
+      data: employee,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 export const getEmployees = async (req, res, next) => {
   try {

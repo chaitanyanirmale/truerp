@@ -25,7 +25,7 @@ export const EmployeeList = () => {
     }, []);
   return (
 
-    <div className='p-4 bg-white'>
+    <div className='p-4 bg-white border border-slate-200 rounded-sm'>
         <div className="flex justify-between">
             <h1 className='text-2xl font-semibold'>List of Employee</h1>
             <select name="" id="" className='p-2 border border-slate-400 rounded-sm'>
