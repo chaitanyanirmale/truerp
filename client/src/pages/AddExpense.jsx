@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 export const AddExpense = () => {
     const [employees, setEmployees] = useState([])
-    const [formData, setFormData] = useState({
-        employee:'', amount:'', expenseType:'', expenseDate:'', note:''
-    })
+    const initialData = { employee:'', amount:'', expenseType:'', expenseDate:'', note:''}
+    const [formData, setFormData] = useState(initialData)
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -13,6 +12,7 @@ export const AddExpense = () => {
             const data = await res.json();
             if (data.success) {
                 setEmployees(data.data);
+                
             }
             } catch (error) {
             console.log(error);
@@ -30,7 +30,7 @@ export const AddExpense = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/expenses/add-expense', {
+            const res = await fetch('/api/expense/add-expense', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
@@ -42,6 +42,7 @@ export const AddExpense = () => {
                 console.log("server error")
                 return;
             }
+            setFormData(initialData)
             console.log("Expense Added Successfully")
         } catch (error) {
             console.log(error)

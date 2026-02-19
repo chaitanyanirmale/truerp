@@ -27,7 +27,8 @@ export const ExpenseList = () => {
     (total, exp) => total + exp.amount, 0
   );
   return (
-    <div className='p-2 bg-white h-screen border border-slate-400 shadow-md rounded-sm'>
+    <div>
+    <div className='p-2 bg-white border border-slate-400 shadow-md rounded-sm'>
       <h4 className='mb-4 text-2xl font-semibold'>List of Expenses</h4>
       <hr className='text-slate-600'/>
       <form action="">
@@ -78,8 +79,11 @@ export const ExpenseList = () => {
           </table>
           </div>
           }
-          
-          <div className="">
+                  
+        </div>
+      </form>
+    </div>
+        <div className="bg-white">
             <table className='border border-slate-400 mt-4 w-full'>
               <thead className='w-full'>
                 <tr><th className='p-2 text-blue-600'>Total Expenses</th></tr>
@@ -88,9 +92,7 @@ export const ExpenseList = () => {
                 <tr><td className='p-2 font-bold'>Rs. {totalExpense}</td></tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </form>
-    </div>
+          </div>  
+  </div>
   )
 }

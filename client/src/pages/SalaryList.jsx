@@ -5,6 +5,10 @@ export const SalaryList = () => {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(false)
     const [salaries, setSalaries] = useState([]);
+
+    const totalSalary = salaries.reduce((total, salary) => {
+        return total + Number(salary.netSalary);
+    }, 0)
     
     const fetchEmployees = async () => {
             setLoading(true);
@@ -47,6 +51,7 @@ export const SalaryList = () => {
             fetchSalaries();
         }, []);
   return (
+    <div>
     <div className='p-4 border border-slate-400 shadow-md rounded-sm bg-white'>
         <h1 className='text-2xl font-semibold'>Salary List</h1><hr className='my-4 text-slate-200'/>
         <div className=''>
@@ -99,7 +104,7 @@ export const SalaryList = () => {
                     ): (salaries.map((salary) => (
                         <tr key={salary._id} className="text-center">
                             <td className="px-4 py-2 border">
-                            {salary.employee?.name}
+                            {salary.employee?.fullname}
                             </td>
 
                             <td className="px-4 py-2 border">
@@ -157,6 +162,19 @@ export const SalaryList = () => {
                 </table>
             </div>         
         </div>
+    </div>
+    <div className="bg-white" >
+        <div className="text-md">
+            <table className='border border-slate-400 mt-4 w-full'>
+              <thead className='w-full'>
+                <tr><th className='p-2 text-blue-600'>Total Salaries</th></tr>
+              </thead>
+              <tbody className='w-full text-center border border-slate-400'>
+                <tr><td className='p-2 font-bold'>Rs. {totalSalary}</td></tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
     </div>
   )
 }

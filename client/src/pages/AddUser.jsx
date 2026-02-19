@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
 export const AddUser = () => {
-    const [formData, setFormData] = useState({
-        role:'', companyName: '', name: '', mobile: '', password: '', alternateMobile: '', aadharNumber: '', gstNumber: '', panNumber: '', email: '', salaryPerDay: '', paymentTermsInDays: '', address: '', state: '', location: '', pinCode: '',
-    });
+    const initialData = { role:'', companyName: '', name: '', mobile: '', password: '', alternateMobile: '', aadharNumber: '', gstNumber: '', panNumber: '', email: '', salaryPerDay: '', paymentTermsInDays: '', address: '', state: '', location: '', pinCode: '',}
+    const [formData, setFormData] = useState(initialData);
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name] : e.target.value})
@@ -24,6 +23,7 @@ export const AddUser = () => {
                 console.log("server error")
                 return;
             }
+            setFormData(initialData)
             console.log("User Created")
         } catch (error) {
             console.log(error)

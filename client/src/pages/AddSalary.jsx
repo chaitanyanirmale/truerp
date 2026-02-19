@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 
 export const AddSalary = () => {
-    const [formData, setFormData] = useState({
-        role: '', employee: '', month: '', year: '', salaryPerDay: '', salaryPerHour: '', totalWorkingDays: '', presentDays: '', absentDays: '', extraHours: '', weeklyOff: '', bonus: '',deduction: '', advance: '',other: '', pf: '',professionalTax: '', salaryDate: '', remark: '',
-    });
+    const initialData = {role: '', employee: '', month: '', year: '', salaryPerDay: '', salaryPerHour: '', totalWorkingDays: '', presentDays: '', absentDays: '', extraHours: '', weeklyOff: '', bonus: '',deduction: '', advance: '',other: '', pf: '',professionalTax: '', salaryDate: '', remark: '',}
+    
+    const [formData, setFormData] = useState(initialData);
 
     const [employees, setEmployees] = useState([])
 
@@ -48,8 +48,9 @@ export const AddSalary = () => {
             });
 
             const data = await res.json();
-            
-            console.log(data);
+            if(data.success){
+                setFormData(initialData)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -158,10 +159,6 @@ export const AddSalary = () => {
                     <label className="w-1/2 text-sm">Payment After Deduction / Advance</label>
                     <input type="number" value={netSalary} className='w-full border border-slate-400 rounded-sm p-1' readOnly/>
                 </div>
-                {/* <div className="flex justify-between my-4">
-                    <label className="w-1/2 text-sm">Present Days</label>
-                    <input type="number" name="presentDays" value={formData.presentDays} className='w-full border border-slate-400 rounded-sm p-1'/>
-                </div> */}
                 <div className="flex justify-between my-4">
                     <label className="w-1/2 text-sm">Weekly Off</label>
                     <input type="number" name="weeklyOff" value={formData.weeklyOff} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>

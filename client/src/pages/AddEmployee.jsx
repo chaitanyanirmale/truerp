@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 export const AddEmployee = () => {
-    const [formData, setFormData] = useState({
-        role: "",
+    const initialData = {
+         role: "",
         fullname: "",
         reporting: "",
         mobile: "",
@@ -25,7 +25,8 @@ export const AddEmployee = () => {
         state: "",
         location: "",
         pinCode: "",
-    });
+    }
+    const [formData, setFormData] = useState(initialData);
     const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
@@ -52,6 +53,7 @@ export const AddEmployee = () => {
                 setLoading(false)
                 return
             }
+            setFormData(initialData)
             setLoading(false)
             console.log('Employee Added')
         } catch (error) {
