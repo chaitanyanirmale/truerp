@@ -64,7 +64,7 @@ export const createSalary = async (req, res, next) => {
 export const getSalaries = async (req, res, next) => {
     try {
     const salaries = await Salary.find()
-      .populate("employee", "name")
+      .populate("employee", "fullname location")
       .sort({ createdAt: -1 });
     res.status(200).json({
       success: true,
