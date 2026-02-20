@@ -14,6 +14,9 @@ import { AddSalary } from './pages/AddSalary.jsx'
 import { AddEmployee } from './pages/AddEmployee.jsx'
 import { Features } from './pages/Features.jsx'
 import { EmployeeList } from './pages/EmployeeList.jsx'
+import { SalaryList } from './pages/SalaryList.jsx'
+import { CreateSO } from './pages/CreateSO.jsx'
+import { AIFeatures } from './pages/AIFeatures.jsx'
 
 function App() {
 
@@ -27,14 +30,17 @@ function App() {
             <Route path='features' element={<Features />} />
             <Route path='finance' element={<FinanceDashboard />} />
             <Route path='general' element={<GeneralDashboard />} />
+            <Route path='aifeatures' element={<AIFeatures />} />
             <Route path='add-user' element={<AddUser />} />
             <Route path='user-list' element={<UserList />} />
             <Route path='add-expense' element={<AddExpense />} />
             <Route path='expense-list' element={<ExpenseList />} />
             <Route path='create-invoice' element={<CreateInvoice />} />
             <Route path='add-salary' element={<AddSalary />} />
+            <Route path='salary-list' element={<SalaryList />} />
             <Route path='add-employee' element={<AddEmployee />} />
             <Route path='employee-list' element={<EmployeeList />} />
+            <Route path='create-so' element={<CreateSO />} />
           </Route>
           <Route path='/login' element={<Login />} />
         </Routes>

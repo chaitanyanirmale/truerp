@@ -39,14 +39,14 @@ export const AddUser = () => {
                     <label className='text-md font-semibold'>Role</label>
                     <select name="role" onChange={handleChange} value={formData.role} className='border border-slate-400 rounded-md p-2 w-1/4 placeholder:text-slate-600' required>
                         <option value="">Select User Role</option>
-                        <option value="Admin">Admin</option>
-                        <option value="Contractor">Contractor</option>
-                        <option value="Customer">Customer</option>
-                        <option value="Driver">Driver</option>
-                        <option value="Staff">Staff</option>
-                        <option value="Supplier">Supplier</option>
-                        <option value="Transporter">Transporter</option>
-                        <option value="Worker">Worker</option>
+                        <option value="admin">Admin</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="customer">Customer</option>
+                        <option value="driver">Driver</option>
+                        <option value="staff">Staff</option>
+                        <option value="supplier">Supplier</option>
+                        <option value="transporter">Transporter</option>
+                        <option value="worker">Worker</option>
                     </select>
                 </div>
                 <div className="grid xl:grid-cols-4 md:grid-cols-3 mt-4 w-full gap-4">

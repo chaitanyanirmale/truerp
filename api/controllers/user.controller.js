@@ -30,3 +30,16 @@ export const getUsers = async (req, res, next) => {
     next(error);
   }
 }
+
+
+export const getCustomers = async (req, res, next) => {
+  try {
+    const customers = await User.find({ role: "customer" })
+      .select("name email") 
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(customers);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -81,7 +81,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section id="about" className="flex items-center justify-center bg-white pt-10 pb-10 xl:px-20 overflow-hidden">
+      <section id="about" className="flex items-center justify-center bg-white pt-10 pb-10 xl:px-20 mb-10 overflow-hidden">
         <div className="">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-10 md:pt-20">
             <div className="col-xl-5 w-full px-10">
@@ -144,8 +144,8 @@ export const Home = () => {
           </p>
         </div>
         <div className="flex flex-row lg:flex-row items-center justify-center gap-10 p-4 mx-10 ">
-          <div className="grid xl:grid-cols-2 md:grid-cols gap-8">
-            <div className="col-lg-6 m-2 bg-white p-5 pt-2 rounded-lg shadow-lg w-150 ">
+          <div className="grid xl:grid-cols-2 md:grid-cols gap-8 px-8 pb-10">
+            <div className="col-lg-6 m-2 bg-white p-5 pt-2 rounded-lg shadow-lg ">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -167,7 +167,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg ">
               <div className="flex items-center gap-4 p-2">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -185,7 +185,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg ">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -203,7 +203,7 @@ export const Home = () => {
                 </p>
             </div>
 
-            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg w-150">
+            <div className="col-lg-6 bg-white m-2 p-5 pt-2 rounded-lg shadow-lg ">
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
@@ -411,8 +411,8 @@ export const Home = () => {
             </div>
             <div className="col-lg-7 w-auto">
               <div className="faq-container grid xl:grid-cols md:grid-cols gap-4">
-                <div className="bg-white rounded-lg p-5" onClick={() => setOpenMenu(openMenu === "id1" ? null : "id1")}>
-                  <div className="flex items-center justify-between">
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id1" ? null : "id1")}>
+                  <div className="flex items-center justify-between" >
                     <h3 className='text-slate-600 font-semibold '>What is TRUERP and who is it designed for?</h3>
                      <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id1" ? "rotate-90" : ""}`}></i>
                   </div>
@@ -421,8 +421,8 @@ export const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5">
-                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id2" ? null : "id2")}>
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id2" ? null : "id2")}>
+                  <div className="flex items-center justify-between" >
                     <h3 className='text-slate-600 font-semibold '>Can TRUERP manage the end-to-end workflow of a manufacturing business?</h3>
                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id2" ? "rotate-90" : ""}`}></i>
                   </div>
@@ -431,8 +431,8 @@ export const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5">
-                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id3" ? null : "id3")}>
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id3" ? null : "id3")}>
+                  <div className="flex items-center justify-between" >
                     <h3 className='text-slate-600 font-semibold '>Is TRUERP cloud-based or offline?</h3>
                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id3" ? "rotate-90" : ""}`}></i>             
                   </div>
@@ -441,8 +441,8 @@ export const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5">
-                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id4" ? null : "id4")}>
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id4" ? null : "id4")}>
+                  <div className="flex items-center justify-between" >
                     <h3 className='text-slate-600 font-semibold '>Can I customize modules based on my business requirements?</h3>
                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id4" ? "rotate-90" : ""}`} ></i>
                   </div>
@@ -451,8 +451,8 @@ export const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5" >
-                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id5" ? null : "id5")}>
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id5" ? null : "id5")}>
+                  <div className="flex items-center justify-between" >
                     <h3 className='text-slate-600 font-semibold '>How secure is my data in TRUERP?</h3>
                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id5" ? "rotate-90" : ""}`} ></i>
                   </div>
@@ -461,8 +461,8 @@ export const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-5">
-                  <div className="flex items-center justify-between" onClick={() => setOpenMenu(openMenu === "id6" ? null : "id6")}>
+                <div className="bg-white rounded-lg p-5 cursor-pointer" onClick={() => setOpenMenu(openMenu === "id6" ? null : "id6")}>
+                  <div className="flex items-center justify-between">
                     <h3 className='text-slate-600 font-semibold '>Do you provide training and support?</h3>
                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "id6" ? "rotate-90" : ""}`} ></i>
                   </div>
