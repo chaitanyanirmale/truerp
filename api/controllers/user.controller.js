@@ -43,3 +43,26 @@ export const getCustomers = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateUser = async (req, res) => {
+  try {
+
+    if (req.body.password) {
+      req.body.password = await bcrypt.hash(req.body.password, 10);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.id,
+      {$set: req.body,},
+      { returnDocument: 'after' }
+    ).select("-password");
+
+    res.status(200).json({
+      success: true,
+      data: updatedUser,
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
