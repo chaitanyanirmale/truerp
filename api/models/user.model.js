@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
-    alternateMobile: {
+    alternateNumber: {
       type: String,
     },
 
