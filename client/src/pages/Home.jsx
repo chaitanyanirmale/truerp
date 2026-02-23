@@ -14,7 +14,7 @@ export const Home = () => {
                   <img src="/logo.png" alt="Logo" className="h-13 w-auto" />
                 </a>
 
-                <nav className="hidden xl:flex space-x-8 text-gray-700 text-lg font-medium">
+                <nav className="hidden xl:flex space-x-8 text-gray-700 text-lg">
                   <a href="#hero"  className={`transition duration-300 ${
                       active === "hero" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("hero")}>Home</a>
                   <a href="#about"  className={`transition duration-300 ${
@@ -262,9 +262,9 @@ export const Home = () => {
           <p className="text-center text-gray-600 mb-10">Empowering your operations with smarter, faster workflows.</p>
         </div>
         <div className="">
-          <div className="grid xl:grid-cols-2 md:grid-cols gap-8 md:px-15 xl:px-20">
+          <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-8 md:px-15 xl:px-20">
             <div className="px-10 mb-5">
-              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4">
                 <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
                   <i className="bi bi-activity "></i>
                 </div>
@@ -276,7 +276,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="px-10 mb-5">
-              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4">
                 <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
                   <i className="bi bi-diagram-3"></i>
                 </div>
@@ -288,7 +288,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="px-10 mb-5">
-              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4">
                 <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
                   <i className="bi bi-easel"></i>
                 </div>
@@ -300,7 +300,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="px-10 mb-5">
-              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4 w-150">
+              <div className="flex bg-white p-10 rounded-lg shadow-lg gap-4">
                 <div className="text-4xl text-blue-800 px-4 py-2 bg-slate-300 rounded-lg h-16 w-20 flex items-center justify-center hover:bg-blue-700 hover:text-white transition">
                   <i className="bi bi-clipboard-data"></i>
                 </div>
@@ -492,7 +492,7 @@ export const Home = () => {
           <h2 className='text-slate-600 font-semibold text-3xl mb-5'>Contact</h2>
           <p>Take the next step toward smarter, faster business management.</p>
         </div>
-        <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-8 md:px-5 xl:px-20">
+        <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-8 md:px-5 xl:px-20 sm:grid-cols-1">
           <div className="bg-blue-900 text-white p-10 rounded-lg shadow-lg mx-5">
             <h3 className='text-3xl'>Contact Info</h3>
             <div className="flex items-start gap-4 mt-5">
