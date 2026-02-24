@@ -38,9 +38,9 @@ export const SupplierPayment = () => {
                             <th className='p-2 border border-slate-400'>Invoice No</th>
                             <th className='p-2 border border-slate-400'>Invoice Date</th>
                                 
-                            <th className='p-2 border border-slate-400'>Total Amount (<i class="fa fa-inr" aria-hidden="true"></i>)</th>	
-                            <th className='p-2 border border-slate-400'>Paid Amount (<i class="fa fa-inr" aria-hidden="true"></i>)</th>	
-                            <th className='p-2 border border-slate-400'>Balance Amount (<i class="fa fa-inr" aria-hidden="true"></i>)</th>
+                            <th className='p-2 border border-slate-400'>Total Amount (<i className="fa fa-inr" aria-hidden="true"></i>)</th>	
+                            <th className='p-2 border border-slate-400'>Paid Amount (<i className="fa fa-inr" aria-hidden="true"></i>)</th>	
+                            <th className='p-2 border border-slate-400'>Balance Amount (<i className="fa fa-inr" aria-hidden="true"></i>)</th>
                             <th className='p-2 border border-slate-400'>TDS</th>
                             <th className='p-2 border border-slate-400'>Payment Date</th>
                             <th className='p-2 border border-slate-400'>Remark</th>
@@ -60,7 +60,9 @@ export const SupplierPayment = () => {
                         <td className='p-2 border border-slate-400'>0.00</td>
                         <td className='p-2 border border-slate-400'></td>
                         <td className='p-2 border border-slate-400'></td>
-                        <td className='p-2 border border-slate-400'><button className='bg-blue-700 text-white font-semibold p-2 rounded-sm'>Action</button></td>
+                        <td className='p-2 border border-slate-400'>
+                            <button className='bg-blue-700 text-white font-semibold p-2 rounded-sm'>Actions</button>
+                        </td>
                     </tr>
                 </tbody>
                 </table>
