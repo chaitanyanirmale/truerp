@@ -66,3 +66,19 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+export const getSuppliers = async (req, res, next) => {
+  try {
+    const suppliers = await User.find({ role: "supplier" })
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: suppliers.length,
+      data: suppliers,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
