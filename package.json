@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+"scripts": {
     "start": "node api/index.js",
     "dev": "nodemon api/index.js",
+    "ddev": "nodemon api/index.js & cd client && npm run dev",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
