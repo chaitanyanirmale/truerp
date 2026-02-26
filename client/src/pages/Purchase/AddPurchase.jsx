@@ -32,7 +32,7 @@ export const AddPurchase = () => {
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm">CGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span  className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
-                        <select name="" className="border border-slate-400 rounded-sm p-2">
+                        <select name="cgst" className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select CGST%--</option>
                             <option value="0%">0%</option>
                             <option value="0.25%">0.25%</option>
@@ -52,7 +52,7 @@ export const AddPurchase = () => {
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm ">SGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
-                        <select name="" className="border border-slate-400 rounded-sm p-2">
+                        <select name="sgst" className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select SGST%--</option>
                             <option value="0%">0%</option>
                             <option value="0.25%">0.25%</option>
@@ -72,7 +72,7 @@ export const AddPurchase = () => {
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm">IGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
-                        <select name="" className="border border-slate-400 rounded-sm p-2">
+                        <select name="igst" className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select IGST%--</option>
                             <option value="0%">0%</option>
                             <option value="0.25%">0.25%</option>
