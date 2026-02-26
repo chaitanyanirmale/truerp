@@ -45,6 +45,11 @@ export const AddUser = () => {
                         <option value="driver">Driver</option>
                         <option value="staff">Staff</option>
                         <option value="supplier">Supplier</option>
+                        <option value="sub-vendors">Sub Vendors</option>
+                        <option value="store-user">Store User</option>
+                        <option value="quality-analysis-team">Quality Analysis Team</option>
+                        <option value="purchase-order-team">Purchase Order Team</option>
+                        <option value="production-team">Production Team</option>
                         <option value="transporter">Transporter</option>
                         <option value="worker">Worker</option>
                     </select>
