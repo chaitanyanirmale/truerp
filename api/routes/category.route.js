@@ -1,12 +1,13 @@
 import express from 'express'
-import { addCategory, addSubCategory, getCategories, getSubCategories } from '../controllers/category.controller.js';
+import { addMainCategory, addSubCategory, getMainCategories, getSingleSubCategory, getSubCategories } from '../controllers/category.controller.js';
 
 const router = express.Router();
 
-router.post("/add-category", addCategory)
+router.post("/add-maincategory", addMainCategory)
 router.post("/add-subcategory", addSubCategory)
-router.get("/category-list", getCategories)
+router.get("/maincategory-list", getMainCategories)
 router.get("/subcategory-list", getSubCategories)
+router.get("/subcategory/:id", getSingleSubCategory)
 
 
 export default router;
