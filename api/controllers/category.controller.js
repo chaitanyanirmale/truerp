@@ -1,6 +1,6 @@
 import Category from "../models/category.model.js";
 
-export const addCategory = async (req, res, next) => {
+export const addMainCategory = async (req, res, next) => {
     try{
         const {name, sequenceNumber} = req.body;
         if (!name || !sequenceNumber) {
@@ -26,7 +26,7 @@ export const addCategory = async (req, res, next) => {
     }
 }
 
-export const getCategories = async (req, res, next) => {
+export const getMainCategories = async (req, res, next) => {
   try {
     const categories = await Category.find({parent:null}).sort({ sequenceNumber: 1 });
 
@@ -94,6 +94,30 @@ export const getSubCategories = async (req, res, next) => {
     res.status(200).json({
       success: true,
       data: subCategories,
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getSingleSubCategory = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const subCategory = await Category.findById(id)
+      .populate("parent", "name code");
+
+    if (!subCategory) {
+      return res.status(404).json({
+        success: false,
+        message: "Subcategory not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: subCategory,
     });
 
   } catch (error) {
