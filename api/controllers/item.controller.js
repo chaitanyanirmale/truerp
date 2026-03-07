@@ -57,6 +57,7 @@ export const addItem = async (req, res) => {
       itemName,
       perUnit,
       weightInGram,
+      rawMaterial,
       supplierPrice,
       customerPrice,
       minOrderQty,
@@ -79,6 +80,7 @@ export const addItem = async (req, res) => {
       itemName,
       perUnit,
       weightInGram,
+      rawMaterial,
       supplierPrice,
       customerPrice,
       minOrderQty,
@@ -97,5 +99,24 @@ export const addItem = async (req, res) => {
       success: false,
       message: error.message
     });
+  }
+};
+
+export const getItems = async (req, res, next) => {
+  try {
+
+    const items = await Item.find()
+      .populate("mainCategory", "name")
+      .populate("subCategory", "name")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: items.length,
+      data: items
+    });
+
+  } catch (error) {
+    next(error);
   }
 };
