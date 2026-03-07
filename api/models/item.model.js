@@ -38,6 +38,12 @@ const itemSchema = new mongoose.Schema(
       type: Number,
     },
 
+    rawMaterial: {
+      type: String,
+      required: true,
+      enum:["Item", "Raw Material"]
+    },
+
     supplierPrice: {
       type: Number,
       default: 0,
