@@ -82,3 +82,20 @@ export const getSuppliers = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const getSuppliersAndVendors = async (req, res, next) => {
+  try {
+    const users = await User.find({
+      role: { $in: ["supplier", "sub-vendors", "customer"] }
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: users.length,
+      data: users,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
