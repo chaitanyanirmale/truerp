@@ -1,51 +1,118 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const AddSupplierProduct = () => {
-  return (
-    <div className='flex justify-between gap-8 items-stretch'>
-        <div className="bg-white p-4 shadow-sm rounded-sm w-full gap-4 grid">
+    const initialData = {
+        supplierName: "",
+        price: "",
+        unit: "",
+        stockCount: "",
+    }
+    const [formData, setFormData] = useState(initialData);
+    const [suppliers, setSuppliers] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    
+    const fetchSuppliers = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/users/suppliers-vendors');
+            const data = await res.json();
+            if(data.success === true){
+                setSuppliers(data.data)
+            }
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+            setLoading(false);
+        }
+    }
+    useEffect(() => {
+        fetchSuppliers();
+    }, []);
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData, [e.target.name] : e.target.value,
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("/api/items/supplier-product", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            if(data.success){
+                console.log("Supplier Product Added");
+                setFormData(initialData);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    return (
+    <div className='flex justify-between gap-8 items-start'>
+        <div className="bg-white p-4 shadow-sm rounded-sm w-210 gap-2 grid">
+            <div className="bg-green-200 p-4 rounded-sm text-sm">
+                <p><span className='font-bold'>Success!</span> Product added successfully... Please add supplier details!!!</p>
+            </div>
             <h1 className='text-2xl font-semibold'>Add Supplierwise Product</h1>
-            <hr className='my-4 text-slate-300'/>
-            <div className="grid gap-2">
-                <label className="text-sm font-semibold">Select Supplier/Customer/Sub-Vendor</label>
-                <select name="" className="border border-slate-300 rounded-sm p-2">
-                    <option value="">--Select Supplier/Customer/Sub-Vendor--</option>
-                </select>
-            </div>
-            <div className="grid gap-2">
-                <label className="text-sm font-semibold">Price</label>
-                <input type="text" name="" className="border border-slate-300 rounded-sm p-2" placeholder='Enter Price'/>
-            </div>
-            <div className="grid gap-2">
-                <label className="text-sm font-semibold">Unit</label>
-                <input type="text" name="" className="border border-slate-300 rounded-sm p-2" placeholder='Enter Unit'/>
-            </div>
-            <div className="grid gap-2">
-                <label className="text-sm font-semibold">Stock Count</label>
-                <input type="text" name="" className="border border-slate-300 rounded-sm p-2" placeholder='Enter Stock Count'/>
-            </div>
-            <hr className='my-4 text-slate-300'/>
-            <div className="">
-                <button className='bg-blue-700 text-white font-semibold rounded-sm px-4 py-2'><i className='fa fa-check-circle pr-2'></i>Submit</button>
-            </div>
+            <hr className='my-2 text-slate-300'/>
+            <form onSubmit={handleSubmit}>
+                <div className="grid gap-2">
+                    <label className="text-sm font-semibold">Select Supplier/Customer/Sub-Vendor</label>
+                    <select name="supplierName" value={formData.supplierName} onChange={handleChange} className="border border-slate-300 rounded-sm p-2">
+                        <option value="">--Select Supplier/Customer/Sub-Vendor--</option>
+                        {suppliers.map((supplier) => (
+                            <option key={supplier._id} value={supplier._id}>
+                            {supplier.companyName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="grid gap-2">
+                    <label className="text-sm font-semibold">Price</label>
+                    <input type="text" name="price" value={formData.price} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Price'/>
+                </div>
+                <div className="grid gap-2">
+                    <label className="text-sm font-semibold">Unit</label>
+                    <input type="text" name="unit" value={formData.unit} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Unit'/>
+                </div>
+                <div className="grid gap-2">
+                    <label className="text-sm font-semibold">Stock Count</label>
+                    <input type="text" name="stockCount" value={formData.stockCount} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Stock Count'/>
+                </div>
+                <hr className='my-2 text-slate-300'/>
+                <div className="">
+                    <button type='submit' className='bg-blue-700 text-white font-semibold rounded-sm px-4 py-2'><i className='fa fa-check-circle pr-2'></i>Submit</button>
+                </div>
+            </form>
         </div>
-        <div className="bg-white p-4 shadow-sm rounded-sm">
+        <div className="bg-white p-4 shadow-sm rounded-sm w-full">
             <h1 className='text-2xl font-semibold'>List of Supplierwise Product</h1>
             <hr className='my-4 text-slate-300'/>
             <div className="">
-                <table className='border border-slate-300'>
+                <table className='border border-slate-300 w-full overflow-y-auto'>
                     <thead>
                         <tr>
-                            <th className='p-2 border border-slate-300'>SP ID</th>
-                            <th className='p-2 border border-slate-300'>Supplier/Customer Name</th>
-                            <th className='p-2 border border-slate-300'>Role</th>
-                            <th className='p-2 border border-slate-300'>Price</th>
-                            <th className='p-2 border border-slate-300'>Unit</th>
-                            <th className='p-2 border border-slate-300'>Stock Count</th>
-                            <th className='p-2 border border-slate-300'>Created On</th>
-                            <th className='p-2 border border-slate-300'>Action</th>
+                            <td className='p-2 border border-slate-300 font-semibold'>SP ID</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Supplier/Customer Name</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Role</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Price</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Unit</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Stock Count</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Created On</td>
+                            <td className='p-2 border border-slate-300 font-semibold'>Action</td>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
                 </table>
             </div>
         </div>
