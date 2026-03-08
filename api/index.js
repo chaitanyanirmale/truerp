@@ -8,6 +8,9 @@ import expenseRoutes from './routes/expense.route.js';
 import employeeRoutes from "./routes/employee.route.js";
 import salaryRoutes from "./routes/salary.route.js";
 import soRoutes from "./routes/so.route.js";
+import itemRoutes from "./routes/item.route.js";
+import purchaseRoutes from "./routes/purchase.route.js";
+import categoryRoutes from "./routes/category.route.js";
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
@@ -32,6 +35,9 @@ app.use('/api/expense', expenseRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/salary", salaryRoutes);
 app.use("/api/so", soRoutes)
+app.use("/api/items", itemRoutes)
+app.use("/api/purchase", purchaseRoutes)
+app.use("/api/category", categoryRoutes)
 
 app.listen(3000, () => {
   console.log("Api is running on port 3000")
