@@ -1,22 +1,33 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home.jsx'
-import { Login } from './pages/Login.jsx'
+import { Home } from './pages/Home/Home.jsx'
+import { Login } from './pages/Home/Login.jsx'
 import { Dashboard } from './pages/Dashboard.jsx'
-import { AddUser } from './pages/AddUser.jsx'
-import { FinanceDashboard } from './pages/FinanceDashboard.jsx'
-import { GeneralDashboard } from './pages/GeneralDashboard.jsx'
-import { UserList } from './pages/UserList.jsx'
-import { AddExpense } from './pages/AddExpense.jsx'
-import { ExpenseList } from './pages/ExpenseList.jsx'
-import { Profile } from './pages/Profile.jsx'
+import { AddUser } from './pages/User/AddUser.jsx'
+import { FinanceDashboard } from './pages/Home/FinanceDashboard.jsx'
+import { GeneralDashboard } from './pages/Home/GeneralDashboard.jsx'
+import { UserList } from './pages/User/UserList.jsx'
+import { AddExpense } from './pages/Expanse/AddExpense.jsx'
+import { ExpenseList } from './pages/Expanse/ExpenseList.jsx'
+import { Profile } from './pages/User/Profile.jsx'
 import { CreateInvoice } from './pages/CreateInvoice.jsx'
-import { AddSalary } from './pages/AddSalary.jsx'
-import { AddEmployee } from './pages/AddEmployee.jsx'
-import { Features } from './pages/Features.jsx'
-import { EmployeeList } from './pages/EmployeeList.jsx'
-import { SalaryList } from './pages/SalaryList.jsx'
+import { AddSalary } from './pages/Salary/AddSalary.jsx'
+import { AddEmployee } from './pages/Salary/AddEmployee.jsx'
+import { Features } from './pages/Home/Features.jsx'
+import { EmployeeList } from './pages/Salary/EmployeeList.jsx'
+import { SalaryList } from './pages/Salary/SalaryList.jsx'
 import { CreateSO } from './pages/CreateSO.jsx'
-import { AIFeatures } from './pages/AIFeatures.jsx'
+import { AIFeatures } from './pages/Home/AIFeatures.jsx'
+import { SOList } from './pages/SOList.jsx'
+import { InvoiceList } from './pages/InvoiceList.jsx'
+import { SupplierPayment } from './pages/SupplierPayment.jsx'
+import { AddPurchase } from './pages/Purchase/AddPurchase.jsx'
+import { SupplierList } from './pages/Purchase/SupplierList.jsx'
+import { AddNewItem } from './pages/Items/AddNewItem.jsx'
+import { MainCategory } from './pages/Items/MainCategory.jsx'
+import { SubCategory } from './pages/Items/SubCategory.jsx'
+import { ItemList } from './pages/Items/ItemList.jsx'
+import { ManageUnits } from './pages/Items/ManageUnits.jsx'
+import { AddSupplierProduct } from './pages/Items/AddSupplierProduct.jsx'
 
 function App() {
 
@@ -24,7 +35,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" index element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path='profile'  element={<Profile />} />
             <Route path='features' element={<Features />} />
@@ -35,12 +46,23 @@ function App() {
             <Route path='user-list' element={<UserList />} />
             <Route path='add-expense' element={<AddExpense />} />
             <Route path='expense-list' element={<ExpenseList />} />
+            <Route path='supplier-payment' element={<SupplierPayment />} />
             <Route path='create-invoice' element={<CreateInvoice />} />
+            <Route path='invoice-list' element={<InvoiceList />} />
             <Route path='add-salary' element={<AddSalary />} />
             <Route path='salary-list' element={<SalaryList />} />
             <Route path='add-employee' element={<AddEmployee />} />
             <Route path='employee-list' element={<EmployeeList />} />
             <Route path='create-so' element={<CreateSO />} />
+            <Route path='so-list' element={<SOList />} />
+            <Route path='add-purchase' element={<AddPurchase />} />
+            <Route path='supplier-list' element={<SupplierList />} />
+            <Route path='add-item' element={<AddNewItem />} />
+            <Route path='main-cat' element={<MainCategory />} />
+            <Route path='sub-cat' element={<SubCategory />} />
+            <Route path='items-list' element={<ItemList />} />
+            <Route path='manage-units' element={<ManageUnits />} />
+            <Route path='addSupplierwiseProduct/:id' element={<AddSupplierProduct />} />
           </Route>
           <Route path='/login' element={<Login />} />
         </Routes>
