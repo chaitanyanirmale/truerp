@@ -2,7 +2,7 @@ import React from 'react'
 
 export const GeneralDashboard = () => {
   return (
-    <div className='h-screen'>
+    <div className='bg-white rounded-sm p-4'>
         <div className="w-1/3 p-2">
             <input type="text" placeholder='🔍 Search dashboard menu (e.g. Stock, Invoice, Ledger)' className='border border-gray-300 p-1 w-full rounded-md'/>
         </div>

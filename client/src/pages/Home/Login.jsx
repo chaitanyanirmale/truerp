@@ -26,7 +26,7 @@ export const Login = () => {
                 alert(data.message)
                 return;
             }
-            navigate('/dashboard')
+            navigate('/dashboard/profile/view')
         } catch (error) {
             console.log(error)
         }

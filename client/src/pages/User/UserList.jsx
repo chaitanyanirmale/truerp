@@ -67,7 +67,7 @@ export const UserList = () => {
                             <td className="px-2 border text-gray-900">
                             {user.name}
                             </td>
-                            <td className="px-2 border">{user.mobile}</td>
+                            <td className="px-2 border">{user.mobile}</td> 
                             <td className="px-2 border">{user.email}</td>
                             <td className="px-2 border">{user.role}</td>
                             <td className="px-2 border">{user.gstNumber}</td>

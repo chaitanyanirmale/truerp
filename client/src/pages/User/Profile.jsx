@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 export const Profile = () => {
     const { currentUser } = useSelector((state) => state.user);
     const [open, setOpen] = useState(false)
-    const [active, setActive] = useState('')
+    const [active, setActive] = useState('view')
     const [user, setUser] = useState(null)
 
     const fetchUser = async () => {

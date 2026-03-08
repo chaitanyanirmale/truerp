@@ -7,14 +7,14 @@ export const Home = () => {
 
   return (
     <div className='bg-white mx-2'>
-      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 md:px-6 ">
-            <div className="max-w-7xl mx-auto px-5 mt-2 bg-white shadow rounded-lg ">
+      <header id="header" className="fixed top-0 left-0 w-full z-50 m-2 sm:px-6">
+            <div className="max-w-7xl mx-auto px-5 py-1 mt-2 bg-white shadow-lg rounded-lg ">
               <div className="flex items-center justify-between h-15">
                 <a href="/home" className="flex items-center">
                   <img src="/logo.png" alt="Logo" className="h-13 w-auto" />
                 </a>
 
-                <nav className="hidden xl:flex space-x-8 text-gray-700 text-lg">
+                <nav className="hidden xl:flex space-x-8 text-gray-700 text-md">
                   <a href="#hero"  className={`transition duration-300 ${
                       active === "hero" ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-600"}`} onClick={()=> setActive("hero")}>Home</a>
                   <a href="#about"  className={`transition duration-300 ${
@@ -71,7 +71,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="flex items-center justify-center text-center">
-              <div className="w-125 p-2 flex flex-col items-center justify-center">
+              <div className="p-2 flex flex-col items-center justify-center">
                 <img src="/illustration-1.webp" alt="Hero Image" className="w-full" />
                 <div className="w-75 bg-white p-4 rounded-lg shadow-lg mt-4">
                   <p className="md:text-center">Smart ERP for the Manufacturing & Mechanical Industry
@@ -88,10 +88,10 @@ export const Home = () => {
               <h1 className='mb-2'>
                 <span className="text-blue-800 font-bold">MORE ABOUT US</span>
               </h1>
-              <h2 className="text-slate-600 font-bold text-3xl mb-4">Powering Efficiency. Driving Growth. Simplifying Operations.</h2>
+              <h1 className="text-slate-600 font-bold text-3xl mb-4">Powering Efficiency. Driving Growth. Simplifying Operations.</h1>
               <p className="mb-4">TRUERP is a next-generation ERP solution built specifically for the mechanical and manufacturing sector. It brings every part of your business — from quotations to payroll — into one smart, automated, and data-driven platform.</p>
 
-              <div className="row md:flex justify-between">
+              <div className="row xl:flex sm:grid sm:grid-cols-2 justify-between">
                 <div className=" col-md-6 p-2">
                   <ul className="text-gray-900 ">
                     <li className='mb-4'><i className="bi bi-check-circle-fill text-blue-800"></i> Centralized Data Management</li>
@@ -120,7 +120,7 @@ export const Home = () => {
                   <img src="/main2.png" alt="Team Discussion" className="absolute -left-12 top-1/4 w-48 z-10 rounded-2xl border-4 border-white shadow-lg" />
                 </div>
                 <div className="absolute bottom-6 right-6 bg-blue-800 text-white px-6 py-4 rounded-2xl shadow-xl transition-transform duration-500 hover:-translate-y-2">
-                  <h3 className='text-3xl'>15+ <span className='text-lg font-semibold'>Years</span></h3>
+                  <h1 className='text-3xl'>15+ <span className='text-lg font-semibold'>Years</span></h1>
                   <p className="text-sm opacity-90">Of experience in business service</p>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export const Home = () => {
       </section>
       <section id='features' className='py-25'>
          <div className="bg-white text-center">
-          <h2 className='text-3xl font-semibold text-slate-700 mb-4'>Features</h2>
+          <h1 className='text-3xl font-semibold text-slate-700 mb-4'>Features</h1>
           <p className='mb-10'>Features of TRUERP - Smart ERP for the Manufacturing & Mechanical Industry</p>
         </div>
         <center>
@@ -139,7 +139,7 @@ export const Home = () => {
       </section>
       <section id='testimonials' className='bg-gray-100 pt-20'>
         <div className="text-center text-slate-700">
-          <h2 className='text-3xl font-semibold pb-10'>Testimonials</h2>
+          <h1 className='text-3xl font-semibold pb-10'>Testimonials</h1>
           <p className='pb-10'>Trusted by leading mechanical manufacturers across India.
           </p>
         </div>
@@ -149,8 +149,8 @@ export const Home = () => {
               <div className="flex items-center gap-4 p-5">
                 <img src="/noimage.png" className="h-20 w-20" alt="" />
                 <div className="">
-                  <h3 className='w-full font-semibold'>Tanaji Tengale</h3>
-                  <h4>Ceo &amp; Founder</h4>
+                  <h1 className='w-full font-semibold'>Tanaji Tengale</h1>
+                  <h3>Ceo &amp; Founder</h3>
                   <div className="stars text-yellow-400 ">
                     <i className="bi bi-star-fill"></i>
                     <i className="bi bi-star-fill"></i>
@@ -258,7 +258,7 @@ export const Home = () => {
       </section>
       <section id='services' className='py-10 bg-gray-100'>
         <div className="py-10">
-          <h2 className="text-center text-3xl font-semibold mb-4 text-slate-700">Services</h2>
+          <h1 className="text-center text-3xl font-semibold mb-4 text-slate-700">Services</h1>
           <p className="text-center text-gray-600 mb-10">Empowering your operations with smarter, faster workflows.</p>
         </div>
         <div className="">
@@ -281,7 +281,7 @@ export const Home = () => {
                   <i className="bi bi-diagram-3"></i>
                 </div>
                 <div className='px-2'>
-                  <h3 className='mb-2 text-slate-700 text-2xl font-semibold'>Purchase & Inventory</h3>
+                  <h1 className='mb-2 text-slate-700 text-2xl font-semibold'>Purchase & Inventory</h1>
                   <p>Manage your entire purchasing cycle from Purchase Orders (PO) to Goods Received Receipts (GRR) and Purchase Bills — all within one interface.
                   </p>
                 </div>
@@ -293,7 +293,7 @@ export const Home = () => {
                   <i className="bi bi-easel"></i>
                 </div>
                 <div className='px-2'>
-                  <h3 className='mb-2 text-slate-700 text-2xl  font-semibold'>Payroll & HR Management</h3>
+                  <h1 className='mb-2 text-slate-700 text-2xl  font-semibold'>Payroll & HR Management</h1>
                   <p>Simplify workforce operations — from attendance to salary slips.
                   </p>
                 </div>
@@ -305,7 +305,7 @@ export const Home = () => {
                   <i className="bi bi-clipboard-data"></i>
                 </div>
                 <div className='px-2'>
-                  <h3 className='mb-2 text-slate-700 text-2xl font-semibold'>Dashboard & Analytics</h3>
+                  <h1 className='mb-2 text-slate-700 text-2xl font-semibold'>Dashboard & Analytics</h1>
                   <p>Make informed decisions with TRUERP's smart dashboards. Get a 360° view of your business performance across sales, purchases, expenses, and GST.
                   </p>
                 </div>
@@ -316,7 +316,7 @@ export const Home = () => {
       </section>
       <section id='pricing'className='bg-gray-100 xl:pt-20 md:p-5'>
         <div className="">
-          <h2 className="text-center text-3xl font-semibold mb-4 mt-2 text-slate-700">Pricing</h2>
+          <h1 className="text-center text-3xl font-semibold mb-4 mt-2 text-slate-700">Pricing</h1>
           <p className="text-center text-gray-600 mb-6">Flexible pricing designed for every manufacturing business.</p>
         </div>
         <div className="p-10 md:p-5">
@@ -324,7 +324,7 @@ export const Home = () => {
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
                 <h3 className='text-slate-600 text-2xl mb-2 font-semibold'>Small-Scale Businesses & Startups</h3>
-                <h4 className='text-slate-600 mb-2 text-lg'>INCLUDE<br /> FOLLOWINGS:</h4>
+                <h4 className='text-slate-600 mb-4 text-md'>INCLUDE FOLLOWINGS:</h4>
                 <ul className="features-list">
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Dashboard & Core Reports</li>
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Sales & Quotation Module</li>
@@ -340,7 +340,7 @@ export const Home = () => {
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>On-premise or Cloud Deployment</li> 
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>3 Months Free Support</li> 
                 </ul>
-                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition gap-2 flex items-center justify-center w-full">
+                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-900 transition gap-2 flex items-center justify-center w-full">
                   Buy Now
                   <i className="bi bi-arrow-right"></i>
                 </a>
@@ -348,9 +348,9 @@ export const Home = () => {
             </div>
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-blue-900 rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
-                {/* <div className="text-center font-semibold p-2 bg-white rounded-full mx-30 xl:mx-20 mb-3">Most Popular</div> */}
+                {/* <div className="text-center font-semibold p-2 px-4 bg-white rounded-full mx-30 xl:mx-20 mb-3">Most Popular</div> */}
                 <h3 className='text-white text-2xl mb-2 font-semibold'>Growing Medium-Scale Companies</h3>
-                <h4 className='text-white mb-2 text-lg'>INCLUDES EVERYTHING IN<br /> SILVER, PLUS :</h4>
+                <h4 className='text-white mb-4 text-md'>INCLUDES EVERYTHING IN SILVER, PLUS :</h4>
                 <ul className="features-list text-white">
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Advanced Inventory	& Stock Alerts</li>
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Bill of Material (BOM)</li>
@@ -366,7 +366,7 @@ export const Home = () => {
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>Free Setup & Training</li> 
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-white"></i>6 Months Free Support</li> 
                 </ul>
-                <a href="tel:+918087611678" className="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition gap-2 flex items-center justify-center w-full">
+                <a href="tel:+918087611678" className="bg-white text-blue-700 px-6 py-3 rounded-full hover:bg-blue-100 transition gap-2 flex items-center justify-center w-full">
                   Buy Now
                   <i className="bi bi-arrow-right"></i>
                 </a>
@@ -375,7 +375,7 @@ export const Home = () => {
             <div className="grid xl:grid-cols md:grid-cols gap-8 md:px-15 md:mx-10 bg-white rounded-lg hover:shadow-lg xl:mx-2 xl:px-10 p-5">
               <div className="pricing-card ">
                 <h3 className='text-slate-600 text-2xl mb-2 font-semibold'>Large Manufacturing & Multi-Branch</h3>
-                <h4 className='text-slate-600 mb-2 text-lg'>INCLUDES EVERYTHING IN<br />GOLD, PLUS:</h4>
+                <h4 className='text-slate-600 mb-4 text-md'>INCLUDES EVERYTHING IN GOLD, PLUS:</h4>
                 <ul className="features-list">
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Multi-Branch / Multi-Company Support</li>
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Advanced Dashboard with KPIs & Analytics CRM & Sales Automation</li>
@@ -388,7 +388,7 @@ export const Home = () => {
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Priority Support (1 Year)</li>
                   <li className="mb-4"><i className="bi bi-check-circle-fill mr-2 text-blue-700"></i>Free Updates & Customization Requests (Limited)</li>
                 </ul>
-                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition gap-2 flex items-center justify-center w-full">
+                <a href="tel:+918087611678" className="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-900 transition gap-2 flex items-center justify-center w-full">
                   Buy Now
                   <i className="bi bi-arrow-right"></i>
                 </a>
