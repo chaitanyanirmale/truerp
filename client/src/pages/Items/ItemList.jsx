@@ -19,7 +19,7 @@ export const ItemList = () => {
       }
   }
   useEffect(() => {
-          fetchItems();
+    fetchItems();
   }, []);
   return (
     <div className='bg-white border border-slate-300 rounded-sm shadow-sm p-4'>

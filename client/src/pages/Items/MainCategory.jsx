@@ -18,7 +18,7 @@ export const MainCategory = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch("/api/category/add-category",{
+            const res = await fetch("/api/category/add-maincategory",{
                 method: "POST", 
                 headers: {
                     "Content-Type": "application/json", 
@@ -42,7 +42,7 @@ export const MainCategory = () => {
     const fetchCategories = async () => {
             setLoading(true);
             try {
-                const res = await fetch('/api/category/category-list');
+                const res = await fetch('/api/category/maincategory-list');
                 if (!res.ok) {
                     throw new Error("Failed to fetch categories");
                 }
