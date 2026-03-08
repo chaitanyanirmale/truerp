@@ -1,5 +1,6 @@
 import Counter from "../models/counter.model.js";
 import Item from "../models/item.model.js";
+import SupplierProduct from "../models/supplier.product.model.js";
 
 
 export const generateItemCode = async (prefix) => {
@@ -26,7 +27,7 @@ export const previewItemCode = async (req, res, next) => {
 
     const { prefix } = req.params;
 
-    const counter = await Counter.findOne({ prefix });
+    let counter = await Counter.findOne({ prefix });
     if (!counter) {
       counter = await Counter.create({
         prefix,
@@ -114,6 +115,32 @@ export const getItems = async (req, res, next) => {
       success: true,
       count: items.length,
       data: items
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const addSupplierProduct = async (req, res, next) => {
+  try {
+
+    const { supplierName, price, unit, stockCount } = req.body;
+
+    const newProduct = new SupplierProduct({
+      supplierName,
+      price,
+      unit,
+      stockCount
+    });
+
+    await newProduct.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Supplier Product Added",
+      data: newProduct
     });
 
   } catch (error) {
