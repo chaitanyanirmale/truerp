@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const supplierProductSchema = new mongoose.Schema({
-    suppliers:{
+    supplierName:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
