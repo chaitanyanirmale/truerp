@@ -147,3 +147,20 @@ export const addSupplierProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const getSupplierProductList = async (req, res, next) => {
+    try {
+    const supplierProduct = await SupplierProduct.find()
+      .select("supplier price unit stockCount createdAt")
+      .populate("supplierName", "companyName role")
+      .sort({createdAt : -1})
+    res.status(200).json({
+      success: true,
+      count: supplierProduct.length,
+      data: supplierProduct,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
