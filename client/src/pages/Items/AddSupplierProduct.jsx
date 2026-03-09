@@ -72,8 +72,8 @@ export const AddSupplierProduct = () => {
         }
     }
     return (
-    <div className='flex justify-between gap-8 items-start'>
-        <div className="bg-white p-4 shadow-sm rounded-sm w-210 gap-2 grid">
+    <div className='flex justify-between gap-8 items-start xl:grid xl:grid-cols-2 md:grid sm:grid'>
+        <div className="bg-white p-4 shadow-sm rounded-sm w-full gap-2 grid">
             <div className="bg-green-200 p-4 rounded-sm text-sm">
                 <p><span className='font-bold'>Success!</span> Product added successfully... Please add supplier details!!!</p>
             </div>
@@ -112,8 +112,8 @@ export const AddSupplierProduct = () => {
         <div className="bg-white p-4 shadow-sm rounded-sm w-full">
             <h1 className='text-2xl font-semibold'>List of Supplierwise Product</h1>
             <hr className='my-4 text-slate-300'/>
-            <div className="">
-                <table className='border border-slate-300 w-full overflow-y-auto'>
+            <div className="overflow-x-auto">
+                <table className='border border-slate-300 w-full'>
                     <thead>
                         <tr>
                             <td className='p-2 border border-slate-300 font-semibold'>Supplier/Customer Name</td>
@@ -125,7 +125,7 @@ export const AddSupplierProduct = () => {
                             <td className='p-2 border border-slate-300 font-semibold'>Action</td>
                         </tr>
                     </thead>
-                        <tbody>
+                        <tbody className='text-sm'>
                             { supplierProducts.length === 0 ? (
                                 <tr>
                                     <td colSpan='8' className='text-center p-4'>No List Found</td>
@@ -140,7 +140,7 @@ export const AddSupplierProduct = () => {
                                 <td className='p-2 border border-slate-300'>{sp.stockCount}</td>
                                 <td className='p-2 border border-slate-300'>{new Date(sp.createdAt).toLocaleDateString()}</td>
                                  <td className='border border-slate-300 p-2'>
-                                    <button className='bg-blue-700 p-2 py-1 text-white font-semibold rounded-sm'>Action <i className='fa fa-angle-down px-1'></i></button>
+                                    <button className='bg-blue-700 p-2 text-white font-semibold rounded-sm'>Action</button>
                                 </td>
                             </tr>
                         ))}
