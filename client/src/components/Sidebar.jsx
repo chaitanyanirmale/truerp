@@ -156,6 +156,16 @@ export const Sidebar = () => {
                 <NavLink to="supplier-payment" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'supplier-payment' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('supplier-payment')}> <i className='fa fa-list'></i>
                  List of Purchase Bills
                 </NavLink>
+                <div className="border-t border-slate-700 my-4"></div>
+                <p className="text-gray-200 uppercase text-sm text-center">Store</p>
+                <div className="border-t border-slate-700 my-4"></div>
+                <NavLink to="grr" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'grr' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('grr')}> <i className='fa fa-codepen'></i>
+                 GRR
+                </NavLink>
+                <NavLink to="grr-list" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'grr-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('grr-list')}> <i className='fa fa-list'></i>
+                 List of GRR
+                </NavLink>
+                <div className="border-t border-slate-700 my-4"></div>
             </div>
         </aside>
 

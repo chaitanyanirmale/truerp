@@ -28,6 +28,8 @@ import { SubCategory } from './pages/Items/SubCategory.jsx'
 import { ItemList } from './pages/Items/ItemList.jsx'
 import { ManageUnits } from './pages/Items/ManageUnits.jsx'
 import { AddSupplierProduct } from './pages/Items/AddSupplierProduct.jsx'
+import { GRR } from './pages/GRR.jsx'
+import { GRRList } from './pages/GRRList.jsx'
 
 function App() {
 
@@ -63,6 +65,8 @@ function App() {
             <Route path='items-list' element={<ItemList />} />
             <Route path='manage-units' element={<ManageUnits />} />
             <Route path='addSupplierwiseProduct/:id' element={<AddSupplierProduct />} />
+            <Route path='grr' element={<GRR />} />
+            <Route path='grr-list' element={<GRRList  />} />
           </Route>
           <Route path='/login' element={<Login />} />
         </Routes>
