@@ -8,7 +8,8 @@ export const AddSupplierProduct = () => {
         stockCount: "",
     }
     const [formData, setFormData] = useState(initialData);
-    const [suppliers, setSuppliers] = useState([])
+    const [suppliers, setSuppliers] = useState([]);
+    const [supplierProducts ,setSupplierProducts] = useState([]);
     const [loading, setLoading] = useState(false)
 
     
@@ -26,8 +27,23 @@ export const AddSupplierProduct = () => {
             setLoading(false);
         }
     }
+    const fetchSupplierProductList = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/items/sp-list');
+            const data = await res.json();
+            if(data.success === true){
+                setSupplierProducts(data.data)
+            }
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+            setLoading(false);
+        }
+    }
     useEffect(() => {
         fetchSuppliers();
+        fetchSupplierProductList();
     }, []);
 
     const handleChange = (e) => {
@@ -100,7 +116,6 @@ export const AddSupplierProduct = () => {
                 <table className='border border-slate-300 w-full overflow-y-auto'>
                     <thead>
                         <tr>
-                            <td className='p-2 border border-slate-300 font-semibold'>SP ID</td>
                             <td className='p-2 border border-slate-300 font-semibold'>Supplier/Customer Name</td>
                             <td className='p-2 border border-slate-300 font-semibold'>Role</td>
                             <td className='p-2 border border-slate-300 font-semibold'>Price</td>
@@ -110,9 +125,26 @@ export const AddSupplierProduct = () => {
                             <td className='p-2 border border-slate-300 font-semibold'>Action</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr></tr>
-                    </tbody>
+                        <tbody>
+                            { supplierProducts.length === 0 ? (
+                                <tr>
+                                    <td colSpan='8' className='text-center p-4'>No List Found</td>
+                                </tr>
+                            ) :
+                            supplierProducts.map((sp) => (
+                            <tr key={sp._id}>
+                                <td className='p-2 border border-slate-300'>{sp.supplierName?.companyName}</td>
+                                <td className='p-2 border border-slate-300'>{sp.supplierName?.role}</td>
+                                <td className='p-2 border border-slate-300'>{sp.price}</td>
+                                <td className='p-2 border border-slate-300'>{sp.unit}</td>
+                                <td className='p-2 border border-slate-300'>{sp.stockCount}</td>
+                                <td className='p-2 border border-slate-300'>{new Date(sp.createdAt).toLocaleDateString()}</td>
+                                 <td className='border border-slate-300 p-2'>
+                                    <button className='bg-blue-700 p-2 py-1 text-white font-semibold rounded-sm'>Action <i className='fa fa-angle-down px-1'></i></button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
                 </table>
             </div>
         </div>
