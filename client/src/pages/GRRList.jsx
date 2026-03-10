@@ -1,6 +1,28 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const GRRList = () => {
+    const [grrs, setGrrs] = useState([])
+    const [loading, setLoading] = useState(false);
+    
+    const fetchGrr = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/grr/grr-list');
+            const data = await res.json();
+            if(data.success === true){
+                setGrrs(data.data)
+             }
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+            setLoading(false);
+        }
+    }
+    useEffect(()=>{
+        fetchGrr();
+    },[]);
   return (
     <div className='bg-white p-4 shadow-sm rounded-sm'>
         <div className="flex justify-between">
@@ -28,9 +50,14 @@ export const GRRList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className='border border-slate-300 p-3'>GRR-0078-2025-26</td>
-                        <td className='border border-slate-300 p-3'>03-02-2026</td>
+                    {grrs.length === 0 ? (
+                        <tr>
+                            <td>No GRR Found</td>
+                        </tr>
+                    ):(grrs.map((grr) => (
+                    <tr key={grr._id}>
+                        <td className='border border-slate-300 p-3'>{grr.grrNo}</td>
+                        <td className='border border-slate-300 p-3'>{grr.grrDate}</td>
                         <td className='border border-slate-300 p-3'>
                             <select name="" className="p-2 border border-slate-300 rounded-sm">
                                 <option value="">Pending</option>
@@ -47,6 +74,7 @@ export const GRRList = () => {
                         </td>
                         <td className='border border-slate-300 p-3'> <button className='bg-green-600 text-white font-semibold p-2 px-4 rounded-sm'>Store Approve</button></td>
                     </tr>
+                    )))}                    
                 </tbody>
             </table>
         </div>
