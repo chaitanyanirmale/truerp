@@ -1,12 +1,12 @@
-import Counter from "../models/counter.model.js";
 import Item from "../models/item.model.js";
 import SupplierProduct from "../models/supplier.product.model.js";
+import Counter from "../utils/counter.js";
 
 
 export const generateItemCode = async (prefix) => {
   
   const counter = await Counter.findOneAndUpdate(
-    { prefix },
+    { name: prefix },
     { $inc: { sequence: 1 } },
     { returnDocument: "after", upsert: true }
   );
@@ -27,14 +27,14 @@ export const previewItemCode = async (req, res, next) => {
 
     const { prefix } = req.params;
 
-    let counter = await Counter.findOne({ prefix });
+    let counter = await Counter.findOne({ name: prefix });
     if (!counter) {
       counter = await Counter.create({
-        prefix,
+        name: prefix,
         sequence: 0
       });
     }
-    const nextSequence = counter ? counter.sequence + 1 : 1;
+    const nextSequence = counter.sequence + 1;
 
     const itemCode = prefix + String(nextSequence).padStart(3, "0");
 
