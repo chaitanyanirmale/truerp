@@ -26,17 +26,17 @@ export const Login = () => {
                 alert(data.message)
                 return;
             }
-            navigate('/dashboard/profile/view')
+            navigate('/dashboard/profile')
         } catch (error) {
             console.log(error)
         }
     }
   return (
       <div className="w-screen h-screen bg-cover bg-center pt-30" style={{ backgroundImage: "url('/main1.jpg')" }}>
-        <div className="flex justify-end mr-20 ">
-            <div className="bg-white p-5 w-1/4 shadow-lg rounded-lg justify-center md:w-70 sm:w-70">
+        <div className="flex justify-center">
+            <div className="bg-white p-5 w-1/3 shadow-lg rounded-lg md:w-90 sm:w-90">
             <form onSubmit={handleSubmit}>
-                <img src="/vlogo.jpg" className='w-50'/>
+                <img src="/vlogo.jpg" className='w-60 ml-10'/>
                 <div className="mb-4">
                     <input className="border border-slate-200 rounded-lg p-2 w-full" type="email" placeholder="Email" name="email" onChange={handleChange} value={formData.email}/>
                 </div>
