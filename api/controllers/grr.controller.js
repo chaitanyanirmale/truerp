@@ -40,10 +40,21 @@ export const previewGRR = async (req, res, next) => {
     const padded = String(nextSequence).padStart(4, "0");
 
     const now = new Date();
-    const year = now.getFullYear();
-    const fy = `${year}-${String(year + 1).slice(-2)}`;
 
-    const grrNo = `GRR-${padded}-${fy}`;
+    let startYear;
+    let endYear;
+
+    if (now.getMonth() + 1 < 4) {
+      startYear = now.getFullYear() - 1;
+      endYear = now.getFullYear();
+    } else {
+      startYear = now.getFullYear();
+      endYear = now.getFullYear() + 1;
+    }
+
+    const fy = `${startYear}-${String(endYear).slice(-2)}`;
+
+    const grrNo = `GRR-${String(seq).padStart(4, "0")}-${fy}`;
 
     res.status(200).json({
       success: true,
@@ -72,6 +83,26 @@ export const createGRR = async (req, res, next) => {
     });
 
   } catch (error) {
+    next(error);
+  }
+};
+
+export const getGRR = async (req, res, next) => {
+  try {
+    const grr = await GRR.find().sort({ createdAt: -1 });
+
+    const formattedGRR = grr.map((g) => ({
+      ...g._doc,
+      grrDate: g.grrDate.toISOString().split("T")[0]
+    }));
+    res.status(200).json({
+      success: true,
+      count: formattedGRR.length,
+      data: formattedGRR,
+    });
+
+  } catch (error) {
+    console.log(error);
     next(error);
   }
 };
