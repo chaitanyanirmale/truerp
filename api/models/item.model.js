@@ -21,11 +21,16 @@ const itemSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      index: true,
     },
     itemName: {
       type: String,
       required: true,
       trim: true,
+    },
+
+    hsnCode:{
+      type:String
     },
 
     perUnit: {
@@ -34,11 +39,16 @@ const itemSchema = new mongoose.Schema(
       enum:["NOS", "PC", "MTR", "KG"]
     },
 
+    gstRate:{
+      type:Number,
+      default:18
+    },
+
     weightInGram: {
       type: Number,
     },
 
-    rawMaterial: {
+    itemType: {
       type: String,
       required: true,
       enum:["Item", "Raw Material"]
@@ -61,11 +71,6 @@ const itemSchema = new mongoose.Schema(
 
     description: {
       type: String,
-    },
-
-    sequenceNumber: {
-      type: Number,
-      required: true,
     },
 
     isActive: {
