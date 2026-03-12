@@ -54,7 +54,7 @@ export const previewGRR = async (req, res, next) => {
 
     const fy = `${startYear}-${String(endYear).slice(-2)}`;
 
-    const grrNo = `GRR-${String(seq).padStart(4, "0")}-${fy}`;
+    const grrNo = `GRR-${String(padded).padStart(4, "0")}-${fy}`;
 
     res.status(200).json({
       success: true,
