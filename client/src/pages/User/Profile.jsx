@@ -107,8 +107,7 @@ export const Profile = () => {
                     <div className={`transition duration-300 p-2 cursor-pointer ${active === 'update' ? 'border-l-2 border-blue-700 text-slate-600':'text-blue-700'}`} onClick={() => {setOpen(open === "update" ? "update" : "update"); setActive('update')}}>Update Profile</div>
             </div>
         </div>
-
-        <div className={`overflow-hidden ${ open === "view" ? "w-full h-full bg-white p-2 px-4 " : "w-0" }`}>
+        <div className={`overflow-hidden ${ open === "view" ? "w-full h-full bg-white p-2 px-4 text-sm" : "w-0" }`}>
             <div className="">
                 <div className="p-2">
                     <h3 className='text-xl font-semibold'>TRUERP</h3>
@@ -183,7 +182,7 @@ export const Profile = () => {
                 
             </div>
         </div>
-        <div className={`overflow-hidden ${ open === "update" ? "w-full h-full bg-white p-2 px-4" : "w-0" }`}>
+        <div className={`overflow-hidden ${ open === "update" ? "w-full h-full bg-white p-2 px-4 text-sm" : "w-0" }`}>
             <div className="p-2">
                 <h4 className='text-lg mb-3 font-semibold'>Update Profile</h4><hr className='text-slate-400 my-4'/>
                 
@@ -252,14 +251,13 @@ export const Profile = () => {
                     </div>
                     <hr className='text-slate-400 w-full my-4'/>
                     <div className="flex justify-center mt-4">
-                        <button type='submit' className='w-30 bg-blue-700 text-white p-2 rounded-lg'>
+                        <button type='submit' className='w-30 bg-blue-700 text-white p-2 rounded-sm hover:bg-blue-800'>
                             <i className='fa fa-wa fa-lg fa-check-circle pr-2'></i>Save
                         </button>
                     </div>
                 </form>
             </div>
         </div>
-
     </div>
   )
 }

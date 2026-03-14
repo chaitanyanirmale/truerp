@@ -8,7 +8,7 @@ export const Dashboard = () => {
     <div>
       <Navbar />
       <Sidebar />
-      <main className="ml-64 mt-14 p-6 bg-gray-100 min-h-screen">
+      <main className="ml-60 mt-14 p-6 bg-gray-100 min-h-screen">
         <Outlet />
       </main>
     </div>

@@ -48,7 +48,7 @@ export const Home = () => {
       <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 md:py-40 xl:px-25 py-40'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
-            <div className='md:text-center xl:text-start'>
+            <div className='md:text-center xl:text-start '>
               <div className="mb-6 bg-slate-300 text-blue-950 inline-block p-3 rounded-full font-medium">
                   <i className="bi bi-gear-fill me-2"></i>
                   Working for your success

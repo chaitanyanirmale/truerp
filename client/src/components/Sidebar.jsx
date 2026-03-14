@@ -6,8 +6,7 @@ export const Sidebar = () => {
     const [active, setActive] = useState('')
   return (
     <div>
-        <aside className="fixed top-14 left-0 h-screen w-64 bg-slate-900 text-white p-4 overflow-y-auto">
-
+        <aside className="fixed top-14 left-0 h-screen w-60 bg-slate-900 text-white p-4 overflow-y-auto">
             <div className="space-y-2 pb-10">
               
               <NavLink to="features" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'features' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('features')}>
@@ -58,7 +57,7 @@ export const Sidebar = () => {
                 
                 <button onClick={() => setOpenMenu(openMenu === "invoice" ? null : "invoice")} className='flex items-center gap-3  px-3 py-2 w-full hover:bg-slate-700 cursor-pointer transition'>
                      <i className="fa fa-file-text"></i><p className='w-full text-start'>Invoice</p>
-                     <i className={`fa fa-angle-right ml-26 transition-transform duration-300 ${ openMenu === "invoice" ? "rotate-90" : ""}`}></i>
+                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "invoice" ? "rotate-90" : ""}`}></i>
                 </button>
                 <div className={`overflow-hidden text-sm transition-all duration-300 ${ openMenu === "invoice" ? "max-h-40" : "max-h-0" }`}>
                       <NavLink to="create-invoice" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'create-invoice' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('create-invoice')}>

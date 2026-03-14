@@ -6,25 +6,24 @@ export const Navbar = () => {
     const [active, setActive] = useState('')
   return (
     <div>
-        <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center justify-around px-6 z-50">
-
-            <div className="flex items-center gap-4">
+        <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center justify-between px-6 z-50">
+            <div className="flex items-center w-1/2 gap-4">
                 <h1 className="text-xl font-semibold">Admin</h1>
                 <button className="text-xl">☰</button>
             </div>
-            <div className="flex md:w-auto items-center gap-4 w-1/2 px-2">
-                <select className="bg-white text-black p-2 px-4 rounded">
+            <div className="flex items-center gap-4 px-2">
+                <select className="bg-white text-black p-2 px-4 rounded-sm">
                 <option>FY: 2025-26</option>
                 <option>FY: 2024-25</option>
                 <option>FY: 2023-24</option>
                 <option>FY: 2022-23</option>
                 </select>
+            </div>
                 <input
                 type="text"
                 placeholder="Search SO here..."
-                className="w-full p-2 rounded-lg border border-gray-200 bg-white text-black"
+                className="w-full p-2 mx-2 rounded-sm border border-gray-200 bg-white text-black"
                 />
-            </div>
 
             <div className="hidden xl:flex xl:justify-between items-center gap-2 text-sm h-full">
                 <div className="h-full relative inline-block">
@@ -57,7 +56,7 @@ export const Navbar = () => {
                         <i className='fa fa-file fa-md p-1'></i><p className='text-md p-2'>GRR</p>
                     </button>
                     <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "grr" ? "max-h-40" : "max-h-0 border-none" }`}>
-                            <NavLink to="create-so" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-grr' ? '':''}`} onClick={()=> {setActive('create-grr');  setOpenMenu(null);}}>
+                            <NavLink to="grr" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-grr' ? '':''}`} onClick={()=> {setActive('create-grr');  setOpenMenu(null);}}>
                                 <i className="fa fa-plus"></i>Create GRR
                             </NavLink>
                             <NavLink to="grr-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('grr-list');  setOpenMenu(null);} } >

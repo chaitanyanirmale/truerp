@@ -25,7 +25,7 @@ export const ItemList = () => {
     <div className='bg-white border border-slate-300 rounded-sm shadow-sm p-4'>
       <h1 className='text-2xl font-semibold'>List of Items</h1>
       <hr className='text-slate-300 my-4'/>
-      <div className="">
+      <div className="overflow-x-auto">
         <table className='border border-slate-300 w-full text-sm'>
           <thead>
             <tr>
@@ -34,7 +34,7 @@ export const ItemList = () => {
               <td className='p-2 border border-slate-300 font-semibold'>Supplier Price</td>
               <td className='p-2 border border-slate-300 font-semibold'>Customer Price</td>
               <td className='p-2 border border-slate-300 font-semibold'>Item Category</td>
-              <td className='p-2 border border-slate-300 font-semibold'>Stock Count</td>
+              {/* <td className='p-2 border border-slate-300 font-semibold'>Stock Count</td> */}
               <td className='p-2 border border-slate-300 font-semibold'>Action</td>
             </tr>
           </thead>
@@ -49,7 +49,7 @@ export const ItemList = () => {
                 <td className="border border-slate-300 p-2"><i className="fa fa-inr pr-1"></i>{item.supplierPrice}</td>
                 <td className="border border-slate-300 p-2"><i className="fa fa-inr pr-1"></i>{item.customerPrice}</td>
                 <td className="border border-slate-300 p-2">{item.subCategory?.name}</td>
-                <td className='border border-slate-300 p-2'></td>                
+                {/* <td className='border border-slate-300 p-2'></td>*/}
                 <td className='border border-slate-300 p-2'>
                   <button className='bg-blue-700 p-2 text-white font-semibold px-4 rounded-sm'>Action <i className='fa fa-angle-down px-1'></i></button>
                 </td>
