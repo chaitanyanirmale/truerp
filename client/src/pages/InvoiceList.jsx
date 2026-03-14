@@ -80,7 +80,13 @@ export const InvoiceList = () => {
                                 <td className='border border-slate-300 p-3'>₹ {invoice.tds || 0}</td>
                                 <td className='border border-slate-300 p-3'>₹ {invoice.other || 0}</td>
                                 <td className='border border-slate-300 p-3'>₹ {balance}</td>
-                                <td className='border border-slate-300 p-3'>{invoice.paymentStatus}</td>
+                                <td className='border border-slate-300 p-3'>
+                                    <select value={invoice.paymentStatus} className='border border-slate-300 rounded-sm p-2 text-sm mt-1 h-10'>
+                                        <option value="Paid">Paid</option>
+                                        <option value="Partially Paid">Partially Paid</option>
+                                        <option value="Unpaid">Unpaid</option>
+                                    </select>
+                                </td>
                                 <td className="border border-slate-300 p-4">
                                 <button className="bg-green-600 text-white font-semibold px-3 py-1 rounded">
                                     Save
