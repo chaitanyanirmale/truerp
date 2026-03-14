@@ -107,3 +107,29 @@ export const createInvoice = async (req, res, next) => {
     next(error)
   }
 }
+
+
+export const getInvoices = async (req, res, next) => {
+  try {
+
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const invoices = await Invoice.find()
+      .populate("receiver", "companyName")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    res.status(200).json({
+      success: true,
+      count: invoices.length,
+      data: invoices
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
