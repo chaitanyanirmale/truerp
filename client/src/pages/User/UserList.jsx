@@ -6,7 +6,10 @@ export const UserList = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
     const [openDropdown, setOpenDropdown] = useState(null);
-    const navigate = useNavigate()
+    const [selectedRole, setSelectedRole] = useState("");
+    const filteredUsers = selectedRole
+        ? users.filter((user) => user.role === selectedRole)
+        : users;
     const toggleDropdown = (id) => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
@@ -49,23 +52,28 @@ export const UserList = () => {
   return (
     <div className='bg-white h-screen border border-slate-300 shadow-md px-4'>
         <div className="w-full p-2 mb-8">
-            <h4 className="text-xl font-semibold mb-2">List of Users</h4>	
-                <select name="role"  id="select" className="border border-gray-400 p-1 rounded-md w-40 text-sm">
+            <h4 className="text-2xl font-semibold mb-2">List of Users</h4>	
+                <select  value={selectedRole}onChange={(e) => setSelectedRole(e.target.value)}className="border border-gray-400 p-2 rounded-sm w-1/4 text-sm">
                         <option value="">All Users</option>
-                        <option value="admin" >Admin</option>
-                        <option value="contractor" >Contractor</option>
-                        <option value="customer" >Customer</option>
-                        <option value="driver" >Driver</option>
-                        <option value="staff" >Staff</option>
-                        <option value="supplier" >Supplier</option>
-                        <option value="transporter" >Transporter</option>
-                        <option value="worker" >Worker</option>
+                        <option value="admin">Admin</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="customer">Customer</option>
+                        <option value="driver">Driver</option>
+                        <option value="staff">Staff</option>
+                        <option value="supplier">Supplier</option>
+                        <option value="sub-vendors">Sub Vendors</option>
+                        <option value="store-user">Store User</option>
+                        <option value="quality-analysis-team">Quality Analysis Team</option>
+                        <option value="purchase-order-team">Purchase Order Team</option>
+                        <option value="production-team">Production Team</option>
+                        <option value="transporter">Transporter</option>
+                        <option value="worker">Worker</option>
                 </select>
             
         </div>
         {loading ? (
             <p>Loading..</p>
-        ) : <div className="text-center">
+        ) : <div className="text-center overflow-y-auto overflow-x-auto">
             <table className='w-full'>
                 <thead className=" text-gray-700 uppercase text-xs">
                     <tr>
@@ -85,7 +93,7 @@ export const UserList = () => {
                         <tr>
                             <td colSpan='7' className='text-center p-4'>No Users Found</td>
                         </tr>
-                    ): users.map((user) => (
+                    ): filteredUsers.map((user) => (
                         <tr key={user._id} className="hover:bg-gray-50 transition">
                             <td className="px-2 border text-gray-900">
                             {user.name}
