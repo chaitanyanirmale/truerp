@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+
 
 export const UserList = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
-
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const navigate = useNavigate()
+    const toggleDropdown = (id) => {
+        setOpenDropdown(openDropdown === id ? null : id);
+    };
+    
     const fetchUsers = async () => {
         setLoading(true);
         try {
@@ -22,6 +29,22 @@ export const UserList = () => {
     useState(()=>{
         fetchUsers();
     },[])
+
+    const deleteUser = async (id) => {
+        try {
+            const res = await fetch(`/api/users/user`, {
+            method: "DELETE",
+            });
+            const data = await res.json();
+            if (data.success) {
+            alert("User deleted successfully");
+
+            setUsers(users.filter((user) => user._id !== id));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
   return (
     <div className='bg-white h-screen border border-slate-300 shadow-md px-4'>
@@ -80,9 +103,16 @@ export const UserList = () => {
                             </span>
                             </td>
                             <td className="px-6 py-4 border text-center">
-                            <button className="px-3 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700 transition">
-                                Actions
+                            <button className="px-3 py-2 text-sm text-white bg-blue-600 rounded-sm hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
                             </button>
+                            {openDropdown === user._id && (
+                                    <div className="absolute right-9 w-32 bg-white shadow-sm border border-slate-300 z-10">
+                                    <button onClick={() => viewUser(user._id)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    >View User</button>
+                                    <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
+                                    >Delete</button>
+                                    </div>
+                                )}
                             </td>
                         </tr>
                     ))}
