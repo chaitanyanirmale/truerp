@@ -99,3 +99,22 @@ export const getSuppliersAndVendors = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteUser = async (req,res,next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if(!user){
+      return res.status(404).json({
+        success: false,
+        message: "User Not Found",
+      })
+    }
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "User deleted Successfully"
+    })
+  } catch (error) {
+    next(error)
+  }
+}
