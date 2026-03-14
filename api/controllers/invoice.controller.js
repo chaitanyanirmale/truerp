@@ -1,3 +1,4 @@
+import Invoice from "../models/invoice.model.js";
 import Counter from "../utils/counter.js";
 
 export const getFinancialYear = () => {
@@ -20,37 +21,37 @@ export const getFinancialYear = () => {
   return `${startYear}-${String(endYear).slice(-2)}`;
 };
 
-export const generateInvoiceNumber = async (invoice) => {
+export const generateInvoiceNumber = async () => {
 
   const counter = await Counter.findOneAndUpdate(
-    { name: invoice },
+    { name: "invoice" },
     { $inc: { sequence: 1 } },
     { returnDocument: "after", upsert: true }
   );
 
   const seq = counter.sequence;
 
-  const padded = String(seq).padStart(4, "0");
+  const invoiceNumber = String(seq).padStart(4, "0");
 
   const fy = getFinancialYear();
 
-  return `VEL-${padded}-${fy}`;
+  return `VEL-${invoiceNumber}-${fy}`;
 };
 
 export const previewInvoice = async (req, res, next) => {
   try {
-    const {invoice} = req.params;
-    
-    let counter = await Counter.findOne({ name: invoice });
+    // const { invoice } = req.params;    
+
+    let counter = await Counter.findOne({ name: "invoice" });
 
     if (!counter) {
       counter = await Counter.create({
-        name: invoice,
+        name: "invoice",
         sequence: 0
       });
     }
 
-    const nextSequence = counter.sequence + 1;
+    const nextSequence = (counter.sequence || 0) + 1;
 
     const padded = String(nextSequence).padStart(4, "0");
 
@@ -67,3 +68,42 @@ export const previewInvoice = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const createInvoice = async (req, res, next) => {
+  try {
+    const {
+      invoiceType, invoicePrefix, company, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity, unitPrice, gstPercent, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
+    } = req.body;
+    
+    if (!receiver || !quantity || !unitPrice) {
+      return res.status(400).json({
+        success: false,
+        message: "Required fields missing",
+      });
+    }
+
+    const qty = Number(quantity);
+    const price = Number(unitPrice);
+    const gst = Number(gstPercent || 0);
+
+    const baseAmount = qty * price;
+    const gstAmount = (baseAmount * gst) / 100;
+    const subTotal = baseAmount + gstAmount;
+
+    const invoiceNo = await generateInvoiceNumber("invoice");
+
+    const invoice = await Invoice.create({
+      invoiceType, invoicePrefix, company, invoiceNumber: invoiceNo, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity: qty, unitPrice: price, gstPercent: gst, subTotal, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
+    })
+  
+    res.status(201).json({
+        success: true,
+        message: "Invoice Created Successfully",
+        data: invoice,
+    })
+    
+  } catch (error) {
+    next(error)
+  }
+}
