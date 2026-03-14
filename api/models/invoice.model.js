@@ -1,45 +1,5 @@
 import mongoose from "mongoose";
 
-const itemSchema = new mongoose.Schema({
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
-  },
-    productName: String,
-    hsn: String,
-    unit: String,
-    quantity: {
-        type: Number,
-        required: true,
-        min: 1,
-    },
-
-    unitPrice: {
-        type: Number,
-        required: true,
-        min: 0,
-    },  
-    gstPercent:{
-        type: Number, 
-        default: 0,
-    },
-    subTotal: Number,
-}, { _id: false });
-
-invoiceSchema.pre("save", function (next) {
-  let total = 0;
-
-  this.items.forEach((item) => {
-    const base = item.quantity * item.unitPrice;
-    const gstAmount = base * (item.gstPercent / 100);
-    item.subTotal = base + gstAmount;
-
-    total += item.subTotal;
-  });
-
-  this.totalAmount = total;
-  next();
-});
 
 const invoiceSchema = new mongoose.Schema(
   {
@@ -53,6 +13,7 @@ const invoiceSchema = new mongoose.Schema(
     },
     company: {
       type: String,
+      enum: ["LLP", "Private Ltd",],
     },
     invoiceNumber: {
       type: String,
@@ -76,7 +37,18 @@ const invoiceSchema = new mongoose.Schema(
       ref: "User",
     },
 
-    items: [itemSchema],
+    item: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Item",
+    },
+    
+    productName: String,
+    hsn: String,
+    unit: String,
+    quantity: Number,
+    unitPrice: Number,
+    gstPercent: Number,
+    subTotal: Number,
 
     totalAmount: {
       type: Number,
@@ -88,7 +60,11 @@ const invoiceSchema = new mongoose.Schema(
     challanNumber: String,
     challanDate: Date,
 
-    transportType: String,
+    transportType: {
+      type: String,
+      enum: ["None", "Road", "Rail", "Air", "Ship/Road Cum Ship"],
+      default: "None",
+    },
     transportBillNo: String,
     vehicleNumber: String,
     dateOfSupply: Date,
@@ -108,13 +84,13 @@ const invoiceSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    bankDetails: {
-      accountName: String,
-      accountNumber: String,
-      ifscCode: String,
-      bankName: String,
-      branch: String,
-    },
+    // bankDetails: {
+    //   accountName: String,
+    //   accountNumber: String,
+    //   ifscCode: String,
+    //   bankName: String,
+    //   branch: String,
+    // },
     paymentStatus: {
       type: String,
       enum: ["Paid", "Partially Paid", "Unpaid"],
@@ -126,4 +102,7 @@ const invoiceSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Invoice", invoiceSchema);
+
+const Invoice = mongoose.model("Invoice", invoiceSchema);
+
+export default Invoice;
