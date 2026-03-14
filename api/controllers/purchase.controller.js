@@ -66,3 +66,25 @@ export const addPurchase = async (req, res, next) => {
         next(error);
     }
 }
+
+export const getPurchaseList = async (req, res, next) => {
+    try {
+    const purchases = await Purchase.find()
+    .populate("supplier", "name invoiceNumber")
+    .sort({ createdAt: -1 });
+
+    const newPurchases = purchases.map((p) => ({
+      ...p._doc,
+      invoiceDate: p.invoiceDate.toISOString().split("T")[0],
+      paymentDueDate: p.paymentDueDate.toISOString().split("T")[0],
+    }));
+
+    res.status(200).json({
+      success: true,
+      count: newPurchases.length,
+      data: newPurchases,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
