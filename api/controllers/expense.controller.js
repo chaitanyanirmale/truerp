@@ -5,7 +5,7 @@ export const addExpense = async (req, res) => {
   try {
     const { employee, amount, expenseType, expenseDate, note } = req.body;
 
-    if (!employee || !amount || !expenseType || !expenseDate || !note) {
+    if (!employee || !amount || !expenseType || !expenseDate) {
       return res.status(400).json({ success: false, message: "All fields required" });
     }
 
@@ -64,4 +64,22 @@ export const getExpenses = async (req, res, next) => {
       next(error);
     }
 
+}
+
+export const deleteExpense = async (req,res,next) => {
+  try {
+    const expense = await Expense.findByIdAndDelete(req.params.id);
+    if(!expense){
+      return res.status(404).json({
+        success: false,
+        message: "Expense Not Found",
+      })
+    }
+    res.status(200).json({
+      success: true,
+      message: "Expense deleted Successfully"
+    })
+  } catch (error) {
+    next(error)
+  }
 }
