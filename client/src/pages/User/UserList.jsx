@@ -53,7 +53,7 @@ export const UserList = () => {
     <div className='bg-white h-screen border border-slate-300 shadow-md px-4'>
         <div className="w-full p-2 mb-8">
             <h4 className="text-2xl font-semibold mb-2">List of Users</h4>	
-                <select  value={selectedRole}onChange={(e) => setSelectedRole(e.target.value)}className="border border-gray-400 p-2 rounded-sm w-1/4 text-sm">
+                <select  value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} className="border border-gray-400 p-2 rounded-sm w-1/4 text-sm">
                         <option value="">All Users</option>
                         <option value="admin">Admin</option>
                         <option value="contractor">Contractor</option>
