@@ -4,7 +4,12 @@ import { useEffect } from 'react';
 export const SupplierPayment = () => {
     const [purchases, setPurchases] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
 
+    const toggleDropdown = (id) => {
+        setOpenDropdown(openDropdown === id ? null : id);
+    };
+    
     const fetchPurchaseList = async () => {
             setLoading(true)
             try {
@@ -25,14 +30,24 @@ export const SupplierPayment = () => {
     useEffect(()=> {
         fetchPurchaseList();
     },[])
+
+    const totals = (purchases || []).reduce(
+        (acc, purchase) => {
+            acc.totalAmount += Number(purchase.totalAmount || 0);
+            acc.totalPaid += Number(purchase.paidAmount || 0);
+            acc.totalBalance += Number(purchase.balanceAmount || 0);
+            return acc;
+        },
+        { totalAmount: 0, totalPaid: 0, totalBalance: 0 }
+    );
   return (
     <>
         <div className='bg-white rounded-sm shadow-sm p-2'>
-            <div className="flex justify-between">
+            <div className="flex justify-between overflow-x-auto">
                 <div className="font-semibold p-2">
                     <h1 className='text-2xl'>Purchase Bills</h1>
                 </div>
-                <div className="flex justify-between gap-4 text-sm ">
+                <div className="flex justify-between gap-4 text-sm">
                     <div className="p-2">
                         <button className='bg-cyan-600 text-white rounded-sm p-2 px-8 font-semibold'><i className='fa fa-check-square-o px-2'></i>Make Payment</button>
                     </div>
@@ -52,7 +67,7 @@ export const SupplierPayment = () => {
                 </div>
             </div>
             <hr className='text-slate-400 my-4'/>
-            <div className="">
+            <div className="overflow-x-auto">
                 <table className='w-full text-center text-sm'>
                     <thead className='border border-slate-400'>
                         <tr>
@@ -87,7 +102,22 @@ export const SupplierPayment = () => {
                             <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.tdsDeduction).toLocaleString("en-IN")}</td>
                             <td className='p-2 border border-slate-400'>{purchase.paymentDueDate}</td>
                             <td className='p-2 border border-slate-400'></td>
-                            <td className='p-2 border border-slate-400'></td>
+                            <td className='p-2 border border-slate-400'>
+                                <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm'>Action <i className='fa fa-angle-down'></i></button>
+
+                                {openDropdown === purchase._id && (
+                                    <div className="absolute right-12 w-40 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30">
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-folder pr-1'></i>View Purchase Bill</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-pencil pr-1'></i>Edit Purchase Bill</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-inr pr-1'></i>Part Payment</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-trash pr-1'></i>Delete Purchase Bill</button>
+                                    </div>
+                                )}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -95,7 +125,7 @@ export const SupplierPayment = () => {
             </div>
         </div>
         <div className="bg-white my-4 p-4 shadow-md">
-                <table className='w-full text-center text-sm'>
+                <table className='w-full text-center text-lg font-semibold'>
                     <thead>
                         <tr>
                             <th className='p-2 border border-slate-400 text-blue-700'>Total Amount</th>
@@ -105,9 +135,9 @@ export const SupplierPayment = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td className='p-2 border border-slate-400'>2000</td>
-                            <td className='p-2 border border-slate-400'>2000</td>
-                            <td className='p-2 border border-slate-400'>2000</td>
+                            <td className='p-2 border border-slate-400'>{totals.totalAmount?.toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-400'>{totals.totalPaid?.toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-400'>{totals.totalBalance?.toLocaleString("en-IN")}</td>
                         </tr>
                     </tbody>
                 </table>
