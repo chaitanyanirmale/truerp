@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const SupplierPayment = () => {
     const [purchases, setPurchases] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
-
+    const navigate = useNavigate();
     const toggleDropdown = (id) => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
@@ -30,6 +31,23 @@ export const SupplierPayment = () => {
     useEffect(()=> {
         fetchPurchaseList();
     },[])
+
+    const deletePurchase = async (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this purchase?");
+        if (!confirmDelete) return;
+        try {
+            const res = await fetch(`/api/purchase/delete/${id}`,{
+                method: "DELETE",
+            });
+
+            if (res.data.success) {
+                alert("Purchase deleted successfully");
+                setPurchases(purchases.filter((purchase) => purchase._id !== id));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const totals = (purchases || []).reduce(
         (acc, purchase) => {
@@ -82,7 +100,6 @@ export const SupplierPayment = () => {
                             <th className='p-2 border border-slate-400'>Balance Amount <i className="fa fa-inr" aria-hidden="true"></i></th>
                             <th className='p-2 border border-slate-400'>TDS</th>
                             <th className='p-2 border border-slate-400'>Payment Date</th>
-                            <th className='p-2 border border-slate-400'>Remark</th>
                             <th className='p-2 border border-slate-400'>Action</th>
                         </tr>
                     </thead>
@@ -101,19 +118,16 @@ export const SupplierPayment = () => {
                             <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.balanceAmount).toLocaleString("en-IN")}</td>
                             <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.tdsDeduction).toLocaleString("en-IN")}</td>
                             <td className='p-2 border border-slate-400'>{purchase.paymentDueDate}</td>
-                            <td className='p-2 border border-slate-400'></td>
                             <td className='p-2 border border-slate-400'>
                                 <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm'>Action <i className='fa fa-angle-down'></i></button>
 
                                 {openDropdown === purchase._id && (
                                     <div className="absolute right-12 w-40 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30">
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={()=> navigate('/dashboard/viewPurchaseBill')} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-folder pr-1'></i>View Purchase Bill</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-pencil pr-1'></i>Edit Purchase Bill</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={()=> navigate('/dashboard/partPayment')} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-inr pr-1'></i>Part Payment</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={() => deletePurchase(purchase._id)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-trash pr-1'></i>Delete Purchase Bill</button>
                                     </div>
                                 )}
