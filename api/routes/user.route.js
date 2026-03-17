@@ -4,7 +4,7 @@ import { deleteUser, getCustomers, getSuppliers, getSuppliersAndVendors, getUser
 
 const router = express.Router();
 
-router.get('/user', verifyToken, getUser)
+router.get('/user/:id', verifyToken, getUser)
 router.get('/user-list', verifyToken, getUsers)
 router.get('/customers', getCustomers)
 router.get('/suppliers', getSuppliers)

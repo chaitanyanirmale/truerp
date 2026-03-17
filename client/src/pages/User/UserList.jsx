@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -7,6 +7,7 @@ export const UserList = () => {
     const [loading, setLoading] = useState(false)
     const [openDropdown, setOpenDropdown] = useState(null);
     const [selectedRole, setSelectedRole] = useState("");
+    const navigate = useNavigate();
     const filteredUsers = selectedRole
         ? users.filter((user) => user.role === selectedRole)
         : users;
@@ -29,7 +30,7 @@ export const UserList = () => {
         }
     }
 
-    useState(()=>{
+    useEffect(()=>{
         fetchUsers();
     },[])
 
@@ -115,7 +116,7 @@ export const UserList = () => {
                             </button>
                             {openDropdown === user._id && (
                                     <div className="absolute right-9 w-32 bg-white shadow-sm border border-slate-300 z-10">
-                                    <button onClick={() => viewUser(user._id)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
                                     >View User</button>
                                     <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
                                     >Delete</button>

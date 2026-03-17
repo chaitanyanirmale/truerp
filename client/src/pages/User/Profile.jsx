@@ -61,7 +61,7 @@ export const Profile = () => {
         }
     }, [user]);
 
-     const handleChange = (e) => {
+    const handleChange = (e) => {
         setFormData({
         ...formData,
         [e.target.name]: e.target.value,
@@ -94,7 +94,7 @@ export const Profile = () => {
         } catch (error) {
         console.log(error);
         }
-    };
+    }; 
 
   return (
     <div className='w-full flex justify-between gap-4'>
