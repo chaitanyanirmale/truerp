@@ -1,27 +1,65 @@
 import Employee from "../models/employee.model.js";
+import Counter from "../utils/counter.js";
 
+export const generateEmployeeCode = async (department) => {
+  const counter = await Counter.findOneAndUpdate(
+    { name: `EMP_${department}` }, 
+    { $inc: { sequence: 1 } },
+    { returnDocument: "after", upsert: true }
+  );
+
+  const seq = counter.sequence;
+  const padded = String(seq).padStart(4, "0");
+
+  const year = new Date().getFullYear().toString().slice(-2);
+
+  return `EMP-${department}-${padded}-${year}`;
+};
+
+export const getEmployeeCode = async (req, res) => {
+  try {
+    const { dept } = req.query;
+    if (!dept) {
+      return res.status(400).json({ error: "Department is required" });
+    }
+     const counter = await Counter.findOne({ name: `EMP_${dept}` });
+
+    const seq = counter ? counter.sequence + 1 : 1;
+    const padded = String(seq).padStart(4, "0");
+
+    const year = new Date().getFullYear().toString().slice(-2);
+
+    const code = `EMP-${dept}-${padded}-${year}`;
+    res.json({ code });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 export const addEmployee = async (req, res, next) => {
     try {
         const {
-            role, fullname, reporting, mobile, email, gender, dob, aadharNumber, panNumber, joiningDate, leavingDate, salaryPerDay, salaryPerHour, pfUanNo, biometricId, department, bankName, bankAccountNo, ifscCode, address, state, location, pinCode
+            role, department, position, fullname, reporting, mobile, email, gender, dob, aadharNumber, panNumber, joiningDate, leavingDate, salaryPerDay, salaryPerHour, pfUanNo, biometricId,  bankName, bankAccountNo, ifscCode, address, state, location, pinCode
         } = req.body;
 
-        if (!role || !fullname || !mobile || !email) {
+        if (!role || !fullname || !mobile || !email || !department || !position) {
             return res.status(400).json({
                 success: false,
                 message: "Required fields missing",
             });
         }
-        const existingEmployee = await Employee.findOne({ mobile });
+        const existingEmployee = await Employee.findOne({ $or: [{ mobile }, { email }] });
         if (existingEmployee) {
             return res.status(400).json({
                 success: false,
                 message: "Employee with this mobile already exists",
             });
         }
+
+        const empCode = await generateEmployeeCode(department);
+
         const newEmployee = new Employee({
-            role, fullname, reporting, mobile, email, gender, dob, aadharNumber, panNumber, joiningDate, leavingDate, salaryPerDay, salaryPerHour, pfUanNo, biometricId, department, bankName, bankAccountNo, ifscCode, address, state, location, pinCode
+            empcode: empCode, role,  department, position, fullname, reporting, mobile, email, gender, dob, aadharNumber, panNumber, joiningDate, leavingDate, salaryPerDay, salaryPerHour, pfUanNo, biometricId, bankName, bankAccountNo, ifscCode, address, state, location, pinCode
         });
         const savedEmployee = await newEmployee.save();
             res.status(201).json({
