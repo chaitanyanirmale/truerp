@@ -7,7 +7,20 @@ const EmployeeSchema = new mongoose.Schema(
       required: true,
       enum: ["staff","worker"],
     },
-
+    empcode: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    department: {
+      type: String,
+      enum: ["HR", "IT", "ACC", "SALES"],
+      required: true,
+    },
+    position: {
+      type: String,
+      required: true,
+    },
     fullname: {
       type: String,
       required: true,
