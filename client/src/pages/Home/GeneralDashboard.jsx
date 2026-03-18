@@ -8,8 +8,8 @@ export const GeneralDashboard = () => {
         </div>
         <div className="grid gap-3">
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-file-text fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -17,8 +17,8 @@ export const GeneralDashboard = () => {
                         <p><b>Sales Orders</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-cogs fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -26,8 +26,8 @@ export const GeneralDashboard = () => {
                         <p><b>Bill of Materials</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-shopping-cart fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -35,8 +35,8 @@ export const GeneralDashboard = () => {
                         <p><b>Purchase Orders</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-truck fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -47,8 +47,8 @@ export const GeneralDashboard = () => {
             </div>
 
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-cube fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -56,8 +56,8 @@ export const GeneralDashboard = () => {
                         <p><b>Item Master</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-file fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -65,8 +65,8 @@ export const GeneralDashboard = () => {
                         <p><b>Purchase Bills</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-file-pdf-o fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -74,8 +74,8 @@ export const GeneralDashboard = () => {
                         <p><b>Sales Invoices</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-users fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -86,8 +86,8 @@ export const GeneralDashboard = () => {
             </div>
 
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-money fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -95,8 +95,8 @@ export const GeneralDashboard = () => {
                         <p><b>Payroll</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-credit-card fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -104,8 +104,8 @@ export const GeneralDashboard = () => {
                         <p><b>Comapany Expenses</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-line-chart fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -113,8 +113,8 @@ export const GeneralDashboard = () => {
                         <p><b>Total Sales</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-database fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -125,8 +125,8 @@ export const GeneralDashboard = () => {
             </div>
             
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-book fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -134,8 +134,8 @@ export const GeneralDashboard = () => {
                         <p><b>Account Ledger</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-money fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -143,8 +143,8 @@ export const GeneralDashboard = () => {
                         <p><b>Vendor Payments</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-bar-chart fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -152,8 +152,8 @@ export const GeneralDashboard = () => {
                         <p><b>All Reports</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-code fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -164,8 +164,8 @@ export const GeneralDashboard = () => {
             </div>
 
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-road fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -173,8 +173,8 @@ export const GeneralDashboard = () => {
                         <p><b>Transport Bills</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-undo fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -182,8 +182,8 @@ export const GeneralDashboard = () => {
                         <p><b>Material Return Note</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-share-square-o fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -191,8 +191,8 @@ export const GeneralDashboard = () => {
                         <p><b>Material Issue</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-truck fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -203,8 +203,8 @@ export const GeneralDashboard = () => {
             </div>
 
             <div className="p-2 flex gap-4 w-full">
-                <div className="flex border border-gray-100 rounded-lg shadow-md mx-2 justify-center w-full">
-                    <div className="bg-blue-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-md mx-2 justify-center w-full">
+                    <div className="bg-blue-600 p-4 rounded-l-sm">
                         <i className="fa fa-cogs fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -212,8 +212,8 @@ export const GeneralDashboard = () => {
                         <p><b>Quality Docs</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-cyan-500 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-cyan-500 p-4 rounded-l-sm">
                         <i className="fa fa-industry fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -221,8 +221,8 @@ export const GeneralDashboard = () => {
                         <p><b>Machine Master</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-amber-400 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-amber-400 p-4 rounded-l-sm">
                         <i className="fa fa-exclamation-triangle fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
@@ -230,8 +230,8 @@ export const GeneralDashboard = () => {
                         <p><b>Non Conformance</b></p>
                     </div>
                 </div>            
-                <div className="flex border border-gray-100 rounded-lg shadow-lg mx-2 justify-center w-full">
-                    <div className="bg-rose-600 p-4 rounded-l-lg">
+                <div className="flex border border-gray-100 rounded-sm shadow-lg mx-2 justify-center w-full">
+                    <div className="bg-rose-600 p-4 rounded-l-sm">
                         <i className="fa fa-calendar fa-3x text-white"></i>
                     </div>
                     <div className=" p-4 w-full">
