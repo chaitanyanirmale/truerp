@@ -30,7 +30,7 @@ export const InvoiceList = () => {
                 <button className='bg-blue-700 text-white p-2 rounded-sm'><i className="fa fa-fw fa-lg fa-eye"></i></button>
 			    {/* <button className='bg-blue-700 text-white'><i className="fa fa-fw fa-lg fa-eye-slash"></i></button> */}
             </div>
-            <div className="xl:w-full xl:flex justify-between md:grid md:gap-2 md:w-full">
+            <div className="xl:w-full xl:flex xl:justify-between md:flex md:justify-between md:text-sm md:gap-4">
                 <button className='bg-green-600 text-white font-semibold px-4 rounded-sm'><i className='fa fa-plus px-2'></i>Create Invoice</button>
                 <input type="date" name="" className='border border-slate-400 px-2 rounded-sm'/>
                 <input type="date" name="" className='border border-slate-400 px-2 rounded-sm'/>
@@ -71,7 +71,7 @@ export const InvoiceList = () => {
                             return(
                                 <tr key={invoice._id}>
                                 <td className='border border-slate-300 p-3'>{invoice.invoiceNumber}</td>
-                                <td className='border border-slate-300 p-3'>{invoice.invoiceDate}</td>
+                                <td className='border border-slate-300 p-3'>{new Date(invoice.invoiceDate).toISOString().split("T")[0]}</td>
                                 <td className='border border-slate-300 p-3'>{invoice.poNumber}</td>
                                 <td className='border border-slate-300 p-3'>{invoice.receiver?.companyName}</td>
                                 <td className='border border-slate-300 p-3'>{invoice.placeOfSupply}</td>
