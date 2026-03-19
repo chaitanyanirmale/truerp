@@ -189,7 +189,7 @@ export const Profile = () => {
                 <form action="" onSubmit={handleSubmit}>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Role</label>
-                        <select name="role" value={formData.role} onChange={handleChange} className='border border-slate-400 p-1 px-2 rounded-sm w-1/2'>
+                        <select name="role" value={formData.role} onChange={handleChange} className='border border-slate-300 p-2 rounded-sm w-1/2'>
                             <option value="">---Select Role---</option>
                             <option value="admin">Admin</option>
                             <option value="contractor">Contractor</option>
@@ -203,55 +203,55 @@ export const Profile = () => {
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Full Name</label>
-                        <input type="text" name='name' value={formData.name} placeholder='Enter Full Name' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='name' value={formData.name} placeholder='Enter Full Name' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Mobile Number</label>
-                        <input type="text" name='mobile' value={formData.mobile} placeholder='Enter Mobile Number' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='mobile' value={formData.mobile} placeholder='Enter Mobile Number' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Alternate Number</label>
-                        <input type="text" name='alternateNumber' value={formData.alternateNumber} placeholder='Enter Alternate Number' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='alternateNumber' value={formData.alternateNumber} placeholder='Enter Alternate Number' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>GST Number</label>
-                        <input type="text" name='gstNumber' value={formData.gstNumber} placeholder='Enter GST Number' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='gstNumber' value={formData.gstNumber} placeholder='Enter GST Number' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>PAN Number</label>
-                        <input type="text" name='panNumber' value={formData.panNumber} placeholder='Enter Pan Number' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='panNumber' value={formData.panNumber} placeholder='Enter Pan Number' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Aadhar Number</label>
-                        <input type="text" name='aadharNumber' value={formData.aadharNumber} placeholder='Enter Aadhar Number' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='aadharNumber' value={formData.aadharNumber} placeholder='Enter Aadhar Number' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Password</label>
-                        <input type="password" name='password' value={formData.password} placeholder='Enter Password' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="password" name='password' value={formData.password} placeholder='Enter Password' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Email</label>
-                        <input type="email" name='email' value={formData.email} placeholder='Enter Email' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="email" name='email' value={formData.email} placeholder='Enter Email' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Address</label>
-                        <textarea type="text" rows="2" name='address' value={formData.address} placeholder='Enter Address' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <textarea type="text" rows="2" name='address' value={formData.address} placeholder='Enter Address' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>State</label>
-                        <input type="text" name='state' value={formData.state} placeholder='Enter State' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='state' value={formData.state} placeholder='Enter State' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Location</label>
-                        <input type="text" name='location' value={formData.location} placeholder='Enter Location' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='location' value={formData.location} placeholder='Enter Location' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <div className="flex mb-4 px-2">
                         <label className='w-1/4 p-1'>Pin Code</label>
-                        <input type="text" name='pinCode' value={formData.pinCode} placeholder='Enter Pin COde' className='border border-slate-400 p-1 px-2 rounded-sm w-1/2' onChange={handleChange}/>
+                        <input type="text" name='pinCode' value={formData.pinCode} placeholder='Enter Pin COde' className='border border-slate-300 p-2 rounded-sm w-1/2' onChange={handleChange}/>
                     </div>
                     <hr className='text-slate-400 w-full my-4'/>
                     <div className="flex justify-center mt-4">
-                        <button type='submit' className='w-30 bg-blue-700 text-white p-2 rounded-sm hover:bg-blue-800'>
+                        <button type='submit' className='w-30 bg-blue-700 text-white p-2 rounded-xs hover:bg-blue-800'>
                             <i className='fa fa-wa fa-lg fa-check-circle pr-2'></i>Save
                         </button>
                     </div>
