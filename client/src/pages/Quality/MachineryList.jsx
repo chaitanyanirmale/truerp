@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const MachineryList = () => {
+    const [machineries, setMachineries] = useState([])
+    const [loading, setLoading] = useState(false);
+    const fetchMachineryList = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/machinery/machinery-list');
+            const data = await res.json();
+            if(data.success === true){
+                setMachineries(data.data)
+            }
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+            setLoading(false);
+        }
+    }
+    useEffect(()=>{
+        fetchMachineryList();
+    },[]);
   return (
-    <div className='bg-white p-4 rounded-xs shadow-sm'>
+    <div className='bg-white p-4 rounded-xs shadow-sm items-start'>
         <div className="flex justify-between">
         <h1 className='text-2xl font-semibold'>List of Machinery</h1>
         <div className="grid grid-cols-4 gap-6">
@@ -27,17 +46,21 @@ export const MachineryList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className='p-2 border border-slate-300'>TEST</td>
-                        <td className='p-2 border border-slate-300'>E1</td>
-                        <td className='p-2 border border-slate-300'>DE3</td>
-                        <td className='p-2 border border-slate-300'>DDW</td>
-                        <td className='p-2 border border-slate-300'>27-02-2026</td>
-                        <td className='p-2 border border-slate-300'>20000</td>
-                        <td className='p-2 border border-slate-300'>
-                            <button className='bg-blue-700 text-white font-semibold p-2 rounded-xs'>Action<i className='fa fa-angle-down pl-1'></i></button>
-                        </td>
-                    </tr>
+                    {machineries.length === 0 ? (
+                            <tr><td colSpan="7" className='text-center p-2'>No Machinery Found</td></tr>
+                    ) : (machineries?.map((machine)=>(
+                        <tr key={machine._id}>
+                            <td className='p-2 border border-slate-300'>{machine.name}</td>
+                            <td className='p-2 border border-slate-300'>{machine.manufacturer}</td>
+                            <td className='p-2 border border-slate-300'>{machine.modelNumber}</td>
+                            <td className='p-2 border border-slate-300'>{machine.serialNumber}</td>
+                            <td className='p-2 border border-slate-300'>{new Date(machine.purchaseDate).toISOString().split("T")[0]}</td>
+                            <td className='p-2 border border-slate-300'>{machine.purchasePrice}</td>
+                            <td className='p-2 border border-slate-300'>
+                                <button className='bg-blue-700 text-white font-semibold p-2 rounded-xs'>Action<i className='fa fa-angle-down pl-1'></i></button>
+                            </td>
+                        </tr>
+                    )))}
                 </tbody>
             </table>
         </div>
