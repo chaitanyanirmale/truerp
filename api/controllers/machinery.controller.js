@@ -26,3 +26,17 @@ export const addMachinery = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getMachineryList = async (req, res, next) => {
+  try {
+    const machineries = await Machinery.find().sort({createdAt: -1}).lean();
+
+    res.status(200).json({
+      success: true,
+      count: machineries.length,
+      data: machineries,
+    })
+  } catch (error) {
+    next(error);
+  }
+}
