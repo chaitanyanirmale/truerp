@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 export const CreatePO = () => {
   const initialData = { poNo:"", poDate:"" }
   const [formData, setFormData] = useState(initialData);
+  const [sos, setSO] = useState([]);
+  const [loading, setLoading] = useState(false);
   const fetchPoNo = async () => {
         const res = await fetch("/api/po/previewPoNumber");
         const data = await res.json();
@@ -22,9 +24,24 @@ export const CreatePO = () => {
         poDate:today
     }))
   }
+    const fetchSO = async () => {
+      setLoading(true);
+      try {
+          const res = await fetch('/api/so/so-list');
+          const data = await res.json();
+          if(data.success === true){
+            setSO(data.data)
+          }
+          setLoading(false);
+      } catch (error) {
+        console.log(error)
+        setLoading(false);
+      }
+    }
   useEffect(() => {
     fetchPoNo();
     setTodayDate();
+    fetchSO();
   }, []);
   return (
     <div className='bg-white rounded-sm shadow p-4 w-1/2'>
@@ -32,7 +49,10 @@ export const CreatePO = () => {
       <hr className='text-slate-300 my-4'/>
       <div className="mb-6">
         <select name="so" className="border border-slate-300 p-2 rounded-sm w-full">
-          <option value="" disabled>-- Select SO --</option>
+          <option value="">-- Select SO --</option>
+          {sos.map((so)=> (
+            <option key={so._id} value={so._id}>{so.soNumber}-{so.itemDesc}</option>
+          ))}
         </select>
       </div>
       <div className="grid grid-cols-2 gap-4">
