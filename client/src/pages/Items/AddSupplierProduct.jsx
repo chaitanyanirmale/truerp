@@ -72,40 +72,42 @@ export const AddSupplierProduct = () => {
         }
     }
     return (
-    <div className='flex justify-between gap-8 items-start xl:grid xl:grid-cols-2 md:grid sm:grid'>
-        <div className="bg-white p-4 shadow-sm rounded-sm w-full gap-2 grid">
+    <div className='flex justify-between gap-8 items-start'>
+        <div className="bg-white p-4 shadow-sm rounded-sm w-1/2 gap-4 grid">
             <div className="bg-green-200 p-4 rounded-sm text-sm">
                 <p><span className='font-bold'>Success!</span> Product added successfully... Please add supplier details!!!</p>
             </div>
             <h1 className='text-2xl font-semibold'>Add Supplierwise Product</h1>
             <hr className='my-2 text-slate-300'/>
             <form onSubmit={handleSubmit}>
-                <div className="grid gap-2">
-                    <label className="text-sm font-semibold">Select Supplier/Customer/Sub-Vendor</label>
-                    <select name="supplierName" value={formData.supplierName} onChange={handleChange} className="border border-slate-300 rounded-sm p-2">
-                        <option value="">--Select Supplier/Customer/Sub-Vendor--</option>
-                        {suppliers.map((supplier) => (
-                            <option key={supplier._id} value={supplier._id}>
-                            {supplier.companyName}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="grid gap-2">
-                    <label className="text-sm font-semibold">Price</label>
-                    <input type="text" name="price" value={formData.price} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Price'/>
-                </div>
-                <div className="grid gap-2">
-                    <label className="text-sm font-semibold">Unit</label>
-                    <input type="text" name="unit" value={formData.unit} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Unit'/>
-                </div>
-                <div className="grid gap-2">
-                    <label className="text-sm font-semibold">Stock Count</label>
-                    <input type="text" name="stockCount" value={formData.stockCount} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Stock Count'/>
-                </div>
-                <hr className='my-2 text-slate-300'/>
-                <div className="">
-                    <button type='submit' className='bg-blue-700 text-white font-semibold rounded-sm px-4 py-2'><i className='fa fa-check-circle pr-2'></i>Submit</button>
+                <div className="grid gird-cols gap-4">
+                    <div className="grid gap-2">
+                        <label className="text-sm font-semibold">Select Supplier/Customer/Sub-Vendor</label>
+                        <select name="supplierName" value={formData.supplierName} onChange={handleChange} className="border border-slate-300 rounded-sm p-2">
+                            <option value="" disabled>--Select Supplier/Customer/Sub-Vendor--</option>
+                            {suppliers.map((supplier) => (
+                                <option key={supplier._id} value={supplier._id}>
+                                {supplier.companyName}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="grid gap-2">
+                        <label className="text-sm font-semibold">Price</label>
+                        <input type="text" name="price" value={formData.price} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Price'/>
+                    </div>
+                    <div className="grid gap-2">
+                        <label className="text-sm font-semibold">Unit</label>
+                        <input type="text" name="unit" value={formData.unit} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Unit'/>
+                    </div>
+                    <div className="grid gap-2">
+                        <label className="text-sm font-semibold">Stock Count</label>
+                        <input type="text" name="stockCount" value={formData.stockCount} onChange={handleChange} className="border border-slate-300 rounded-sm p-2" placeholder='Enter Stock Count'/>
+                    </div>
+                    <hr className='my-2 text-slate-300'/>
+                    <div className="">
+                        <button type='submit' className='bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xs px-4 py-2'><i className='fa fa-check-circle pr-2'></i>Submit</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -140,7 +142,7 @@ export const AddSupplierProduct = () => {
                                 <td className='p-2 border border-slate-300'>{sp.stockCount}</td>
                                 <td className='p-2 border border-slate-300'>{new Date(sp.createdAt).toLocaleDateString()}</td>
                                  <td className='border border-slate-300 p-2'>
-                                    <button className='bg-blue-700 p-2 text-white font-semibold rounded-sm'>Action</button>
+                                    <button className='bg-blue-700 p-2 text-white font-semibold rounded-xs'>Action <i className='fa fa-angle-down pl-1'></i></button>
                                 </td>
                             </tr>
                         ))}
