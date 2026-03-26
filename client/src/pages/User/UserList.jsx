@@ -36,7 +36,7 @@ export const UserList = () => {
 
     const deleteUser = async (id) => {
         try {
-            const res = await fetch(`/api/users/user`, {
+            const res = await fetch(`/api/users/user/${id}`, {
             method: "DELETE",
             });
             const data = await res.json();
@@ -51,10 +51,10 @@ export const UserList = () => {
     };
 
   return (
-    <div className='bg-white h-screen border border-slate-300 shadow-md px-4'>
+    <div className='bg-white max-h-screen border border-slate-300 shadow-md px-4'>
         <div className="w-full p-2 mb-8">
             <h4 className="text-2xl font-semibold mb-2">List of Users</h4>	
-                <select  value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} className="border border-gray-400 p-2 rounded-sm w-1/4 text-sm">
+                <select  value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} className="border border-gray-400 p-2 rounded-xs w-1/4 text-sm">
                         <option value="">All Users</option>
                         <option value="admin">Admin</option>
                         <option value="contractor">Contractor</option>
@@ -74,19 +74,19 @@ export const UserList = () => {
         </div>
         {loading ? (
             <p>Loading..</p>
-        ) : <div className="text-center overflow-y-auto overflow-x-auto">
+        ) : <div className="text-start h-150 pb-4 overflow-y-auto">
             <table className='w-full'>
-                <thead className=" text-gray-700 uppercase text-xs">
+                <thead className="font-semibold text-sm">
                     <tr>
-                        <th className="px-4 py-3 border">Fullname</th>
-                        <th className="px-6 py-3 border">Mobile</th>
-                        <th className="px-6 py-3 border">Email</th>
-                        <th className="px-6 py-3 border">Role</th>
-                        <th className="px-6 py-3 border">GST No</th>
-                        <th className="px-6 py-3 border">PAN No</th>
-                        <th className="px-6 py-3 border">Location</th>
-                        <th className="px-6 py-3 border">Status</th>
-                        <th className="px-6 py-3 border text-center">Action</th>
+                        <td className="p-2 border border-slate-300">Fullname</td>
+                        <td className="p-2 border border-slate-300">Mobile</td>
+                        <td className="p-2 border border-slate-300">Email</td>
+                        <td className="p-2 border border-slate-300">Role</td>
+                        <td className="p-2 border border-slate-300">GST No</td>
+                        <td className="p-2 border border-slate-300">PAN No</td>
+                        <td className="p-2 border border-slate-300">Location</td>
+                        <td className="p-2 border border-slate-300">Status</td>
+                        <td className="p-2 border border-slate-300 text-center">Action</td>
                     </tr>
                 </thead>
                 <tbody className='bg-white text-sm'>
@@ -96,26 +96,24 @@ export const UserList = () => {
                         </tr>
                     ): filteredUsers.map((user) => (
                         <tr key={user._id} className="hover:bg-gray-50 transition">
-                            <td className="px-2 border text-gray-900">
-                            {user.name}
-                            </td>
-                            <td className="px-2 border">{user.mobile}</td> 
-                            <td className="px-2 border">{user.email}</td>
-                            <td className="px-2 border">{user.role}</td>
-                            <td className="px-2 border">{user.gstNumber}</td>
-                            <td className="px-2 border">{user.panNumber}</td>
-                            <td className="px-2 border">{user.location}</td>
+                            <td className="px-2 border border-slate-300 text-gray-900">{user.name}</td>
+                            <td className="px-2 border border-slate-300">{user.mobile}</td> 
+                            <td className="px-2 border border-slate-300">{user.email}</td>
+                            <td className="px-2 border border-slate-300">{user.role}</td>
+                            <td className="px-2 border border-slate-300">{user.gstNumber}</td>
+                            <td className="px-2 border border-slate-300">{user.panNumber}</td>
+                            <td className="px-2 border border-slate-300">{user.location}</td>
 
-                            <td className="px-6 py-4 border">
-                            <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded">
+                            <td className="px-6 py-4 border border-slate-300">
+                            <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded-xs">
                                 Active
                             </span>
                             </td>
-                            <td className="px-6 py-4 border text-center">
-                            <button className="px-3 py-2 text-sm text-white bg-blue-600 rounded-sm hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
+                            <td className="px-6 py-4 border border-slate-300 text-center">
+                            <button className="px-3 py-2 text-sm font-semibold text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
                             </button>
                             {openDropdown === user._id && (
-                                    <div className="absolute right-9 w-32 bg-white shadow-sm border border-slate-300 z-10">
+                                    <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
                                     <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
                                     >View User</button>
                                     <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
