@@ -14,7 +14,7 @@ export const generatePoNumber = async () => {
     const poNumber = String(sequence).padStart(4, "0");
     const fy = getFinancialYear();
 
-    return `VEL-${poNumber}-${fy}`;
+    return `PO-${poNumber}-${fy}`;
 }
 
 export const previewPoNumber = async (req, res, next) => {
@@ -31,7 +31,7 @@ export const previewPoNumber = async (req, res, next) => {
             const padded = String(nextSequence).padStart(4, "0");
             const fy = getFinancialYear();
         
-            const poNumber = `VEL-${padded}-${fy}`;
+            const poNumber = `PO-${padded}-${fy}`;
         
             res.status(200).json({
                 success: true,
