@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react'
 export const SOList = () => {
     const [sos, setSO] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const toggleDropdown = (id) => {
+        setOpenDropdown(openDropdown === id ? null : id);
+    };
 
     const fetchSO = async () => {
             setLoading(true);
@@ -72,7 +76,7 @@ export const SOList = () => {
                             <th className='border border-slate-400 p-2 px-4' >Add Drawing</th>
                         </tr>
                     </thead>
-                    <tbody className='text-center'>
+                    <tbody className='text-start'>
                         {sos.length === 0 ? (
                              <tr>
                                 <td colSpan='17' className='text-center p-4'>No So Found</td>
@@ -80,11 +84,20 @@ export const SOList = () => {
                         ) : sos.map((so)=> (
                             <tr key={so._id}>
                             <td className='border border-slate-400 px-2'>
-                                <div>
-                                    <button className='bg-blue-700 text-white font-semibold p-2 rounded-sm'>Action</button>
-                                </div>
+                                <button onClick={()=> toggleDropdown(so._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold px-2 py-1 rounded-xs w-20'>Action<i className='fa fa-angle-down pl-1'></i></button>
+                                {openDropdown === so._id && 
+                                (<div className="absolute left-72 w-40 bg-white shadow-sm border border-slate-300 z-10">
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-plus-circle pr-1'></i>Create BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-plus-circle pr-1'></i>View BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-pencil pr-1'></i>Edit BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-pencil pr-1'></i>Edit SO</button>
+                                </div>)}
                             </td>
-                            <td className='border border-slate-400 px-2'>{so.soNumber}</td>
+                            <td className='border border-slate-400 px-2 font-semibold'>{so.soNumber}</td>
                             <td className='border border-slate-400 px-2'>{so.poNumber} </td>
                             <td className='border border-slate-400 px-2'>{new Date(so.poDate).toLocaleDateString()}</td>
                             <td className='border border-slate-400 px-2'></td>
@@ -96,12 +109,12 @@ export const SOList = () => {
                             <td className='border border-slate-400 px-2'>{so.drawingRevisionNumber}</td>
                             <td className='border border-slate-400 px-2'>{so.customer?.name}</td>
                             <td className='border border-slate-400 px-2'>{new Date(so.receivedDate).toLocaleDateString()}</td>
-                            <td className='border border-slate-400 px-2'><button className='bg-yellow-500 p-2 rounded-sm font-semibold'>{so.status}</button></td>
+                            <td className='border border-slate-400 px-2'><button className='bg-yellow-500 p-2 px-4 rounded-sm font-semibold'>{so.status}</button></td>
                             <td className='border border-slate-400 px-2'>{so.orderType}</td>
                             
                             <td className='border border-slate-400 px-2'>{so.remark}</td>
                             <td className='border border-slate-400 px-2'>
-                                <button className='bg-green-600 text-white font-bold rounded-sm'><i className='fa fa-upload px-2'></i>Add Drawing</button>
+                                <button className='bg-green-600 text-white font-bold rounded-xs w-30 p-1'><i className='fa fa-upload px-2'></i>Add Drawing</button>
                             </td>
                         </tr>
                         ))}
