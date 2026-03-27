@@ -10,6 +10,7 @@ export const AddNewItem = () => {
         itemName: "",
         perUnit:"",
         weightInGram:"",
+        itemType:"",
         supplierPrice:"",
         customerPrice:"",
         minOrderQty:"",
@@ -110,11 +111,11 @@ export const AddNewItem = () => {
     <div className='p-4 bg-white border border-slate-300 rounded-sm shadow-sm'>
         <div className="flex justify-between">
             <h1 className='text-2xl font-semibold'>Add New Item</h1>
-            <button className='p-1 px-4 bg-blue-800 text-white font-semibold rounded-sm'>List Item</button>
+            <button onClick={()=> navigate('/dashboard/items-list')} className='p-1 px-4 bg-blue-800 text-white font-semibold rounded-sm'>List Item</button>
         </div>
         <hr className='my-4 text-slate-300'/>
         <form onSubmit={handleSubmit}>
-            <div className="grid xl:grid-cols-3 gap-4">
+            <div className="grid xl:grid-cols-3 gap-8 items-stretch">
                 <div className="">
                     <label className="text-sm font-semibold">Select Main Category</label>
                     <select name="mainCategory" value={formData.mainCategory} onChange={handleChange} className="border border-slate-300 p-2 mt-1 rounded-sm w-full">
@@ -133,7 +134,7 @@ export const AddNewItem = () => {
                         ))}
                     </select>
                 </div>
-                <div className="grid xl:grid-cols-2 gap-4">
+                <div className="grid xl:grid-cols-2 gap-8">
                     <div className="grid">
                         <label className="text-sm font-semibold">Check Last Item Code</label>
                         <select name="prefix" onChange={handlePrefixChange} className='border border-slate-300 p-2 mt-1 rounded-sm w-full'>
@@ -144,14 +145,17 @@ export const AddNewItem = () => {
                             <option value="G">G</option>
                             <option value="V">V</option>
                         </select>
+                        {formData.itemCode &&
+                            <p className='text-blue-700 text-sm font-semibold mt-1'>Last Item Code : {formData.itemCode}</p>
+                        }
                     </div>
-                    <div className="grid">
+                    <div className="grid items-start">
                         <label className="text-sm font-semibold">Item Code</label>
                         <input type="text" name="itemCode" value={formData.itemCode} className="border border-slate-300 p-2 mt-1 rounded-sm w-full" readOnly/>
                     </div>
                 </div>
             </div>
-            <div className="grid xl:grid-cols-3 mt-4 gap-4">
+            <div className="grid xl:grid-cols-3 mt-4 gap-8">
                 <div className="grid">
                     <label className="text-sm font-semibold">Item Name/Model Name</label>
                     <input type="text" name="itemName" value={formData.itemName} onChange={handleChange} className="border border-slate-300 p-2  rounded-sm mt-2" />
@@ -166,12 +170,22 @@ export const AddNewItem = () => {
                         <option value="KG">KG</option>
                     </select>
                 </div>
-                <div className="grid">
-                    <label className="text-sm font-semibold">Weight in Gram</label>
-                    <input type="text" name="weightInGram" value={formData.weightInGram} onChange={handleChange} className="border border-slate-300 p-2  rounded-sm mt-2" />
+                <div className="grid xl:grid-cols-2 gap-8">
+                    <div className="grid">
+                        <label className="text-sm font-semibold">Weight in Gram</label>
+                        <input type="text" name="weightInGram" value={formData.weightInGram} onChange={handleChange} className="border border-slate-300 p-2  rounded-sm mt-2 w-full" />
+                    </div>
+                    <div className="grid">
+                        <label className="text-sm font-semibold">Item or Raw Material</label>
+                        <select name="itemType" value={formData.itemType} onChange={handleChange} className="border border-slate-300 p-2 rounded-sm mt-2 w-full">
+                            <option value="">-- Select --</option>
+                            <option value="Item">Item</option>
+                            <option value="Raw Material">Raw Material</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div className="grid xl:grid-cols-4 mt-4 gap-4">
+            <div className="grid xl:grid-cols-4 mt-4 gap-8">
                 <div className="grid">
                     <label className="text-sm font-semibold">Item Price Supplier</label>
                     <input type="text" name="supplierPrice" value={formData.supplierPrice} onChange={handleChange} className="border border-slate-300 rounded-sm p-2 mt-2" />
@@ -187,7 +201,7 @@ export const AddNewItem = () => {
             </div>
             <div className="grid mt-4">
                 <label className="text-sm font-semibold">Item Description</label>
-                <textarea name="itemDescription" value={formData.description} onChange={handleChange} className="border border-slate-300 rounded-sm p-2 mt-2" rows="2"></textarea>
+                <textarea name="description" value={formData.description} onChange={handleChange} className="border border-slate-300 rounded-sm p-2 mt-2" rows="2"></textarea>
             </div>
             <hr className='my-4 text-slate-300'/>
             <div className="flex justify-end">
