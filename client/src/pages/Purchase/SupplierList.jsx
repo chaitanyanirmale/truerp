@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 export const SupplierList = () => {
     const [suppliers, setSuppliers] = useState([]);
-        const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     
         const fetchSuppliers = async () => {
                 setLoading(true);
