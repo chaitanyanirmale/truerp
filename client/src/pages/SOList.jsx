@@ -52,11 +52,11 @@ export const SOList = () => {
         {loading ? (
             <p>Loading...</p>
         ): (
-            <div className="w-full overflow-x-auto text-sm ">
+            <div className="w-full overflow-x-auto">
             <div className="max-h-500px overflow-y-auto">
                 <table className='border border-slate-400 min-w-1200px'>
                     <thead>
-                        <tr className='border border-slate-400'>
+                        <tr className='border border-slate-400 text-md'>
                             <th className='border border-slate-400 p-2 px-4' >Actions</th>
                             <th className='border border-slate-400 p-2 px-4' >SO Number</th>
                             <th className='border border-slate-400 p-2 px-4' >PO Number</th>
@@ -76,7 +76,7 @@ export const SOList = () => {
                             <th className='border border-slate-400 p-2 px-4' >Add Drawing</th>
                         </tr>
                     </thead>
-                    <tbody className='text-start'>
+                    <tbody className='text-start text-sm'>
                         {sos.length === 0 ? (
                              <tr>
                                 <td colSpan='17' className='text-center p-4'>No So Found</td>
@@ -97,24 +97,24 @@ export const SOList = () => {
                                     ><i className='fa fa-pencil pr-1'></i>Edit SO</button>
                                 </div>)}
                             </td>
-                            <td className='border border-slate-400 px-2 font-semibold'>{so.soNumber}</td>
-                            <td className='border border-slate-400 px-2'>{so.poNumber} </td>
-                            <td className='border border-slate-400 px-2'>{new Date(so.poDate).toLocaleDateString()}</td>
-                            <td className='border border-slate-400 px-2'></td>
-                            <td className='border border-slate-400 px-2'></td>
-                            <td className='border border-slate-400 px-2'>{so.jobCardNumber}</td>
-                            <td className='border border-slate-400 px-2'>{so.itemDesc}</td>
-                            <td className='border border-slate-400 px-2'>{so.majorMinorNumber}</td>
-                            <td className='border border-slate-400 px-2'>{so.itemQty}</td>
-                            <td className='border border-slate-400 px-2'>{so.drawingRevisionNumber}</td>
-                            <td className='border border-slate-400 px-2'>{so.customer?.name}</td>
-                            <td className='border border-slate-400 px-2'>{new Date(so.receivedDate).toLocaleDateString()}</td>
-                            <td className='border border-slate-400 px-2'><button className='bg-yellow-500 p-2 px-4 rounded-sm font-semibold'>{so.status}</button></td>
-                            <td className='border border-slate-400 px-2'>{so.orderType}</td>
+                            <td className='border border-slate-400 p-2 px-4 font-semibold'>{so.soNumber}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.poNumber} </td>
+                            <td className='border border-slate-400 p-2 px-4'>{new Date(so.poDate).toISOString().split("T")[0]}</td>
+                            <td className='border border-slate-400 p-2 px-4'></td>
+                            <td className='border border-slate-400 p-2 px-4'></td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.jobCardNumber}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.itemDesc}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.majorMinorNumber}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.itemQty}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.drawingRevisionNumber}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.customer?.name}</td>
+                            <td className='border border-slate-400 p-2 px-4'>{new Date(so.receivedDate).toISOString().split("T")[0]}</td>
+                            <td className='border border-slate-400 p-2 px-4'><button className='bg-yellow-500 p-2 px-4 rounded-sm font-semibold'>{so.status}</button></td>
+                            <td className='border border-slate-400 p-2 px-4'>{so.orderType}</td>
                             
-                            <td className='border border-slate-400 px-2'>{so.remark}</td>
-                            <td className='border border-slate-400 px-2'>
-                                <button className='bg-green-600 text-white font-bold rounded-xs w-30 p-1'><i className='fa fa-upload px-2'></i>Add Drawing</button>
+                            <td className='border border-slate-400 p-2 px-4'>{so.remark}</td>
+                            <td className='border border-slate-400 p-2 px-4'>
+                                <button className='bg-green-600 text-white font-bold rounded-xs w-30 p-1'><i className='fa fa-upload p-2'></i>Add Drawing</button>
                             </td>
                         </tr>
                         ))}

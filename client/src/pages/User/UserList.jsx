@@ -113,12 +113,10 @@ export const UserList = () => {
                             <button className="px-3 py-2 text-sm font-semibold text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
                             </button>
                             {openDropdown === user._id && (
-                                    <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
-                                    <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    >View User</button>
-                                    <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
-                                    >Delete</button>
-                                    </div>
+                                <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
+                                <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">View User</button>
+                                <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100">Delete</button>
+                                </div>
                                 )}
                             </td>
                         </tr>
