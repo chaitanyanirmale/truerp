@@ -5,6 +5,17 @@ export const CreateSO = () => {
     const [formData, setFormData] = useState(initialData);
     const [customers, setCustomers] = useState([]);
 
+    const fetchJCNo = async () => {
+        const res = await fetch("/api/so/previewJCNumber");
+        const data = await res.json();
+        
+        if(data.success){
+            setFormData(formData => ({
+                ...formData,
+                jobCardNumber : data.jcNumber
+            }))
+        }
+    }
     const fetchCustomers = async () => {
     try {
       const res = await fetch("/api/users/customers", {
@@ -20,6 +31,7 @@ export const CreateSO = () => {
   };
 
   useEffect(() => {
+    fetchJCNo();
     fetchCustomers();
   }, []);
 
@@ -47,6 +59,7 @@ export const CreateSO = () => {
         console.log("server error")
         return;
       }
+      console.log("So Created Successfully")
       setFormData(initialData)
     } catch (error) {
         console.log(error)
@@ -76,7 +89,7 @@ export const CreateSO = () => {
             </div>
               <div className="grid gap-2">
                   <label className="font-semibold">JobCard Number</label>
-                  <input type="text" value={formData.jobCardNumber} onChange={handleChange} name="jobCardNumber"   className='p-2 border border-slate-400 rounded-sm'/>
+                  <input type="text" value={formData.jobCardNumber} onChange={handleChange} name="jobCardNumber"  className='p-2 border border-slate-400 rounded-sm bg-gray-300' readOnly/>
               </div>
               <div className="grid gap-2">
                   <label className="font-semibold">Item Description</label>
@@ -104,7 +117,7 @@ export const CreateSO = () => {
               onChange={handleChange} className='p-2 border border-slate-400 rounded-sm'>
                     <option value="pending">Pending</option>
                     <option value="complete">Complete</option>
-                    <option value="dipatch">Dispatch</option>
+                    <option value="dispatch">Dispatch</option>
                     <option value="hold">Hold</option>
                 </select>
               </div>
@@ -112,7 +125,8 @@ export const CreateSO = () => {
                 <label className="font-semibold">Order Type</label>
                 <select name="orderType" value={formData.orderType}
               onChange={handleChange}  className='p-2 border border-slate-400 rounded-sm'>
-                    <option value="Under Quaotation">Under Quotation</option>
+                    <option value="">-- Select Order Type --</option>
+                    <option value="Under Quotation">Under Quotation</option>
                     <option value="Order Acceptance">Order Acceptance</option>
                 </select>
               </div>
