@@ -32,8 +32,11 @@ export const Login = () => {
         }
     }
   return (
-      <div className="w-screen h-screen bg-cover bg-center pt-30" style={{ backgroundImage: "url('/main1.jpg')" }}>
-        <div className="flex justify-center">
+      <div className="bg-slate-200">
+        <div className="w-full flex justify-center items-center">
+            <div className="">
+                <img src="/loginbg.png" alt="img" className='w-full h-screen p-2'/>
+            </div>
             <div className="bg-white p-5 w-1/3 shadow-lg rounded-lg md:w-90 sm:w-90">
             <form onSubmit={handleSubmit}>
                 <img src="/vlogo.jpg" className='w-60 ml-10'/>
