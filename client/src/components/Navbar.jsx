@@ -6,9 +6,9 @@ export const Navbar = () => {
     const [active, setActive] = useState('')
   return (
     <div>
-        <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center justify-between px-6 z-50">
-            <div className="flex items-center w-1/2 gap-4">
-                <h1 className="text-xl font-semibold">Admin</h1>
+        <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center px-6 z-50">
+            <div className="flex justify-center items-center w-1/4 gap-4">
+                <h1 className="text-xl font-semibold">TRUERP</h1>
                 <button className="text-xl">☰</button>
             </div>
             <div className="flex items-center gap-4 px-2">
@@ -19,16 +19,44 @@ export const Navbar = () => {
                 <option>FY: 2022-23</option>
                 </select>
             </div>
-                <input
-                type="text"
-                placeholder="Search SO here..."
-                className="w-full p-2 mx-2 rounded-sm border border-gray-200 bg-white text-black"
-                />
-
-            <div className="hidden xl:flex xl:justify-between items-center gap-2 text-sm h-full">
+            <div className="hidden xl:flex xl:justify-between items-center gap-2 text-sm w-full h-full">
+                <div className="h-full relative inline-block">
+                    <button onClick={() => setOpenMenu(openMenu === "users" ? null : "users")} className='flex hover:bg-blue-800 items-center h-full px-2'>
+                        <i className='fa fa-industry fa-md p-1'></i><p className='text-md p-2'>Users</p><i className='fa fa-angle-down font-bold'></i>
+                    </button>
+                    <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 rounded-xs ${ openMenu === "users" ? "max-h-40" : "max-h-0 border-none" }`}>
+                            <NavLink to="add-user" className={'flex items-center gap-3 px-3 py-2 cursor-pointer'} onClick={()=> {setActive('add-user');  setOpenMenu(null);} }><i className="fa fa-plus"></i>Add New User
+                            </NavLink>
+                            <NavLink to="user-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('user-list');  setOpenMenu(null);} } >
+                            <i className="fa fa-list"></i>List of User
+                            </NavLink>
+                    </div>
+                </div>
+                <div className="h-full relative inline-block">
+                    <button onClick={() => setOpenMenu(openMenu === "items" ? null : "items")} className='flex hover:bg-blue-800 items-center h-full px-2'>
+                        <i className='fa fa-cubes fa-md p-1'></i><p className='text-md p-2'>Items</p><i className='fa fa-angle-down font-bold'></i>
+                    </button>
+                    <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 rounded-xs ${ openMenu === "items" ? "max-h-40" : "max-h-0 border-none" }`}>
+                            <NavLink to="add-item" className={'flex items-center gap-3 px-3 py-2 cursor-pointer'} onClick={()=> {setActive('add-item');  setOpenMenu(null);} }><i className="fa fa-plus"></i>Add New Item
+                            </NavLink>
+                            <NavLink to="items-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('items-list');  setOpenMenu(null);} } >
+                            <i className="fa fa-list"></i>List of Items
+                            </NavLink>
+                    </div>
+                </div>
+                <div className="h-full relative inline-block">
+                    <button onClick={() => setOpenMenu(openMenu === "quotations" ? null : "quotations")} className='flex hover:bg-blue-800 items-center h-full px-2'>
+                        <i className='fa fa-cubes fa-md p-1'></i><p className='text-md p-2'>Quotation</p><i className='fa fa-angle-down font-bold'></i>
+                    </button>
+                    <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 rounded-xs ${ openMenu === "quotations" ? "max-h-40" : "max-h-0 border-none" }`}>
+                            <NavLink to="quotation-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('quotation-list');  setOpenMenu(null);} } >
+                            <i className="fa fa-list"></i>List of Items
+                            </NavLink>
+                    </div>
+                </div>
                 <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "so" ? null : "so")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-industry fa-md p-1'></i><p className='text-md p-2'>SO</p>
+                        <i className='fa fa-industry fa-md p-1'></i><p className='text-md p-2'>SO</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
                     <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "so" ? "max-h-40" : "max-h-0 border-none" }`}>
                             <NavLink to="create-so" className={'flex items-center gap-3 px-3 py-2 cursor-pointer'} onClick={()=> {setActive('create-so');  setOpenMenu(null);} }><i className="fa fa-plus"></i>Create SO
@@ -40,10 +68,10 @@ export const Navbar = () => {
                 </div>
                 <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "po" ? null : "po")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-shopping-cart fa-md p-1'></i><p className='text-md p-2'>PO</p>
+                        <i className='fa fa-shopping-cart fa-md p-1'></i><p className='text-md p-2'>PO</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
                     <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "po" ? "max-h-40" : "max-h-0 border-none" }`}>
-                            <NavLink to="create-so" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-po' ? '':''}`} onClick={()=> {setActive('create-po');  setOpenMenu(null);}}>
+                            <NavLink to="create-po" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-po' ? '':''}`} onClick={()=> {setActive('create-po');  setOpenMenu(null);}}>
                                 <i className="fa fa-plus"></i>Create PO
                             </NavLink>
                             <NavLink to="po-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('po-list');  setOpenMenu(null);} } >
@@ -53,7 +81,7 @@ export const Navbar = () => {
                 </div>
                 <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "grr" ? null : "grr")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-file fa-md p-1'></i><p className='text-md p-2'>GRR</p>
+                        <i className='fa fa-truck fa-md p-1'></i><p className='text-md p-2'>GRR</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
                     <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "grr" ? "max-h-40" : "max-h-0 border-none" }`}>
                             <NavLink to="grr" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-grr' ? '':''}`} onClick={()=> {setActive('create-grr');  setOpenMenu(null);}}>
@@ -65,21 +93,8 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="h-full relative inline-block">
-                    <button onClick={() => setOpenMenu(openMenu === "items" ? null : "items")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-file fa-md p-1'></i><p className='text-md p-2'>Items</p>
-                    </button>
-                    <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "items" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
-                            <NavLink to="create-items" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-items' ? '':''}`} onClick={()=> {setActive('create-items');  setOpenMenu(null);}}>
-                                <i className="fa fa-plus"></i>Create Items
-                            </NavLink>
-                            <NavLink to="items-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('items-list');  setOpenMenu(null);} } >
-                            <i className="fa fa-check"></i>List of Items
-                            </NavLink>
-                    </div>
-                </div>
-                <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "invoices" ? null : "invoices")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-inr fa-md p-1'></i><p className='text-md p-2'>Invoices</p>
+                        <i className='fa fa-inr fa-md p-1'></i><p className='text-md p-2'>Invoices</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
                     <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "invoices" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
                             <NavLink to="create-invoice" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-invoice' ? '':''}`} onClick={()=> {setActive('create-invoice');  setOpenMenu(null);}}>
@@ -95,22 +110,33 @@ export const Navbar = () => {
                 </div>
                 <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "purchase-bills" ? null : "purchase-bills")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-file-pdf-o fa-md p-1'></i><p className='text-md p-2'>Purchase Bills</p>
+                        <i className='fa fa-file-pdf-o fa-md p-1'></i><p className='text-md p-2'>Purchase Bills</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
                     <div className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "purchase-bills" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
-                            <NavLink to="create-new-bill" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'create-new-bill' ? '':''}`} onClick={()=> {setActive('create-new-bill');  setOpenMenu(null);}}>
-                                <i className="fa fa-plus"></i>Create New Bill
+                            <NavLink to="add-purchase" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('add-purchase');  setOpenMenu(null);}}>
+                                <i className="fa fa-plus"></i>Add New Bill
                             </NavLink>
-                            <NavLink to="list-bills" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('list-bills');  setOpenMenu(null);} } >
+                            <NavLink to="supplier-payment" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('supplier-payment');  setOpenMenu(null);} } >
                             <i className="fa fa-check"></i>List of Bills
                             </NavLink>
                     </div>
                 </div>
                 <div className="h-full relative inline-block">
+                    <button onClick={() => setOpenMenu(openMenu === "ai" ? null : "ai")} className='flex hover:bg-blue-800 items-center h-full px-1'><i className='fa fa-robot fa-md p-1'></i><p className='text-md p-2'>AI</p><i className='fa fa-angle-down font-bold'></i></button>
+                    <div  className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "ai" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
+                            <NavLink to="add-item" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'add-item' ? '':''}`} onClick={()=> {setActive('add-item');  setOpenMenu(null);}}>
+                                <i className="fa fa-plus"></i>Add Items
+                            </NavLink>
+                            <NavLink to="items-list" className={`flex items-center gap-3 px-3 py-2 cursor-pointer`} onClick={()=> {setActive('items-list');  setOpenMenu(null);} } >
+                            <i className="fa fa-check"></i>List of Items
+                            </NavLink>
+                    </div>
+                </div>
+                <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "profile" ? null : "profile")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-user fa-md p-1'></i><p className='text-md p-2'>TRUERP</p>
+                        <i className='fa fa-user fa-md p-1'></i><p className='text-md p-2'>TRUERP</p><i className='fa fa-angle-down font-bold'></i>
                     </button>
-                    <div className={`overflow-hidden absolute left-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "profile" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
+                    <div className={`overflow-hidden absolute right-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 ${ openMenu === "profile" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
                             <NavLink to="profile" className={`flex items-center gap-3 px-3 py-2 cursor-pointer ${active === 'profile' ? '':''}`} onClick={()=> {setActive('profile');  setOpenMenu(null);}}>
                                 <i className="fa fa-user"></i>My Profile
                             </NavLink>
