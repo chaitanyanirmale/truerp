@@ -105,7 +105,7 @@ export const SupplierPayment = () => {
                     </thead>
                 <tbody>
                     {purchases.length === 0 ? (
-                        <tr><td>No Purchases Found</td></tr>
+                        <tr><td colSpan='11' className='text-center p-4'>No Purchases Found</td></tr>
                     ): purchases.map((purchase, index)=> (
                         <tr key={purchase._id}>
                             <td className='p-2 border border-slate-400'>{index + 1}</td>
