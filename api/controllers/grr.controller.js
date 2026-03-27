@@ -1,5 +1,6 @@
 import GRR from "../models/grr.model.js";
 import Counter from "../utils/counter.js";
+import { getFinancialYear } from "../utils/financialYear.js";
 
 export const generateGRRNumber = async () => {
 
@@ -39,20 +40,7 @@ export const previewGRR = async (req, res, next) => {
 
     const padded = String(nextSequence).padStart(4, "0");
 
-    const now = new Date();
-
-    let startYear;
-    let endYear;
-
-    if (now.getMonth() + 1 < 4) {
-      startYear = now.getFullYear() - 1;
-      endYear = now.getFullYear();
-    } else {
-      startYear = now.getFullYear();
-      endYear = now.getFullYear() + 1;
-    }
-
-    const fy = `${startYear}-${String(endYear).slice(-2)}`;
+    const fy = getFinancialYear();
 
     const grrNo = `GRR-${String(padded).padStart(4, "0")}-${fy}`;
 
