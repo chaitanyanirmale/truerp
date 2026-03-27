@@ -1,24 +1,7 @@
 import PO from '../models/po.model.js';
 import Counter from '../utils/counter.js'
-export const getFinancialYear = () => {
+import { getFinancialYear } from '../utils/financialYear.js';
 
-  const now = new Date();
-  const month = now.getMonth() + 1; 
-  const year = now.getFullYear();
-
-  let startYear;
-  let endYear;
-
-  if (month < 4) {
-    startYear = year - 1;
-    endYear = year;
-  } else {
-    startYear = year;
-    endYear = year + 1;
-  }
-
-  return `${startYear}-${String(endYear).slice(-2)}`;
-};
 
 export const generatePoNumber = async () => {
     const counter = await Counter.findOneAndUpdate(
@@ -44,7 +27,7 @@ export const previewPoNumber = async (req, res, next) => {
                 })
             }
         
-            const nextSequence = (counter.sequence || 0) + 1;
+            const nextSequence = counter.sequence + 1;
             const padded = String(nextSequence).padStart(4, "0");
             const fy = getFinancialYear();
         
@@ -67,17 +50,18 @@ export const createPo = async (req, res, next) => {
                 message: "Only admin can create Purchase Order",
             });
         }
-        const {so, supplier, poNo, poDate} = req.body;
+        const {so, supplier, poDate} = req.body;
 
-        if(!so || !supplier || !poNo || !poDate){
+        if(!so || !supplier || !poDate){
             return res.status(400).json({
                 success: false,
                 message: "Please fill all required fields",
             });
         }
+        const poNo = generatePoNumber();
 
         const newPo = await PO.create({
-            so, supplier, poNo, poDate
+            poNo, ...req.body
         });
         res.status(201).json({
             success: true,
