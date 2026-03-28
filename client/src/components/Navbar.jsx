@@ -1,8 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(false);
+    const [user, setUser] = useState(null)
+    const fetchUser = async () => {
+        try {
+            const res = await fetch('/api/users/user',{
+                method: "GET",
+                credentials: "include",
+            });
+            const data = await res.json();
+            if(data.success === true){
+                setUser(data.data)
+            }
+        } catch (error) {
+            console.log(error); 
+        }
+    }
+    useEffect(()=> {
+        fetchUser();
+    },[])
   return (
     <div>
         <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center px-6 z-50">
@@ -134,9 +153,10 @@ export const Navbar = () => {
                             </NavLink>
                     </div>
                 </div>
-                <div className="h-full relative inline-block">
-                    <button onClick={() => setOpenMenu(openMenu === "profile" ? null : "profile")} className='flex hover:bg-blue-800 items-center h-full px-1'>
-                        <i className='fa fa-user fa-md p-1'></i><p className='text-md p-2'>TRUERP</p><i className='fa fa-angle-down font-bold'></i>
+                {user ? (
+                        <div className="h-full relative inline-block">
+                        <button onClick={() => setOpenMenu(openMenu === "profile" ? null : "profile")} className='flex hover:bg-blue-800 items-center h-full px-1'>
+                        <i className='fa fa-user fa-md p-1'></i><p className='text-sm'>{user.name}</p><i className='fa fa-angle-down font-bold pl-1'></i>
                     </button>
                     <div className={`overflow-hidden absolute right-0 w-40 text-sm border border-slate-400 bg-white text-gray-600 rounded-xs ${ openMenu === "profile" ? "max-h-40 w-50" : "max-h-0 border-none" }`}>
                             <NavLink to="profile" className='flex items-center gap-3 px-3 py-2 cursor-pointer' onClick={()=> setOpenMenu(null)}>
@@ -149,7 +169,10 @@ export const Navbar = () => {
                             <i className="fa fa-sign-out text-blue-600"></i>Logout
                             </NavLink>
                     </div>
-                </div>
+                    </div>
+                    ) : (
+                        <p>Loading</p>
+                )}    
             </div>
         </header>
     </div>
