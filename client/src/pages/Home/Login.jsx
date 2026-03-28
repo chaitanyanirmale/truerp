@@ -37,17 +37,18 @@ export const Login = () => {
             <div className="">
                 <img src="/loginbg.png" alt="img" className='w-full h-screen p-2'/>
             </div>
-            <div className="bg-white p-5 w-1/3 shadow-lg rounded-lg md:w-90 sm:w-90">
+            <div className="bg-white p-5 w-1/3 shadow-xl rounded-sm md:w-90 sm:w-90">
             <form onSubmit={handleSubmit}>
                 <img src="/vlogo.jpg" className='w-60 ml-10'/>
+                <p className='text-center text-sm mb-4 text-slate-600'>Smart ERP for Manufacturing & Industrial Businesses</p>
                 <div className="mb-4">
-                    <input className="border border-slate-200 rounded-lg p-2 w-full" type="email" placeholder="Email" name="email" onChange={handleChange} value={formData.email}/>
+                    <input className="border border-slate-200 rounded-sm p-2 w-full" type="email" placeholder="Email" name="email" onChange={handleChange} value={formData.email}/>
                 </div>
                 <div className="mb-4">
-                    <input className="border border-slate-200 rounded-lg p-2 w-full" type="password" placeholder="Password" name="password" onChange={handleChange} value={formData.password}/>
+                    <input className="border border-slate-200 rounded-sm p-2 w-full" type="password" placeholder="Password" name="password" onChange={handleChange} value={formData.password}/>
                 </div>
                 <div className="mt-8">
-                    <button className="bg-blue-800 text-white p-2 rounded-lg w-full" type="submit"><i className="fa fa-sign-in fa-lg fa-fw"></i>{loading ? 'Siging In..': 'Sign In'}</button>
+                    <button className="bg-blue-800 text-white p-2 rounded-sm w-full" type="submit"><i className="fa fa-sign-in fa-lg fa-fw"></i>{loading ? 'Siging In..': 'Sign In'}</button>
                 </div>
             </form>
             </div>
