@@ -15,7 +15,7 @@ const itemSchema = new mongoose.Schema(
     prefix:{
       type: String,
       required: true,
-      enum:["P","TU","FT","G","V"]
+      enum:["P","TU","FT","G","V","GEN","H","RM","FL"]
     },
     itemCode: {
       type: String,
