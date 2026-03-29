@@ -144,6 +144,10 @@ export const AddNewItem = () => {
                             <option value="FT">FT</option>
                             <option value="G">G</option>
                             <option value="V">V</option>
+                            <option value="GEN">GEN</option>
+                            <option value="H">H</option>
+                            <option value="RM">RM</option>
+                            <option value="FL">FL</option>
                         </select>
                         {formData.itemCode &&
                             <p className='text-blue-700 text-sm font-semibold mt-1'>Last Item Code : {formData.itemCode}</p>

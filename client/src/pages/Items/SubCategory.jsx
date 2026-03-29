@@ -13,10 +13,10 @@ export const SubCategory = () => {
         });
     };
 
-    const fetchCategories = async () => {
+    const fetchMainCategories = async () => {
                 setLoading(true);
                 try {
-                    const res = await fetch('/api/category/category-list');
+                    const res = await fetch('/api/category/maincategory-list');
                     if (!res.ok) {
                         throw new Error("Failed to fetch categories");
                     }
@@ -31,10 +31,7 @@ export const SubCategory = () => {
                     console.log(error)
                     setLoading(false);
                 }
-            }
-            useEffect(() => {
-                fetchCategories();
-            }, []);    
+            }   
 
     const fetchSubCategories = async () => {
         try {
@@ -50,6 +47,7 @@ export const SubCategory = () => {
     };
 
         useEffect(() => {
+            fetchMainCategories();
             fetchSubCategories();
         }, []);
 
@@ -70,14 +68,14 @@ export const SubCategory = () => {
                 setLoading(false)
                 return
             }
-            setFormData(initialData)
             setLoading(false)
+            setFormData(initialData)
         } catch (error) {
             console.log(error)
         }
     }
   return (
-    <div className='grid xl:grid-cols-2 gap-8'>
+    <div className='grid xl:grid-cols-2 gap-8 items-start'>
         <div className="bg-white p-4 border border-slate-300 shadow-sm items-stretch">
             <h1 className='text-2xl font-semibold'>Add New Sub-Category</h1>
             <hr className='text-slate-300 my-4'/>
@@ -103,15 +101,15 @@ export const SubCategory = () => {
                 <button className='bg-blue-700 px-4 py-2 text-white rounded-sm'><i className='fa fa-check-circle pr-2'></i>Submit</button>
             </form>
         </div>
-        <div className="bg-white p-4 border border-slate-300 rounded-sm shadow-sm">
+        <div className="bg-white p-4 border border-slate-300 rounded-sm shadow-sm max-h-100 overflow-y-auto">
             <h1 className='text-2xl font-semibold'>List of Sub-Categories</h1>
             <hr className='my-4 text-slate-300'/>
             <div className="">
                 <table className='border border-slate-300 w-full text-sm'>
                     <thead>
                         <tr>
-                            <th className='p-4 border border-slate-300'>Sub Category Name</th>
                             <th className='p-4 border border-slate-300'>Root Category</th>
+                            <th className='p-4 border border-slate-300'>Sub Category Name</th>
                             <th className='p-4 border border-slate-300'>Added on</th>
                             <th className='p-4 border border-slate-300'>Actions</th>
                         </tr>
@@ -120,18 +118,16 @@ export const SubCategory = () => {
                         {subCategories.map((sub)=>(
                             <tr key={sub._id}>
                                 <td className="p-4 border border-slate-300">
-                                    {sub.name}
-                                </td>
-
-                                <td className="p-4 border border-slate-300">
                                     {sub.parent?.name}
                                 </td>
-
+                                <td className="p-4 border border-slate-300">
+                                    {sub.name}
+                                </td>
                                 <td className="p-4 border border-slate-300">
                                     {new Date(sub.createdAt).toLocaleDateString()}
                                 </td>
                                 <td className="p-4 border border-slate-300">
-                                    <i className='fa fa-pencil pr-2'></i>
+                                    <i className='fa fa-pencil pr-2 text-yellow-400'></i>
                                 </td>
                             </tr>
                         ))}
