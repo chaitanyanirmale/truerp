@@ -72,3 +72,19 @@ export const createPo = async (req, res, next) => {
         next(error);
     }
 }
+
+export const getPO = async (req, res, next) => {
+  try {
+    const po = await PO.find().populate("supplier so", "name email role soNumber").sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: po.length,
+      data: po,
+    });
+
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
