@@ -34,7 +34,7 @@ export const previewItemCode = async (req, res, next) => {
         sequence: 0
       });
     }
-    const nextSequence = (counter.sequence || 0) + 1;
+    const nextSequence = counter.sequence + 1;
 
     const itemCode = prefix + String(nextSequence).padStart(3, "0");
 
