@@ -32,3 +32,19 @@ export const saveContactMessage = async (req, res) => {
     });
   }
 };
+
+export const getEnquiries = async (req, res, next) => {
+  try {
+    const enquiries = await Contact.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: enquiries.length,
+      data: enquiries,
+    });
+
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
