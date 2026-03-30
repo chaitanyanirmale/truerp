@@ -1,9 +1,51 @@
 import { useState } from "react"
 
 export const Home = () => {
-
   const [openMenu, setOpenMenu] = useState(false)
   const [active, setActive] = useState("")
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/auth/send-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Message sent successfully");
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className='bg-white mx-2'>
@@ -539,7 +581,7 @@ export const Home = () => {
           <h2 className='text-slate-600 font-semibold text-3xl mb-5'>Contact</h2>
           <p className="text-center text-gray-600 mb-6">Take the next step toward smarter, faster business management.</p>
         </div>
-        <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-8 md:px-5 xl:px-20 sm:grid-cols-1">
+        <div className="grid xl:grid-cols-2 md:grid-cols-2 gap-8 md:px-5 xl:px-20 sm:grid-cols-1">
           <div className="bg-blue-900 text-white p-10 rounded-lg shadow-lg mx-5">
             <h3 className='text-3xl'>Contact Info</h3>
             <div className="flex items-start gap-4 mt-5">
@@ -578,26 +620,21 @@ export const Home = () => {
             <div className="bg-white p-10 rounded-lg shadow-lg  mx-5">
               <h3 className='text-slate-600 mb-4 text-2xl'>Get In Touch</h3>
               <p className='text-slate-600 mb-4'>Don't wait. Automate your entire workflow effortlessly.</p>
-              <form action="">
-                <div className="">
-                  <div className="flex justify-between">
-                    <input className='p-2 border border-gray-200 rounded-lg w-xl placeholder:text-sm m-2' type="text" name="name" id="name" placeholder='Your Name' required/>
-                    <input className='p-2 border border-gray-200 rounded-lg w-xl  placeholder:text-sm m-2' type="email" name='email' id='email' placeholder='Your Email' required/>
+              <form onSubmit={handleSubmit}>
+                <div className="p-2 grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <input className='p-2 border border-gray-200 rounded-sm' type="text" name="name"  value={formData.name}  onChange={handleChange} placeholder='Your Name' required/>
+                    <input className='p-2 border border-gray-200 rounded-sm' type="email" name='email'  value={formData.email}  onChange={handleChange} placeholder='Your Email' required/>
                   </div>
-                  <div className="p-2 border border-gray-200 rounded-lg w-auto m-2 placeholder:text-sm">
-                    <input type="text" className="form-control" name="subject" placeholder="Subject" required="" />
-                  </div>
-
-                  <div className="p-2 border border-gray-200 rounded-lg w-auto m-2 placeholder:text-sm">
-                    <textarea name="message" rows="4" placeholder="Message" className="w-full" required=""></textarea>
-                  </div>
+                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" className="w-full p-2 border border-gray-200 rounded-sm" required="" />
+                    <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Message" className="p-2 border border-gray-200 rounded-sm" required=""></textarea>
+                </div>
 
                   <div className="w-full flex justify-center">
-                    <div className="bg-blue-800 w-50 rounded-full p-2 text-white py-4 text-center">
-                      <button type="submit" className="btn">Send Message</button>
+                    <div className="">
+                      <button type="submit" className="bg-blue-700 w-50 rounded-full p-2 text-white py-4 text-center hover:bg-blue-800">Send Message</button>
                     </div>
                   </div>
-                </div>
               </form>
             </div>
           </div>
