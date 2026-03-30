@@ -558,22 +558,22 @@ export const Home = () => {
           <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-shirt p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Textile</p></div>
           <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-university p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Cement & Lime</p></div>
           <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-bolt p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Electrical</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-microchip p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Electronics</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-eye p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Optical</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-cutlery p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Food & beverage</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-tags p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Leather</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-shopping-cart p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Footwear</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-cogs p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Machinery</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-tint p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Petroleum</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-globe p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Mining</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-cube p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Non Metal</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-medkit p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Pharmaceuticals</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-print p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Printing</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-recycle p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Plastic</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-book p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Publishing</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-life-ring p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Rubber</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-tree p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Wood</p></div>
-          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i class="fa fa-car p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Automotive</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-microchip p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Electronics</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-eye p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Optical</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-cutlery p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Food & beverage</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-tags p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Leather</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-shopping-cart p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Footwear</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-cogs p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Machinery</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-tint p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Petroleum</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-globe p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Mining</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-cube p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Non Metal</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-medkit p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Pharmaceuticals</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-print p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Printing</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-recycle p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Plastic</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-book p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Publishing</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-life-ring p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Rubber</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-tree p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Wood</p></div>
+          <div className="bg-white rounded-lg p-2 py-3 border border-slate-300 shadow-sm"><i className="fa fa-car p-2 fa-2x text-blue-900"></i><p className="text-center font-semibold">Automotive</p></div>
         </div>
       </section>
       <section id='contact' className='xl:pt-2 p-10 bg-gray-100'>
@@ -623,11 +623,11 @@ export const Home = () => {
               <form onSubmit={handleSubmit}>
                 <div className="p-2 grid grid-cols-1 gap-2">
                   <div className="grid grid-cols-2 gap-2">
-                    <input className='p-2 border border-gray-200 rounded-sm' type="text" name="name"  value={formData.name}  onChange={handleChange} placeholder='Your Name' required/>
-                    <input className='p-2 border border-gray-200 rounded-sm' type="email" name='email'  value={formData.email}  onChange={handleChange} placeholder='Your Email' required/>
+                    <input className='p-4 border border-gray-200 rounded-md' type="text" name="name"  value={formData.name}  onChange={handleChange} placeholder='Your Name' required/>
+                    <input className='p-4 border border-gray-200 rounded-md' type="email" name='email'  value={formData.email}  onChange={handleChange} placeholder='Your Email' required/>
                   </div>
-                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" className="w-full p-2 border border-gray-200 rounded-sm" required="" />
-                    <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Message" className="p-2 border border-gray-200 rounded-sm" required=""></textarea>
+                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" className="w-full p-4 border border-gray-200 rounded-md" required="" />
+                    <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Message" className="p-4 border border-gray-200 rounded-md" required=""></textarea>
                 </div>
 
                   <div className="w-full flex justify-center">
