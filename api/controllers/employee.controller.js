@@ -104,3 +104,30 @@ export const getEmployees = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const deleteEmp = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedEmp = await Employee.findByIdAndDelete(id);
+
+    if (!deletedEmp) {
+      return res.status(404).json({
+        success: false,
+        message: "Employee record not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Employee deleted successfully"
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+};
