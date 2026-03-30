@@ -118,3 +118,27 @@ export const deleteUser = async (req,res,next) => {
     next(error)
   }
 }
+
+
+export const updateUserStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { status },
+      { returnDocument: 'after' }
+    );
+
+    res.status(200).json({
+      success: true,
+      user: updatedUser
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+};
