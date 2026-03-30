@@ -24,11 +24,6 @@ export const SalaryList = () => {
                 setLoading(false);
             }
         }
-        useEffect(() => {
-            fetchEmployees();
-        }, []);
-
-        
         const fetchSalaries = async () => {
             setLoading(true)
             try {
@@ -48,8 +43,30 @@ export const SalaryList = () => {
         };
 
         useEffect(() => {
+            fetchEmployees();
             fetchSalaries();
         }, []);
+
+        const handleDelete = async (id) => {
+        try {
+            const res = await fetch(`/api/salary/delete-salary/${id}`, {
+                method: "DELETE",
+                credentials: "include"
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+            alert("Salary deleted successfully");
+
+            setSalaries((prev) =>
+                prev.filter((salary) => salary._id !== id)
+            );
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        };
   return (
     <div>
     <div className='p-4 border border-slate-400 shadow-md rounded-sm bg-white'>
@@ -148,11 +165,11 @@ export const SalaryList = () => {
                             </td>
 
                             <td className="px-4 py-2 border">
-                            {new Date(salary.salaryDate).toLocaleDateString()}
+                            {new Date(salary.salaryDate).toISOString().split("T")[0]}
                             </td>
                             <td className="px-4 py-2 border">
-                                <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
-                                    Delete
+                                <button onClick={()=> handleDelete(salary._id)} className="bg-red-500 w-20 text-white p-2 rounded-sm hover:bg-red-600">
+                                    <i className='fa fa-trash pr-1'></i>Delete
                                 </button>
                             </td>
                         </tr>
