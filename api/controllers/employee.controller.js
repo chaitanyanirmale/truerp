@@ -105,6 +105,29 @@ export const getEmployees = async (req, res, next) => {
   }
 };
 
+export const updateEmployeeStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const updatedEmp = await Employee.findByIdAndUpdate(
+      id,
+      { status },
+      { returnDocument: 'after' }
+    );
+
+    res.status(200).json({
+      success: true,
+      emp: updatedEmp
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+};
+
 
 export const deleteEmp = async (req, res) => {
   try {
