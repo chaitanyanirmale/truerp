@@ -9,6 +9,16 @@ export const EmployeeList = () => {
     const toggleDropdown = (id) => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
+    const changeStatus = (id, newStatus) => {
+        setEmployees((prev) =>
+            prev.map((emp) =>
+            emp._id === id
+                ? { ...emp, status: newStatus }
+                : emp
+            )
+        );
+        setOpenDropdown(null);
+    };
     const fetchEmployees = async () => {
         setLoading(true);
         try {
@@ -92,8 +102,8 @@ export const EmployeeList = () => {
                             <td className="px-2 border">{emp.location}</td>
                             <td className="px-2 border">{emp.salaryPerHour}</td>
                             <td className="px-6 py-4 border">
-                            <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded">
-                                Active
+                            <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ emp.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
+                                {emp.status === "active" ? "Active" : "Inactive"}
                             </span>
                             </td>
                             <td className="px-6 py-4 border text-center">
@@ -105,9 +115,9 @@ export const EmployeeList = () => {
                                 <div className="absolute right-20 w-50 bg-white shadow-sm border border-slate-300 z-10">
                                     <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                     >View</button>
-                                    <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={() => changeStatus(emp._id, "active")} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                     >Activate</button>
-                                    <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                    <button onClick={() => changeStatus(emp._id, "inactive")} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                     >Deactivate</button>
                                     <button onClick={()=> handleDelete(emp._id)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                     >Delete</button>
