@@ -3,10 +3,10 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 
 export const adduser = async (req, res) => {
-   const { role, companyName, name, mobile, password, alternateMobile, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode} = req.body || {};
+   const { role, companyName, name, mobile, password, alternateNumber, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode} = req.body || {};
    const hashedPassword = await bcrypt.hash(password, 10);
    const newUser = new User({
-     role, companyName, name, mobile, password: hashedPassword, alternateMobile, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode
+     role, companyName, name, mobile, password: hashedPassword, alternateNumber, aadharNumber, gstNumber, panNumber, email, salaryPerDay, paymentTermsInDays, address, state, location, pinCode
    });
    try {
       await newUser.save()
