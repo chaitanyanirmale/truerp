@@ -14,7 +14,32 @@ export const UserList = () => {
     const toggleDropdown = (id) => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
-    
+    const updateStatus = async (id, newStatus) => {
+        try {
+            const res = await fetch(`/api/users/update-status/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: newStatus
+            })
+            });
+            const data = await res.json();
+            if (data.success) {
+                setUsers((prev) =>
+                    prev.map((user) =>
+                    user._id === id
+                        ? { ...user, status: newStatus }
+                        : user
+                    )
+                );
+                setOpenDropdown(null)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
     const fetchUsers = async () => {
         setLoading(true);
         try {
@@ -105,9 +130,9 @@ export const UserList = () => {
                             <td className="px-2 border border-slate-300">{user.location}</td>
 
                             <td className="px-6 py-4 border border-slate-300">
-                            <span className="px-3 py-2 text-xs font-semibold text-white bg-green-600 rounded-xs">
-                                Active
-                            </span>
+                                <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ user.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
+                                    {user.status === "active" ? "Active" : "Inactive"}
+                                </span>
                             </td>
                             <td className="px-6 py-4 border border-slate-300 text-center">
                             <button className="px-3 py-2 text-sm font-semibold text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
@@ -115,6 +140,9 @@ export const UserList = () => {
                             {openDropdown === user._id && (
                                 <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
                                 <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">View User</button>
+                                <button onClick={() => updateStatus(user._id, user.status === "active" ? "inactive" : "active")} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">
+                                    {user.status === "active" ? "Deactivate" : "Activate"}
+                                </button>
                                 <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100">Delete</button>
                                 </div>
                                 )}
