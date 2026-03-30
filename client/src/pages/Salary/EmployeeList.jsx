@@ -9,15 +9,33 @@ export const EmployeeList = () => {
     const toggleDropdown = (id) => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
-    const changeStatus = (id, newStatus) => {
-        setEmployees((prev) =>
-            prev.map((emp) =>
-            emp._id === id
-                ? { ...emp, status: newStatus }
-                : emp
-            )
-        );
-        setOpenDropdown(null);
+    const updateStatus = async (id, newStatus) => {
+        try {
+            const res = await fetch(`/api/employee/update-status/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: newStatus
+            })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setEmployees((prev) =>
+                    prev.map((emp) =>
+                    emp._id === id
+                        ? { ...emp, status: newStatus }
+                        : emp
+                    )
+                );
+                setOpenDropdown(null)
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
     const fetchEmployees = async () => {
         setLoading(true);
@@ -102,31 +120,30 @@ export const EmployeeList = () => {
                             <td className="px-2 border">{emp.location}</td>
                             <td className="px-2 border">{emp.salaryPerHour}</td>
                             <td className="px-6 py-4 border">
-                            <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ emp.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
-                                {emp.status === "active" ? "Active" : "Inactive"}
-                            </span>
+                                <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ emp.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
+                                    {emp.status === "active" ? "Active" : "Inactive"}
+                                </span>
                             </td>
                             <td className="px-6 py-4 border text-center">
-                            <button onClick={()=> toggleDropdown(emp._id)} className="px-3 py-2 text-sm text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition">
-                                Actions
-                                <i className='fa fa-angle-down pl-1'></i>
-                            </button>
-                            {openDropdown === emp._id && (
-                                <div className="absolute right-20 w-50 bg-white shadow-sm border border-slate-300 z-10">
-                                    <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                    >View</button>
-                                    <button onClick={() => changeStatus(emp._id, "active")} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                    >Activate</button>
-                                    <button onClick={() => changeStatus(emp._id, "inactive")} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                    >Deactivate</button>
-                                    <button onClick={()=> handleDelete(emp._id)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                    >Delete</button>
-                                </div>
-                            )}
-                        </td>
-                    </tr>
-                    ))                    
-                }   
+                                <button onClick={()=> toggleDropdown(emp._id)} className="px-3 py-2 text-sm text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition">
+                                    Actions
+                                    <i className='fa fa-angle-down pl-1'></i>
+                                </button>
+                                {openDropdown === emp._id && (
+                                    <div className="absolute right-20 w-50 bg-white shadow-sm border border-slate-300 z-10">
+                                        <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        >View</button>
+                                        <button onClick={() => updateStatus(emp._id, emp.status === "active" ? "inactive" : "active")} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                                            {emp.status === "active" ? "Deactivate" : "Activate"}
+                                        </button>
+                                        <button onClick={()=> handleDelete(emp._id)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        >Delete</button>
+                                    </div>
+                                )}
+                            </td>
+                        </tr>
+                        ))                    
+                    }   
                 </tbody>
             </table>
         </div>
