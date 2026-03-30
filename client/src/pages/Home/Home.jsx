@@ -22,7 +22,7 @@ export const Home = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/auth/send-message", {
+      const res = await fetch("/api/contact/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
