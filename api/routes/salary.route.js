@@ -1,11 +1,11 @@
 import express from "express";
-import Salary from "../models/salary.model.js";
-import { createSalary, getSalaries } from "../controllers/salary.controller.js";
+import { createSalary, deleteSalary, getSalaries } from "../controllers/salary.controller.js";
 
 
 const router = express.Router();
 
 router.post('/create', createSalary);
 router.get('/salary-list', getSalaries);
+router.delete("/delete-salary/:id", deleteSalary);
 
 export default router;
