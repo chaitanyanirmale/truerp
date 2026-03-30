@@ -85,6 +85,11 @@ const userSchema = new mongoose.Schema(
     pinCode: {
       type: String,
     },
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "active"
+    }
   },
   { timestamps: true }
 );
