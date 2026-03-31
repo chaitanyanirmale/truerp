@@ -14,7 +14,7 @@ const EmployeeSchema = new mongoose.Schema(
     },
     department: {
       type: String,
-      enum: ["HR", "IT", "ACC", "SALES"],
+      enum: ["HR", "IT", "ACC", "SALES", "WORKER"],
       required: true,
     },
     position: {
