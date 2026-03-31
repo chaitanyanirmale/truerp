@@ -1,30 +1,13 @@
 import Invoice from "../models/invoice.model.js";
 import Counter from "../utils/counter.js";
+import { getFinancialYear } from "../utils/financialYear.js";
 
-export const getFinancialYear = () => {
 
-  const now = new Date();
-  const month = now.getMonth() + 1; 
-  const year = now.getFullYear();
-
-  let startYear;
-  let endYear;
-
-  if (month < 4) {
-    startYear = year - 1;
-    endYear = year;
-  } else {
-    startYear = year;
-    endYear = year + 1;
-  }
-
-  return `${startYear}-${String(endYear).slice(-2)}`;
-};
-
-export const generateInvoiceNumber = async () => {
+export const generateInvoiceNumber = async (company) => {
+  const prefix = company === "LLP" ? "VEL" : "VEPL";
 
   const counter = await Counter.findOneAndUpdate(
-    { name: "invoice" },
+    { name: `invoice-${prefix}` },
     { $inc: { sequence: 1 } },
     { returnDocument: "after", upsert: true }
   );
@@ -35,29 +18,31 @@ export const generateInvoiceNumber = async () => {
 
   const fy = getFinancialYear();
 
-  return `VEL-${invoiceNumber}-${fy}`;
+  return `${prefix}-${invoiceNumber}-${fy}`;
 };
 
 export const previewInvoice = async (req, res, next) => {
   try {
-    // const { invoice } = req.params;    
+    const { company } = req.body;    
+    
+    const prefix = company === "LLP" ? "VEL" : "VEPL";
 
-    let counter = await Counter.findOne({ name: "invoice" });
+    let counter = await Counter.findOne({ name: `invoice-${prefix}` });
 
     if (!counter) {
       counter = await Counter.create({
-        name: "invoice",
+        name: `invoice-${prefix}`,
         sequence: 0
       });
     }
 
-    const nextSequence = (counter.sequence || 0) + 1;
+    const nextSequence = counter.sequence + 1;
 
     const padded = String(nextSequence).padStart(4, "0");
 
     const fy = getFinancialYear();
 
-    const invoiceNo = `VEL-${padded}-${fy}`;
+    const invoiceNo = `${prefix}-${padded}-${fy}`;
 
     res.status(200).json({
       success: true,
@@ -91,7 +76,7 @@ export const createInvoice = async (req, res, next) => {
     const gstAmount = (baseAmount * gst) / 100;
     const subTotal = baseAmount + gstAmount;
 
-    const invoiceNo = await generateInvoiceNumber("invoice");
+    const invoiceNo = await generateInvoiceNumber(company);
 
     const invoice = await Invoice.create({
       invoiceType, invoicePrefix, company, invoiceNumber: invoiceNo, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity: qty, unitPrice: price, gstPercent: gst, subTotal, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
