@@ -40,6 +40,44 @@ export const previewJCNumber = async (req, res, next) => {
         next(error)
     }
 }
+export const generateSONumber = async () => {
+    const counter = await Counter.findOneAndUpdate(
+        {name: "so"},
+        {$inc: {sequence: 1}},
+        {returnDocument: "after", upsert: true}
+    );
+
+    const sequence = counter.sequence;
+    const soNumber = String(sequence).padStart(4, "0");
+    const fy = getFinancialYear();
+
+    return `SO-${soNumber}-${fy}`;
+}
+
+export const previewSONumber = async (req, res, next) => {
+    try {
+            let counter = await Counter.findOne({ name: "so"});
+            if(!counter){
+                counter = await Counter.create({
+                    name:"so",
+                    sequence: 0,
+                })
+            }
+        
+            const nextSequence = counter.sequence + 1;
+            const padded = String(nextSequence).padStart(4, "0");
+            const fy = getFinancialYear();
+        
+            const soNumber = `SO-${padded}-${fy}`;
+        
+            res.status(200).json({
+                success: true,
+                soNumber
+            });
+    } catch (error) {
+        next(error)
+    }
+}
 export const createSO = async (req, res, next) => {
     try {
         if (!req.user || req.user.role !== "admin") {
@@ -49,9 +87,9 @@ export const createSO = async (req, res, next) => {
             });
         }
 
-        const { customer, soNumber, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark} = req.body;
+        const { customer, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark} = req.body;
         
-        if (!customer || !soNumber || !itemDesc || !itemQty) {
+        if (!customer || !itemDesc || !itemQty) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill all required fields",
@@ -69,6 +107,7 @@ export const createSO = async (req, res, next) => {
             });
         }
 
+        const soNumber = generateSONumber();
         const existingSO = await SO.findOne({ soNumber });
 
         if (existingSO) {
