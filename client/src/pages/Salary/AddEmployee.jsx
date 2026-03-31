@@ -34,7 +34,8 @@ export const AddEmployee = () => {
         HR: ["HR Manager", "HR Executive", "Recruiter"],
         IT: ["Frontend Developer", "Backend Developer", "Full Stack Developer"],
         ACC: ["Accountant", "Senior Accountant"],
-        SALES: ["Sales Executive", "Sales Manager"]
+        SALES: ["Sales Executive", "Sales Manager"],
+        WORKER: ['Worker']
     };
     const [positions, setPositions] = useState([]);
     const handleDepartmentChange = async (e) => {
@@ -101,10 +102,6 @@ export const AddEmployee = () => {
                     </select>
                 </div>
                 <div className="w-full grid gap-2">
-                    <label className="font-semibold">Employee Code</label>
-                    <input type="text" name="empCode" value={formData.empCode || ""} className='border border-slate-400 rounded-sm p-2 px-2' placeholder='0001' readOnly/>
-                </div>
-                <div className="w-full grid gap-2">
                     <label className="font-semibold">Department</label>
                     <select
                         name='department'
@@ -119,7 +116,12 @@ export const AddEmployee = () => {
                         <option value="IT">IT</option>
                         <option value="ACC">Accounts</option>
                         <option value="SALES">Sales</option>
+                        <option value="WORKER">Worker</option>
                     </select>
+                </div>
+                <div className="w-full grid gap-2">
+                    <label className="font-semibold">Employee Code</label>
+                    <input type="text" name="empCode" value={formData.empCode || ""} className='border border-slate-400 rounded-sm p-2 px-2' placeholder='0001' readOnly/>
                 </div>
                 <div className="w-full grid gap-2">
                     <label className="font-semibold">Position</label>
