@@ -141,7 +141,9 @@ export const deleteEmp = async (req, res) => {
         message: "Employee record not found"
       });
     }
-
+    if(user.role !== "admin"){
+      
+    }
     res.status(200).json({
       success: true,
       message: "Employee deleted successfully"
