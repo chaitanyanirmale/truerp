@@ -95,17 +95,6 @@ export const CreateInvoice = () => {
             setLoading(false);
         }
     }
-    const fetchInvoiceNo = async () => {
-        const res = await fetch("/api/invoice/previewInvoice");
-        const data = await res.json();
-        
-        if(data.success){
-            setFormData(formData => ({
-                ...formData,
-                invoiceNumber : data.invoiceNo
-            }))
-        }
-    }
     const setTodayDate = () => {
         const today = new Date().toISOString().split("T")[0];
         
@@ -117,18 +106,34 @@ export const CreateInvoice = () => {
     useEffect(() => {
         fetchSuppliers();
         fetchItems();
-        fetchInvoiceNo();
         setTodayDate();
     }, []);
 
     
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         const { name, value, type, checked } = e.target;
 
         setFormData((formData) => ({
             ...formData,
             [name]: type === "checkbox" ? checked : value,
         }));
+        if (name === "company") {
+            const res = await fetch("/api/invoice/previewInvoice", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ company: value }),
+        });
+
+            const data = await res.json();
+
+            setFormData((formData) => ({
+                ...formData,
+                company: value,
+                invoiceNumber: data.invoiceNo,
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
