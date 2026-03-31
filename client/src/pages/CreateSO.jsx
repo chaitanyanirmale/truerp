@@ -29,10 +29,21 @@ export const CreateSO = () => {
       console.log(error);
     }
   };
-
+  const fetchSoNo = async () => {
+        const res = await fetch("/api/so/previewSONumber");
+        const data = await res.json();
+        
+        if(data.success){
+            setFormData(formData => ({
+                ...formData,
+                soNumber : data.soNumber
+            }))
+        }
+  }
   useEffect(() => {
     fetchJCNo();
     fetchCustomers();
+    fetchSoNo();
   }, []);
 
   const handleChange = (e) => {
@@ -85,11 +96,11 @@ export const CreateSO = () => {
             </div>
             <div className="grid gap-2">
               <label className="font-semibold">So Number</label>
-              <input type="text" name='soNumber' placeholder='Enter SO Number' value={formData.soNumber} onChange={handleChange} className='p-2 border border-slate-400 rounded-sm'/>
+              <input type="text" name='soNumber' value={formData.soNumber} onChange={handleChange} className='p-2 border border-slate-400 rounded-sm bg-gray-100' readOnly/>
             </div>
               <div className="grid gap-2">
                   <label className="font-semibold">JobCard Number</label>
-                  <input type="text" value={formData.jobCardNumber} onChange={handleChange} name="jobCardNumber"  className='p-2 border border-slate-400 rounded-sm bg-gray-300' readOnly/>
+                  <input type="text" value={formData.jobCardNumber} onChange={handleChange} name="jobCardNumber"  className='p-2 border border-slate-400 rounded-sm bg-gray-100' readOnly/>
               </div>
               <div className="grid gap-2">
                   <label className="font-semibold">Item Description</label>
