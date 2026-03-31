@@ -4,7 +4,7 @@ import { getFinancialYear } from "../utils/financialYear.js";
 
 
 export const generateInvoiceNumber = async (company) => {
-  const prefix = company === "LLP" ? "VEL" : "VEPL";
+  const prefix = company === "LLP" ? "INL" : "INPL";
 
   const counter = await Counter.findOneAndUpdate(
     { name: `invoice-${prefix}` },
@@ -25,7 +25,7 @@ export const previewInvoice = async (req, res, next) => {
   try {
     const { company } = req.body;    
     
-    const prefix = company === "LLP" ? "VEL" : "VEPL";
+    const prefix = company === "LLP" ? "INL" : "INPL";
 
     let counter = await Counter.findOne({ name: `invoice-${prefix}` });
 
@@ -102,7 +102,7 @@ export const getInvoices = async (req, res, next) => {
     const skip = (page - 1) * limit;
 
     const invoices = await Invoice.find()
-      .populate("receiver", "companyName")
+      .populate("receiver", "companyName name")
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
