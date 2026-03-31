@@ -65,11 +65,12 @@ export const EmployeeList = () => {
             const data = await res.json();
 
             if (data.success) {
-            alert("Employee deleted successfully");
+                alert("Employee deleted successfully");
 
-            setEmployees((prev) =>
-                prev.filter((emp) => emp._id !== id)
-            );
+                setEmployees((prev) =>
+                    prev.filter((emp) => emp._id !== id)
+                );
+                setOpenDropdown(null)
             }
         } catch (error) {
             console.log(error);
@@ -96,6 +97,7 @@ export const EmployeeList = () => {
                     <tr>
 						<th className="px-4 py-3 border">Fullname</th>
 						<th className="px-4 py-3 border">Role</th>
+						<th className="px-4 py-3 border">EMP Code</th>
 						<th className="px-4 py-3 border">Mobile</th>
 						<th className="px-4 py-3 border">Email</th>
 						<th className="px-4 py-3 border">PAN No</th>
@@ -108,12 +110,13 @@ export const EmployeeList = () => {
                 <tbody>
                     {employees.length === 0 ? (
                         <tr>
-                            <td colSpan='7' className='text-center p-4'>No Employees Found</td>
+                            <td colSpan='10' className='text-center p-4'>No Employees Found</td>
                         </tr>
                     ): employees.map((emp) => (
                         <tr key={emp._id} className="border border-gray-200">
                             <td className="px-2 border text-gray-900">{emp.fullname}</td>
                             <td className="px-2 border">{emp.role}</td>
+                            <td className="px-2 border">{emp.empcode}</td>
                             <td className="px-2 border">{emp.mobile}</td>
                             <td className="px-2 border">{emp.email}</td>
                             <td className="px-2 border">{emp.panNumber}</td>
