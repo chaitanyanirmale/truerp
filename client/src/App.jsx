@@ -19,7 +19,7 @@ import { CreateSO } from './pages/CreateSO.jsx'
 import { AIFeatures } from './pages/Home/AIFeatures.jsx'
 import { SOList } from './pages/SOList.jsx'
 import { InvoiceList } from './pages/InvoiceList.jsx'
-import { SupplierPayment } from './pages/SupplierPayment.jsx'
+import { SupplierPayment } from './pages/Purchase/SupplierPayment.jsx'
 import { AddPurchase } from './pages/Purchase/AddPurchase.jsx'
 import { SupplierList } from './pages/Purchase/SupplierList.jsx'
 import { AddNewItem } from './pages/Items/AddNewItem.jsx'
@@ -30,6 +30,14 @@ import { ManageUnits } from './pages/Items/ManageUnits.jsx'
 import { AddSupplierProduct } from './pages/Items/AddSupplierProduct.jsx'
 import { GRR } from './pages/GRR.jsx'
 import { GRRList } from './pages/GRRList.jsx'
+import { ViewPurchaseBill } from './pages/Purchase/ViewPurchaseBill.jsx'
+import { PartPayment } from './pages/Purchase/PartPayment.jsx'
+import { CreatePO } from './pages/Purchase/CreatePO.jsx'
+import { POList } from './pages/Purchase/POList.jsx'
+import { AddMachinery } from './pages/Quality/AddMachinery.jsx'
+import { MachineryList } from './pages/Quality/MachineryList.jsx'
+import { QuickLinks } from './pages/Home/QuickLinks.jsx'
+import { Enquiries } from './pages/Quality/Enquiries.jsx'
 
 function App() {
 
@@ -37,10 +45,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Home />} />          
+          <Route path='/login' element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path='profile'  element={<Profile />} />
             <Route path='features' element={<Features />} />
+            <Route path='quick-links' element={<QuickLinks />} />
             <Route path='finance' element={<FinanceDashboard />} />
             <Route path='general' element={<GeneralDashboard />} />
             <Route path='aifeatures' element={<AIFeatures />} />
@@ -57,6 +67,8 @@ function App() {
             <Route path='employee-list' element={<EmployeeList />} />
             <Route path='create-so' element={<CreateSO />} />
             <Route path='so-list' element={<SOList />} />
+            <Route path='create-po' element={<CreatePO />} />
+            <Route path='po-list' element={<POList />} />
             <Route path='add-purchase' element={<AddPurchase />} />
             <Route path='supplier-list' element={<SupplierList />} />
             <Route path='add-item' element={<AddNewItem />} />
@@ -67,8 +79,12 @@ function App() {
             <Route path='addSupplierwiseProduct/:id' element={<AddSupplierProduct />} />
             <Route path='grr' element={<GRR />} />
             <Route path='grr-list' element={<GRRList  />} />
+            <Route path='viewPurchaseBill' element={<ViewPurchaseBill  />} />
+            <Route path='partPayment' element={<PartPayment  />} />
+            <Route path='add-machinery' element={<AddMachinery  />} />
+            <Route path='machinery-list' element={<MachineryList  />} />
+            <Route path='enquiries' element={<Enquiries  />} />
           </Route>
-          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

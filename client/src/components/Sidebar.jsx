@@ -12,8 +12,11 @@ export const Sidebar = () => {
               <NavLink to="features" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'features' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('features')}>
                 <i className="fa fa-dashboard"></i> Features
               </NavLink>
+              <NavLink to="quick-links" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'quick-links' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('quick-links')}>
+                <i className="fa fa-link"></i> Quick Links
+              </NavLink>
               <NavLink to="finance" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'finance' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('finance')}>
-                <i className="fa fa-inr"></i> Finance Dashboard
+                <i className="fa fa-inr"></i> P&L Dashboard
               </NavLink>
               <NavLink to="general" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'general' ? 'bg-slate-800 border-l-2 border-blue-700':''}`}  onClick={()=> setActive('general')}>
                 <i className="fa fa-dashboard"></i> General Dashboard
@@ -47,7 +50,7 @@ export const Sidebar = () => {
                         <i className="fa fa-rupee"></i>Add Expense
                       </NavLink>
                       <NavLink to="expense-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'exp-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('exp-list')}>
-                        <i className="fa fa-file"></i>List of Expense
+                        <i className="fa fa-list"></i>List of Expense
                       </NavLink>
                 </div>
 
@@ -146,6 +149,12 @@ export const Sidebar = () => {
                 <div className="border-t border-slate-700 my-4"></div>
                 <p className="text-gray-200 uppercase text-sm text-center">Purchase</p>
                 <div className="border-t border-slate-700 my-4"></div>
+                <NavLink to="create-po" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'create-po' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('create-po')}> <i className='fa fa-plus-circle'></i>
+                 Create PO
+                </NavLink>
+                <NavLink to="po-list" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'po-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('po-list')}> <i className='fa fa-list'></i>
+                 List of PO's/BOM's
+                </NavLink>
                 <NavLink to="add-purchase" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'add-purchase' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('add-purchase')}> <i className='fa fa-plus-circle'></i>
                  Add Purchase Bill
                 </NavLink>
@@ -165,6 +174,29 @@ export const Sidebar = () => {
                  List of GRR
                 </NavLink>
                 <div className="border-t border-slate-700 my-4"></div>
+                <p className="text-gray-200 uppercase text-sm text-center">Quality</p>
+                <div className="border-t border-slate-700 my-4"></div>
+                <button onClick={() => setOpenMenu(openMenu === "machinery" ? null : "machinery")} className='flex items-center  gap-3 px-3 py-2 w-full hover:bg-slate-700 cursor-pointer transition'>
+                     <i className="fa fa-th-list"></i><p className='w-full text-start'>Machinery</p>
+                     <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "machinery" ? "rotate-90" : ""}`}></i>
+                </button>
+                <div className={`overflow-hidden overflow-y-auto text-sm transition-all duration-300 ${ openMenu === "machinery" ? "max-h-30" : "max-h-0" }`}>
+                  <NavLink to="add-machinery" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'add-machinery' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('add-machinery')}><i className='fa fa-plus'></i>
+                  Add Machinery
+                  </NavLink>
+                  <NavLink to="machinery-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'machinery-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('machinery-list')}> <i className='fa fa-list-alt'></i>
+                  List of Machinery
+                  </NavLink>
+                </div>
+                <div className="border-t border-slate-700 my-4"></div>
+                <p className="text-gray-200 uppercase text-sm text-center">Sales</p>
+                <div className="border-t border-slate-700 my-4"></div>
+                <NavLink to="enquiries" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'enquiries' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('enquiries')}> <i className='fa fa-list'></i>
+                 Enquiries
+                </NavLink>
+                <NavLink to="quotations" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'quotations' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('quotations')}> <i className='fa fa-list'></i>
+                 Quotations
+                </NavLink>
             </div>
         </aside>
 
