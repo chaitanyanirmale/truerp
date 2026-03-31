@@ -3,7 +3,7 @@ import { createInvoice, getInvoices, previewInvoice } from '../controllers/invoi
 
 const router = express.Router();
 
-router.get('/previewInvoice', previewInvoice);
+router.post('/previewInvoice', previewInvoice);
 router.post('/create', createInvoice);
 router.get('/invoice-list', getInvoices);
 
