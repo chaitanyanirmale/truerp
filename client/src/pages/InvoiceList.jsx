@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const InvoiceList = () => {
     const [invoices, setInvoices] = useState([])
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
     const fetchInvoices = async () => {
             setLoading(true);
             try {
@@ -26,12 +28,8 @@ export const InvoiceList = () => {
             <div className='xl:w-1/3 md:w-full'>
                 <h1 className="text-2xl font-semibold">PVT LTD Invoices</h1>
             </div>
-            <div className="xl:w-1/4 md:w-full">
-                <button className='bg-blue-700 text-white p-2 rounded-sm'><i className="fa fa-fw fa-lg fa-eye"></i></button>
-			    {/* <button className='bg-blue-700 text-white'><i className="fa fa-fw fa-lg fa-eye-slash"></i></button> */}
-            </div>
             <div className="xl:w-full xl:flex xl:justify-between md:flex md:justify-between md:text-sm md:gap-4">
-                <button className='bg-green-600 text-white font-semibold px-4 rounded-sm'><i className='fa fa-plus px-2'></i>Create Invoice</button>
+                <button onClick={()=> navigate('/dashboard/create-invoice')} className='bg-green-600 text-white font-semibold p-2 px-4 rounded-xs'><i className='fa fa-plus px-2'></i>Create Invoice</button>
                 <input type="date" name="" className='border border-slate-400 px-2 rounded-sm'/>
                 <input type="date" name="" className='border border-slate-400 px-2 rounded-sm'/>
                 <button className='bg-blue-700 text-white p-2 px-6 font-semibold rounded-sm'><i className='fa fa-search pr-1'></i>Search</button>
@@ -41,7 +39,7 @@ export const InvoiceList = () => {
         <div className="md:overflow-x-auto">
             <table className='min-w-1200px'>
                 <thead>
-                    <tr className='bg-gray-100 text-sm'>
+                    <tr className='bg-blue-700 text-sm text-white'>
                         <th className='p-4' >Invoice No.</th>
                         <th className='p-4' >Invoice Date</th>
                         <th className='p-4' >PO Number</th>
@@ -73,7 +71,7 @@ export const InvoiceList = () => {
                                 <td className='border border-slate-300 p-3'>{invoice.invoiceNumber}</td>
                                 <td className='border border-slate-300 p-3'>{new Date(invoice.invoiceDate).toISOString().split("T")[0]}</td>
                                 <td className='border border-slate-300 p-3'>{invoice.poNumber}</td>
-                                <td className='border border-slate-300 p-3'>{invoice.receiver?.companyName}</td>
+                                <td className='border border-slate-300 p-3'>{invoice.receiver?.name}</td>
                                 <td className='border border-slate-300 p-3'>{invoice.placeOfSupply}</td>
                                 <td className='border border-slate-300 p-3'>₹ {invoice.subTotal}</td>
                                 <td className='border border-slate-300 p-3'>₹ {invoice.receivedAmount || 0}</td>
@@ -88,12 +86,12 @@ export const InvoiceList = () => {
                                     </select>
                                 </td>
                                 <td className="border border-slate-300 p-4">
-                                <button className="bg-green-600 text-white font-semibold px-3 py-1 rounded">
+                                <button className="bg-green-600 text-white font-semibold p-2 px-4 rounded">
                                     Save
                                 </button>
                                 </td>
                                 <td className="border border-slate-300 p-4">
-                                <button className="bg-blue-700 text-white font-semibold px-3 py-1 rounded">
+                                <button className="bg-blue-700 text-white font-semibold p-2 px-4 rounded">
                                     Action
                                 </button>
                                 </td>

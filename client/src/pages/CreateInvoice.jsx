@@ -213,7 +213,7 @@ export const CreateInvoice = () => {
                             <option value="">--Select Receiver--</option>
                             {suppliers.map((supplier) => (
                                 <option key={supplier._id} value={supplier._id}>
-                                {supplier.companyName}
+                                {supplier.name}
                                 </option>
                             ))}
                         </select>
@@ -248,7 +248,7 @@ export const CreateInvoice = () => {
                             <option value="">--Select Consignee--</option>
                             {suppliers.map((supplier) => (
                                 <option key={supplier._id} value={supplier._id}>
-                                {supplier.companyName}
+                                {supplier.name}
                                 </option>
                             ))}
                         </select>
