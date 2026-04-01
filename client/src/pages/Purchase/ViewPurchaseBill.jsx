@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const ViewPurchaseBill = () => {
     const [openMenu, setOpenMenu] = useState("billDetails")
@@ -9,6 +9,7 @@ export const ViewPurchaseBill = () => {
     const gstOptions = [0,1,1.5,2,2.5,3,5,6,9, 14];
     const [formData, setFormData] = useState({ supplier: "", invoiceNumber: "", invoiceDate: "", gstNumber: "", basicAmount: "", cgst: "", sgst: "", igst: "", totalAmount: "", paymentTerms: "", paymentDueDate: "", paymentMethod: "",
     })
+    const navigate = useNavigate();
 
     const { id } = useParams();
     const fetchPurchaseBill = async () => {
@@ -69,7 +70,7 @@ export const ViewPurchaseBill = () => {
     <div className='bg-white rounded-sm shadow-sm p-4 px-8'>
         <div className="flex justify-between">
             <h1 className='text-2xl font-semibold'>Bill Details : {purchaseBill?.supplier?.name}</h1>
-            <button className='bg-green-600 p-2 text-white font-semibold text-sm rounded-sm'><i className='fa fa-plus pr-1'></i>Add Payment</button>
+            <button onClick={()=> navigate(`/dashboard/partPayment/${id}`)} className='bg-green-600 p-2 px-4 text-white font-semibold text-sm rounded-sm hover:bg-green-700'><i className='fa fa-plus pr-1'></i>Add Payment</button>
         </div>
         <hr className='text-slate-300 my-4'/>
         <div className="flex text-sm">
