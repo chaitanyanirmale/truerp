@@ -135,3 +135,23 @@ export const purchaseBill = async (req, res) => {
     });
   }
 }
+
+export const updatePurchaseBill = async (req, res) => {
+  try {
+    const updatedPurchase = await Purchase.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { returnDocument: 'after' }
+    );
+
+    res.status(200).json({
+      success: true,
+      purchase: updatedPurchase,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
