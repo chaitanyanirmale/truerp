@@ -5,7 +5,7 @@ import User from "../models/user.model.js";
 
 export const addPurchase = async (req, res, next) => {
     try {
-        const {supplier, invoiceNumber, invoiceDate, gstNumber, basicAmount, cgst, sgst, igst, paidAmount, paymentType, tdsDeduction, otherDeduction, paymentTerms, paymentDueDate, paymentMethods} = req.body;
+        const {supplier, invoiceNumber, invoiceDate, gstNumber, basicAmount, cgst, sgst, igst, paidAmount, paymentType, tdsDeduction, otherDeduction, paymentTerms, paymentDueDate, paymentMethod} = req.body;
 
         if (!supplier || !invoiceNumber || !invoiceDate || !basicAmount) {
             return res.status(400).json({
@@ -54,7 +54,7 @@ export const addPurchase = async (req, res, next) => {
         }
 
         const purchase = await Purchase.create({
-            supplier, invoiceNumber, invoiceDate, gstNumber, basicAmount: basic, cgst: cgstPercent, sgst: sgstPercent, igst: igstPercent,totalAmount, paidAmount: paid,balanceAmount, paymentType, tdsDeduction: tds, otherDeduction:other, paymentTerms, paymentDueDate, paymentMethods, status,
+            supplier, invoiceNumber, invoiceDate, gstNumber, basicAmount: basic, cgst: cgstPercent, sgst: sgstPercent, igst: igstPercent,totalAmount, paidAmount: paid,balanceAmount, paymentType, tdsDeduction: tds, otherDeduction:other, paymentTerms, paymentDueDate, paymentMethod, status,
         })
 
         res.status(201).json({
@@ -111,3 +111,27 @@ export const deletePurchase = async (req, res, next) => {
     next(error);
   }
 };
+
+export const purchaseBill = async (req, res) => {
+   try {
+    const purchaseBill = await Purchase.findById(req.params.id)
+    .populate("supplier", "name");
+
+    if (!purchaseBill) {
+      return res.status(404).json({
+        success: false,
+        message: "Purchase Bill not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      purchaseBill,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
