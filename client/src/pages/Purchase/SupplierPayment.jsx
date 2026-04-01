@@ -85,7 +85,7 @@ export const SupplierPayment = () => {
                 </div>
             </div>
             <hr className='text-slate-400 my-4'/>
-            <div className="overflow-x-auto">
+            <div className="xl:overflow-x-auto">
                 <table className='w-full text-center text-sm'>
                     <thead className='border border-slate-400'>
                         <tr>
@@ -122,13 +122,13 @@ export const SupplierPayment = () => {
                                 <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm'>Action <i className='fa fa-angle-down'></i></button>
 
                                 {openDropdown === purchase._id && (
-                                    <div className="absolute right-12 w-40 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30">
-                                    <button onClick={()=> navigate('/dashboard/viewPurchaseBill')} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-folder pr-1'></i>View Purchase Bill</button>
-                                    <button onClick={()=> navigate('/dashboard/partPayment')} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-inr pr-1'></i>Part Payment</button>
-                                    <button onClick={() => deletePurchase(purchase._id)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-trash pr-1'></i>Delete Purchase Bill</button>
+                                    <div className="absolute right-12 w-50 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30 pl-2">
+                                    <button onClick={()=> navigate(`/dashboard/viewPurchaseBill/${purchase._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-folder pr-2 text-blue-600'></i>View Purchase Bill</button>
+                                    <button onClick={()=> navigate('/dashboard/partPayment')} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-inr pr-2 text-blue-600'></i>Part Payment</button>
+                                    <button onClick={() => deletePurchase(purchase._id)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
+                                    ><i className='fa fa-trash pr-2 text-blue-600'></i>Delete Purchase Bill</button>
                                     </div>
                                 )}
                             </td>
