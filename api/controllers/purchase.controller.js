@@ -115,7 +115,7 @@ export const deletePurchase = async (req, res, next) => {
 export const purchaseBill = async (req, res) => {
    try {
     const purchaseBill = await Purchase.findById(req.params.id)
-    .populate("supplier", "name");
+    .populate("supplier", "name companyName");
 
     if (!purchaseBill) {
       return res.status(404).json({
