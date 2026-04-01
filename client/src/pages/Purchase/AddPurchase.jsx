@@ -5,7 +5,8 @@ export const AddPurchase = () => {
     const [loading, setLoading] = useState(false)
     const initialData = {supplier:'', invoiceNumber: '', invoiceDate: '', gstNumber: '', basicAmount: '', cgst: '', sgst: '', igst: '', paidAmount: '', paymentType: '', tdsPercent:'', tdsDeduction: '', otherDeduction: '', paymentTerms: '', paymentDueDate: '', paymentMethod: '', totalAmount: 0, balanceAmount: 0,}
     const [formData, setFormData] = useState(initialData);
-
+    const gstOptions = [0,1,1.5,2,2.5,3,5,6,9, 14];
+    
     const fetchSuppliers = async () => {
         setLoading(true);
         try {
@@ -137,60 +138,33 @@ export const AddPurchase = () => {
                         <label className="font-semibold text-sm">CGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span  className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
                         <select name="cgst" onChange={handleChange} value={formData.cgst} className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select CGST%--</option>
-                            <option value="0">0%</option>
-                            <option value="0.25">0.25%</option>
-                            <option value="0.1">0.1%</option>
-                            <option value="1">1%</option>
-                            <option value="1.5">1.5%</option>
-                            <option value="2.5">2.5%</option>
-                            <option value="3">3%</option>
-                            <option value="5">5%</option>
-                            <option value="6">6%</option>
-                            <option value="9">9%</option>
-                            <option value="12">12%</option>
-                            <option value="14">14%</option>
-                            <option value="18">18%</option>
-                            <option value="28">28%</option>
+                            {gstOptions.map((rate) => (
+                            <option key={rate} value={rate}>
+                                {rate}%
+                            </option>
+                            ))}
                         </select>
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm ">SGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
                         <select name="sgst" onChange={handleChange} value={formData.sgst} className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select SGST%--</option>
-                            <option value="0">0%</option>
-                            <option value="0.25">0.25%</option>
-                            <option value="0.1">0.1%</option>
-                            <option value="1">1%</option>
-                            <option value="1.5">1.5%</option>
-                            <option value="2.5">2.5%</option>
-                            <option value="3">3%</option>
-                            <option value="5">5%</option>
-                            <option value="6">6%</option>
-                            <option value="9">9%</option>
-                            <option value="12">12%</option>
-                            <option value="14">14%</option>
-                            <option value="18">18%</option>
-                            <option value="28">28%</option>
+                            {gstOptions.map((rate) => (
+                            <option key={rate} value={rate}>
+                                {rate}%
+                            </option>
+                            ))}
                         </select>
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm">IGST <span className='bg-blue-600 p-1 rounded-sm text-white text-xs'>Manual</span> <span className='bg-green-600 p-1 rounded-sm text-white text-xs'>Auto</span></label>
                         <select name="igst" onChange={handleChange} value={formData.igst} className="border border-slate-400 rounded-sm p-2">
                             <option value="">--Select IGST%--</option>
-                            <option value="0">0%</option>
-                            <option value="0.25">0.25%</option>
-                            <option value="0.1">0.1%</option>
-                            <option value="1">1%</option>
-                            <option value="1.5">1.5%</option>
-                            <option value="2.5">2.5%</option>
-                            <option value="3">3%</option>
-                            <option value="5">5%</option>
-                            <option value="6">6%</option>
-                            <option value="9">9%</option>
-                            <option value="12">12%</option>
-                            <option value="14">14%</option>
-                            <option value="18">18%</option>
-                            <option value="28">28%</option>
+                            {gstOptions.map((rate) => (
+                            <option key={rate} value={rate}>
+                                {rate}%
+                            </option>
+                            ))}
                         </select>
                     </div>
                 </div>
