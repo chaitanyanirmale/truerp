@@ -70,3 +70,21 @@ export const addPayment = async (req, res, next) => {
         next(error)
     }
 }
+
+export const getPaymentsByBill = async (req, res) => {
+    try {
+        const { billId } = req.params;
+
+        const payments = await Payment.find({ billId })
+            .sort({ paymentDate: -1 });
+
+        res.status(200).json({
+            success: true,
+            payments
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
