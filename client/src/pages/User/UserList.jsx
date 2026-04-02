@@ -139,7 +139,7 @@ export const UserList = () => {
                             </button>
                             {openDropdown === user._id && (
                                 <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
-                                <button onClick={() => navigate(`/users/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">View User</button>
+                                <button onClick={() => navigate(`/dashboard/user/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">View User</button>
                                 <button onClick={() => updateStatus(user._id, user.status === "active" ? "inactive" : "active")} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">
                                     {user.status === "active" ? "Deactivate" : "Activate"}
                                 </button>
