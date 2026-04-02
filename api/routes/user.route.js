@@ -1,10 +1,11 @@
 import express from 'express'
 import { verifyAdmin, verifyToken } from '../utils/verifyUser.js';
-import { deleteUser, getCustomers, getSuppliers, getSuppliersAndVendors, getUser, getUsers, updateUser, updateUserStatus } from '../controllers/user.controller.js';
+import { deleteUser, getCustomers, getSuppliers, getSuppliersAndVendors, getUser, getUserById, getUsers, updateUser, updateUserStatus } from '../controllers/user.controller.js';
 
 const router = express.Router();
 
 router.get('/user', verifyToken, getUser)
+router.get('/user/:id', verifyToken, getUserById)
 router.get('/user-list', verifyToken, getUsers)
 router.get('/customers', getCustomers)
 router.get('/suppliers', getSuppliers)
