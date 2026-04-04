@@ -102,7 +102,6 @@ export const EmployeeList = () => {
 						<th className="px-4 py-3 border">Email</th>
 						<th className="px-4 py-3 border">PAN No</th>
 						<th className="px-4 py-3 border">Location</th>
-						<th className="px-4 py-3 border">Salary Per Hour</th>
 						<th className="px-4 py-3 border">Status</th>
 						<th className="px-4 py-3 border">Action</th>
 					</tr>
@@ -114,14 +113,13 @@ export const EmployeeList = () => {
                         </tr>
                     ): employees.map((emp) => (
                         <tr key={emp._id} className="border border-gray-200">
-                            <td className="px-2 border text-gray-900">{emp.fullname}</td>
+                            <td className="px-2 border">{emp.fullname}</td>
                             <td className="px-2 border">{emp.role}</td>
                             <td className="px-2 border">{emp.empcode}</td>
                             <td className="px-2 border">{emp.mobile}</td>
                             <td className="px-2 border">{emp.email}</td>
                             <td className="px-2 border">{emp.panNumber}</td>
                             <td className="px-2 border">{emp.location}</td>
-                            <td className="px-2 border">{emp.salaryPerHour}</td>
                             <td className="px-6 py-4 border">
                                 <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ emp.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
                                     {emp.status === "active" ? "Active" : "Inactive"}

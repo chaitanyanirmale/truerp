@@ -92,7 +92,7 @@ export const ExpenseList = () => {
             <tbody>
               {expenses.length === 0 ? (
                 <tr>
-                  <td><p>No Expenses Found</p></td>
+                  <td className='p-2 border border-slate-300' colSpan="6">No Expenses Found</td>
                 </tr>
                 
               ) : expenses.map((exp)=> 

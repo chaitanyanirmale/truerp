@@ -101,7 +101,7 @@ export const UserList = () => {
             <p>Loading..</p>
         ) : <div className="text-start h-150 pb-4 overflow-y-auto">
             <table className='w-full'>
-                <thead className="font-semibold text-sm">
+                <thead className="font-semibold text-sm bg-blue-600 text-white">
                     <tr>
                         <td className="p-2 border border-slate-300">Fullname</td>
                         <td className="p-2 border border-slate-300">Mobile</td>

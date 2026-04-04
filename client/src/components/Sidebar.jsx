@@ -109,7 +109,7 @@ export const Sidebar = () => {
                         <i className="fa fa-list"></i>Employee List
                       </NavLink>
                       <NavLink to="salary-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'salary-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('salary-list')}>
-                        <i className="fa fa-file"></i>Salary List
+                        <i className="fa fa-list"></i>Salary List
                       </NavLink>
                 </div>
 

@@ -144,7 +144,7 @@ export const AddEmployee = () => {
                     <label className="font-semibold">Reporting To</label>
                     <select type="text" name='reporting' value={formData.reporting}  className='border border-slate-400 p-2 rounded-sm' onChange={handleChange}>
                         <option value="">-- Select --</option>
-                        <option value="aakash">Aakash</option>
+                        <option value="Atharv Raut">Atharv Raut</option>
                     </select>
                 </div>
                 <div className="w-full grid gap-2">

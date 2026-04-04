@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export const Profile = () => {
     const { currentUser } = useSelector((state) => state.user);
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState("view")
     const [active, setActive] = useState('view')
     const [user, setUser] = useState(null)
 
@@ -99,7 +99,7 @@ export const Profile = () => {
   return (
     <div className='w-full flex justify-between gap-4'>
         <div className="">
-            <div className="w-50 mb-4">
+            <div className="w-60 mb-4">
                 <img src="/profile.jpg" alt="" className='w-full'/>
             </div>
             <div className="bg-white grid">
@@ -184,7 +184,7 @@ export const Profile = () => {
         </div>
         <div className={`overflow-hidden ${ open === "update" ? "w-full h-full bg-white p-2 px-4 text-sm" : "w-0" }`}>
             <div className="p-2">
-                <h4 className='text-lg mb-3 font-semibold'>Update Profile</h4><hr className='text-slate-400 my-4'/>
+                <h4 className='text-xl mb-3 font-semibold'>Update Profile</h4><hr className='text-slate-400 my-4'/>
                 
                 <form action="" onSubmit={handleSubmit}>
                     <div className="flex mb-4 px-2">
