@@ -103,10 +103,21 @@ export const CreateInvoice = () => {
             invoiceDate: today
         }))
     }
+    const fetchBillNumber = async () => {
+        const res = await fetch('/api/invoice/previewBillNo',{
+            method: "POST",
+        })
+        const data = await res.json();
+        setFormData((formData) => ({
+            ...formData,
+            transportBillNo: data.billNo
+        }));
+    }
     useEffect(() => {
         fetchSuppliers();
         fetchItems();
         setTodayDate();
+        fetchBillNumber();
     }, []);
 
     
@@ -116,6 +127,7 @@ export const CreateInvoice = () => {
         setFormData((formData) => ({
             ...formData,
             [name]: type === "checkbox" ? checked : value,
+            ...(name === "product" && { productName: value })
         }));
         if (name === "company") {
             const res = await fetch("/api/invoice/previewInvoice", {
@@ -281,13 +293,13 @@ export const CreateInvoice = () => {
                             <select name="product" value={formData.product} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1'>
                                 <option value="">New Product</option>
                                 {items.map((item)=>(
-                                    <option key={item._id}>{item.itemName}</option>
+                                    <option key={item._id} value={item.itemName}>{item.itemName}</option>
                                 ))}
                             </select>
                         </div>
                         <div className="">
                             <label className="text-sm p-1 font-semibold">OR Type Name</label>
-                            <textarea name='productName'value={formData.product} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 bg-green-200' rows='4' placeholder='Enter Product Name' readOnly></textarea>
+                            <textarea name='productName'value={formData.productName} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 bg-green-200' rows='4' placeholder='Enter Product Name'></textarea>
                         </div>
                     </div>
                     <div className="xl:grid xl:grid-cols-7 xl:gap-4 md:grid md:grid-cols-1 md:gap-2 sm:grid sm:grid-cols-1 sm:gap-2">
@@ -367,7 +379,7 @@ export const CreateInvoice = () => {
                     <div className="xl:grid xl:grid-cols-2 gap-6">
                         <div className="">
                             <label className="text-sm p-1 font-semibold">Bill No.</label>
-                            <input type='text' name="transportBillNo" value={formData.transportBillNo} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1' placeholder='Enter Here'></input>
+                            <input type='text' name="transportBillNo" value={formData.transportBillNo} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1' placeholder='Enter Here' readOnly></input>
                         </div>
                         <div className="">
                             <label className="text-sm p-1 font-semibold">Vehicle Number</label>
