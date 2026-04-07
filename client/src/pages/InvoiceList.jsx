@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 export const InvoiceList = () => {
     const [invoices, setInvoices] = useState([])
     const [loading, setLoading] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const toggleDropdown = (id) => {
+        setOpenDropdown(openDropdown === id ? null : id);
+    };
     const navigate = useNavigate();
     const fetchInvoices = async () => {
             setLoading(true);
@@ -91,9 +95,16 @@ export const InvoiceList = () => {
                                 </button>
                                 </td>
                                 <td className="border border-slate-300 p-4">
-                                <button className="bg-blue-700 text-white font-semibold p-2 px-4 rounded">
-                                    Action
+                                <button onClick={()=> toggleDropdown(invoice._id)} className="bg-blue-700 text-white font-semibold p-2 rounded-xs w-23">
+                                    Action <i className='fa fa-angle-down pl-1'></i>
                                 </button>
+                                {openDropdown === invoice._id && 
+                                (<div className="absolute right-14 w-40 bg-white shadow-sm border border-slate-300 z-10">
+                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"
+                                    ><i className='fa fa-pencil pr-1 text-blue-600'></i>Edit Invoice</button>
+                                    <button onClick={()=> navigate(`/billsofsupply/${invoice._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"
+                                    ><i className='fa fa-file pr-1 text-blue-600'></i>View/Download</button>
+                                </div>)}
                                 </td>
                             </tr>
                             )
