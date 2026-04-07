@@ -48,6 +48,11 @@ const invoiceSchema = new mongoose.Schema(
     quantity: Number,
     unitPrice: Number,
     gstPercent: Number,
+    taxableValue: Number,
+    cgstRate: Number,
+    cgstAmount: Number,
+    sgstRate: Number,
+    sgstAmount: Number,
     subTotal: Number,
 
     totalAmount: {
