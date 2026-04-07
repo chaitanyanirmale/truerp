@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-"scripts": {
+  "scripts": {
     "start": "node api/index.js",
     "dev": "nodemon api/index.js",
     "ddev": "nodemon api/index.js & cd client && npm run dev",
@@ -20,6 +20,7 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.0",
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.11",
+    "to-words": "^5.4.0"
   }
 }
