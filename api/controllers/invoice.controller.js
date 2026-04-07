@@ -1,7 +1,7 @@
 import Invoice from "../models/invoice.model.js";
 import Counter from "../utils/counter.js";
 import { getFinancialYear } from "../utils/financialYear.js";
-
+import { ToWords } from "to-words";
 
 export const generateInvoiceNumber = async (company) => {
   const prefix = company === "LLP" ? "INL" : "INPL";
@@ -54,11 +54,43 @@ export const previewInvoice = async (req, res, next) => {
   }
 };
 
+export const generateBillNumber = async () => {
+  const counter = await Counter.findOneAndUpdate(
+    { name: `bill` },
+    { $inc: { sequence: 1 } },
+    { returnDocument: "after", upsert: true }
+  );
+
+  const seq = counter.sequence;
+  const billNumber = String(seq).padStart(4, "0");
+
+  return `${billNumber}`;
+}
+
+export const previewBillNumber = async (req, res) => {
+    let counter = await Counter.findOne({ name: 'bill' });
+    if (!counter) {
+      counter = await Counter.create({
+        name: 'bill',
+        sequence: 0
+      });
+    }
+  
+  const nextSequence = counter.sequence + 1;
+  const padded = String(nextSequence).padStart(4, "0");
+  const billNo = `${padded}`;
+
+    res.status(200).json({
+      success: true,
+      billNo,
+    });
+}
+ 
 
 export const createInvoice = async (req, res, next) => {
   try {
     const {
-      invoiceType, invoicePrefix, company, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity, unitPrice, gstPercent, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
+      invoiceType, invoicePrefix, company, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity, unitPrice, gstPercent, poNumber, poDate, challanNumber, challanDate, transportType, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
     } = req.body;
     
     if (!receiver || !quantity || !unitPrice) {
@@ -72,14 +104,32 @@ export const createInvoice = async (req, res, next) => {
     const price = Number(unitPrice);
     const gst = Number(gstPercent || 0);
 
-    const baseAmount = qty * price;
-    const gstAmount = (baseAmount * gst) / 100;
-    const subTotal = baseAmount + gstAmount;
+    const taxableValue = qty * price;
+
+    const cgstRate = gst / 2;
+    const sgstRate = gst / 2;
+
+    const cgstAmount = (taxableValue * cgstRate) / 100;
+    const sgstAmount = (taxableValue * sgstRate) / 100;
+
+    const totalGstAmount = cgstAmount + sgstAmount;
+    const subTotal = taxableValue + totalGstAmount;
 
     const invoiceNo = await generateInvoiceNumber(company);
+    const billNo = await generateBillNumber();
+
+    const toWords = new ToWords({
+        localeCode: "en-IN",
+        converterOptions: {
+            currency: true,
+            ignoreDecimal: true,
+            ignoreZeroCurrency: false,
+        },
+    });
+    const amountInWords = toWords.convert(subTotal);
 
     const invoice = await Invoice.create({
-      invoiceType, invoicePrefix, company, invoiceNumber: invoiceNo, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity: qty, unitPrice: price, gstPercent: gst, subTotal, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions,
+      invoiceType, invoicePrefix, company, invoiceNumber: invoiceNo, invoiceDate, receiver, consignee, product, productName, hsn, unit, quantity: qty, unitPrice: price, gstPercent: gst, taxableValue, cgstRate, cgstAmount, sgstRate, sgstAmount, subTotal, poNumber, poDate, challanNumber, challanDate, transportType, transportBillNo: billNo, vehicleNumber, dateOfSupply, placeOfSupply, transporterName, transporterId, originalForRecipient, duplicateForTransporter, triplicateForSupplier, paymentStatus, remark, termsAndConditions, amountInWords
     })
   
     res.status(201).json({
@@ -117,4 +167,24 @@ export const getInvoices = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+
+export const getSingleInvoice = async (req, res, next) => {
+    try {
+        const invoice = await Invoice.findById(req.params.id).populate("receiver consignee");
+
+        if (!invoice) {
+            return res.status(404).json({
+                success: false,
+                message: "Invoice not found",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: invoice,
+        });
+    } catch (error) {
+        next(error);
+    }
 };
