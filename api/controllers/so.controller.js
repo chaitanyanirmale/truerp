@@ -49,9 +49,8 @@ export const generateSONumber = async () => {
 
     const sequence = counter.sequence;
     const soNumber = String(sequence).padStart(4, "0");
-    const fy = getFinancialYear();
 
-    return `SO-${soNumber}-${fy}`;
+    return `SO-${soNumber}`;
 }
 
 export const previewSONumber = async (req, res, next) => {
@@ -66,9 +65,8 @@ export const previewSONumber = async (req, res, next) => {
         
             const nextSequence = counter.sequence + 1;
             const padded = String(nextSequence).padStart(4, "0");
-            const fy = getFinancialYear();
         
-            const soNumber = `SO-${padded}-${fy}`;
+            const soNumber = `SO-${padded}`;
         
             res.status(200).json({
                 success: true,
@@ -107,16 +105,9 @@ export const createSO = async (req, res, next) => {
             });
         }
 
-        const soNumber = generateSONumber();
-        const existingSO = await SO.findOne({ soNumber });
-
-        if (existingSO) {
-            return res.status(400).json({
-                success: false,
-                message: "SO Number already exists",
-            });
-        }
+        const soNumber = await generateSONumber(); 
         const jobCardNumber = await generateJCNumber();
+
         const newSO = await SO.create({ jobCardNumber, customer, soNumber, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark});
 
         res.status(201).json({
