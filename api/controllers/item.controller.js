@@ -96,6 +96,43 @@ export const getItems = async (req, res, next) => {
   }
 };
 
+export const getItem = async (req, res, next) => {
+  try {
+    const item = await Item.findById(req.params.id)
+      .populate("mainCategory")
+      .populate("subCategory");
+    if (!item) {
+      return res.status(404).json({
+        message: "Item not found"
+      });
+    }
+    res.status(200).json({
+      success: true,
+      item
+    });
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const updateItem = async (req, res) => {
+    try {
+        const updatedItem = await Item.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { returnDocument: 'after' }
+        );
+        if (!updatedItem) {
+            return res.status(404).json({
+                success: false,
+                message: "Item not found"
+            });
+        }
+        res.status(200).json(updatedItem);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
 export const addSupplierProduct = async (req, res, next) => {
   try {
