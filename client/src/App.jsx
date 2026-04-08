@@ -38,6 +38,9 @@ import { AddMachinery } from './pages/Quality/AddMachinery.jsx'
 import { MachineryList } from './pages/Quality/MachineryList.jsx'
 import { QuickLinks } from './pages/Home/QuickLinks.jsx'
 import { Enquiries } from './pages/Quality/Enquiries.jsx'
+import { User } from './pages/User/User.jsx'
+import { BillsOfSupply } from './pages/BillsOfSupply.jsx'
+import { ItemDetails } from './pages/Items/ItemDetails.jsx'
 
 function App() {
 
@@ -55,6 +58,7 @@ function App() {
             <Route path='general' element={<GeneralDashboard />} />
             <Route path='aifeatures' element={<AIFeatures />} />
             <Route path='add-user' element={<AddUser />} />
+            <Route path='user/:id' element={<User />} />
             <Route path='user-list' element={<UserList />} />
             <Route path='add-expense' element={<AddExpense />} />
             <Route path='expense-list' element={<ExpenseList />} />
@@ -75,16 +79,18 @@ function App() {
             <Route path='main-cat' element={<MainCategory />} />
             <Route path='sub-cat' element={<SubCategory />} />
             <Route path='items-list' element={<ItemList />} />
+            <Route path='item-details/:id' element={<ItemDetails />} />
             <Route path='manage-units' element={<ManageUnits />} />
             <Route path='addSupplierwiseProduct/:id' element={<AddSupplierProduct />} />
             <Route path='grr' element={<GRR />} />
             <Route path='grr-list' element={<GRRList  />} />
-            <Route path='viewPurchaseBill' element={<ViewPurchaseBill  />} />
-            <Route path='partPayment' element={<PartPayment  />} />
+            <Route path='viewPurchaseBill/:id' element={<ViewPurchaseBill  />} />
+            <Route path='partPayment/:id' element={<PartPayment  />} />
             <Route path='add-machinery' element={<AddMachinery  />} />
             <Route path='machinery-list' element={<MachineryList  />} />
             <Route path='enquiries' element={<Enquiries  />} />
           </Route>
+          <Route path='/billsofsupply/:id' element={<BillsOfSupply />} />
         </Routes>
       </BrowserRouter>
     </>
