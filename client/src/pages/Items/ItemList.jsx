@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const ItemList = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
-      
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const toggleDropdown = (id) => {
+    setOpenDropdown(openDropdown === id ? null : id);
+  };
+  const navigate = useNavigate();
   const fetchItems = async () => {
       setLoading(true);
       try {
@@ -51,7 +56,13 @@ export const ItemList = () => {
                 <td className="border border-slate-300 p-2">{item.subCategory?.name}</td>
                 {/* <td className='border border-slate-300 p-2'></td>*/}
                 <td className='border border-slate-300 p-2'>
-                  <button className='bg-blue-700 p-2 text-white font-semibold px-4 rounded-sm'>Action <i className='fa fa-angle-down px-1'></i></button>
+                  <button onClick={()=> toggleDropdown(item._id)} className='bg-blue-700 p-2 text-white font-semibold px-4 rounded-xs'>Action <i className='fa fa-angle-down px-1'></i></button>
+                  {openDropdown === item._id &&
+                      (<div className="absolute right-21 w-40 bg-white shadow-sm border border-slate-300 z-10">
+                          <button onClick={()=> navigate(`/dashboard/item-details/${item._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-pencil pr-1 text-blue-500'></i>View</button>
+                          <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-file pr-1 text-blue-500'></i>Delete</button>
+                      </div>)
+                  }
                 </td>
               </tr>
             ))}
