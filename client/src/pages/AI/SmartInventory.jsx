@@ -26,7 +26,7 @@ export const SmartInventory = () => {
   return (
     <div className='p-4 bg-white rounded-sm shadow-sm'>
         <div className="flex justify-between items-center">
-            <h1 className='text-2xl font-semibold'>📈 AI Smart Inventory Optimization</h1>
+            <h1 className='text-2xl font-semibold'>🤖 AI Smart Inventory Optimization</h1>
             <button onClick={()=> navigate('/dashboard/aifeatures')} className='bg-rose-600 p-2 px-4 font-semibold text-white rounded-sm hover:bg-rose-700 hover:shadow-md'>Back</button>
         </div>
         <hr className='text-slate-300 my-4'/>
@@ -34,14 +34,14 @@ export const SmartInventory = () => {
             <table className='w-full text-center text-sm'>
                 <thead>
                     <tr className='bg-blue-700 text-white'>
-                        <th className='p-2 border-r border-slate-300  w-1/2'>Product</th>
-                        <th className='p-2 border-r border-slate-300'>Stock</th>
-                        <th className='p-2 border-r border-slate-300'>Avg Daily Sale</th>
-                        <th className='p-2 border-r border-slate-300'>Days Left</th>
-                        <th className='p-2 border-r border-slate-300'>Movement</th>
-                        <th className='p-2 border-r border-slate-300'>Reorder Qty</th>
-                        <th className='p-2 border-r border-slate-300'>Priority</th>
-                        <th className='p-2'>Ai Suggestion</th>
+                        <th className='p-2 py-3 border-r border-slate-300  w-1/2'>Product</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Stock</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Avg Daily Sale</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Days Left</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Movement</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Reorder Qty</th>
+                        <th className='p-2 py-3 border-r border-slate-300'>Priority</th>
+                        <th className='p-2 py-3 w-30'>Ai Suggestion</th>
                     </tr>
                 </thead>
                 <tbody>
