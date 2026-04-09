@@ -36,7 +36,7 @@ export const CreateInvoice = () => {
         triplicateForSupplier: false,
         paymentStatus: "Unpaid",
         remark: "",
-        termsAndConditions: "",
+        termsAndConditions: "100% within 30 days",
     }
     const [formData, setFormData] = useState(initialData);
     const [items, setItems] = useState([]);
@@ -302,7 +302,7 @@ export const CreateInvoice = () => {
                             <textarea name='productName'value={formData.productName} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 bg-green-200' rows='4' placeholder='Enter Product Name'></textarea>
                         </div>
                     </div>
-                    <div className="xl:grid xl:grid-cols-7 xl:gap-4 md:grid md:grid-cols-1 md:gap-2 sm:grid sm:grid-cols-1 sm:gap-2">
+                    <div className="xl:grid xl:grid-cols-6 xl:gap-4 md:grid md:grid-cols-1 md:gap-2 sm:grid sm:grid-cols-1 sm:gap-2">
                         <div className="">
                             <label className="text-sm p-1 font-semibold">HSN</label>
                             <input type="text" name="hsn" value={formData.hsn} onChange={handleChange} placeholder='Enter Here' className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1'/>
@@ -332,11 +332,6 @@ export const CreateInvoice = () => {
                         <div className="">
                             <label className="text-sm p-1 font-semibold">Sub Total</label>
                             <input type="text" name="subTotal" value={formData.subTotal} className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1' readOnly/>
-                        </div>
-                        <div className="">
-                            <button type='button'  className="bg-blue-700 hover:bg-blue-800 flex p-2 rounded-sm text-white mt-6" >
-                                <i className='fa fa-plus py-1 px-1'></i>Add
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -458,10 +453,10 @@ export const CreateInvoice = () => {
                             <textarea type="text" name="remark" onChange={handleChange} rows="8" className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1' placeholder='Remark'></textarea>
                         </div>
                 </div>
-            </div><hr className='text-slate-300 mb-4 my-4 w-full'/ >
+            </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="terms-conditions">
                 <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm mb-2'>Terms & Conditions</h1>
-                <textarea name="termsAndConditions" value={formData.termsAndConditions} onChange={handleChange} rows="4" className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 uppercase placeholder:text-gray-300' placeholder='100% within 30 days'></textarea>
+                <textarea name="termsAndConditions" value={formData.termsAndConditions} rows="4" className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 uppercase placeholder:text-gray-300' placeholder='100% within 30 days' readOnly></textarea>
             </div>
             <hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="mt-4 p-2 text-sm">

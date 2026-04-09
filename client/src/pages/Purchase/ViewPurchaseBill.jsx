@@ -80,9 +80,6 @@ export const ViewPurchaseBill = () => {
             <div className={`p-2 ${active === 'editBill' ? 'border-blue-500 border-b-2':''}`} onClick={() => {setOpenMenu(openMenu === "editBill" ? null : "editBill") , setActive("editBill")}}>
                  <label className="text-md">Edit Bill</label>
             </div>
-            <div className={`p-2 ${active === 'paymentHistory' ? 'border-blue-500 border-b-2':''}`} onClick={() => {setOpenMenu(openMenu === "paymentHistory" ? null : "paymentHistory") , setActive("paymentHistory")}}>
-                <label className="text-md">Payment History</label>
-            </div>
         </div> 
         <hr className='text-slate-300 mb-2'/> 
         <div className="py-4">
@@ -254,54 +251,6 @@ export const ViewPurchaseBill = () => {
                         <button className='bg-gray-500 text-white font-semibold p-2 rounded-sm'><i className='fa fa--circle pr-1'></i>Clear</button>
                     </div>
                 </form>
-            </div>
-            <div className={`overflow-hidden ${ openMenu === "paymentHistory" ? "max-h-full" : "max-h-0" }`}>
-                <div className="">
-                    <label className="text-2xl font-semibold">Summary</label><hr className='text-slate-300 my-4'/>
-                    <table className='w-full sm:w-full mb-6'>
-                        <thead>
-                            <tr className='bg-blue-800 text-white'>
-                                <td className='border border-slate-300 p-2 font-semibold'>Total Amount</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Recieved Amount</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>TDS Deduction</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Other Deduction</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Balance Amount</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className='border border-slate-300 p-2 w-'>₹ 840</td>
-                                <td className='border border-slate-300 p-2'>₹ 840</td>
-                                <td className='border border-slate-300 p-2'>₹ 0</td>
-                                <td className='border border-slate-300 p-2'>₹ 0</td>
-                                <td className='border border-slate-300 p-2'>₹ 0</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                    <label className="text-2xl font-semibold ">History</label><hr className='text-slate-300 my-4'/>
-                    <table className='w-full sm:w-full'>
-                        <thead>
-                            <tr className='bg-blue-800 text-white'>
-                                <td className='border border-slate-300 p-2 font-semibold'>Payment Date</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Paid Amount</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>TDS</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Other</td>
-                                <td className='border border-slate-300 p-2 font-semibold'>Payment Note</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className='border border-slate-300 p-2 w-'>2025-04-10</td>
-                                <td className='border border-slate-300 p-2'>Rs 840/-</td>
-                                <td className='border border-slate-300 p-2'>Rs /-</td>
-                                <td className='border border-slate-300 p-2'>Rs /-</td>
-                                <td className='border border-slate-300 p-2'>-</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </div>
