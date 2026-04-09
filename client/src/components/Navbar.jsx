@@ -26,8 +26,7 @@ export const Navbar = () => {
     <div>
         <header className="fixed top-0 left-0 w-full bg-blue-700 text-white h-14 flex items-center px-6 z-50">
             <div className="flex justify-center items-center w-1/4 gap-4">
-                <h1 className="text-xl font-semibold">TRUERP</h1>
-                <button className="text-xl">☰</button>
+                <h1 className="text-2xl font-bold">TRUERP</h1>
             </div>
             <div className="flex items-center gap-4 px-2">
                 <select className="bg-white text-black p-2 px-4 rounded-sm">
@@ -141,11 +140,11 @@ export const Navbar = () => {
                     <div  className={`overflow-hidden absolute right-0 w-60 overflow-y-auto text-sm border border-slate-300 bg-white text-gray-600 rounded-xs ${ openMenu === "ai" ? "max-h-80" : "max-h-0 border-none" }`}>
                             <NavLink to="demand-forecasting" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-line-chart text-blue-600"></i>Demand Forecasting
                             </NavLink>
-                            <NavLink to="demand-forecasting" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-cubes text-green-500"></i>Smart Inventory
+                            <NavLink to="smart-inventory" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-cubes text-green-500"></i>Smart Inventory
                             </NavLink>
-                            <NavLink to="demand-forecasting" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-comments text-cyan-600"></i>ERP Assistent
+                            <NavLink to="" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-comments text-cyan-600"></i>ERP Assistent
                             </NavLink>
-                            <NavLink to="demand-forecasting" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-inr text-yellow-400"></i>Costing & Profit Prediction
+                            <NavLink to="costing-profit" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-inr text-yellow-400"></i>Costing & Profit Prediction
                             </NavLink>
                             <NavLink to="demand-forecasting" className='flex items-center gap-3 p-3 cursor-pointer hover:bg-cyan-50' onClick={()=> {setOpenMenu(null);}}><i className="fa fa-shield text-rose-600"></i>Compliance Monitoring
                             </NavLink>
