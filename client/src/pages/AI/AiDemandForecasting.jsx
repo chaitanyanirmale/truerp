@@ -33,26 +33,26 @@ export const AiDemandForecasting = () => {
         <div className="">
             <table className='w-full text-center text-sm'>
                 <thead>
-                    <tr className='bg-violet-700'>
-                        <th className='p-2 border-r border-slate-300 text-white w-1/2'>Product</th>
-                        <th className='p-2 border-r border-slate-300 text-white'>Last 30 Days</th>
-                        <th className='p-2 border-r border-slate-300 text-white'>Prev 60 Days Avg</th>
-                        <th className='p-2 border-r border-slate-300 text-white'>Growth%</th>
-                        <th className='p-2 border-r border-slate-300 text-white'>Forecast (30 Days)</th>
-                        <th className='p-2 border-r border-slate-300 text-white'>Recommended Stock</th>
-                        <th className='p-2 px-4 text-white'>Trend</th>
+                    <tr className='bg-violet-700 text-white'>
+                        <th className='p-2 border-r border-slate-300  w-1/2'>Product</th>
+                        <th className='p-2 border-r border-slate-300'>Last 30 Days</th>
+                        <th className='p-2 border-r border-slate-300'>Prev 60 Days Avg</th>
+                        <th className='p-2 border-r border-slate-300'>Growth%</th>
+                        <th className='p-2 border-r border-slate-300'>Forecast (30 Days)</th>
+                        <th className='p-2 border-r border-slate-300'>Recommended Stock</th>
+                        <th className='p-2 px-4'>Trend</th>
                     </tr>
                 </thead>
                 <tbody>
                     {items.map((item)=> (
-                        <tr key={item._id}>
-                            <td className='p-2 border-b border-slate-300'>{item.itemName}</td>
-                            <td className='p-2 border-b border-slate-300'>0</td>
-                            <td className='p-2 border-b border-slate-300'>0</td>
-                            <td className='p-2 border-b border-slate-300'>0%</td>
-                            <td className='p-2 border-b border-slate-300'>0</td>
-                            <td className='p-2 border-b border-slate-300'>0</td>
-                            <td className='p-2 border-b border-slate-300'><span className='bg-gray-800 p-2 py-0 rounded-lg text-white font-semibold text-xs'>Stable</span></td>
+                        <tr key={item._id} className='border-b border-slate-300'>
+                            <td className='p-2'>{item.itemName}</td>
+                            <td className='p-2'>0</td>
+                            <td className='p-2'>0</td>
+                            <td className='p-2'>0%</td>
+                            <td className='p-2'>0</td>
+                            <td className='p-2'>0</td>
+                            <td className='p-2'><span className='bg-gray-800 p-2 py-0 rounded-lg text-white font-semibold text-xs'>Stable</span></td>
                         </tr>
                     ))}
                     
