@@ -16,7 +16,7 @@ import { Features } from './pages/Home/Features.jsx'
 import { EmployeeList } from './pages/Salary/EmployeeList.jsx'
 import { SalaryList } from './pages/Salary/SalaryList.jsx'
 import { CreateSO } from './pages/CreateSO.jsx'
-import { AIFeatures } from './pages/Home/AIFeatures.jsx'
+import { AIFeatures } from './pages/AI/AIFeatures.jsx'
 import { SOList } from './pages/SOList.jsx'
 import { InvoiceList } from './pages/InvoiceList.jsx'
 import { SupplierPayment } from './pages/Purchase/SupplierPayment.jsx'
@@ -41,6 +41,9 @@ import { Enquiries } from './pages/Quality/Enquiries.jsx'
 import { User } from './pages/User/User.jsx'
 import { BillsOfSupply } from './pages/BillsOfSupply.jsx'
 import { ItemDetails } from './pages/Items/ItemDetails.jsx'
+import { AiDemandForecasting } from './pages/AI/AiDemandForecasting.jsx'
+import { SmartInventory } from './pages/AI/SmartInventory.jsx'
+import { CostingAndProfit } from './pages/AI/CostingAndProfit.jsx'
 
 function App() {
 
@@ -89,6 +92,9 @@ function App() {
             <Route path='add-machinery' element={<AddMachinery  />} />
             <Route path='machinery-list' element={<MachineryList  />} />
             <Route path='enquiries' element={<Enquiries  />} />
+            <Route path='demand-forecasting' element={<AiDemandForecasting  />} />
+            <Route path='smart-inventory' element={<SmartInventory  />} />
+            <Route path='costing-profit' element={<CostingAndProfit  />} />
           </Route>
           <Route path='/billsofsupply/:id' element={<BillsOfSupply />} />
         </Routes>
