@@ -120,7 +120,7 @@ export const updateItem = async (req, res) => {
         const updatedItem = await Item.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { returnDocument: 'after' }
+            { returnDocument: 'after', runValidators: true }
         );
         if (!updatedItem) {
             return res.status(404).json({
@@ -128,7 +128,10 @@ export const updateItem = async (req, res) => {
                 message: "Item not found"
             });
         }
-        res.status(200).json(updatedItem);
+        res.status(200).json({
+            success: true,
+            item: updatedItem
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

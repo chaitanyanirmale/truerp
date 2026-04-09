@@ -114,7 +114,7 @@ export const ItemDetails = () => {
 
     const handleChange = (e) => {
         setFormData({
-            ...formData, [e.tagert.name] : e.target.value
+            ...formData, [e.target.name] : e.target.value
         })
     }
     const handleUpdate = async (e) => {
@@ -144,7 +144,7 @@ export const ItemDetails = () => {
   return (
     <div className='bg-white p-4 rounded-sm shadow-sm'>
         <div className="">
-            <h1 className='text-2xl font-semibold'>Item Name</h1>
+            <h1 className='text-2xl font-semibold'>{formData.itemName}</h1>
         </div>
         <hr className='text-slate-300 my-4'/>
         <div className="flex gap-4">
@@ -155,6 +155,7 @@ export const ItemDetails = () => {
                 <label className="text-sm">Edit Item</label>
             </div>
         </div>
+        <hr className='text-slate-300'/>
         <div className="pt-4">
             <div className={`overflow-hidden ${ openMenu === "itemDetails" ? "max-h-full" : "max-h-0" }`}>
                 <table className="w-full" id="">
@@ -168,7 +169,7 @@ export const ItemDetails = () => {
                     </tr>
                     <tr>
                     <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Category</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.mainCategory?.name}</td>
+                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{mainCategories.find((cat) => cat._id === formData.mainCategory)?.name}</td>
                     <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Unit</th>
                     <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.perUnit}</td>
                     </tr>
@@ -187,7 +188,7 @@ export const ItemDetails = () => {
                     
                     <tr>
                     <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Sub Category</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.subCategory?.name}</td>
+                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{subCategories.find((sub) => sub._id === formData.subCategory)?.name}</td>
                     <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Stock Count</th>
                     <td width="30%" className='border border-slate-300 text-start p-2 text-md'><strong className='text-green-600'>47</strong></td>
                     </tr>
@@ -296,7 +297,7 @@ export const ItemDetails = () => {
                     </div>
                     <hr className='my-4 text-slate-300'/>
                     <div className="flex justify-end">
-                        <button type='submit' className='bg-blue-700 px-3 py-1 text-white rounded-sm '>Update</button>
+                        <button type='submit' className='bg-blue-700 px-3 py-1 text-white rounded-xs'>Update</button>
                     </div>
                 </form>
             </div>
