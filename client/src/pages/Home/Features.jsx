@@ -3,7 +3,7 @@ import React from 'react'
 export const Features = () => {
   return (
     <div className='p-2'>
-        <img src="/features.png" alt="" className=''/>
+        <img src="/features.png" alt="" className='w-250 mx-auto'/>
     </div>
   )
 }
