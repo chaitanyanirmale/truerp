@@ -43,10 +43,13 @@ export const GRRList = () => {
                     <tr className=''>
                         <td className='border border-slate-300 p-3 font-semibold'>GRR No.</td>
                         <td className='border border-slate-300 p-3 font-semibold'>GRR Date</td>
-                        <td className='border border-slate-300 p-3 font-semibold'>Status</td>
-                        <td className='border border-slate-300 p-3 font-semibold'>View</td>
-                        <td className='border border-slate-300 p-3 font-semibold'>Quality Check</td>
-                        <td className='border border-slate-300 p-3 font-semibold'>Store Approve</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Po Number</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>So Number</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Item Name</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Recieved Qty</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Rejected Qty</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Accecepted Qty</td>
+                        <td className='border border-slate-300 p-3 font-semibold'>Remark</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,23 +59,15 @@ export const GRRList = () => {
                         </tr>
                     ):(grrs.map((grr) => (
                     <tr key={grr._id}>
-                        <td className='border border-slate-300 p-3'>{grr.grrNo}</td>
-                        <td className='border border-slate-300 p-3'>{grr.grrDate}</td>
-                        <td className='border border-slate-300 p-3'>
-                            <select name="" className="p-2 border border-slate-300 rounded-sm">
-                                <option value="">Pending</option>
-                                <option value="">Canceled</option>
-                                <option value="">Denied</option>
-                                <option value="">Complete</option>
-                            </select>
-                        </td>
-                        <td className='border border-slate-300 p-3'>
-                            <button className='bg-blue-700 text-white font-semibold p-2 px-4 rounded-sm'>View</button>
-                        </td>
-                        <td className='border border-slate-300 p-3'>
-                            <button className='bg-green-600 text-white font-semibold p-2 px-4 rounded-sm'>Quality Check</button>
-                        </td>
-                        <td className='border border-slate-300 p-3'> <button className='bg-green-600 text-white font-semibold p-2 px-4 rounded-sm'>Store Approve</button></td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.grrNo}</td>
+                        <td className="p-2 py-3 border border-slate-300">{new Date(grr.grrDate).toLocaleDateString("en-IN")}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.poId?.poNo}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.soId?.soNumber}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.itemId?.itemName}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.receivedQty}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.rejectedQty}</td>
+                        <td className="p-2 py-3 border border-slate-300 font-semibold">{grr.acceptedQty}</td>
+                        <td className="p-2 py-3 border border-slate-300">{grr.remark}</td>
                     </tr>
                     )))}                    
                 </tbody>
