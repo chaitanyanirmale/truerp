@@ -77,7 +77,7 @@ export const createGRR = async (req, res, next) => {
 
 export const getGRR = async (req, res, next) => {
   try {
-    const grr = await GRR.find().sort({ createdAt: -1 });
+    const grr = await GRR.find().populate("poId soId itemId").sort({ createdAt: -1 });
 
     const formattedGRR = grr.map((g) => ({
       ...g._doc,
