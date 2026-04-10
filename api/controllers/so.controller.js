@@ -1,7 +1,7 @@
+import PO from '../models/po.model.js';
 import SO from '../models/so.model.js';
 import User from '../models/user.model.js'
 import Counter from '../utils/counter.js';
-import { getFinancialYear } from '../utils/financialYear.js';
 
 export const generateJCNumber = async () => {
     const counter = await Counter.findOneAndUpdate(
@@ -12,9 +12,8 @@ export const generateJCNumber = async () => {
     
     const sequence = counter.sequence;
     const jcNumber = String(sequence).padStart(4, "0");
-    const fy = getFinancialYear();
     
-    return `JC-${fy}-${jcNumber}`
+    return `JC-${jcNumber}`
 }
 export const previewJCNumber = async (req, res, next) => {
     try {
@@ -28,9 +27,8 @@ export const previewJCNumber = async (req, res, next) => {
         
         const nextSequence = counter.sequence + 1;
         const padded = String(nextSequence).padStart(4, "0");
-        const fy = getFinancialYear();
         
-        const jcNumber = `JC-${fy}-${padded}`;
+        const jcNumber = `JC-${padded}`;
         
         res.status(200).json({
             success: true,
@@ -85,12 +83,18 @@ export const createSO = async (req, res, next) => {
             });
         }
 
-        const { customer, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark} = req.body;
+        const { purchaseOrderId, customer, itemId, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark} = req.body;
         
-        if (!customer || !itemDesc || !itemQty) {
+        if (!purchaseOrderId || !customer || !itemId || !itemQty) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill all required fields",
+            });
+        }
+        if (Number(itemQty) <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Quantity must be greater than 0",
             });
         }
         const existingCustomer = await User.findOne({
@@ -105,10 +109,31 @@ export const createSO = async (req, res, next) => {
             });
         }
 
+        const existingPO = await PO.findById(purchaseOrderId);
+
+        if (!existingPO) {
+            return res.status(404).json({
+                success: false,
+                message: "Purchase Order not found",
+            });
+        }
+
+        if (existingPO.so) {
+            return res.status(400).json({
+                success: false,
+                message: "SO already created for this PO",
+            });
+        }
+
         const soNumber = await generateSONumber(); 
         const jobCardNumber = await generateJCNumber();
 
-        const newSO = await SO.create({ jobCardNumber, customer, soNumber, itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark});
+        const newSO = await SO.create({ purchaseOrderId, jobCardNumber, customer, soNumber, itemId,  itemDesc, itemQty, majorMinorNumber, receivedDate, expectedDate, status, orderType, drawingRevisionNumber, poNumber, poDate, remark});
+
+        existingPO.so = newSO._id;
+        existingPO.status = "Converted to SO";
+
+        await existingPO.save();
 
         res.status(201).json({
             success: true,
