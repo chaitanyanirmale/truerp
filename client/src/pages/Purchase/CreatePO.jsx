@@ -90,13 +90,7 @@ export const CreatePO = () => {
       <h1 className='text-2xl font-semibold'>Create PO</h1>
       <hr className='text-slate-300 my-4'/>
       <form onSubmit={handleSubmit}>
-      <div className="mb-6 grid gap-4">
-        <select name="so" onChange={handleChange} value={formData.so} className="border border-slate-300 p-2 rounded-sm w-full">
-          <option value="">-- Select SO --</option>
-          {sos.map((so)=> (
-            <option key={so._id} value={so._id}>{so.soNumber}-{so.itemDesc}</option>
-          ))}
-        </select>
+      <div className="mb-6">
         <select name="supplier" onChange={handleChange} className="border border-slate-300 p-2 rounded-sm w-full">
           <option value="">-- Select Supplier --</option>
           {suppliers.map((supplier)=> (
