@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const soSchema = new mongoose.Schema(
   {
+    purchaseOrderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "PO",
+      required: true,
+    },
     customer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -19,7 +24,11 @@ const soSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-
+    itemId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Item",
+      required: true,
+    },
     itemDesc: {
       type: String,
       required: true,
@@ -46,7 +55,14 @@ const soSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["pending", "complete", "dispatch", "hold"],
+      enum: [
+        "pending",
+        "confirmed",
+        "processing",
+        "dispatch",
+        "complete",
+        "hold",
+      ],
       default: "pending",
     },
 
