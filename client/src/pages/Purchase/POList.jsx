@@ -91,8 +91,8 @@ export const POList = () => {
           <table className='w-full text-sm'>
             <thead>
               <tr>
-                <th className='border border-slate-300 p-2 px-4'>SO Number</th>
                 <th className='border border-slate-300 p-2 px-4'>PO Number</th>
+                <th className='border border-slate-300 p-2 px-4'>SO Number</th>
                 <th className='border border-slate-300 p-2 px-4'>Supplier Name</th>
                 <th className='border border-slate-300 p-2 px-4'>Item Count</th>
                 <th className='border border-slate-300 p-2 px-4'>Status</th>
@@ -103,22 +103,22 @@ export const POList = () => {
             </thead>
             <tbody>
               {po.length === 0 ? (
-                <tr>
+                <tr className='border border-slate-300'>
                   <td colSpan='8' className='text-center p-4'>No Po Found</td>
                 </tr>
               ): (po.map((po)=> (
                 <tr key={po._id}>
-                  <td className='border border-slate-300 p-2 px-4'>{po.so?.soNumber}</td>
                   <td className='border border-slate-300 p-2 px-4'>{po.poNo}</td>
+                  <td className='border border-slate-300 p-2 px-4'>
+                    {po.soNumber === "Not Created" ? (
+                      <span className="text-red-600">Pending</span>
+                    ) : (
+                      po.soNumber
+                    )}</td>
                   <td className='border border-slate-300 p-2 px-4'>{po.supplier?.name}</td>
                   <td className='border border-slate-300 p-2 px-4'>{}</td>
                   <td className='border border-slate-300 p-2 px-4'>
-                    <select name="" className="p-2 border border-slate-300 rounded-sm w-full">
-                      <option value="">Pending</option>
-                      <option value="">Denied</option>
-                      <option value="">Canceled</option>
-                      <option value="">Approved</option>
-                    </select>
+                    {po.status}
                   </td>
                   <td className='border border-slate-300 p-2 px-4'>{new Date(po.poDate).toISOString().split("T")[0]}</td>
                   <td className='border border-slate-300 p-2'>
