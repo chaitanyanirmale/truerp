@@ -1,4 +1,5 @@
 import PO from '../models/po.model.js';
+import SO from '../models/so.model.js'
 import Counter from '../utils/counter.js'
 import { getFinancialYear } from '../utils/financialYear.js';
 
@@ -50,9 +51,9 @@ export const createPo = async (req, res, next) => {
                 message: "Only admin can create Purchase Order",
             });
         }
-        const {so, supplier, poDate} = req.body;
+        const {supplier, poDate} = req.body;
 
-        if(!so || !supplier || !poDate){
+        if(!supplier || !poDate){
             return res.status(400).json({
                 success: false,
                 message: "Please fill all required fields",
@@ -75,12 +76,24 @@ export const createPo = async (req, res, next) => {
 
 export const getPO = async (req, res, next) => {
   try {
-    const po = await PO.find().populate("supplier so", "name email role soNumber").sort({ createdAt: -1 });
+    const po = await PO.find().populate("supplier").sort({ createdAt: -1 });
 
+    const poWithSO = await Promise.all(
+        po.map(async (po) => {
+            const so = await SO.findOne({
+                purchaseOrderId: po._id,
+            });
+
+            return {
+            ...po.toObject(),
+                soNumber: so ? so.soNumber : "Not Created",
+            };
+        })
+    );
     res.status(200).json({
       success: true,
-      count: po.length,
-      data: po,
+      count: poWithSO.length,
+      data: poWithSO,
     });
 
   } catch (error) {
