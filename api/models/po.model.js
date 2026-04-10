@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const poSchema = mongoose.Schema({
-    so: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "SO",
-        required: true
-    },
     supplier: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -18,6 +13,23 @@ const poSchema = mongoose.Schema({
     poDate: {
         type: Date,
         required: true,
+    },
+    status: {
+      type: String,
+      enum: [
+        "Pending",
+        "Approved",
+        "Converted to SO",
+        "Partially Received",
+        "Completed",
+        "Cancelled",
+      ],
+      default: "Pending",
+    },
+    salesOrderId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "SO",
+        required: true
     }
 },{ timestamps: true });
 
