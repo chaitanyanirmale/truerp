@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 export const CreatePO = () => {
-  const initialData = {so: '', supplier: '', poNo:"", poDate:"" }
+  const initialData = {salesOrderId: '', supplier: '', poNo:"", poDate:"" }
   const [formData, setFormData] = useState(initialData);
   const [sos, setSO] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
@@ -90,11 +90,28 @@ export const CreatePO = () => {
       <h1 className='text-2xl font-semibold'>Create PO</h1>
       <hr className='text-slate-300 my-4'/>
       <form onSubmit={handleSubmit}>
-      <div className="mb-6">
+        <div className="grid gap-2 mb-6">
+          <label className="text-sm font-semibold">Select Sales Order</label>
+          <select
+            name="salesOrderId"
+            value={formData.salesOrderId}
+            onChange={handleChange}
+            className="border border-slate-300 p-2 rounded-sm w-full"
+          >
+            <option value="">-- Select SO --</option>
+            {sos.map((so) => (
+              <option key={so._id} value={so._id}>
+                {so.soNumber}
+              </option>
+            ))}
+          </select>
+      </div>
+      <div className="grid gap-2 mb-6">
+        <label className="text-sm font-semibold">Select Supplier</label>
         <select name="supplier" onChange={handleChange} className="border border-slate-300 p-2 rounded-sm w-full">
           <option value="">-- Select Supplier --</option>
           {suppliers.map((supplier)=> (
-            <option key={supplier._id} value={supplier._id}>{supplier.companyName}</option>
+            <option key={supplier._id} value={supplier._id}>{supplier.name}</option>
           ))}
         </select>
       </div>
