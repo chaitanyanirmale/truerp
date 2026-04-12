@@ -92,12 +92,7 @@ export const CreatePO = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid gap-2 mb-6">
           <label className="text-sm font-semibold">Select Sales Order</label>
-          <select
-            name="salesOrderId"
-            value={formData.salesOrderId}
-            onChange={handleChange}
-            className="border border-slate-300 p-2 rounded-sm w-full"
-          >
+          <select name="salesOrderId" value={formData.salesOrderId} onChange={handleChange} className="border border-slate-300 p-2 rounded-sm w-full" >
             <option value="">-- Select SO --</option>
             {sos.map((so) => (
               <option key={so._id} value={so._id}>
