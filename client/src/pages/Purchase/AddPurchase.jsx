@@ -113,7 +113,7 @@ export const AddPurchase = () => {
                             <option value="">--Select Supplier--</option>
                             {suppliers.map((supplier) => (
                                 <option key={supplier._id} value={supplier._id}>
-                                {supplier.companyName}
+                                {supplier.name}
                                 </option>
                             ))}
                         </select>
@@ -174,40 +174,8 @@ export const AddPurchase = () => {
                         <input type='text' name='totalAmount' onChange={handleChange} value={formData.totalAmount} className='border border-slate-400 rounded-sm p-2' placeholder='Enter Total Amount' readOnly/>
                     </div>
                     <div className="grid gap-2">
-                        <label className="font-semibold text-sm">Paid Amount</label>
-                        <input type='text' name='paidAmount' onChange={handleChange} value={formData.paidAmount} className='border border-slate-400 rounded-sm p-2' placeholder='Enter Paid Amount'/>
-                    </div>
-                    <div className="grid gap-2">
-                        <label className="font-semibold text-sm">Balance Amount</label>
-                        <input type='text' name='balanceAmount' onChange={handleChange} value={formData.balanceAmount} className='border border-slate-400 rounded-sm p-2' placeholder='Enter Balance Amount' readOnly/>
-                    </div>
-                    <div className="grid gap-2">
-                        <label className="font-semibold text-sm">Payment Type</label>
-                        <select name='paymentType' onChange={handleChange} value={formData.paymentType} className='border border-slate-400 rounded-sm p-2' placeholder='Enter Basic Amount'>
-                            <option value="">--Select Type--</option>
-                            <option value="Partial">Partial</option>
-                            <option value="Full">Full</option>
-                        </select>
-                    </div>
-                    <div className="grid gap-2">
-                        <label className="font-semibold text-sm">TDS Deduction</label>
-                        <div className="gap-4 flex justify-between">
-                            <input type='number' name='tdsPercent' onChange={handleChange} value={formData.tdsPercent || ""} className='border border-slate-400 rounded-sm p-2' placeholder='Enter TDS %'/>
-                            <button type='button' className='bg-green-600 text-white p-2 rounded-sm' onClick={handleTdsCalculate}>Calculate</button>
-                            <input type="text" value={formData.tdsDeduction} className="border border-slate-400 rounded-sm p-2 bg-gray-100 w-full" placeholder='TDS Amount' readOnly/>
-                        </div>
-                    </div>
-                    <div className="grid gap-2">
-                        <label className="font-semibold text-sm">Other Deduction</label>
-                        <input type='text' name='otherDeduction' onChange={handleChange} value={formData.otherDeduction} className='border border-slate-400 rounded-sm p-2' placeholder='Enter Other Deduction'/>
-                    </div>
-                    <div className="grid gap-2">
                         <label className="font-semibold text-sm">Payment Terms (in Days)</label>
                         <input type='text' name='paymentTerms' onChange={handleChange} value={formData.paymentTerms} className='border border-slate-400 rounded-sm p-2' placeholder='Payment Terms (in Days)'/>
-                    </div>
-                    <div className="grid gap-2">
-                        <label className="font-semibold text-sm">Payment Due Date</label>
-                        <input type='date' name='paymentDueDate' onChange={handleChange} value={formData.paymentDueDate} className='border border-slate-400 rounded-sm p-2'/>
                     </div>
                     <div className="grid gap-2">
                         <label className="font-semibold text-sm">Payment by Cheque/Cash</label>

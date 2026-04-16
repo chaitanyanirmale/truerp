@@ -27,7 +27,7 @@ export const SupplierPayment = () => {
             } finally{
                 setLoading(false)
             }          
-        };
+    };
     useEffect(()=> {
         fetchPurchaseList();
     },[])
@@ -58,49 +58,29 @@ export const SupplierPayment = () => {
         },
         { totalAmount: 0, totalPaid: 0, totalBalance: 0 }
     );
+
   return (
     <>
         <div className='bg-white rounded-sm shadow-sm p-2'>
-            <div className="flex justify-between overflow-x-auto">
-                <div className="font-semibold p-2">
-                    <h1 className='text-2xl'>Purchase Bills</h1>
-                </div>
-                <div className="flex justify-between gap-4 text-sm">
-                    <div className="p-2">
-                        <button className='bg-cyan-600 text-white rounded-sm p-2 px-8 font-semibold'><i className='fa fa-check-square-o px-2'></i>Make Payment</button>
-                    </div>
-                    <div className="flex justify-between gap-2 p-2">
-                        <input type="date" name="" className='border border-slate-400 rounded-sm p-2 placeholder:text-slate-400'/>
-                        <input type="date" name="" className='border border-slate-400 rounded-sm p-2 placeholder:text-slate-400'/>
-                    </div>
-                    <div className="p-2">
-                        <button className='bg-blue-700 text-white rounded-sm p-2 px-8 font-semibold'><i className='fa fa-search pr-2'></i>Search</button>
-                    </div>
-                    <div className="p-2">
-                        <button className='bg-yellow-500 rounded-sm p-2 px-8 font-semibold'><i className='fa fa-print pr-2'></i>Print</button>
-                    </div>
-                    <div className="p-2">
-                    <button className='bg-rose-600 text-white rounded-sm p-2 px-4 font-semibold'>Back</button>
-                    </div>
-                </div>
+            <div className="font-semibold p-2">
+                <h1 className='text-2xl'>Purchase Bills</h1>
             </div>
             <hr className='text-slate-400 my-4'/>
             <div className="xl:overflow-x-auto">
                 <table className='w-full text-center text-sm'>
-                    <thead className='border border-slate-400'>
-                        <tr>
-                            <th className='p-2 border border-slate-400'>Sr. No.</th>	
-                            <th className='p-2 border border-slate-400'>Select</th>	
-                            <th className='p-2 border border-slate-400'>Supplier Name</th>	
-                            <th className='p-2 border border-slate-400'>Invoice No</th>
-                            <th className='p-2 border border-slate-400'>Invoice Date</th>
+                    <thead className='border border-slate-300'>
+                        <tr className='bg-blue-700 text-white'>
+                            <th className='px-2 py-4 border border-slate-300'>Sr. No.</th>
+                            <th className='px-2 py-4 border border-slate-300'>Supplier Name</th>	
+                            <th className='px-2 py-4 border border-slate-300'>Invoice No</th>
+                            <th className='px-2 py-4 border border-slate-300'>Invoice Date</th>
                                 
-                            <th className='p-2 border border-slate-400'>Total Amount <i className="fa fa-inr" aria-hidden="true"></i></th>	
-                            <th className='p-2 border border-slate-400'>Paid Amount <i className="fa fa-inr" aria-hidden="true"></i></th>	
-                            <th className='p-2 border border-slate-400'>Balance Amount <i className="fa fa-inr" aria-hidden="true"></i></th>
-                            <th className='p-2 border border-slate-400'>TDS</th>
-                            <th className='p-2 border border-slate-400'>Payment Date</th>
-                            <th className='p-2 border border-slate-400'>Action</th>
+                            <th className='px-2 py-4 border border-slate-300'>Total Amount <i className="fa fa-inr" aria-hidden="true"></i></th>	
+                            <th className='px-2 py-4 border border-slate-300'>Paid Amount <i className="fa fa-inr" aria-hidden="true"></i></th>	
+                            <th className='px-2 py-4 border border-slate-300'>Balance Amount <i className="fa fa-inr" aria-hidden="true"></i></th>
+                            <th className='px-2 py-4 border border-slate-300'>TDS</th>
+                            <th className='px-2 py-4 border border-slate-300'>Payment Date</th>
+                            <th className='px-2 py-4 border border-slate-300'>Action</th>
                         </tr>
                     </thead>
                 <tbody>
@@ -108,24 +88,23 @@ export const SupplierPayment = () => {
                         <tr><td colSpan='11' className='text-center p-4'>No Purchases Found</td></tr>
                     ): purchases.map((purchase, index)=> (
                         <tr key={purchase._id}>
-                            <td className='p-2 border border-slate-400'>{index + 1}</td>
-                            <td className='p-2 border border-slate-400'></td>
-                            <td className='p-2 border border-slate-400'>{purchase.supplier?.name}</td>
-                            <td className='p-2 border border-slate-400'>{purchase.invoiceNumber}</td>
-                            <td className='p-2 border border-slate-400'>{purchase.invoiceDate}</td>
-                            <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.totalAmount).toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.paidAmount).toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.balanceAmount).toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'><i className="fa fa-inr"></i> {Number(purchase.tdsDeduction).toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'>{purchase.paymentDueDate}</td>
-                            <td className='p-2 border border-slate-400'>
+                            <td className='p-2 border border-slate-300'>{index + 1}</td>
+                            <td className='p-2 border border-slate-300'>{purchase.supplier?.name}</td>
+                            <td className='p-2 border border-slate-300'>{purchase.invoiceNumber}</td>
+                            <td className='p-2 border border-slate-300'>{purchase.invoiceDate}</td>
+                            <td className='p-2 border border-slate-300'><i className="fa fa-inr"></i> {Number(purchase.totalAmount).toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'><i className="fa fa-inr"></i> {Number(purchase.paidAmount || 0).toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'><i className="fa fa-inr"></i> {Number(purchase.balanceAmount || 0).toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'><i className="fa fa-inr"></i> {Number(purchase.tdsDeduction || 0).toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'>{purchase.lastPaymentDate}</td>
+                            <td className='p-2 border border-slate-300'>
                                 <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm'>Action <i className='fa fa-angle-down'></i></button>
 
                                 {openDropdown === purchase._id && (
                                     <div className="absolute right-12 w-50 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30 pl-2">
                                     <button onClick={()=> navigate(`/dashboard/viewPurchaseBill/${purchase._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-folder pr-2 text-blue-600'></i>View Purchase Bill</button>
-                                    <button onClick={()=> navigate('/dashboard/partPayment')} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
+                                    <button onClick={()=> navigate(`/dashboard/partPayment/${purchase._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-inr pr-2 text-blue-600'></i>Part Payment</button>
                                     <button onClick={() => deletePurchase(purchase._id)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-trash pr-2 text-blue-600'></i>Delete Purchase Bill</button>

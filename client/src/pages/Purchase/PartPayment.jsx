@@ -17,49 +17,32 @@ export const PartPayment = () => {
         const res = await fetch(`/api/purchase/purchase-bill/${id}`);
         const data = await res.json();
         setPurchaseBill(data.purchaseBill);
-
-        if (data.success) {
-            setFormData({
-                ...data.purchaseBill,
-                supplier: data.purchaseBill?.supplier?._id || "",
-                invoiceDate: data.purchaseBill.invoiceDate
-                ? data.purchaseBill.invoiceDate.split("T")[0]
-                : "",
-                paymentDueDate: data.purchaseBill.paymentDueDate
-                ? data.purchaseBill.paymentDueDate.split("T")[0]
-                : "",
-            });
-        }
     };
 
     const fetchPayments = async () => {
         try {
-            const res = await fetch(`/api/payment/history/${purchaseBill?._id}`,
-                {
-                    credentials: "include"
-                }
-            );
-
+            const res = await fetch(`/api/payment/history/${id}`, { credentials: "include" });
             const data = await res.json();
-
             if (!res.ok) {
                 console.log(data.message);
                 return;
             }
-
             setPayments(data.payments);
-
         } catch (error) {
             console.log(error);
         }
     };
 
-    useEffect(()=> {
-        fetchPurchaseBill();
-        if (purchaseBill?._id) {
+    useEffect(() => {
+        if (id) {
+            fetchPurchaseBill();
+        }
+    }, [id]);
+    useEffect(() => {
+        if (id) {
             fetchPayments();
         }
-    },[purchaseBill?._id])
+    }, [id]);
 
     const handleChange = (e) => {
         setPaymentData({
@@ -76,7 +59,6 @@ export const PartPayment = () => {
                 alert("Paid amount and payment date are required");
                 return;
             }
-            
             const res = await fetch("/api/payment/add-payment", {
                 method: "POST",
                 headers: {
@@ -84,7 +66,7 @@ export const PartPayment = () => {
                 },
                 credentials: "include",
                 body: JSON.stringify({
-                    billId: purchaseBill._id,
+                    purchaseId: purchaseBill._id,
                     ...paymentData
                 })
             });
@@ -104,6 +86,8 @@ export const PartPayment = () => {
                 paymentDate: "",
                 paymentNote: ""
             });
+            await fetchPayments();
+            await fetchPurchaseBill();
         } catch (error) {
             console.log(error);
         }
@@ -166,7 +150,7 @@ export const PartPayment = () => {
                 </div>
                 <hr className='text-slate-300 my-4'/>
                 <div className="">
-                    <button className='bg-blue-800 p-2 px-4 rounded-sm text-white font-semibold'><i className='fa fa-check-circle pr-1'></i>Submit</button>
+                    <button disabled={balanceAmount <= 0} className='bg-blue-800 p-2 px-4 rounded-sm text-white font-semibold'><i className='fa fa-check-circle pr-1'></i>Submit</button>
                 </div>
             </div>
         </form>
