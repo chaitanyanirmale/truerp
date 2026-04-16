@@ -100,3 +100,31 @@ export const deleteSalary = async (req, res) => {
     });
   }
 };
+
+export const getSalaryByEmployee = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const salaryDetails = await Salary.findById(id)
+      .populate("employee", "fullname email department")
+      .sort({ createdAt: -1 });
+
+    if (!salaryDetails || salaryDetails.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Salary details not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: salaryDetails,
+    });
+  } catch (error) {
+    console.error("Salary fetch error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error while fetching salary details",
+    });
+  }
+};
