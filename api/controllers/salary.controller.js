@@ -128,3 +128,34 @@ export const getSalaryByEmployee = async (req, res) => {
     });
   }
 };
+
+export const updateSalary = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const updatedSalary = await Salary.findByIdAndUpdate(
+      id,
+      req.body,
+      { returnDocument: 'after', runValidators: true }
+    ).populate("employee", "fullname email department");
+
+    if (!updatedSalary) {
+      return res.status(404).json({
+        success: false,
+        message: "Salary record not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Salary updated successfully",
+      data: updatedSalary,
+    });
+  } catch (error) {
+    console.error("Update salary error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error while updating salary",
+    });
+  }
+};
