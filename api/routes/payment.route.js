@@ -5,6 +5,6 @@ import { addPayment, getPaymentsByBill } from '../controllers/payment.controller
 const router = express.Router();
 
 router.post('/add-payment', addPayment);
-router.get("/history/:billId", getPaymentsByBill);
+router.get("/history/:purchaseId", getPaymentsByBill);
 
 export default router;
