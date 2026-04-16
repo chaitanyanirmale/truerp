@@ -80,8 +80,9 @@ const purchaseSchema = new mongoose.Schema({
       default: 0,
     },
 
-    paymentDueDate: {
+    lastPaymentDate: {
       type: Date,
+      default: null
     },
 
     paymentMethod: {
@@ -96,6 +97,12 @@ const purchaseSchema = new mongoose.Schema({
   },
   { timestamps: true }
 );
+
+purchaseSchema.virtual("payments", {
+  ref: "Payment",
+  localField: "_id",
+  foreignField: "purchaseId",
+});
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);
 

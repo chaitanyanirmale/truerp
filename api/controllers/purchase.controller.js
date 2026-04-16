@@ -71,13 +71,27 @@ export const getPurchaseList = async (req, res, next) => {
     try {
     const purchases = await Purchase.find()
     .populate("supplier", "name invoiceNumber")
+    .populate("payments")
     .sort({ createdAt: -1 });
 
-    const newPurchases = purchases.map((p) => ({
-      ...p._doc,
-      invoiceDate: p.invoiceDate.toISOString().split("T")[0],
-      paymentDueDate: p.paymentDueDate.toISOString().split("T")[0],
-    }));
+    const newPurchases = purchases.map((p) => {
+      const totalPaid = (p.payments || []).reduce(
+        (sum, pay) => sum + pay.paidAmount,
+        0
+      );
+
+      return {
+        ...p.toObject(),
+        totalPaid,
+        remainingAmount: p.totalAmount - totalPaid,
+        invoiceDate: p.invoiceDate
+          ? p.invoiceDate.toISOString().split("T")[0]
+          : "",
+        lastPaymentDate: p.lastPaymentDate
+          ? p.lastPaymentDate.toISOString().split("T")[0]
+          : "",
+      };
+    });
 
     res.status(200).json({
       success: true,
@@ -155,3 +169,4 @@ export const updatePurchaseBill = async (req, res) => {
     });
   }
 }
+
