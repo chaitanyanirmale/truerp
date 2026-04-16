@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
+import {useNavigate } from 'react-router-dom'
 export const SalaryList = () => {
-
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(false)
     const [salaries, setSalaries] = useState([]);
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const toggleDropdown = (id) => {
+        setOpenDropdown(openDropdown === id ? null : id);
+    };
+    const navigate = useNavigate();
 
     const totalSalary = salaries.reduce((total, salary) => {
         return total + Number(salary.netSalary);
@@ -72,29 +76,9 @@ export const SalaryList = () => {
     <div className='p-4 border border-slate-300 shadow-md rounded-sm bg-white'>
         <h1 className='text-2xl font-semibold'>Salary List</h1><hr className='my-4 text-slate-200'/>
         <div className=''>
-            <form action="" className="flex justify-evenly gap-8 bg-gray-100 p-2">
-                <div className="bg-white">
-                    <input type="date" name="" className='w-full border border-slate-300 rounded-sm p-2'/>
-                </div>
-                <div className="bg-white">
-                    <input type="date" name="" className='w-full border border-slate-300 rounded-sm p-2'/>
-                </div>
-                <select type="text" name="" className='border border-slate-300 rounded-sm p-2 bg-white'>
-                    <option value="">-- Select Employee --</option>
-                    {employees.map((emp) => (
-                            <option key={emp._id} value={emp._id}>
-                            {emp.fullname}
-                            </option>
-                    ))}
-                </select>
-                <button className='bg-blue-600 text-white px-2 rounded-sm hover:bg-blue-700'><i className='fa fa-sm fa-search p-1'></i>Search
-                </button>
-            </form>
-            <hr className='my-4 text-slate-200'/>
             <div className="">
-
                 <table className='w-full text-sm'>
-                <thead className='text-gray-700 uppercase text-xs'>
+                <thead className='text-white uppercase text-xs bg-blue-700'>
                     <tr>
 						<th className="px-4 py-3 border border-slate-300">Fullname</th>
 						<th className="px-4 py-3 border border-slate-300">Salary Month</th>
@@ -168,9 +152,21 @@ export const SalaryList = () => {
                             {new Date(salary.salaryDate).toISOString().split("T")[0]}
                             </td>
                             <td className="px-4 py-2 border border-slate-300">
-                                <button onClick={()=> handleDelete(salary._id)} className="bg-red-500 w-20 text-white p-2 rounded-sm hover:bg-red-600">
-                                    <i className='fa fa-trash pr-1'></i>Delete
+                                <button onClick={()=>toggleDropdown(salary._id)} className="bg-blue-700 w-20 text-white p-2 rounded-xs font-semibold">
+                                   Action <i className='fa fa-angle-down'></i>
                                 </button>
+                                {openDropdown === salary._id && (
+                                    <div className="absolute right-14 w-50 bg-white shadow-sm border border-slate-300 z-10 py-2 rounded-sm">
+                                        <button onClick={() => navigate(`/dashboard/view-salary/${salary._id}`)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        > <i className='fa fa-eye pr-2 text-blue-700'></i>View Salary</button>
+                                        <button onClick={() => navigate(`/dashboard/edit-salary/${salary._id}`)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        > <i className='fa fa-pencil pr-2 text-blue-700'></i>Edit Salary</button>
+                                        <button onClick={() => navigate(`/dashboard/view-salary/${salary._id}`)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        > <i className='fa fa-print pr-2 text-blue-700'></i>Print Payslip</button>
+                                        <button onClick={()=> handleDelete(salary._id)} className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        > <i className='fa fa-trash pr-2 text-blue-700'></i>Delete</button>
+                                    </div>
+                                )}
                             </td>
                         </tr>
                     ))
