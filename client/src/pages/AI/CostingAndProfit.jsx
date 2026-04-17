@@ -23,6 +23,18 @@ export const CostingAndProfit = () => {
       useEffect(() => {
         fetchItems();
       }, []);
+
+      const getSuggestionColor = (aiSuggestion) => {
+        if (!aiSuggestion) return "bg-gray-400";
+
+        const value = aiSuggestion.toLowerCase();
+
+        if (value.includes("low")) return "bg-red-500";
+        if (value.includes("avg") || value.includes("average")) return "bg-yellow-400 text-black";
+        if (value.includes("good") || value.includes("high")) return "bg-green-500";
+
+        return "bg-gray-400";
+    };
   return (
     <div className='p-4 bg-white rounded-sm shadow-sm'>
         <div className="flex justify-between items-center">
@@ -41,22 +53,46 @@ export const CostingAndProfit = () => {
                         <th className='p-2 py-3 border-r border-slate-300'>Total Cost</th>
                         <th className='p-2 py-3 border-r border-slate-300'>Profit / Unit</th>
                         <th className='p-2 py-3 border-r border-slate-300'>Margin %</th>
-                        <th className='p-2 py-3 w-30'>Ai Suggestion</th>
+                        <th className='p-2 py-3 w-40'>Ai Suggestion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map((item)=> (
+                    {items.map((item)=> {
+                        const avgPurchaseCost = Number(item.supplierPrice) || 0;
+                            const sellingPrice = Number(item.customerPrice) || 0;
+                            const extraCost = 0;
+
+                            const totalCost = avgPurchaseCost + extraCost;
+                            const profitPerUnit = sellingPrice - totalCost;
+
+                            const marginValue =
+                            sellingPrice > 0
+                                ? (profitPerUnit / sellingPrice) * 100
+                                : 0;
+
+                            const margin = marginValue.toFixed(2);
+
+                            let aiSuggestion = "";
+
+                            if (marginValue < 10) {
+                                aiSuggestion = "Low margin";
+                            } else if (marginValue < 20) {
+                                aiSuggestion = "Average profit";
+                            } else {
+                                aiSuggestion = "Good profit";
+                            }
+                        return (
                         <tr key={item._id} className='border-b border-slate-300'>
                             <td className='p-2 py-3'>{item.itemName}</td>
-                            <td className='p-2 py-3'>0</td>
-                            <td className='p-2 py-3'>0</td>
-                            <td className='p-2 py-3'>0</td>
-                            <td className='p-2 py-3'>0</td>
-                            <td className='p-2 py-3'>0</td>
-                            <td className='p-2 py-3'>0%</td>
-                            <td className='p-2 py-3'><span className='bg-rose-600 px-2 py-1 rounded-lg text-white font-semibold text-xs'>Increase Price</span></td>
+                            <td className='p-2 py-3'>{avgPurchaseCost}</td>
+                            <td className='p-2 py-3'>{sellingPrice}</td>
+                            <td className='p-2 py-3'>{extraCost}</td>
+                            <td className='p-2 py-3'>{totalCost}</td>
+                            <td className='p-2 py-3'>{profitPerUnit}</td>
+                            <td className='p-2 py-3'>{margin}%</td>
+                            <td className='p-2 py-3'><span className={`${getSuggestionColor(aiSuggestion)} px-2 py-1 rounded-lg text-white font-semibold text-xs`}>{aiSuggestion}</span></td>
                         </tr>
-                    ))}
+                    )})}
                 </tbody>
             </table>
         </div>
