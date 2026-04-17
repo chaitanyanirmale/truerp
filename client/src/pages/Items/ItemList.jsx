@@ -39,7 +39,7 @@ export const ItemList = () => {
               <td className='p-2 border border-slate-300 font-semibold'>Supplier Price</td>
               <td className='p-2 border border-slate-300 font-semibold'>Customer Price</td>
               <td className='p-2 border border-slate-300 font-semibold'>Item Category</td>
-              {/* <td className='p-2 border border-slate-300 font-semibold'>Stock Count</td> */}
+              <td className='p-2 border border-slate-300 font-semibold'>Stock Count</td>
               <td className='p-2 border border-slate-300 font-semibold'>Action</td>
             </tr>
           </thead>
@@ -54,13 +54,13 @@ export const ItemList = () => {
                 <td className="border border-slate-300 p-2"><i className="fa fa-inr pr-1"></i>{item.supplierPrice}</td>
                 <td className="border border-slate-300 p-2"><i className="fa fa-inr pr-1"></i>{item.customerPrice}</td>
                 <td className="border border-slate-300 p-2">{item.subCategory?.name}</td>
-                {/* <td className='border border-slate-300 p-2'></td>*/}
+                <td className='border border-slate-300 p-2'>{item.stockCount}</td>
                 <td className='border border-slate-300 p-2'>
                   <button onClick={()=> toggleDropdown(item._id)} className='bg-blue-700 p-2 text-white font-semibold px-4 rounded-xs'>Action <i className='fa fa-angle-down px-1'></i></button>
                   {openDropdown === item._id &&
-                      (<div className="absolute right-21 w-40 bg-white shadow-sm border border-slate-300 z-10">
-                          <button onClick={()=> navigate(`/dashboard/item-details/${item._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-pencil pr-1 text-blue-500'></i>View</button>
-                          <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-file pr-1 text-blue-500'></i>Delete</button>
+                      (<div className="absolute right-21 w-40 bg-white shadow-sm rounded-sm border border-slate-300 z-10">
+                          <button onClick={()=> navigate(`/dashboard/item-details/${item._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-pencil pr-2 text-blue-500'></i>View</button>
+                          <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-200"><i className='fa fa-trash pr-2 text-blue-500'></i>Delete</button>
                       </div>)
                   }
                 </td>

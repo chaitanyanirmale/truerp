@@ -73,6 +73,7 @@ export const ItemDetails = () => {
                     supplierPrice: item.supplierPrice || "",
                     customerPrice: item.customerPrice || "",
                     minOrderQty: item.minOrderQty || "",
+                    stockCount: item.stockCount || "",
                     description: item.description || "",
                 });
             }            
@@ -158,45 +159,44 @@ export const ItemDetails = () => {
         <hr className='text-slate-300'/>
         <div className="pt-4">
             <div className={`overflow-hidden ${ openMenu === "itemDetails" ? "max-h-full" : "max-h-0" }`}>
-                <table className="w-full" id="">
-                
+                <table className="w-full text-sm" id="">
                 <tbody>
                     <tr>
-                        <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Item Code</th>
-                        <td width="30%" className='border border-slate-300 text-start p-2 text-md'><span>{formData.itemCode}</span></td>
-                        <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Item Name</th>
-                        <td width="30%" className='border border-slate-300 text-start p-2 text-md'><span>{formData.itemName}</span></td>
+                        <th width="20%" className='border border-slate-300 p-2 text-start'>Item Code</th>
+                        <td width="30%" className='border border-slate-300 p-2'><span>{formData.itemCode}</span></td>
+                        <th width="20%" className='border border-slate-300 p-2 text-start'>Item Name</th>
+                        <td width="30%" className='border border-slate-300 p-2'><span>{formData.itemName}</span></td>
                     </tr>
                     <tr>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Category</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{mainCategories.find((cat) => cat._id === formData.mainCategory)?.name}</td>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Unit</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.perUnit}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Category</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{mainCategories.find((cat) => cat._id === formData.mainCategory)?.name}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Unit</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.perUnit}</td>
                     </tr>
                     <tr>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Price</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.supplierPrice}</td>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Minimum Order Qty</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.minOrderQty}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Price</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.supplierPrice}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Minimum Order Qty</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.minOrderQty}</td>
                     </tr>
                     <tr>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Item Price Customer</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.customerPrice}</td>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Sequence Number</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'></td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Item Price Customer</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.customerPrice}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Sequence Number</th>
+                    <td width="30%" className='border border-slate-300 p-2'></td>
                     </tr>
                     
                     <tr>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Sub Category</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{subCategories.find((sub) => sub._id === formData.subCategory)?.name}</td>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Stock Count</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'><strong className='text-green-600'>47</strong></td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Sub Category</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{subCategories.find((sub) => sub._id === formData.subCategory)?.name}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Stock Count</th>
+                    <td width="30%" className='border border-slate-300 p-2 text-green-600 font-semibold'>{formData.stockCount}</td>
                     </tr>
                     <tr>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Item Description</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.description}</td>
-                    <th width="20%" className='border border-slate-300 text-start p-2 text-md'>Weight in Gram</th>
-                    <td width="30%" className='border border-slate-300 text-start p-2 text-md'>{formData.weightInGram}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Item Description</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.description}</td>
+                    <th width="20%" className='border border-slate-300 p-2 text-start'>Weight in Gram</th>
+                    <td width="30%" className='border border-slate-300 p-2'>{formData.weightInGram}</td>
                     </tr>
                     </tbody>
               </table>

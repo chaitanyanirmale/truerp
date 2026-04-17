@@ -14,6 +14,7 @@ export const AddNewItem = () => {
         supplierPrice:"",
         customerPrice:"",
         minOrderQty:"",
+        stockCount: "",
         description:"",
     }
     const [formData, setFormData] = useState(initialData);
@@ -201,6 +202,10 @@ export const AddNewItem = () => {
                 <div className="grid">
                     <label className="text-sm font-semibold">Minimum Order Qty</label>
                     <input type="text" name="minOrderQty" value={formData.minOrderQty} onChange={handleChange} className="border border-slate-300 rounded-sm p-2 mt-2" />
+                </div>
+                <div className="grid">
+                    <label className="text-sm font-semibold">Stock Count</label>
+                    <input type="text" name="stockCount" value={formData.stockCount} onChange={handleChange} className="border border-slate-300 rounded-sm p-2 mt-2" />
                 </div>
             </div>
             <div className="grid mt-4">
