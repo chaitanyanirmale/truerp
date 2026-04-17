@@ -7,7 +7,7 @@ export const ViewPurchaseBill = () => {
     const [suppliers, setSuppliers] = useState([]);
     const [purchaseBill, setPurchaseBill] = useState(null);
     const gstOptions = [0,1,1.5,2,2.5,3,5,6,9, 14];
-    const [formData, setFormData] = useState({ supplier: "", invoiceNumber: "", invoiceDate: "", gstNumber: "", basicAmount: "", cgst: "", sgst: "", igst: "", totalAmount: "", paymentTerms: "", paymentDueDate: "", paymentMethod: "",
+    const [formData, setFormData] = useState({ supplier: "", invoiceNumber: "", invoiceDate: "", gstNumber: "", basicAmount: "", cgst: "", sgst: "", igst: "", totalAmount: "", paymentTerms: "", paymentMethod: "",
     })
     const navigate = useNavigate();
 
@@ -23,9 +23,6 @@ export const ViewPurchaseBill = () => {
                 supplier: data.purchaseBill?.supplier?._id || "",
                 invoiceDate: data.purchaseBill.invoiceDate
                 ? data.purchaseBill.invoiceDate.split("T")[0]
-                : "",
-                paymentDueDate: data.purchaseBill.paymentDueDate
-                ? data.purchaseBill.paymentDueDate.split("T")[0]
                 : "",
             });
         }
@@ -238,17 +235,13 @@ export const ViewPurchaseBill = () => {
                             <input type="text" name="paymentTerms" value={formData.paymentTerms} onChange={handleChange} className="border border-slate-300 p-2 rounded-sm my-2" placeholder='Enter Payment Terms (in Days)'/>
                         </div> 
                         <div className="grid">
-                            <label className="text-sm font-semibold">Payment Due Date</label>
-                            <input type="date" name="paymentDueDate" value={formData.paymentDueDate} onChange={handleChange} className="border border-slate-300 p-2 rounded-sm my-2" />
-                        </div> 
-                        <div className="grid">
                             <label className="text-sm font-semibold">Payment by Cheque/Cash</label>
                             <input type="text" name="paymentMethod" value={formData.paymentMethod} onChange={handleChange} className="border border-slate-300 p-2 rounded-sm my-2" />
                         </div> 
                     </div>
                     <div className="p-4">
-                        <button type='submit' className='bg-blue-700 text-white font-semibold p-2 rounded-sm mr-2'><i className='fa fa-check-circle pr-1'></i>Submit</button>
-                        <button className='bg-gray-500 text-white font-semibold p-2 rounded-sm'><i className='fa fa--circle pr-1'></i>Clear</button>
+                        <button type='submit' className='bg-blue-700 text-white font-semibold p-2 px-4 rounded-xs mr-2'>Update</button>
+                        <button className='bg-gray-500 text-white font-semibold p-2 px-4 rounded-xs'>Clear</button>
                     </div>
                 </form>
             </div>
