@@ -91,7 +91,7 @@ export const Home = () => {
               </div>
             </div>
       </header>
-      <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 md:py-40 xl:px-25 py-40'>
+      <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 md:py-30 xl:px-25 py-30'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
             <div className='md:text-center xl:text-start '>
@@ -119,7 +119,7 @@ export const Home = () => {
           <div className="flex items-center justify-center text-center">
               <div className="p-2 flex flex-col items-center justify-center">
                 <img src="/illustration-1.webp" alt="Hero Image" className="w-full" />
-                <div className="w-75 bg-white p-4 rounded-lg shadow-lg mt-4">
+                <div className="absolute bottom-40 w-75 bg-white p-4 rounded-lg shadow-lg mt-4">
                   <p className="md:text-center">Smart ERP for the Manufacturing & Mechanical Industry
                   </p>
                 </div>
