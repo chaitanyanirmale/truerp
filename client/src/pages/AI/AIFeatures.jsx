@@ -53,7 +53,7 @@ export const AIFeatures = () => {
                     <p className='text-sm my-2'>Predicts job profitability.</p>
                     <img src="\ai_costing.jpg" alt="" className='h-50'/>
                     <div className="flex justify-end w-full">
-                        <button className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg" id="viewbutton"
+                        <button onClick={()=> navigate('/dashboard/costing-profit')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg" id="viewbutton"
                         >View Details</button>
                     </div>
                 </div>
