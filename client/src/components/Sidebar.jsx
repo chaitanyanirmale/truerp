@@ -158,9 +158,6 @@ export const Sidebar = () => {
                 <NavLink to="add-purchase" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'add-purchase' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('add-purchase')}> <i className='fa fa-plus-circle'></i>
                  Add Purchase Bill
                 </NavLink>
-                <NavLink to="supplier-list" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'supplier-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('supplier-list')}> <i className='fa fa-list'></i>
-                 List of Suppliers
-                </NavLink>
                 <NavLink to="supplier-payment" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'supplier-payment' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('supplier-payment')}> <i className='fa fa-list'></i>
                  List of Purchase Bills
                 </NavLink>
