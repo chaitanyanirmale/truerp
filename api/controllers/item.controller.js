@@ -51,7 +51,7 @@ export const previewItemCode = async (req, res, next) => {
 export const addItem = async (req, res) => {
   try {
 
-    const { prefix, mainCategory, subCategory, itemName, perUnit, weightInGram, itemType, supplierPrice, customerPrice, minOrderQty, description} = req.body;
+    const { prefix, mainCategory, subCategory, itemName, perUnit, weightInGram, itemType, supplierPrice, customerPrice, minOrderQty,stockCount, description} = req.body;
 
     if (!prefix) {
       return res.status(400).json({
@@ -61,7 +61,7 @@ export const addItem = async (req, res) => {
     }
     const { itemCode, nextSequence } = await generateItemCode(prefix);
 
-    const item = await Item.create({ prefix, mainCategory, subCategory, itemCode, itemName, perUnit, weightInGram, itemType, supplierPrice, customerPrice, minOrderQty, description, sequenceNumber: nextSequence});
+    const item = await Item.create({ prefix, mainCategory, subCategory, itemCode, itemName, perUnit, weightInGram, itemType, supplierPrice, customerPrice, minOrderQty, description,stockCount, sequenceNumber: nextSequence});
 
     res.status(201).json({
       success: true,
