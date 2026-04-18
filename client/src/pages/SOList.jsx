@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export const SOList = () => {
     const [sos, setSO] = useState([]);
@@ -8,6 +10,7 @@ export const SOList = () => {
         setOpenDropdown(openDropdown === id ? null : id);
     };
 
+    const navigate = useNavigate();
     const fetchSO = async () => {
             setLoading(true);
             try {
@@ -69,17 +72,17 @@ export const SOList = () => {
                         ) : sos.map((so)=> (
                             <tr key={so._id}>
                             <td className='border border-slate-300 px-2'>
-                                <button onClick={()=> toggleDropdown(so._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 rounded-xs w-20'>Action<i className='fa fa-angle-down pl-1'></i></button>
+                                <button onClick={()=> toggleDropdown(so._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-1 rounded-sm w-18'>Action<i className='fa fa-angle-down pl-1'></i></button>
                                 {openDropdown === so._id && 
-                                (<div className="absolute left-72 w-40 bg-white shadow-sm border border-slate-300 z-10">
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-plus-circle pr-1'></i>Create BOM</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-plus-circle pr-1'></i>View BOM</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-pencil pr-1'></i>Edit BOM</button>
-                                    <button className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                                    ><i className='fa fa-pencil pr-1'></i>Edit SO</button>
+                                (<div className="absolute left-72 w-50 p-2 bg-white rounded-sm shadow-sm border border-slate-300 z-10 text-md">
+                                    <button onClick={()=> navigate(`/dashboard/create-bom/${so._id}`)} className="block w-full text-left px-3 py-2 hover:bg-gray-100"
+                                    ><i className='fa fa-plus-circle pr-2 text-blue-700'></i>Create BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 hover:bg-gray-100"
+                                    ><i className='fa fa-plus-circle pr-2 text-blue-700'></i>View BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 hover:bg-gray-100"
+                                    ><i className='fa fa-pencil pr-2 text-blue-700'></i>Edit BOM</button>
+                                    <button className="block w-full text-left px-3 py-2 hover:bg-gray-100"
+                                    ><i className='fa fa-pencil pr-2 text-blue-700'></i>Edit SO</button>
                                 </div>)}
                             </td>
                             <td className='border border-slate-300 p-2 px-4 font-semibold'>{so.soNumber}</td>
