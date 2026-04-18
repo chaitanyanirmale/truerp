@@ -81,7 +81,7 @@ export const getItems = async (req, res, next) => {
   try {
 
     const items = await Item.find()
-      .populate("mainCategory", "name")
+      .populate("mainCategory", "name sequenceNumber")
       .populate("subCategory", "name")
       .sort({ createdAt: -1 });
 
