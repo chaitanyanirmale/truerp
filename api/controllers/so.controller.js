@@ -161,3 +161,21 @@ export const getSO = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getSoById = async (req, res, next) => {
+    try {
+        const so = await SO.findById(req.params.id);
+        if (!so) {
+            return res.status(404).json({
+                message: "So not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            so
+        })
+    } catch (error) {
+        next(error)
+    }
+}
