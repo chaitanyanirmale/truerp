@@ -9,7 +9,7 @@ import { UserList } from './pages/User/UserList.jsx'
 import { AddExpense } from './pages/Expanse/AddExpense.jsx'
 import { ExpenseList } from './pages/Expanse/ExpenseList.jsx'
 import { Profile } from './pages/User/Profile.jsx'
-import { CreateInvoice } from './pages/CreateInvoice.jsx'
+import { CreateInvoice } from './pages/Invoices/CreateInvoice.jsx'
 import { AddSalary } from './pages/Salary/AddSalary.jsx'
 import { AddEmployee } from './pages/Salary/AddEmployee.jsx'
 import { Features } from './pages/Home/Features.jsx'
@@ -18,10 +18,9 @@ import { SalaryList } from './pages/Salary/SalaryList.jsx'
 import { CreateSO } from './pages/CreateSO.jsx'
 import { AIFeatures } from './pages/AI/AIFeatures.jsx'
 import { SOList } from './pages/SOList.jsx'
-import { InvoiceList } from './pages/InvoiceList.jsx'
+import { InvoiceList } from './pages/Invoices/InvoiceList.jsx'
 import { SupplierPayment } from './pages/Purchase/SupplierPayment.jsx'
 import { AddPurchase } from './pages/Purchase/AddPurchase.jsx'
-import { SupplierList } from './pages/Purchase/SupplierList.jsx'
 import { AddNewItem } from './pages/Items/AddNewItem.jsx'
 import { MainCategory } from './pages/Items/MainCategory.jsx'
 import { SubCategory } from './pages/Items/SubCategory.jsx'
@@ -44,6 +43,10 @@ import { ItemDetails } from './pages/Items/ItemDetails.jsx'
 import { AiDemandForecasting } from './pages/AI/AiDemandForecasting.jsx'
 import { SmartInventory } from './pages/AI/SmartInventory.jsx'
 import { CostingAndProfit } from './pages/AI/CostingAndProfit.jsx'
+import { ViewSalary } from './pages/Salary/ViewSalary.jsx'
+import { EditSalary } from './pages/Salary/EditSalary.jsx'
+import { CreateBOM } from './pages/Invoices/CreateBOM.jsx'
+
 
 function App() {
 
@@ -68,8 +71,11 @@ function App() {
             <Route path='supplier-payment' element={<SupplierPayment />} />
             <Route path='create-invoice' element={<CreateInvoice />} />
             <Route path='invoice-list' element={<InvoiceList />} />
+            <Route path='create-bom/:id' element={<CreateBOM />} />
             <Route path='add-salary' element={<AddSalary />} />
             <Route path='salary-list' element={<SalaryList />} />
+            <Route path='view-salary/:id' element={<ViewSalary />} />
+            <Route path='edit-salary/:id' element={<EditSalary />} />
             <Route path='add-employee' element={<AddEmployee />} />
             <Route path='employee-list' element={<EmployeeList />} />
             <Route path='create-so' element={<CreateSO />} />
@@ -77,7 +83,6 @@ function App() {
             <Route path='create-po' element={<CreatePO />} />
             <Route path='po-list' element={<POList />} />
             <Route path='add-purchase' element={<AddPurchase />} />
-            <Route path='supplier-list' element={<SupplierList />} />
             <Route path='add-item' element={<AddNewItem />} />
             <Route path='main-cat' element={<MainCategory />} />
             <Route path='sub-cat' element={<SubCategory />} />

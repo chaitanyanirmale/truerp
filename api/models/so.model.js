@@ -40,6 +40,17 @@ const soSchema = new mongoose.Schema(
       required: true,
     },
 
+    bom: [
+      {
+        item: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Item",
+        },
+        quantity: Number,
+        cost: Number,
+      },
+    ],
+
     majorMinorNumber: {
       type: String,
       trim: true,

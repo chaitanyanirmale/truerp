@@ -36,6 +36,31 @@ export const CreateBOM = () => {
       }
     }
 
+    const addBOMItem = async (item) => {
+      try {
+        const res = await fetch(`/api/so/${id}/bom`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            item: item._id,
+            quantity: 1,
+            cost: item.supplierPrice,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          setSo(data.so);
+          alert("Item added to BOM");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     useEffect(() => {
       fetchItems();
     }, []);
@@ -77,7 +102,7 @@ export const CreateBOM = () => {
                 <td className='border border-slate-300 p-4'>1</td>
                 <td className='border border-slate-300 p-4'>{item.supplierPrice}</td>
                 <td className='border border-slate-300 p-4'>
-                  <button className='bg-green-600 text-white font-semibold p-2 px-4 rounded-sm'><i className='fa fa-plus pr-2'></i>Add</button>
+                  <button onClick={() => addBOMItem(item)} className='bg-green-700 text-white font-semibold p-2 px-4 rounded-sm'><i className='fa fa-plus pr-2'></i>Add</button>
                 </td>
               </tr>
             ))}

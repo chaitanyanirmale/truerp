@@ -16,6 +16,7 @@ import invoiceRoutes from "./routes/invoice.route.js";
 import machineryRoutes from "./routes/machinery.route.js";
 import poRoutes from "./routes/po.route.js";
 import contactRoutes from "./routes/contact.route.js";
+import paymentRoutes from"./routes/payment.route.js";
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
@@ -48,6 +49,7 @@ app.use("/api/invoice", invoiceRoutes)
 app.use("/api/machinery", machineryRoutes)
 app.use("/api/po", poRoutes)
 app.use("/api/contact", contactRoutes)
+app.use("/api/payment", paymentRoutes)
 
 app.listen(3000, () => {
   console.log("Api is running on port 3000")

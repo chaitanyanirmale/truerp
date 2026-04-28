@@ -179,3 +179,53 @@ export const getSoById = async (req, res, next) => {
         next(error)
     }
 }
+
+
+export const addBOMItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { item, quantity, cost } = req.body;
+
+    const updatedSO = await SO.findByIdAndUpdate(
+        id,
+      {
+        $push: {
+          bom: { item, quantity, cost },
+        },
+      },
+      { new: true }
+    ).populate("bom.item");
+
+    if (!updatedSO) {
+      return res.status(404).json({
+        success: false,
+        message: "SO not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "BOM item added successfully",
+      so: updatedSO,
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+export const getBOMBySO = async (req, res) => {
+  try {
+    const { soId } = req.params;
+
+    const so = await SO.findById(soId)
+      .populate("bom.item");
+
+    res.json(so.bom);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
