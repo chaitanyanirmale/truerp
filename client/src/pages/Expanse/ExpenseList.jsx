@@ -63,7 +63,7 @@ export const ExpenseList = () => {
       <div className='flex justify-between'>
         <h4 className='mb-4 text-2xl font-semibold'>List of Expenses</h4>
         <div className="">
-            <select type="text" name="" className="border border-slate-300 rounded-sm p-2 bg-white">
+            <select type="text" name="" className="border border-slate-300 rounded-sm p-2 bg-white text-sm">
               <option value="">---Select Employee---</option>
               {employees.map((emp) => (
                 <option key={emp._id} value={emp._id}>
@@ -78,38 +78,38 @@ export const ExpenseList = () => {
           {loading ? (
             <p>Loading..</p>
           ) : <div className="text-center">
-              <table className='p-2 mt-4 w-full'>
-            <thead className='border border-slate-300'>
-              <tr className=''>
-                <th className='p-2 border border-slate-300'>Full Name</th>
-                <th className='p-2 border border-slate-300'>Expense Date</th>
-                <th className='p-2 border border-slate-300'>Expense Amount</th>
-                <th className='p-2 border border-slate-300'>Expense Type</th>
-                <th className='p-2 border border-slate-300'>Expense Note</th>
-                <th className='p-2 border border-slate-300'>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {expenses.length === 0 ? (
-                <tr>
-                  <td className='p-2 border border-slate-300' colSpan="6">No Expenses Found</td>
+            <table className='p-2 mt-4 w-full'>
+              <thead className='border border-slate-300 bg-blue-700 text-white'>
+                <tr className=''>
+                  <th className='p-4 border border-slate-300'>Full Name</th>
+                  <th className='p-4 border border-slate-300'>Expense Date</th>
+                  <th className='p-4 border border-slate-300'>Expense Amount</th>
+                  <th className='p-4 border border-slate-300'>Expense Type</th>
+                  <th className='p-4 border border-slate-300'>Expense Note</th>
+                  <th className='p-4 border border-slate-300'>Action</th>
                 </tr>
-                
-              ) : expenses.map((exp)=> 
-              <tr key={exp._id} className=''>
-                <td className='p-2 border border-slate-300'>{exp.employee?.fullname}</td>
-                <td className='p-2 border border-slate-300'>{new Date(exp.expenseDate).toLocaleDateString()}</td>
-                <td className='p-2 border border-slate-300'>{exp.amount}</td>
-                <td className='p-2 border border-slate-300'>{exp.expenseType}</td>
-                <td className='p-2 border border-slate-300'>{exp.note}</td>
-                {/* <td className='p-2 border border-slate-400'><a href="" className='bg-yellow-500 px-2 py-1 rounded-sm '><i className="fa fa-plus px-1" aria-hidden="true"></i>Attach file</a></td> */}
-                <td className='p-2 border border-slate-300'>
-                  <button onClick={() => deleteExpense(exp._id)} className='bg-rose-600 p-2 rounded-sm text-white hover:bg-rose-700'><i className="fa fa-trash px-2"></i>Delete</button>
-                </td>
-              </tr>)
-              }             
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {expenses.length === 0 ? (
+                  <tr>
+                    <td className='p-2 border border-slate-300' colSpan="6">No Expenses Found</td>
+                  </tr>
+                  
+                ) : expenses.map((exp)=> 
+                <tr key={exp._id} className=''>
+                  <td className='p-2 border border-slate-300'>{exp.employee?.fullname}</td>
+                  <td className='p-2 border border-slate-300'>{new Date(exp.expenseDate).toLocaleDateString()}</td>
+                  <td className='p-2 border border-slate-300'>{exp.amount}</td>
+                  <td className='p-2 border border-slate-300'>{exp.expenseType}</td>
+                  <td className='p-2 border border-slate-300'>{exp.note}</td>
+                  {/* <td className='p-2 border border-slate-400'><a href="" className='bg-yellow-500 px-2 py-1 rounded-sm '><i className="fa fa-plus px-1" aria-hidden="true"></i>Attach file</a></td> */}
+                  <td className='p-2 border border-slate-300'>
+                    <button onClick={() => deleteExpense(exp._id)} className='bg-rose-600 p-2 rounded-sm text-white hover:bg-rose-700 hover:scale-105 transition-all duration-700'><i className="fa fa-trash px-2"></i>Delete</button>
+                  </td>
+                </tr>)
+                }             
+              </tbody>
+            </table>
           </div>
           }       
     </div>
