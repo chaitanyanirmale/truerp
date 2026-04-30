@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Hero = () => {
   return (
-    <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 md:py-30 xl:px-25 py-30'>
+    <section id='hero' className='flex items-center justify-center bg-[linear-gradient(135deg,rgba(59,130,246,0.05)_25%,transparent_50%)] md:grid-cols-2 xl:px-25 xl:pt-30'>
         <div className="flex flex-col lg:flex-row items-center justify-center mx-10">
           <div>
             <div className='md:text-center xl:text-start '>
@@ -19,8 +19,8 @@ export const Hero = () => {
                 The TRUERP team - Powering India's Manufacturing Eco System.
               </p>
               <div className="flex flex-wrap gap-2 mb-16 md:justify-center xl:justify-start">
-                  <a href="https://truerp.in/pdf/truerp.pdf" target="_blank" className="bg-blue-950 text-white p-4 rounded-full">DOWNLOAD BROCHURE</a>
-                  <a href="https://www.youtube.com/watch?v=9UMA-uGlg50" className="text-blue-950 font-semibold flex items-center gap-2 p-3 text-lg">
+                  <a href="https://truerp.in/pdf/truerp.pdf" target="_blank" className="bg-blue-950 text-white p-4 rounded-full hover:scale-105 transition-all duration-700">DOWNLOAD BROCHURE</a>
+                  <a href="https://www.youtube.com/watch?v=9UMA-uGlg50" className="text-blue-950 font-semibold flex items-center gap-2 px-4 py-2 text-lg border-2 border-blue-950 rounded-full hover:scale-105 transition-all duration-700">
                     <i className="bi bi-play-circle me-1 text-2xl"></i>
                     Play Video
                   </a>
