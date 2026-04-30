@@ -7,8 +7,8 @@ const router = express.Router()
 router.post('/create',verifyToken, createSO);
 router.get('/so-list', getSO);
 router.get('/:id', getSoById);
-router.get('/previewJCNumber', previewJCNumber);
-router.get('/previewSONumber', previewSONumber);
+router.get('/preview/JC-Number', previewJCNumber);
+router.get('/preview/SO-Number', previewSONumber);
 router.post('/so/:id/bom', addBOMItem);
 
 export default router;
