@@ -9,7 +9,7 @@ export const CreateSO = () => {
     const [loading, setLoading] = useState(false)
 
     const fetchJCNo = async () => {
-        const res = await fetch("/api/so/previewJCNumber");
+        const res = await fetch("/api/so/preview/JC-Number");
         const data = await res.json();
         
         if(data.success){
@@ -32,18 +32,18 @@ export const CreateSO = () => {
       console.log(error);
     }
     };
-  const fetchSoNo = async () => {
-        const res = await fetch("/api/so/previewSONumber");
-        const data = await res.json();
-        
-        if(data.success){
-            setFormData(formData => ({
-                ...formData,
-                soNumber : data.soNumber
-            }))
-        }
-  }
-  const fetchItems = async () => {
+    const fetchSoNo = async () => {
+      const res = await fetch("/api/so/preview/SO-Number");
+      const data = await res.json();
+          
+      if(data.success){
+          setFormData(formData => ({
+          ...formData,
+          soNumber : data.soNumber
+        }))
+      }
+    }
+    const fetchItems = async () => {
       setLoading(true);
       try {
           const res = await fetch('/api/items/list');
@@ -56,7 +56,7 @@ export const CreateSO = () => {
           console.log(error)
           setLoading(false);
       }
-  }
+    }
   const fetchPO = async () => {
       setLoading(true);
       try {
@@ -137,7 +137,7 @@ export const CreateSO = () => {
   return (
     <div className=' md:w-full xl:w-full  bg-white p-4 border border-slate-400 shadow-md rounded-sm'>
         <h1 className='text-2xl font-semibold'>Create New SO</h1>
-        <hr className='text-slate-400 my-4'/>
+        <hr className='text-slate-300 my-4'/>
         <form onSubmit={handleSubmit} >
           <div className="xl:grid xl:grid-cols-3 xl:gap-6 md:grid md:grid-cols-2 md:gap-6 sm:grid text-sm placeholder:text-slate-400 items-start">
             <div className="grid gap-2">
@@ -240,9 +240,9 @@ export const CreateSO = () => {
                 <textarea name="remark" value={formData.remark} onChange={handleChange}  rows='2' placeholder='Remark' className='p-2 border border-slate-300 rounded-sm'></textarea>
               </div>
           </div>
-            <hr className='text-slate-400 my-4'/>
+            <hr className='text-slate-300 my-4'/>
             <div className="">
-              <button type='submit' className='bg-blue-700 p-2 rounded-xs text-white w-30 hover:bg-blue-700' disabled={loading}><i className='fa fa-chechk pr-1'></i>{loading ? "Creating..." : "Create SO"}</button>
+              <button type='submit' className='bg-blue-700 p-2 rounded-xs text-white w-30 hover:bg-blue-800 hover:scale-105 transition-all duration-700' disabled={loading}><i className='fa fa-chechk pr-1'></i>{loading ? "Creating..." : "Create SO"}</button>
             </div>
         </form>
     </div>
