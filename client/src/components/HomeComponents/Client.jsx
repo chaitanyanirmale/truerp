@@ -1,6 +1,28 @@
 import React from 'react'
 
 export const Client = () => {
+  const clients = [
+    { name: "NovaTech Systems", img: "/clients/1.jpg" },
+    { name: "GreenLeaf Papers", img: "/clients/2.jpg" },
+    { name: "Ajwa Footwear", img: "/clients/3.jpg" },
+    { name: "Sunstar Pharma", img: "/clients/4.jpg" },
+    { name: "Bharat Foods", img: "/clients/5.jpg" },
+    { name: "Nexon Electronics", img: "/clients/6.jpg" },
+    { name: "SVA", img: "/clients/7.jpg" },
+    { name: "EverGreen Timberworks", img: "/clients/8.jpg" },
+    { name: "RubberEx Industries", img: "/clients/9.jpg" },
+    { name: "BrightStar Publishing", img: "/clients/10.jpg" },
+    { name: "PrintWave Solutions", img: "/clients/11.jpg" },
+    { name: "Medicare Pharmaceuticals", img: "/clients/12.jpg" },
+    { name: "RubberEX Industries", img: "/clients/13.jpg" },
+    { name: "BrightStar Publishing", img: "/clients/14.jpg" },
+    { name: "PrintWave Solutions", img: "/clients/15.jpg" },
+    { name: "Ecoplast Polymers", img: "/clients/16.jpg" },
+    { name: "Minerex Mining", img: "/clients/17.jpg" },
+    { name: "PetroMax Energy", img: "/clients/18.jpg" },
+    { name: "MechPro Machinery", img: "/clients/19.jpg" },
+    { name: "CemStar Cement", img: "/clients/20.jpg" }
+  ];
   return (
     <section id="client" className="p-10 pt-22 bg-gray-100">
         <div className="text-center">
@@ -8,127 +30,13 @@ export const Client = () => {
           <div className="w-20 border border-b-2 border-blue-900 mx-auto rounded-lg mb-4"></div>
           <p className="text-gray-600 mb-6">Our Happy Clients</p>
         </div>
-        <div className="grid grid-cols-4 gap-8 px-20 mt-20">
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\1.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">NovaTech Systems</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-20 mt-20">
+          {clients.map(({ name, img }, index) => (
+            <div key={index} className="bg-white border border-slate-200 rounded-sm shadow-md hover:shadow-lg transition">
+              <img src={img} alt={name} className="h-24 mx-auto object-contain" />
+              <p className="text-center my-2 text-sm">{name}</p>
             </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\2.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">GreenLeaf Papers</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\3.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Ajwa Footwear</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\4.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Sunstar Pharma</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\5.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Bharat Foods</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\6.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Nexon Electronics</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\7.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">SVA</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\8.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">EverGreen Timberworks</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\9.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">RubberEx Industries</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\10.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">BrightStar Publishing</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\11.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">PrintWave Solutions</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\12.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Medicare Pharmaceuticals</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\13.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">RubberEX Industries</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\14.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">BrightStar Publishing</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\15.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">PrintWave Glutions</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\16.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Ecoplast Polymers</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\17.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">Minerex Mining</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\18.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">PetroMax Enery</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\19.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">MechPro Machinery</p>
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-sm shadow-md">
-            <img src="\clients\20.jpg" alt="" className="h-25 mx-auto"/>
-            <div className="">
-              <p className="text-center my-2 text-sm">CemStar Cement</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
   )
