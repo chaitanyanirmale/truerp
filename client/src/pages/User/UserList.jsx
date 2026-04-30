@@ -101,17 +101,17 @@ export const UserList = () => {
             <p>Loading..</p>
         ) : <div className="text-start h-150 pb-4 overflow-y-auto">
             <table className='w-full'>
-                <thead className="font-semibold text-sm bg-blue-600 text-white">
+                <thead className="font-semibold text-sm bg-blue-700 text-white">
                     <tr>
-                        <td className="p-2 border border-slate-300">Fullname</td>
-                        <td className="p-2 border border-slate-300">Mobile</td>
-                        <td className="p-2 border border-slate-300">Email</td>
-                        <td className="p-2 border border-slate-300">Role</td>
-                        <td className="p-2 border border-slate-300">GST No</td>
-                        <td className="p-2 border border-slate-300">PAN No</td>
-                        <td className="p-2 border border-slate-300">Location</td>
-                        <td className="p-2 border border-slate-300">Status</td>
-                        <td className="p-2 border border-slate-300 text-center">Action</td>
+                        <td className="p-4 border border-slate-300">Fullname</td>
+                        <td className="p-4 border border-slate-300">Mobile</td>
+                        <td className="p-4 border border-slate-300">Email</td>
+                        <td className="p-4 border border-slate-300">Role</td>
+                        <td className="p-4 border border-slate-300">GST No</td>
+                        <td className="p-4 border border-slate-300">PAN No</td>
+                        <td className="p-4 border border-slate-300">Location</td>
+                        <td className="p-4 border border-slate-300">Status</td>
+                        <td className="p-4 border border-slate-300 text-center">Action</td>
                     </tr>
                 </thead>
                 <tbody className='bg-white text-sm'>
@@ -130,20 +130,20 @@ export const UserList = () => {
                             <td className="px-2 border border-slate-300">{user.location}</td>
 
                             <td className="px-6 py-4 border border-slate-300">
-                                <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ user.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
+                                <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ user.status === "active" ? "bg-green-700" : "bg-red-600" }`}>
                                     {user.status === "active" ? "Active" : "Inactive"}
                                 </span>
                             </td>
                             <td className="px-6 py-4 border border-slate-300 text-center">
-                            <button className="px-3 py-2 text-sm font-semibold text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
+                            <button className="px-3 py-2 text-sm font-semibold text-white bg-blue-700 rounded-xs hover:bg-blue-800 hover:scale-105 transition-all duration-700" onClick={()=> toggleDropdown(user._id)}>Actions<i className='fa fa-angle-down pl-2'></i>
                             </button>
                             {openDropdown === user._id && (
-                                <div className="absolute right-11 w-32 bg-white shadow-sm border border-slate-300 z-10">
-                                <button onClick={() => navigate(`/dashboard/user/${user._id}`)} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">View User</button>
-                                <button onClick={() => updateStatus(user._id, user.status === "active" ? "inactive" : "active")} className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100">
-                                    {user.status === "active" ? "Deactivate" : "Activate"}
-                                </button>
-                                <button onClick={() => deleteUser(user._id)} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100">Delete</button>
+                                <div className="absolute right-19 w-40 bg-white shadow-sm border border-slate-300 z-10 p-2 rounded-sm">
+                                    <button onClick={() => navigate(`/dashboard/user/${user._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100">View User</button>
+                                    <button onClick={() => updateStatus(user._id, user.status === "active" ? "inactive" : "active")} className="block w-full text-left p-2 text-sm hover:bg-gray-100">
+                                        {user.status === "active" ? "Deactivate" : "Activate"}
+                                    </button>
+                                    <button onClick={() => deleteUser(user._id)} className="block w-full text-left p-2  text-sm text-red-600 hover:bg-gray-100">Delete</button>
                                 </div>
                                 )}
                             </td>

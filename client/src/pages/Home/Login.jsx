@@ -48,7 +48,7 @@ export const Login = () => {
                     <input className="border border-slate-200 rounded-sm p-2 w-full" type="password" placeholder="Password" name="password" onChange={handleChange} value={formData.password}/>
                 </div>
                 <div className="mt-8">
-                    <button className="bg-blue-800 text-white p-2 rounded-sm w-full" type="submit"><i className="fa fa-sign-in fa-lg fa-fw"></i>{loading ? 'Siging In..': 'Sign In'}</button>
+                    <button className="bg-blue-800 text-white p-2 rounded-sm w-full hover:scale-105 transition-all duration-700 cursor-pointer" type="submit"><i className="fa fa-sign-in fa-lg fa-fw"></i>{loading ? 'Siging In..': 'Sign In'}</button>
                 </div>
             </form>
             </div>

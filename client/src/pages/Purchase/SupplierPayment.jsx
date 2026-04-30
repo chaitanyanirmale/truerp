@@ -65,7 +65,7 @@ export const SupplierPayment = () => {
             <div className="font-semibold p-2">
                 <h1 className='text-2xl'>Purchase Bills</h1>
             </div>
-            <hr className='text-slate-400 my-4'/>
+            <hr className='text-slate-300 my-4'/>
             <div className="xl:overflow-x-auto">
                 <table className='w-full text-center text-sm'>
                     <thead className='border border-slate-300'>
@@ -98,10 +98,10 @@ export const SupplierPayment = () => {
                             <td className='p-2 border border-slate-300'><i className="fa fa-inr"></i> {Number(purchase.tdsDeduction || 0).toLocaleString("en-IN")}</td>
                             <td className='p-2 border border-slate-300'>{purchase.lastPaymentDate}</td>
                             <td className='p-2 border border-slate-300'>
-                                <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm'>Action <i className='fa fa-angle-down'></i></button>
+                                <button onClick={()=> toggleDropdown(purchase._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 px-4 rounded-sm hover:scale-105 transition-all duration-700 cursor-pointer'>Action <i className='fa fa-angle-down'></i></button>
 
                                 {openDropdown === purchase._id && (
-                                    <div className="absolute right-12 w-50 bg-white shadow-sm border border-slate-300 z-10 overflow-y-auto h-30 pl-2">
+                                    <div className="absolute right-12 w-60 bg-white shadow-sm border border-slate-300 z-10 h-32 p-2 rounded-md">
                                     <button onClick={()=> navigate(`/dashboard/viewPurchaseBill/${purchase._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
                                     ><i className='fa fa-folder pr-2 text-blue-600'></i>View Purchase Bill</button>
                                     <button onClick={()=> navigate(`/dashboard/partPayment/${purchase._id}`)} className="block w-full text-left p-2 text-sm hover:bg-gray-100"
@@ -117,20 +117,20 @@ export const SupplierPayment = () => {
                 </table>
             </div>
         </div>
-        <div className="bg-white my-4 p-4 shadow-md">
+        <div className="bg-white my-4 p-4 shadow-md rounded-sm">
                 <table className='w-full text-center text-lg font-semibold'>
                     <thead>
                         <tr>
-                            <th className='p-2 border border-slate-400 text-blue-700'>Total Amount</th>
-                            <th className='p-2 border border-slate-400 text-blue-700'>Total Paid</th>
-                            <th className='p-2 border border-slate-400 text-blue-700'>Total Balance</th>
+                            <th className='p-2 border border-slate-300 text-blue-700'>Total Amount</th>
+                            <th className='p-2 border border-slate-300 text-blue-700'>Total Paid</th>
+                            <th className='p-2 border border-slate-300 text-blue-700'>Total Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td className='p-2 border border-slate-400'>{totals.totalAmount?.toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'>{totals.totalPaid?.toLocaleString("en-IN")}</td>
-                            <td className='p-2 border border-slate-400'>{totals.totalBalance?.toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'>{totals.totalAmount?.toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'>{totals.totalPaid?.toLocaleString("en-IN")}</td>
+                            <td className='p-2 border border-slate-300'>{totals.totalBalance?.toLocaleString("en-IN")}</td>
                         </tr>
                     </tbody>
                 </table>

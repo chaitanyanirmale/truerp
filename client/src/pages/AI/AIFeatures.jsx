@@ -17,7 +17,7 @@ export const AIFeatures = () => {
                     <p className='text-sm my-2'>Predicts future demand accurately.</p>
                     <img src="\ai_demand.jpg" alt="" className='h-50'/>
                     <div className="flex justify-end w-full">
-                        <button onClick={()=> navigate('/dashboard/demand-forecasting')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg" id="viewbutton"
+                        <button onClick={()=> navigate('/dashboard/demand-forecasting')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg hover:scale-105 transition-all duration-700 cursor-pointer" id="viewbutton"
                         >View Details</button>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ export const AIFeatures = () => {
                     <p className='text-sm my-2'>Optimizes stock levels.</p>
                     <img src="\ai_smart_inventory.jpg" alt="" className='h-50'/>
                     <div className="flex justify-end w-full">
-                        <button onClick={()=> navigate('/dashboard/smart-inventory')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg" id="viewbutton"
+                        <button onClick={()=> navigate('/dashboard/smart-inventory')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg hover:scale-105 transition-all duration-700 cursor-pointer" id="viewbutton"
                         >View Details</button>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ export const AIFeatures = () => {
                     <p className='text-sm my-2'>Predicts job profitability.</p>
                     <img src="\ai_costing.jpg" alt="" className='h-50'/>
                     <div className="flex justify-end w-full">
-                        <button onClick={()=> navigate('/dashboard/costing-profit')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg" id="viewbutton"
+                        <button onClick={()=> navigate('/dashboard/costing-profit')} className="bg-blue-600 px-2 py-1 rounded-xs text-white text-sm font-semibold  items-end hover:shadow-lg hover:scale-105 transition-all duration-700 cursor-pointer" id="viewbutton"
                         >View Details</button>
                     </div>
                 </div>
