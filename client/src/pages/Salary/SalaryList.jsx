@@ -80,19 +80,19 @@ export const SalaryList = () => {
                 <table className='w-full text-sm'>
                 <thead className='text-white uppercase text-xs bg-blue-700'>
                     <tr>
-						<th className="px-4 py-3 border border-slate-300">Fullname</th>
-						<th className="px-4 py-3 border border-slate-300">Salary Month</th>
-						<th className="px-4 py-3 border border-slate-300">Salary Per Day</th>
-						<th className="px-4 py-3 border border-slate-300">Salary Per Hour</th>
-						<th className="px-4 py-3 border border-slate-300">General (8 Hrs)</th>
-						<th className="px-4 py-3 border border-slate-300">Location</th>
-						<th className="px-4 py-3 border border-slate-300">Overtime (11 Hrs)</th>
-						<th className="px-4 py-3 border border-slate-300">Night (22 Hrs)</th>
-						<th className="px-4 py-3 border border-slate-300">Extra Hours</th>
-						<th className="px-4 py-3 border border-slate-300">Bonus</th>
-						<th className="px-4 py-3 border border-slate-300">Salary Amount</th>
-						<th className="px-4 py-3 border border-slate-300">Salary Date</th>
-						<th className="px-4 py-3 border border-slate-300">Action</th>
+						<th className="p-4 border border-slate-300">Fullname</th>
+						<th className="p-4 border border-slate-300">Salary Month</th>
+						<th className="p-4 border border-slate-300">Salary Per Day</th>
+						<th className="p-4 border border-slate-300">Salary Per Hour</th>
+						<th className="p-4 border border-slate-300">General (8 Hrs)</th>
+						<th className="p-4 border border-slate-300">Location</th>
+						<th className="p-4 border border-slate-300">Overtime (11 Hrs)</th>
+						<th className="p-4 border border-slate-300">Night (22 Hrs)</th>
+						<th className="p-4 border border-slate-300">Extra Hours</th>
+						<th className="p-4 border border-slate-300">Bonus</th>
+						<th className="p-4 border border-slate-300">Salary Amount</th>
+						<th className="p-4 border border-slate-300">Salary Date</th>
+						<th className="p-4 border border-slate-300">Action</th>
 					</tr>
                 </thead>
                 <tbody>
@@ -152,7 +152,7 @@ export const SalaryList = () => {
                             {new Date(salary.salaryDate).toISOString().split("T")[0]}
                             </td>
                             <td className="px-4 py-2 border border-slate-300">
-                                <button onClick={()=>toggleDropdown(salary._id)} className="bg-blue-700 w-20 text-white p-2 rounded-xs font-semibold">
+                                <button onClick={()=>toggleDropdown(salary._id)} className="bg-blue-700 w-20 text-white p-2 rounded-xs font-semibold hover:scale-105 transition-all duration-700">
                                    Action <i className='fa fa-angle-down'></i>
                                 </button>
                                 {openDropdown === salary._id && (

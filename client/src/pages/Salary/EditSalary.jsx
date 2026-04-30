@@ -149,23 +149,23 @@ export const EditSalary = () => {
         }
     };
   return (
-    <div className='w-200 bg-white border border-slate-400 p-4 shadow-lg rounded-sm'>
+    <div className='w-200 bg-white border border-slate-300 p-4 shadow-lg rounded-sm'>
         <form action="" onSubmit={handleSubmit}>
             <h1 className='text-2xl font-semibold'>Edit Salary</h1>
-            <hr className='text-slate-400 my-4'/>
-            <div className="w-full">
-                <div className="flex justify-between my-4">
+            <hr className='text-slate-300 my-4'/>
+            <div className="w-full grid grid-cols-1 gap-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Select Role</label>
-                    <select name="role" value={formData.role} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'>
+                    <select name="role" value={formData.role} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'>
                         <option value="" disabled>--Select Role--</option>
                         <option value="Staff">Staff</option>
                         <option value="Worker">Worker</option>
                     </select>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Salary Month-Year</label>
                     <div className="flex w-full gap-4">
-                        <select name="month" value={formData.month} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'>
+                        <select name="month" value={formData.month} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'>
                             <option value="" disabled>--Select Month--</option>
                             <option value="1">Jan</option>
                             <option value="2">Feb</option>
@@ -180,7 +180,7 @@ export const EditSalary = () => {
                             <option value="11">Nov</option>
                             <option value="12">Dec</option>
                         </select>
-                        <select name="year" value={formData.year} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'>
+                        <select name="year" value={formData.year} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'>
                             <option value="" disabled>--Select Year--</option>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
@@ -188,9 +188,9 @@ export const EditSalary = () => {
                         </select>
                     </div>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Staff / Worker</label>
-                    <select name="employee" value={formData.employee} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'>
+                    <select name="employee" value={formData.employee} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'>
                         <option value="" disabled>--Select Staff / Worker--</option>
                         {employees.map((emp) => (
                             <option key={emp._id} value={emp._id}>
@@ -199,79 +199,79 @@ export const EditSalary = () => {
                         ))}
                     </select>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Salary Per Day (in Rs.)</label>
-                    <input type="number" name="salaryPerDay" value={formData.salaryPerDay} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="salaryPerDay" value={formData.salaryPerDay} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Salary Per Hour (in Rs.)</label>
-                    <input type="number" name="salaryPerHour" value={formData.salaryPerHour} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="salaryPerHour" value={formData.salaryPerHour} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Monthly (Days)</label>
-                    <input type="number" name="totalWorkingDays" value={formData.totalWorkingDays} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="totalWorkingDays" value={formData.totalWorkingDays} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Present (in Days)</label>
-                    <input type="number" name="presentDays" value={formData.presentDays} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="presentDays" value={formData.presentDays} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Absent (in Days)</label>
-                    <input type="number" value={absenceDays} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'readOnly/>
+                    <input type="number" value={absenceDays} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'readOnly/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Extra Hours (in Hours)</label>
-                    <input type="number" name="extraHours" value={formData.extraHours} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="extraHours" value={formData.extraHours} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Total Payment</label>
-                    <input type="number" value={grossSalary} className='w-full border border-slate-400 rounded-sm p-1' readOnly/>
+                    <input type="number" value={grossSalary} className='w-full border border-slate-300 rounded-sm p-2' readOnly/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Deduction</label>
-                    <input type="number" name="deduction" value={formData.deduction} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="deduction" value={formData.deduction} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Advance</label>
-                    <input type="number" name="advance" value={formData.advance} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="advance" value={formData.advance} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Other</label>
-                    <input type="number" name="other" value={formData.other} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="other" value={formData.other} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">PF</label>
-                    <input type="number" name="pf" value={formData.pf} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="pf" value={formData.pf} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Professional Tax</label>
-                    <input type="number" name="professionalTax" value={formData.professionalTax} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="professionalTax" value={formData.professionalTax} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Payment After Deduction / Advance</label>
-                    <input type="number" value={netSalary} className='w-full border border-slate-400 rounded-sm p-1' readOnly/>
+                    <input type="number" value={netSalary} className='w-full border border-slate-300 rounded-sm p-2' readOnly/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Weekly Off</label>
-                    <input type="number" name="weeklyOff" value={formData.weeklyOff} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="weeklyOff" value={formData.weeklyOff} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Bonus</label>
-                    <input type="number" name="bonus" value={formData.bonus} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="number" name="bonus" value={formData.bonus} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Salary Date</label>
-                    <input type="date" name="salaryDate" value={formData.salaryDate} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1'/>
+                    <input type="date" name="salaryDate" value={formData.salaryDate} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2'/>
                 </div>
-                <div className="flex justify-between my-4">
+                <div className="flex justify-between">
                     <label className="w-1/2 text-sm font-semibold">Remark</label>
-                    <textarea type="text" name="remark" value={formData.remark} onChange={handleChange} className='w-full border border-slate-400 rounded-sm p-1' placeholder='Enter Remark'/>
+                    <textarea type="text" name="remark" value={formData.remark} onChange={handleChange} className='w-full border border-slate-300 rounded-sm p-2' placeholder='Enter Remark'/>
                 </div>
             </div>
 
-            <hr className='text-slate-400 my-4'/>
+            <hr className='text-slate-300 my-4'/>
             <div className="">
-                <button className="bg-blue-700 hover:bg-blue-800 p-2 rounded-xs text-white px-4 mx-2">Update</button>
+                <button className="bg-blue-700 hover:bg-blue-800 p-2 rounded-xs text-white px-4 hover:scale-105 transition-all duration-700">Update</button>
             </div>
         </form>
     </div>

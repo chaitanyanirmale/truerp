@@ -88,22 +88,22 @@ export const EmployeeList = () => {
                 <option value="worker">Worker</option>
             </select>
         </div>
-        <hr className='text-slate-400 my-4'/>
+        <hr className='text-slate-300 my-4'/>
         {loading ? (
             <p>Loading...</p>
         ): <div className="text-center overflow-y-auto">
             <table className='w-full text-sm'>
-                <thead className='text-gray-700 uppercase text-xs'>
+                <thead className='text-white bg-blue-700 uppercase text-xs'>
                     <tr>
-						<th className="px-4 py-3 border">Fullname</th>
-						<th className="px-4 py-3 border">Role</th>
-						<th className="px-4 py-3 border">EMP Code</th>
-						<th className="px-4 py-3 border">Mobile</th>
-						<th className="px-4 py-3 border">Email</th>
-						<th className="px-4 py-3 border">PAN No</th>
-						<th className="px-4 py-3 border">Location</th>
-						<th className="px-4 py-3 border">Status</th>
-						<th className="px-4 py-3 border">Action</th>
+						<th className="p-4 border border-slate-300">Fullname</th>
+						<th className="p-4 border border-slate-300">Role</th>
+						<th className="p-4 border border-slate-300">EMP Code</th>
+						<th className="p-4 border border-slate-300">Mobile</th>
+						<th className="p-4 border border-slate-300">Email</th>
+						<th className="p-4 border border-slate-300">PAN No</th>
+						<th className="p-4 border border-slate-300">Location</th>
+						<th className="p-4 border border-slate-300">Status</th>
+						<th className="p-4 border border-slate-300">Action</th>
 					</tr>
                 </thead>
                 <tbody>
@@ -112,21 +112,21 @@ export const EmployeeList = () => {
                             <td colSpan='10' className='text-center p-4'>No Employees Found</td>
                         </tr>
                     ): employees.map((emp) => (
-                        <tr key={emp._id} className="border border-gray-200">
-                            <td className="px-2 border">{emp.fullname}</td>
-                            <td className="px-2 border">{emp.role}</td>
-                            <td className="px-2 border">{emp.empcode}</td>
-                            <td className="px-2 border">{emp.mobile}</td>
-                            <td className="px-2 border">{emp.email}</td>
-                            <td className="px-2 border">{emp.panNumber}</td>
-                            <td className="px-2 border">{emp.location}</td>
-                            <td className="px-6 py-4 border">
+                        <tr key={emp._id} className="border border-slate-300">
+                            <td className="px-2 border border-slate-300">{emp.fullname}</td>
+                            <td className="px-2 border border-slate-300">{emp.role}</td>
+                            <td className="px-2 border border-slate-300">{emp.empcode}</td>
+                            <td className="px-2 border border-slate-300">{emp.mobile}</td>
+                            <td className="px-2 border border-slate-300">{emp.email}</td>
+                            <td className="px-2 border border-slate-300">{emp.panNumber}</td>
+                            <td className="px-2 border border-slate-300">{emp.location}</td>
+                            <td className="px-6 py-4 border border-slate-300">
                                 <span className={`px-3 py-2 text-xs font-semibold text-white rounded ${ emp.status === "active" ? "bg-green-600" : "bg-red-600" }`}>
                                     {emp.status === "active" ? "Active" : "Inactive"}
                                 </span>
                             </td>
-                            <td className="px-6 py-4 border text-center">
-                                <button onClick={()=> toggleDropdown(emp._id)} className="px-3 py-2 text-sm text-white bg-blue-600 rounded-xs hover:bg-blue-700 transition">
+                            <td className="px-6 py-4 border border-slate-300 text-center">
+                                <button onClick={()=> toggleDropdown(emp._id)} className="px-3 py-2 text-sm text-white bg-blue-700 rounded-xs hover:bg-blue-800 hover:scale-105 transition-all duration-700">
                                     Actions
                                     <i className='fa fa-angle-down pl-1'></i>
                                 </button>
