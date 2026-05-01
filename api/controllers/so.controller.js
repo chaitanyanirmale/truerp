@@ -145,6 +145,34 @@ export const createSO = async (req, res, next) => {
     }
 } 
 
+export const updateSo = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const updatedSo = await SO.findByIdAndUpdate(
+      id,
+      req.body,
+      {
+        returnDocument: "after", runValidators: true
+      }
+    );
+
+    if (!updatedSo) {
+      return res.status(404).json({
+        success: false,
+        message: "SO not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      so: updatedSo
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const getSO = async (req, res, next) => {
   try {
@@ -164,7 +192,7 @@ export const getSO = async (req, res, next) => {
 
 export const getSoById = async (req, res, next) => {
     try {
-        const so = await SO.findById(req.params.id);
+        const so = await SO.findById(req.params.id).populate("customer", "name");;
         if (!so) {
             return res.status(404).json({
                 message: "So not found"
