@@ -19,8 +19,8 @@ export const CreateBOM = () => {
             console.log(error)
             setLoading(false);
         }
-    }
-    const fetchSoDetails = async () => {
+  }
+  const fetchSoDetails = async () => {
       setLoading(true);
       try {
         const res = await fetch(`/api/so/${id}`)
@@ -34,7 +34,7 @@ export const CreateBOM = () => {
       }finally {
         setLoading(false); 
       }
-    }
+  }
 
     const addBOMItem = async (item) => {
       try {
@@ -95,14 +95,14 @@ export const CreateBOM = () => {
               <tr key={item._id}>
                 <td className='border border-slate-300 p-4'>{item.itemCode}</td>
                 <td className='border border-slate-300 p-4'>{item.mainCategory?.sequenceNumber}</td>
-                <td className='border border-slate-300 p-4'>{item.itemName}</td>
+                <td className='border border-slate-300 p-4 w-1/3'>{item.itemName}</td>
                 <td className='border border-slate-300 p-4'>{item.stockCount}</td>
                 <td className='border border-slate-300 p-4'>{item.minOrderQty}</td>
                 <td className='border border-slate-300 p-4'>{item.perUnit}</td>
                 <td className='border border-slate-300 p-4'>1</td>
                 <td className='border border-slate-300 p-4'>{item.supplierPrice}</td>
                 <td className='border border-slate-300 p-4'>
-                  <button onClick={() => addBOMItem(item)} className='bg-green-700 text-white font-semibold p-2 px-4 rounded-sm'><i className='fa fa-plus pr-2'></i>Add</button>
+                  <button onClick={() => addBOMItem(item)} className='bg-green-700 text-white font-semibold p-2 px-4 rounded-sm hover:scale-105 transition-all duration-700'><i className='fa fa-plus pr-2'></i>Add</button>
                 </td>
               </tr>
             ))}

@@ -192,7 +192,7 @@ export const getSO = async (req, res, next) => {
 
 export const getSoById = async (req, res, next) => {
     try {
-        const so = await SO.findById(req.params.id).populate("customer", "name");;
+        const so = await SO.findById(req.params.id).populate("customer", "name");
         if (!so) {
             return res.status(404).json({
                 message: "So not found"
@@ -221,7 +221,7 @@ export const addBOMItem = async (req, res) => {
           bom: { item, quantity, cost },
         },
       },
-      { new: true }
+      { returnDocument: 'after' }
     ).populate("bom.item");
 
     if (!updatedSO) {
@@ -245,15 +245,26 @@ export const addBOMItem = async (req, res) => {
   }
 };
 
-export const getBOMBySO = async (req, res) => {
+export const getBOMBySOId = async (req, res) => {
   try {
-    const { soId } = req.params;
+    const so = await SO.findById(req.params.id)
+      .populate("bom.item")
+      .populate("purchaseOrderId", "supplier");
+    if (!so) {
+      return res.status(404).json({
+        success: false,
+        message: "SO not found",
+      });
+    }
 
-    const so = await SO.findById(soId)
-      .populate("bom.item");
-
-    res.json(so.bom);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(200).json({
+      success: true,
+      bom: so.bom,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };

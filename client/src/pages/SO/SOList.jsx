@@ -72,16 +72,16 @@ export const SOList = () => {
                         ) : sos.map((so)=> (
                             <tr key={so._id}>
                             <td className='border border-slate-300 px-2'>
-                                <button onClick={()=> toggleDropdown(so._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 rounded-sm w-18 hover:scale-105 transition-all duration-700'>Action<i className='fa fa-angle-down pl-1'></i></button>
+                                <button onClick={()=> toggleDropdown(so._id)} className='bg-blue-700 hover:bg-blue-800 text-white font-semibold p-2 rounded-sm w-20 hover:scale-105 transition-all duration-700 cursor-pointer'>Action<i className='fa fa-angle-down pl-1'></i></button>
                                 {openDropdown === so._id && 
                                 (<div className="absolute left-72 w-50 bg-white rounded-sm shadow-sm border border-slate-300 z-10 text-md">
-                                    <button onClick={()=> navigate(`/dashboard/create-bom/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100"
+                                    <button onClick={()=> navigate(`/dashboard/create-bom/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100 cursor-pointer"
                                     ><i className='fa fa-plus-circle pr-2 text-blue-700'></i>Create BOM</button>
-                                    <button className="block w-full text-left p-3 hover:bg-gray-100"
+                                    <button onClick={()=> navigate(`/dashboard/view-bom/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100 cursor-pointer"
                                     ><i className='fa fa-plus-circle pr-2 text-blue-700'></i>View BOM</button>
-                                    <button className="block w-full text-left p-3 hover:bg-gray-100"
+                                    <button onClick={()=> navigate(`/dashboard/edit-bom/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100 cursor-pointer"
                                     ><i className='fa fa-pencil pr-2 text-blue-700'></i>Edit BOM</button>
-                                    <button onClick={()=> navigate(`/dashboard/edit-so/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100"
+                                    <button onClick={()=> navigate(`/dashboard/edit-so/${so._id}`)} className="block w-full text-left p-3 hover:bg-gray-100 cursor-pointer"
                                     ><i className='fa fa-pencil pr-2 text-blue-700'></i>Edit SO</button>
                                 </div>)}
                             </td>

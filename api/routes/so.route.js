@@ -1,5 +1,5 @@
 import express from 'express';
-import { addBOMItem, createSO, getSO, getSoById, previewJCNumber, previewSONumber, updateSo } from '../controllers/so.controller.js';
+import { addBOMItem, createSO, getBOMBySOId, getSO, getSoById, previewJCNumber, previewSONumber, updateSo } from '../controllers/so.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
 const router = express.Router()
@@ -10,6 +10,7 @@ router.get('/:id', getSoById);
 router.put('/update/:id', updateSo);
 router.get('/preview/JC-Number', previewJCNumber);
 router.get('/preview/SO-Number', previewSONumber);
-router.post('/so/:id/bom', addBOMItem);
+router.post('/:id/bom', addBOMItem);
+router.get('/getBom/:id', getBOMBySOId);
 
 export default router;
