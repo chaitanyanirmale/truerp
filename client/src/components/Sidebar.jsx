@@ -69,12 +69,6 @@ export const Sidebar = () => {
                       <NavLink to="invoice-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'invoice-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('invoice-list')}>
                         <i className="fa fa-list-alt"></i>List Regular Invoice
                       </NavLink>
-                      <NavLink to="user-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'performa-invoice' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('performa-invoice')}>
-                        <i className="fa fa-plus-circle"></i>Create Performa Invoice
-                      </NavLink>
-                      <NavLink to="user-list" className={`flex items-center gap-3 mx-2 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'performa-list' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('performa-list')}>
-                        <i className="fa fa-list-alt"></i>List Performa Invoices
-                      </NavLink>
                 </div>
 
                 <div className="border-t border-slate-700 my-4"></div>

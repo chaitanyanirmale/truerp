@@ -15,9 +15,9 @@ import { AddEmployee } from './pages/Salary/AddEmployee.jsx'
 import { Features } from './pages/Home/Features.jsx'
 import { EmployeeList } from './pages/Salary/EmployeeList.jsx'
 import { SalaryList } from './pages/Salary/SalaryList.jsx'
-import { CreateSO } from './pages/CreateSO.jsx'
+import { CreateSO } from './pages/SO/CreateSO.jsx'
 import { AIFeatures } from './pages/AI/AIFeatures.jsx'
-import { SOList } from './pages/SOList.jsx'
+import { SOList } from './pages/SO/SOList.jsx'
 import { InvoiceList } from './pages/Invoices/InvoiceList.jsx'
 import { SupplierPayment } from './pages/Purchase/SupplierPayment.jsx'
 import { AddPurchase } from './pages/Purchase/AddPurchase.jsx'
@@ -45,7 +45,10 @@ import { SmartInventory } from './pages/AI/SmartInventory.jsx'
 import { CostingAndProfit } from './pages/AI/CostingAndProfit.jsx'
 import { ViewSalary } from './pages/Salary/ViewSalary.jsx'
 import { EditSalary } from './pages/Salary/EditSalary.jsx'
-import { CreateBOM } from './pages/Invoices/CreateBOM.jsx'
+import { CreateBOM } from './pages/SO/CreateBOM.jsx'
+import { EditSo } from './pages/SO/EditSo.jsx'
+import { ViewBOM } from './pages/SO/ViewBOM.jsx'
+import { EditBOM } from './pages/SO/EditBOM.jsx'
 
 
 function App() {
@@ -72,6 +75,8 @@ function App() {
             <Route path='create-invoice' element={<CreateInvoice />} />
             <Route path='invoice-list' element={<InvoiceList />} />
             <Route path='create-bom/:id' element={<CreateBOM />} />
+            <Route path='view-bom/:id' element={<ViewBOM />} />
+            <Route path='edit-bom/:id' element={<EditBOM />} />
             <Route path='add-salary' element={<AddSalary />} />
             <Route path='salary-list' element={<SalaryList />} />
             <Route path='view-salary/:id' element={<ViewSalary />} />
@@ -79,6 +84,7 @@ function App() {
             <Route path='add-employee' element={<AddEmployee />} />
             <Route path='employee-list' element={<EmployeeList />} />
             <Route path='create-so' element={<CreateSO />} />
+            <Route path='edit-so/:id' element={<EditSo />} />
             <Route path='so-list' element={<SOList />} />
             <Route path='create-po' element={<CreatePO />} />
             <Route path='po-list' element={<POList />} />
