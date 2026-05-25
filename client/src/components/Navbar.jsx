@@ -28,14 +28,6 @@ export const Navbar = () => {
             <div className="flex justify-center items-center w-1/4 gap-4">
                 <h1 className="text-2xl font-bold">TRUERP</h1>
             </div>
-            <div className="flex items-center gap-4 px-2">
-                <select className="bg-white text-black p-2 px-4 rounded-sm">
-                <option>FY: 2025-26</option>
-                <option>FY: 2024-25</option>
-                <option>FY: 2023-24</option>
-                <option>FY: 2022-23</option>
-                </select>
-            </div>
             <div className="hidden xl:flex xl:justify-between items-center gap-2 text-sm w-full h-full">
                 <div className="h-full relative inline-block">
                     <button onClick={() => setOpenMenu(openMenu === "users" ? null : "users")} className='flex hover:bg-blue-800 items-center h-full px-2'>
@@ -57,16 +49,6 @@ export const Navbar = () => {
                             </NavLink>
                             <NavLink to="items-list" className={`flex items-center gap-3 p-3 hover:bg-gray-100 cursor-pointer`} onClick={()=> setOpenMenu(null)} >
                             <i className="fa fa-list text-blue-600"></i>List of Items
-                            </NavLink>
-                    </div>
-                </div>
-                <div className="h-full relative inline-block">
-                    <button onClick={() => setOpenMenu(openMenu === "quotations" ? null : "quotations")} className='flex hover:bg-blue-800 items-center h-full px-2'>
-                        <i className='fa fa-cubes fa-md p-1'></i><p className='text-md p-2'>Quotation</p><i className='fa fa-angle-down font-bold'></i>
-                    </button>
-                    <div  className={`overflow-hidden absolute left-0 w-50 text-sm border border-slate-300 bg-white text-gray-600 rounded-xs ${ openMenu === "quotations" ? "max-h-40" : "max-h-0 border-none" }`}>
-                            <NavLink to="quotation-list" className={`flex items-center gap-3 p-3 hover:bg-gray-100 cursor-pointer`} onClick={()=> setOpenMenu(null)} >
-                            <i className="fa fa-list text-blue-600"></i>List of Quotations
                             </NavLink>
                     </div>
                 </div>

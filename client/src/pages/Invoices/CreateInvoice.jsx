@@ -172,7 +172,7 @@ export const CreateInvoice = () => {
         <form onSubmit={handleSubmit}>
             <h1 className='text-2xl mb-2 font-semibold'>Create New Invoice</h1><hr className='text-slate-300 mb-4'/>
             <div className="invoice-details">
-                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Invoice Details</h3>
+                <h3 className='text-xl bg-gray-200 border-l-3 border-blue-700 p-2 font-semibold rounded-r-sm'>Invoice Details</h3>
                 <div className="xl:grid xl:grid-cols-5 xl:gap-6 px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1 font-semibold">Select Invoice Type</label>
@@ -204,7 +204,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="supplier-buyer-details">
-                <div className="flex justify-between bg-gray-300 px-3 py-3 rounded-sm">
+                <div className="flex justify-between bg-gray-200 border-l-3 border-green-500 p-2 rounded-r-sm">
                     <h3 className='text-xl font-semibold '>Supplier / Buyer Details</h3>
                     <button type='button' onClick={() => navigate("/dashboard/add-user")} className="bg-blue-700 p-2 text-white text-sm rounded-sm hover:bg-blue-800 shadow-md">
                         <i className='fa fa-plus pt-1 pr-1'></i>
@@ -285,7 +285,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="product-details">         
-                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Product Details</h3>
+                <h3 className='text-xl bg-gray-200 border-l-3 border-orange-300 p-2 font-semibold rounded-r-sm'>Product Details</h3>
                 <div className="xl:grid grid-cols-2 gap-4 px-2 mt-2">
                     <div className="xl:grid grid-cols-2 gap-4">
                         <div className="">
@@ -337,7 +337,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="po-details">
-                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>PO Details</h3>
+                <h3 className='text-xl bg-gray-200 border-l-3 border-yellow-300 p-2 font-semibold rounded-r-sm'>PO Details</h3>
                 <div className="xl:grid xl:grid-cols-4 xl:gap-6 gap-2 px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1 font-semibold">PO No.</label>
@@ -358,7 +358,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="transportation-details">
-                <h3 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Transportation Details</h3>
+                <h3 className='text-xl bg-gray-200 border-l-3 border-blue-700 p-2 font-semibold rounded-r-sm'>Transportation Details</h3>
                 <div className="xl:grid xl:grid-cols-3 gap-6 px-2 mt-2">
                     <div className="">
                         <label className="text-sm p-1 font-semibold">Select Type</label>
@@ -416,7 +416,7 @@ export const CreateInvoice = () => {
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="xl:flex gap-4">
                 <div className="bank-details">
-                    <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Bank Details</h1>
+                    <h1 className='text-xl bg-gray-200 border-l-3 border-orange-300 p-2 font-semibold rounded-r-sm'>Bank Details</h1>
                     <div className="flex justify-between p-2">
                         <div className="">
                             <div className="flex justify-between">
@@ -443,7 +443,7 @@ export const CreateInvoice = () => {
                     </div>
                 </div>
                 <div className="w-full invoice-status">
-                        <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm'>Invoice Status & Remark</h1>
+                        <h1 className='text-xl bg-gray-200 border-l-3 border-yellow-300 p-2 font-semibold rounded-r-sm'>Invoice Status & Remark</h1>
                         <div className="p-2 flex gap-4">
                             <select name="paymentStatus" value={formData.paymentStatus} onChange={handleChange} className='border border-slate-300 rounded-sm p-2 text-sm mt-1 h-10'>
                                 <option value="Paid">Paid</option>
@@ -455,7 +455,7 @@ export const CreateInvoice = () => {
                 </div>
             </div><hr className='text-slate-300 mb-4 my-4 w-full'/>
             <div className="terms-conditions">
-                <h1 className='text-xl bg-gray-300 px-3 py-3 font-semibold rounded-sm mb-2'>Terms & Conditions</h1>
+                <h1 className='text-xl bg-gray-200 border-l-3 border-green-500 p-2 font-semibold rounded-r-sm mb-2'>Terms & Conditions</h1>
                 <textarea name="termsAndConditions" value={formData.termsAndConditions} rows="4" className='border border-slate-300 rounded-sm p-2 w-full text-sm mt-1 uppercase placeholder:text-gray-300' placeholder='100% within 30 days' readOnly></textarea>
             </div>
             <hr className='text-slate-300 mb-4 my-4 w-full'/>

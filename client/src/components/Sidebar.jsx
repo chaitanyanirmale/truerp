@@ -25,9 +25,7 @@ export const Sidebar = () => {
                 <div className="border-t border-slate-700 my-4"></div>
                 <p className="text-gray-200 uppercase text-sm text-center">AI Features</p>
                 <div className="border-t border-slate-700 my-4"></div>
-                <NavLink to="ocr" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'ocr' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('ocr')}>
-                <i className="fa fa-dashboard"></i> OCR
-                </NavLink>
+                
                 <NavLink to="aifeatures" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'ai-features' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('ai-features')}>
                   <i className=" fa fa-dashboard"></i> AI Features
                 </NavLink>
@@ -36,11 +34,7 @@ export const Sidebar = () => {
                 <div className="border-t border-slate-700 my-4"></div>
                 <p className="text-gray-200 uppercase text-sm text-center">Account</p>
                 <div className="border-t border-slate-700 my-4"></div>
-                
-                <NavLink to="ledger" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'ledger' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('ledger')}>
-                <i className=" fa fa-file"></i> Ledger
-                </NavLink>
-              
+                              
                 <button onClick={() => setOpenMenu(openMenu === "expense" ? null : "expense")} className='flex items-center gap-3 px-3 py-2 w-full  hover:bg-slate-700 cursor-pointer transition'>
                      <i className="fa fa-rupee"></i><p className='w-full text-start'>Expense</p>
                      <i className={`fa fa-angle-right transition-transform duration-300 ${ openMenu === "expense" ? "rotate-90" : ""}`}></i>
@@ -54,9 +48,6 @@ export const Sidebar = () => {
                       </NavLink>
                 </div>
 
-                <NavLink to="supplier-payment" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'supplier-pay' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('supplier-pay')}>
-                  <i className="fa fa-rupee"></i> Supplier Payment
-                </NavLink>
                 
                 <button onClick={() => setOpenMenu(openMenu === "invoice" ? null : "invoice")} className='flex items-center gap-3  px-3 py-2 w-full hover:bg-slate-700 cursor-pointer transition'>
                      <i className="fa fa-file-text"></i><p className='w-full text-start'>Invoice</p>
@@ -185,9 +176,7 @@ export const Sidebar = () => {
                 <NavLink to="enquiries" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'enquiries' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('enquiries')}> <i className='fa fa-list'></i>
                  Enquiries
                 </NavLink>
-                <NavLink to="quotations" className={`flex items-center gap-3 px-3 py-2 hover:bg-slate-700 cursor-pointer transition duration-300 ${active === 'quotations' ? 'bg-slate-800 border-l-2 border-blue-700':''}`} onClick={()=> setActive('quotations')}> <i className='fa fa-list'></i>
-                 Quotations
-                </NavLink>
+                
             </div>
         </aside>
 
