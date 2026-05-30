@@ -135,33 +135,46 @@ export const CreateSO = () => {
     }
   }
   return (
-    <div className=' md:w-full xl:w-full  bg-white p-4 border border-slate-400 shadow-md rounded-sm'>
-        <h1 className='text-2xl font-semibold'>Create New SO</h1>
+    <div className='xl:max-w-200 bg-white p-4 border border-slate-200 shadow-md rounded-sm'>
+        <h1 className='text-2xl font-semibold'>Create Sales Order (SO)</h1>
         <hr className='text-slate-300 my-4'/>
         <form onSubmit={handleSubmit} >
-          <div className="xl:grid xl:grid-cols-3 xl:gap-6 md:grid md:grid-cols-2 md:gap-6 sm:grid text-sm placeholder:text-slate-400 items-start">
-            <div className="grid gap-2">
-              <label className="font-semibold">Select Customer</label>
-              <select name="customer" value={formData.customer}
-            onChange={handleChange} className='p-2 border border-slate-300 rounded-sm ' required>
-                  <option value="">--Select Customer--</option>
-                      {customers.map((cust) => (
-                      <option key={cust._id} value={cust._id}>
-                      {cust.name}
-                      </option>
-                  ))}
-              </select>
-            </div>
-            <div className="grid gap-2">
-              <label className="font-semibold">So Number</label>
-              <input type="text" name='soNumber' value={formData.soNumber} onChange={handleChange} className='p-2 border border-slate-300 rounded-sm bg-gray-100' readOnly/>
-            </div>
+          <div className="">
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-blue-700'><i className='fa fa-user pr-2'></i>Customer</h2>
+            <div className="flex justify-between gap-6 py-4 text-sm">
+              <div className="grid gap-2 w-full">
+                <label className="font-semibold">Select Customer <span className='text-red-500'>*</span></label>
+                <select name="customer" value={formData.customer}
+              onChange={handleChange} className='p-2 border border-slate-300 rounded-sm ' required>
+                    <option value="">--Select Customer--</option>
+                        {customers.map((cust) => (
+                        <option key={cust._id} value={cust._id}>
+                        {cust.name}
+                        </option>
+                    ))}
+                </select>
+              </div>
               <div className="grid gap-2">
-                  <label className="font-semibold">JobCard Number</label>
+                <label className="font-semibold">So Number <span className='text-red-500'>*</span></label>
+                <input type="text" name='soNumber' value={formData.soNumber} onChange={handleChange} className='p-2 border border-slate-300 rounded-sm bg-gray-100' readOnly/>
+              </div>
+            </div>
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-green-500'><i className='fa fa-file-text-o pr-2'></i>Order Details</h2>
+            <div className="grid grid-cols-2 gap-6 text-sm py-4">
+              <div className="grid gap-2">
+                  <label className="font-semibold">JobCard Number <span className='text-red-500'>*</span></label>
                   <input type="text" value={formData.jobCardNumber} onChange={handleChange} name="jobCardNumber"  className='p-2 border border-slate-300 rounded-sm bg-gray-100' readOnly/>
               </div>
               <div className="grid gap-2">
-                <label className="font-semibold">Select Item</label>
+                <label className="font-semibold">Major/Minor Number <span className='text-red-500'>*</span></label>
+                <input type="text" name="majorMinorNumber" value={formData.majorMinorNumber} onChange={handleChange}  placeholder='e.g. MAJ-001' className='p-2 border border-slate-300 rounded-sm'/>
+              </div>
+              <div className="grid gap-2">
+                <label className="font-semibold">Drawing Revision number <span className='text-red-500'>*</span></label>
+                <input type="text" name="drawingRevisionNumber" value={formData.drawingRevisionNumber} onChange={handleChange} placeholder='e.g. 0, 1, A' className='p-2 border border-slate-300 rounded-sm'/>
+              </div>
+              <div className="grid gap-2">
+                <label className="font-semibold">Select Item <span className='text-red-500'>*</span></label>
                 <select name="itemId" value={formData.itemId} onChange={handleItemChange} className="border border-slate-300 rounded-sm p-2" required>
                   <option value="">Select Item</option>
                   {items.map((item) => (
@@ -172,25 +185,49 @@ export const CreateSO = () => {
                 </select>
               </div>
               <div className="grid gap-2">
-                  <label className="font-semibold">Item Description</label>
+                  <label className="font-semibold">Item Description <span className='text-red-500'>*</span></label>
                   <input type="text" name="itemDesc" value={formData.itemDesc} onChange={handleChange}  placeholder='Enter Item Description' className='p-2 border border-slate-300 rounded-sm' required/>
               </div>
               <div className="grid gap-2">
-                  <label className="font-semibold">Item Quantity</label>
+                  <label className="font-semibold">Item Quantity <span className='text-red-500'>*</span></label>
                   <input type="number" name="itemQty" value={formData.itemQty} onChange={handleChange}  placeholder='Enter Item Quantity' className='p-2 border border-slate-300 rounded-sm' required/>
               </div>
+            </div>
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-yellow-400'><i className='fa fa-file-text-o pr-2'></i>Customer PO Details</h2>
+            <div className="grid grid-cols-3 gap-6 text-sm py-4">
               <div className="grid gap-2">
-                <label className="font-semibold">Major/Minor Number</label>
-                <input type="text" name="majorMinorNumber" value={formData.majorMinorNumber} onChange={handleChange}  placeholder='Major/Minor Number' className='p-2 border border-slate-300 rounded-sm'/>
+                <label className="font-semibold">Select PO <span className='text-red-500'>*</span></label>
+                <select name="purchaseOrderId" value={formData.purchaseOrderId} onChange={handlePOChange} className='p-2 border border-slate-300 rounded-sm'>
+                  <option value="">Select PO</option>
+                  {po.map((po) => (
+                    <option key={po._id} value={po._id}>
+                      {po.supplier?.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="grid gap-2">
-                <label className="font-semibold">Received Date</label>
+                <label className="font-semibold">PO Number <span className='text-red-500'>*</span></label>
+                <input type="text" name="poNumber" value={formData.poNumber} onChange={handleChange} placeholder='PO Number' className='p-2 border border-slate-300 rounded-sm'/>
+              </div>
+              <div className="grid gap-2">
+                <label className="font-semibold">PO Date <span className='text-red-500'>*</span></label>
+                <input type="text" name="poDate" value={formData.poDate?.split("T")[0]} onChange={handleChange} className='p-2 border border-slate-300 rounded-sm' readOnly/>
+              </div>
+            </div>
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-orange-400'><i className='fa fa-calendar pr-2'></i>Dates</h2>
+            <div className="grid grid-cols-2 gap-6 text-sm py-4">
+              <div className="grid gap-2">
+                <label className="font-semibold">Received Date <span className='text-red-500'>*</span></label>
                 <input type="date" name="receivedDate" value={formData.receivedDate} onChange={handleChange}  placeholder='Select Recieved Date' className='p-2 border border-slate-300 rounded-sm'/>
               </div>
               <div className="grid gap-2">
-                <label className="font-semibold">Expected Date</label>
+                <label className="font-semibold">Expected Date <span className='text-red-500'>*</span></label>
                 <input type="date" name="expectedDate" value={formData.expectedDate} onChange={handleChange}  placeholder='Select Expected Date' className='p-2 border border-slate-300 rounded-sm'/>
               </div>
+            </div>
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-purple-700'><i className='fa fa-flag pr-2'></i>Status & Type</h2>
+            <div className="grid grid-cols-2 gap-6 py-4 text-sm">
               <div className="grid gap-2">
                 <label className="font-semibold">Status</label>
                 <select name="status" value={formData.status}
@@ -212,33 +249,11 @@ export const CreateSO = () => {
                     <option value="Order Acceptance">Order Acceptance</option>
                 </select>
               </div>
-              <div className="grid gap-2">
-                <label className="font-semibold">Drawing Revision number</label>
-                <input type="text" name="drawingRevisionNumber" value={formData.drawingRevisionNumber} onChange={handleChange} placeholder='Drawing Revision Number' className='p-2 border border-slate-300 rounded-sm'/>
-              </div>
-              <div className="grid gap-2">
-                <label className="font-semibold">Select PO</label>
-                <select name="purchaseOrderId" value={formData.purchaseOrderId} onChange={handlePOChange} className='p-2 border border-slate-300 rounded-sm'>
-                  <option value="">Select PO</option>
-                  {po.map((po) => (
-                    <option key={po._id} value={po._id}>
-                      {po.supplier?.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="grid gap-2">
-                <label className="font-semibold">PO Number</label>
-                <input type="text" name="poNumber" value={formData.poNumber} onChange={handleChange} placeholder='PO Number' className='p-2 border border-slate-300 rounded-sm'/>
-              </div>
-              <div className="grid gap-2">
-                <label className="font-semibold">PO Date</label>
-                <input type="text" name="poDate" value={formData.poDate?.split("T")[0]} onChange={handleChange} className='p-2 border border-slate-300 rounded-sm' readOnly/>
-              </div>
-              <div className="grid gap-2">
-                <label className="font-semibold">Remark</label>
-                <textarea name="remark" value={formData.remark} onChange={handleChange}  rows='2' placeholder='Remark' className='p-2 border border-slate-300 rounded-sm'></textarea>
-              </div>
+            </div>
+            <h2 className='bg-gray-100 p-2 font-semibold border-l-4 border-green-600'><i className='fa fa-comment pr-2'></i>Remark</h2>
+            <div className="py-4 text-sm">
+                <textarea name="remark" value={formData.remark} onChange={handleChange}  rows='2' placeholder='Enter any remark or notes..' className='p-2 border border-slate-300 rounded-sm w-full'></textarea>
+            </div>
           </div>
             <hr className='text-slate-300 my-4'/>
             <div className="">
