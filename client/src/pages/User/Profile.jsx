@@ -136,10 +136,6 @@ export const Profile = () => {
                         <label>{user.mobile}</label>
                     </div>
                     <div className="flex mb-2 px-2">
-                        <label className='w-1/4 p-1'>Landline/Other Mobile :</label>
-                        <label>{user.alternateNumber}</label>
-                    </div>
-                    <div className="flex mb-2 px-2">
                         <label className='w-1/4 p-1'>Email :</label>
                         <label>{user.email}</label>
                     </div>
