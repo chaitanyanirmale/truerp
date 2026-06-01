@@ -31,10 +31,6 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
-    alternateNumber: {
-      type: String,
-    },
-
     aadharNumber: {
       type: String,
       unique: true,
